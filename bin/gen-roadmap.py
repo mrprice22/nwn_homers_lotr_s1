@@ -682,6 +682,42 @@ def build_html(data: dict) -> str:
         f'<li><a href="#next-{g["id"]}">{g["title"]}</a></li>' for g in roadmap_groups
     )
 
+    # A closed/archived season has nothing on the roadmap board — every idea is
+    # shipped. Drop the two forward-looking sections (and their TOC entries)
+    # rather than render empty headers promising "where the module is heading".
+    has_roadmap = any(STATUS[i["status"]]["board"] == "roadmap" for i in items)
+    if has_roadmap:
+        toc_roadmap_li = f"""        <li><a href="#roadmap">Roadmap</a>
+          <ol style="margin:0.2em 0 0 0;">
+{toc_roadmap}
+          </ol>
+        </li>
+        <li><a href="#by-category">By Category</a>
+          <ol style="margin:0.2em 0 0 0;">
+{toc_next}
+          </ol>
+        </li>"""
+        roadmap_sections = f"""
+<hr>
+
+<div class="section-header" id="roadmap">
+  <h2>Roadmap</h2>
+  <p class="section-sub">Where the module is heading, by stage &mdash; from "In Progress" through "Up Next", "Coming Soon", "Coming Later" and "Under Consideration". Click any name or category to jump to its full detail under <a href="#by-category">By Category</a> below.</p>
+</div>
+{render_roadmap_tables(groups, items)}
+
+<hr>
+
+<div class="section-header" id="by-category">
+  <h2>By Category</h2>
+  <p class="section-sub">The same in-flight ideas, grouped by feature theme with full notes. Each item's badge shows its stage: "In progress" is being actively worked; "Up next" is queued, with "Soon" and "Later" progressively further out; "Under consideration" is captured but not yet committed to; "Not likely to implement" is logged but probably won't happen.</p>
+</div>
+{render_roadmap_board(groups, items)}
+"""
+    else:
+        toc_roadmap_li = ""
+        roadmap_sections = ""
+
     body = f"""<body>
   <main>
 {STYLE}
@@ -691,16 +727,7 @@ def build_html(data: dict) -> str:
       <h2>Contents</h2>
       <ol>
         <li><a href="#about">About this page</a></li>
-        <li><a href="#roadmap">Roadmap</a>
-          <ol style="margin:0.2em 0 0 0;">
-{toc_roadmap}
-          </ol>
-        </li>
-        <li><a href="#by-category">By Category</a>
-          <ol style="margin:0.2em 0 0 0;">
-{toc_next}
-          </ol>
-        </li>
+{toc_roadmap_li}
         <li><a href="#shipped">Recently Shipped</a></li>
       </ol>
     </nav>
@@ -717,23 +744,7 @@ def build_html(data: dict) -> str:
 
 <p class="rm-pivot-caption">Idea counts by type and stage:</p>
 {render_summary_pivot(canon)}
-
-<hr>
-
-<div class="section-header" id="roadmap">
-  <h2>Roadmap</h2>
-  <p class="section-sub">Where the module is heading, by stage &mdash; from "In Progress" through "Up Next", "Coming Soon", "Coming Later" and "Under Consideration". Click any name or category to jump to its full detail under <a href="#by-category">By Category</a> below.</p>
-</div>
-{render_roadmap_tables(groups, items)}
-
-<hr>
-
-<div class="section-header" id="by-category">
-  <h2>By Category</h2>
-  <p class="section-sub">The same in-flight ideas, grouped by feature theme with full notes. Each item's badge shows its stage: "In progress" is being actively worked; "Up next" is queued, with "Soon" and "Later" progressively further out; "Under consideration" is captured but not yet committed to; "Not likely to implement" is logged but probably won't happen.</p>
-</div>
-{render_roadmap_board(groups, items)}
-
+{roadmap_sections}
 <hr>
 
 <div class="section-header" id="shipped">

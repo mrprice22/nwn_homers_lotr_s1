@@ -26,15 +26,20 @@
 # =============================================================================
 
 meta:
-  as_of: "2026-07-24 14:07 CDT"
+  as_of: "2026-07-25 15:59 CDT"
   intro: >-
-    This is the living development roadmap for Homer's LOTR. Almost everything
-    here started as a player suggestion or bug report — <strong><em>when an idea
-    ships</em></strong>, the player who submitted it earns <strong>Merit</strong>
-    points to spend on the rewards documented
-    <a href="../manual/Customizations.html#merit">here</a>. Have an idea or found a bug? Tell a DM
-    in game or on <a href="https://discord.gg/VpAtSpe" target="_blank" rel="noopener">Discord</a>;
-    if it makes the cut, you get the credit.
+    <strong>Season 1 development is closed.</strong> This page is now an archive
+    of everything that shipped during season 1 &mdash; no further work is planned
+    here apart from a major hotfix, should one be reported. The whole remaining
+    backlog (every unshipped player idea and bug report) has moved to the
+    <a href="https://season2.homerslotr.com/manual/Roadmap" target="_blank" rel="noopener">Season&nbsp;2 roadmap</a>,
+    where it keeps its original submitter credit. Almost everything below started
+    as a player suggestion or bug report &mdash; <strong><em>when an idea
+    shipped</em></strong>, the player who submitted it earned
+    <strong>Merit</strong> points to spend on the rewards documented
+    <a href="../manual/Customizations.html#merit">here</a>. New ideas and bug
+    reports belong on season 2: tell a DM in game or on
+    <a href="https://discord.gg/VpAtSpe" target="_blank" rel="noopener">Discord</a>.
 
 groups:
   - id: forge
@@ -112,30 +117,20 @@ epics:
     title: "Good vs. Evil Faction System"
     group: quests-areas
     notes: "Persistent Good/Evil allegiance with daily and weekly faction quests, rally calls and PVP standing"
-  - id: long-winter
-    title: "The Long Winter (Seasonal Event)"
-    group: quests-areas
-    notes: "A server-wide seasonal event: creeping cold across Eriador, a gather-and-forge quest chain, and a finale boss on the Bay of Forochel"
   - id: difficulty-increase
     title: "Diffulty Increase"
     group: forge
     notes: "Make the game more challenging (mostly at end game areas)"
-  - id: legendary-feats
-    title: "Legendary Feats"
-    group: combat-classes
-    notes: "Feats that can only be taken after level 40, bonus feats for pure classes at level 60"
-
-
-# -----------------------------------------------------------------------------
-# How merit is earned and spent (Merit Redemption Shop + Player Housing price
-# tables) now lives on the Customizations wiki page, under "Merit Reward System"
-# (docs.manual/Customizations.html#merit). The roadmap just links to it.
-# -----------------------------------------------------------------------------
-
-# -----------------------------------------------------------------------------
-# Ideas / bugs / features.
-# -----------------------------------------------------------------------------
 ideas:
+  - id: season2-test-announce
+    title: "Season 2 Test Realm is Live"
+    group: wiki-tools
+    status: awarded
+    type: Enhancement
+    player: "HomelessSon (Server Admin)"
+    date: "2026-07-25"
+    notes: "<div>Season 2 test realm is live  -- no real changes yet, except:</div><div><ul><li>Higher ground legendary leveler is disabled while replacement of true levels is in development.</li><li>Cheat NPC to change levels and gold to aid with testing </li></ul></div><div><br></div><div><b>Currently: </b></div><ul><li>Season 1 WIKI: <a href=\"https://homerslotr.com\" target=\"_blank\" rel=\"noopener\">https://homerslotr.com</a></li><li>Season 2 Wiki: <a href=\"https://season2.homerslotr.com\" target=\"_blank\" rel=\"noopener\">https://season2.homerslotr.com</a></li></ul><div><br></div><div>Once Season2 goes officially live (<b>eta evening of August 5th</b>), the urls will flipflop:</div><div><ul><li>Season 2 WIKI: <a href=\"https://homerslotr.com\" target=\"_blank\" rel=\"noopener\">https://homerslotr.com</a></li><li>Season 1 Wiki: https://season1.homerslotr.com (url not live yet)</li></ul><br></div>"
+    notes_h: 260
   - id: bestiary-boss-breakdown
     title: "Beastiary breakdown for just the bosses"
     group: bosses
@@ -165,14 +160,6 @@ ideas:
     manual_steps:
       - step: "After the next scheduled wiki refresh, open the Activity page and confirm both daily charts show 35 bars with a weekly roll-up chart directly beneath each."
         status: open
-  - id: test-idea
-    title: "test-idea"
-    group: wiki-tools
-    status: awarded
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-24"
-    notes: "test-idea, just checking if this still works after recent back-end updates."
   - id: numenor-chests
     title: "Fix the 3 chests in Númenor: Noirinan"
     group: quests-areas
@@ -241,14 +228,6 @@ ideas:
       - step: "UAT: open the roadmap/merit editor, click Palette Finder, click Refresh palette map, then search a known blueprint (e.g. a creature resref) and confirm it reports a sensible Top > Sub > category path."
         status: open
         step_h: 64
-  - id: hgll-banked-skillpoints-lost
-    title: "HGLL pre level 41 skill points banked do not carry over"
-    group: combat-classes
-    status: unlikely
-    type: Defect
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div>When taking level 40, players must spend all their banked skill points because those are not recognized by the HGLL system</div><div>Any unspent skill points from HGLL system do get banked for future levels</div><div><br>Closed: WILL soon be replacing HGLL with different leveling system <a href=\"#idea-ll-modern-leveling\">Replace the conversation-based Legendary Leveler with normal 1-40 leveling (works with 4x multiclass)</a> so not going to spend time fixing this part of it (Season 2)</div>"
   - id: epic-summon-unsummon
     title: "Epic Summons don't unsummon when dismissed"
     group: combat-classes
@@ -278,14 +257,6 @@ ideas:
     date: "2026-07-13"
     commit: b4daa68f18e
     notes: "<div><span>Epic leveling: you get N skill points. When spending, it raises the skill. Then when you are down to 1 point, you pick something but choose to start over. </span></div><div><span>You start anew with all the skill points to spend. But you keep the N-1 skill points spent.</span></div><div><span><br></span></div><div><span>DM: Fixed. The leveler applied each pick the instant you confirmed it, but only spent the level itself on the very last confirmation — so backing out (or walking away, or disconnecting) kept the picks and left you eligible to level again. The same hole handed out unlimited <b>feats and ability points</b>, not just skill points.</span></div><div><span><br></span></div><div><span>The level-up is now a single transaction: nothing touches your character until you confirm on the final page, and then it all applies at once. \"No. I want to start over.\" now genuinely starts you over, with your full pool back.</span></div>"
-  - id: bard-song-tweak
-    title: "Bard Song to reduce immunity/resistance instead of damaging mobs"
-    group: forge
-    status: later
-    type: Enhancement
-    player: "Rajmund (Ray)"
-    date: "2026-07-11"
-    notes: "<div><span>How about bard song reducing damage immunity/resistance instead of damaging mobs?</span></div><div><span><br></span></div><div><span>DM: I think this is great but maybe as a legendary feat: </span><a href=\"#idea-Legendary-Feats\">Implement Legendary Feats</a></div>"
   - id: party-loot-pickpocket
     title: "Party Loot Roll and Pickpocket"
     group: items-gear
@@ -295,57 +266,6 @@ ideas:
     date: "2026-07-11"
     commit: ddbd2bdd8cb
     notes: "<span>Fixed: pickpocketing an item from a living NPC no longer triggers a party Need/Greed/Pass loot roll — the roll's source filter now also skips living-creature sources (pickpocket is an individual skill contest). Dead-creature corpse/boss loot still rolls.\n\nThe 'boss used HP 4 more times than expected' half was a misread, not a duplication bug: the Gwathdor Lord carries multiple cure potions plus casts cure spells as an 80-level caster, and the loot-roll code never writes to the victim's inventory.</span>"
-  - id: gondor-scribe
-    title: "Well of Souls Quest: No Gondor Scribe"
-    group: quests-areas
-    status: design
-    type: Defect
-    player: "Rajmund (Ray)"
-    date: "2026-07-23"
-    commit: 08f763c57201c62fd5c698041905ae6ee2659875
-    notes: "<div>The Well of Souls quest was unfinishable — the Gondor Scribe you were sent to find had never actually been placed in the world. She now stands in the Tower of the High Wizard, and the whole arc works end to end: Hanee the Loon in Bree sends you north to kill Azagoth in the Ruins of Annúminas, pays you 5,000 XP for the news, and hands you on to the Gondor wizards, where the scribe pays 10,000 XP (up from 4,000) for Azagoth's head. You can also walk in cold and start from the scribe. Details: <a href=\"QuestGuide.html#well-of-souls\">Quest Guide → Well of Souls</a>.</div>"
-    impl_notes: "<div><b>Root cause:</b> the quest-giver NPC was designed but never created or placed. The gondorscribe conversation, journal category, condition/action scripts and the boss all existed, but no creature in the module carried the gondorscribe conversation, and ruinsofannuminas.git.json had zero static creatures. A 2026-05-28 pass only fixed a DLG Quest field name and missed the absent NPC.</div><div><br></div><div><b>Built:</b> new gondorscribe.utc.json (base comfemale002, Tag GondorScribe, Conversation gondorscribe, FactionID 6, Plot=1 so the quest-giver cannot be killed), placed in area011 near the wizards via bin/place-helper.py (clearance verified, __struct_id 4 hardcoded). New sc_hanee_head.nss (StartingConditional: has azagothshead and not hanee_head_reward) + at_hanee_head.nss (RewardPartyXP 5000, set flag, journal entry 2, keeps the head), wired into Hanee's conversation. Ruin of Annuminas journal entry 2 added (End 1). at_008.nss scribe reward bumped 4000 -&gt; 10000, head consumed. Cold-start path at the scribe unchanged (accept -&gt; journal + Annuminas Key). Full draft in QUEST_FIX_well_of_souls_plan.md.</div><div><br></div><div><b>2026-07-23 (commit 08f763c57):</b> implemented the answered design-question follow-up. In ruinsofannuminas.git the two Chest1/KeyName=AnnuminasKey placeables at Placeable-List idx 7 (X71.23/Y50.06) and idx 8 (X76.24/Y49.98) are now KeyRequired=1+AutoRemoveKey=1, unpickable, with unique LocName/Description (Sorcerer's Warded Coffer / Wizard's Sealed Reliquary) and static caster-gear ItemLists; their OnOpen/OnClosed (chest_respawner/chest_relock) were cleared so the static loot survives and the chest stays open once the key is spent. idx 9/10 left pickable + GenerateMediumTreasure (no static loot existed to redistribute, so the caster gear is pure net-gain). 6 new .uti blueprints (sorc_robe_annu/sorc_amul_annu/sorc_ring_annu = CHA + Sorcerer bonus spell slots L6-9 + resists; wiz_robe_annu/wiz_amul_annu/wiz_ring_annu = INT + Wizard bonus spell slots L6-9 + resists) cloned from epicmagerobe/amuletofadaption/aegisoftorment and filed by PaletteID. Scribe key-give node (gondorscribe.dlg, script at_007) gained a non-branching in-character warning that the key opens only one warded chest; at_007 gained an anti-stockpile guard (annu_key_given PC local int, no second key while one is held). All 10 smoke gates passed (palette-coverage, reward-exploit, locked-container-keys). <b>Open:</b> residual relog key-farm vector — see design question below.</div>"
-    design_questions:
-      - question: "On the Hanee-first route the Annuminas Key still only comes from the scribe, so the ruins' four key chests (KeyRequired=0, pickable) are reached before the key exists. Leave as-is, grant the key at Hanee's handoff, or set KeyRequired=1?"
-        status: answered
-        answer: "Leave as is with key coming from scribe; set 2 of the chests to be keyRequired and unpickable -- add moderately high powered sorcerer gear in one and wizard gear in the other, a 3 pieces of +10 gear with some resistances, bonus spell slots, and relevant ability score boosts. The key should be destroyed on use, so player can only open 1 of the 2 locked chests. The scribe should offer an in game warning/explanation for why (something, something, magic) and the chests should be labeled with unique names and have unique descriptions that hint at what they are rewards for (sorcerer vs wizard). Move the original contents of the 2 chests we're locking with a key here to be split up among the other 2 chests that remain pickable so no net-loss of loot, only added loot for people who do the quest and come back with the key."
-        question_h: 64
-        answer_h: 64
-      - question: "Residual relog key-farm on the new warded chests: the scribe accept node (StartingList entry 0) still fires whenever the PC lacks azagothshead and azagothdead!=1, so a player could open one warded chest, relog (which clears the session annu_key_given local int), re-accept for a fresh key, and open the second warded chest too. AutoRemoveKey + the same-session guard block casual double-dipping but not deliberate relog-farming. Proposed: leave as-is (low-value gear, high-effort setup), OR harden it — persist the guard as a roadmapdb/campaign-DB row keyed by CD-key/UUID, or advance the quest stage so accept-entry-0 stops firing after the first key grant. Which do you want?"
-        status: open
-        answer: null
-    manual_steps:
-      - step: "UAT Hanee-first path: accept from Hanee in Bree -> kill Azagoth in the Ruins of Annuminas -> back to Hanee (+5k XP, keeps head, no repeat on re-talk) -> Gondor Scribe in the Tower ground floor (+10k XP, head consumed, Well of Souls stage 2)."
-        status: open
-        step_h: 64
-      - step: "UAT cold-start path: a fresh character talks to the scribe -> accept grants journal + Annuminas Key; a later head turn-in pays 10k."
-        status: open
-        step_h: 64
-      - step: "UAT regression: Hanee's plain greeting is unchanged without the head, and the scribe is unkillable."
-        status: open
-        step_h: 64
-      - step: "UAT appearance: spawn/loot the 6 new caster items (sorc_robe_annu, sorc_amul_annu, sorc_ring_annu, wiz_robe_annu, wiz_amul_annu, wiz_ring_annu) and confirm each looks right, equips on a caster, and its properties display (ability score, bonus spell slots, resistances). Palette: robes -> Armor > Clothing; amulets -> Miscellaneous > Jewelry > Amulets; rings -> Miscellaneous > Jewelry > Rings."
-        status: open
-      - step: "UAT one-key-one-chest: in Ruins of Annuminas (ruinsofannuminas), get the Annuminas Key from the Gondor Scribe (Tower of the High Wizard: Ground Floor / area011), open ONE warded chest (Sorcerer's Warded Coffer @ X71.23/Y50.06 or Wizard's Sealed Reliquary @ X76.24/Y49.98), and confirm the key is consumed and the OTHER warded chest can no longer be opened (unpickable + no key)."
-        status: open
-      - step: "UAT pickable chests: confirm the two remaining Annuminas chests (Placeable-List idx 9 @ X62.34/Y54.80 and idx 10 @ X62.09/Y44.90) are still lockpickable and still generate medium treasure on open."
-        status: open
-  - id: unlock-more-inacessible-creature
-    title: "Unlock Inacessible creatures, beef up stats, give them areas to live in"
-    group: bosses
-    epic: difficulty-increase
-    status: design
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-09"
-    notes: "<div>Many creatures exist in the module but have never been placed anywhere in the world. A concrete plan to bring them in has been written and split into two pieces of work: opening the <a href=\"#idea-forbidden-realms-key-tier\">Forbidden Realms Key tier</a> (the Tombs of the Lost Souls, housing the unspawned Weathertop court) and <a href=\"#idea-tier-areas-moria-nazgul\">opening Moria Deep Caverns and the Temple of Nazgûl</a> (Angmar, Thuringwethil, basilisks, the Sewer Master and more). The plan: <a href=\"https://homerslotr.com/manual/boss-updates#tier\">Endgame Difficulty design brief</a>.</div>"
-    impl_notes: "<div>Original ask was to write a plan to incorporate the creatures listed at https://homerslotr.com/creatures/#absent. The plan is written; the concrete build work now lives entirely in the two linked backlog slices.</div>"
-    design_questions:
-      - question: "The original ask (write the plan) is complete and the concrete work now lives in the two linked slices, so this umbrella needs an admin call: close it as implemented (as was done for the endgame-ceiling umbrella), or keep it open until the slices ship?"
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
   - id: higher-difficulty-ceiling-revamp
     title: "New end game bosses/higher difficulty ceiling (Epic)"
     group: bosses
@@ -382,23 +302,6 @@ ideas:
     commit: e745a3f4c60
     notes: "<div>Meaningwave companions could get stuck spamming Bard Song or Curse Song — flooding the log with 'no more bardsong uses left', burning their daily uses in seconds, and ignoring your tactics menu because the constant retries monopolised their action queue. They now sing once, keep the song up, and answer your orders. Details: <a href=\"Customizations.html#meaningwave\">Customizations → Meaningwave</a>.</div>"
     impl_notes: "<div><b>Root cause:</b> mw_sup_er (Campbell/McKenna OnEndCombatRound) issued song feats every combat round with no guards. Style 1 gated Curse Song on FEAT_CURSE_SONG, but Curse Song actually spends the <i>Bard Song</i> pool (x2_s2_cursesong decrements/checks FEAT_BARD_SONGS) — so the gate never tripped and it re-queued Curse Song every round, flooding the 'no more bardsong uses left' message, which names <i>bard</i> song, hence the confusing verbiage. Style 2 re-sang Bard Song every round with no 'already singing' guard, burning all daily uses in seconds; the constant feat attempts also pre-empted attack/tactics orders in the action queue.</div><div><br></div><div><b>Fix:</b> gate Curse Song on the real FEAT_BARD_SONGS pool and skip an already-cursed enemy; add !GetHasSpellEffect(411) to Bard Song so it is not re-sung while the buff is up, mirroring the module's canonical TalentBardSong().</div>"
-  - id: Legendary-Feats
-    title: "Implement Legendary Feats"
-    group: forge
-    epic: legendary-feats
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-05"
-    notes: "<div>Refine and implement draft legendary feats: <a href=\"https://homerslotr.com/manual/LegendaryFeats\" target=\"_blank\" rel=\"noopener\">https://homerslotr.com/manual/LegendaryFeats</a></div><div>this started as an idea for bonuses for just pure classes, but I think I'll reuse same pool of feats and just not give as many to mixed classes, </div>"
-  - id: elemental-augment-toggle
-    title: "Elemental spell toggle Augments"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: "Rajmund (Ray)"
-    date: "2026-07-04"
-    notes: "<span>Would it be possible to give new function to cantrips? We have 7. Each could change all elemental damage type spells to one fixed type. Say flare would change everything to fire, be it negative energy ray, ice storm or chain lightning or mestils acid sheet. Acid splash would change all of these to acid. This effect could wear off when another is cast or level number of rounds are up.</span>"
   - id: xp-bank-intial3
     title: "Initial 3 free levels worth of xp from new characters can be xp-banked"
     group: banking
@@ -435,59 +338,6 @@ ideas:
     player: "Rajmund (Ray)"
     date: "2026-07-04"
     notes: "<div><span>Resolution: good find -- that does not exist, removing this verbiage from </span><a href=\"https://homerslotr.com/manual/Customizations\" target=\"_blank\" rel=\"noopener\">https://homerslotr.com/manual/Customizations</a></div><div><span>Cause: minor claude hallucination.. I think it was written in early days of forge updates, when I had a duplicate of the moria forge of wonders in my personal in-game castle for testing, and I do have a special rest menu with teleports, but it was never called legendary travel</span></div>"
-  - id: Ammo-shortage
-    title: "Ammo shortage -> ammo replication item?"
-    group: items-gear
-    status: manual
-    type: Enhancement
-    player: "dc0960 (Dungeon_Crawler)"
-    date: "2026-07-24"
-    commit: 0bd55d8feb117b52beaad62a0cbae036c5fbbb6b
-    notes: "<div>Three fixes for the ammunition squeeze.</div><div><br></div><div><b>Unlimited ammo at the armoury.</b> The <a href=\"https://homerslotr.com/stores/heavensfoundry_x2_storeweap003\" target=\"_blank\" rel=\"noopener\">Númenórean armoury</a> previously stocked a single 99-arrow (and 99-bullet) stack that could be bought once and then ran dry. Divine Arrows and Divine Bullets now restock endlessly.</div><div><br></div><div><b>Divine Bolts.</b> The armoury sold crossbows but no bolts at all. It now stocks Divine Bolts, mirroring the arrows exactly — same enchantments, same price, same unlimited supply.</div><div><br></div><div><a href=\"https://homerslotr.com/items/ammoreplicator\" target=\"_blank\" rel=\"noopener\">The Quiver of Endless Flight</a><b>.</b> A new drop from <b>Legolas Greenleaf</b> and <b>Angmar</b>. Activate it and it lists every kind of arrow, bolt and bullet in your pack, richest first; choose one and <b>500 more</b> of that exact ammunition pour out. The weave holds only <b>two</b> such workings — after the second the quiver crumbles to dust. There is no recharge. The count belongs to the quiver, not to you: pass a half-used one to a friend and it still has just the one use left.</div>"
-    impl_notes: "<div><b>2026-07-24 (Quiver of Endless Flight + Divine Bolts):</b> the ammo-replication item and the bolt gap, both per the answered design questions.</div><div><br></div><div><b>Item:</b> new blueprint ammoreplicator.uti.json (tag/resref ammoreplicator, \"Quiver of Endless Flight\"), base item 29 (MISCMEDIUM), ModelPart1 11 as a <b>provisional</b> icon — no CEP hak was readable at build time, so the model is UAT-tunable (see manual steps). Activation is the Unique Power property block (PropertyName 15 / Subtype 335 / CostTable 3 / CostValue 13) copied from mw_mixtape. Cursed 0 (tradeable) and Plot 0 (must be destroyable on the last use). PaletteID 0 = Special &gt; Custom 1, the repo convention for module-custom items; filed with bin/file-palette-orphans.py.</div><div><br></div><div><b>Charge tracking:</b> ammorep_db.nss — campaign DB ammorepdb, table replicators(uuid PK, uses_left, first_used), keyed on <b>GetObjectUUID of the ITEM</b>, not the PC. That is what makes remaining uses follow the quiver through drops, trades, pickpocketing and chest storage instead of resetting for each new owner. An unregistered quiver reports the full 2. AmmoRep_InitDb() hooked into onmoduleload.nss next to the other InitDbs. Deliberately not item charges — a widget's uses are client-visible and reset on a blueprint respawn.</div><div><br></div><div><b>Menu:</b> ammorep_inc.nss + conversation ammorep_conv.dlg.json, following the staged-forge (forge_stg_*) shape: cues primed in ammorep_open.nss BEFORE ActionStartConversation (a root entry renders its text before any script on the entry would run), 8 slots gated by ammorep_c0-c7 StartingConditionals and actioned by ammorep_p0-p7, plus ammorep_none gating an empty-pack entry that sits first in the StartingList. Tokens 6440-6447 = slot labels, 6448 = header. Pick replies are terminal (empty EntriesList) — no link-only fields, so the dialog-integrity gate stays green.</div><div><br></div><div><b>Sorting:</b> per-unit worth = GetGoldPieceValue / GetItemStackSize. GetGoldPieceValue is a whole-stack figure (same contract documented on ForgeItemValue in forge_inc.nss), so it must be normalised or a big cheap stack outranks a small rich one. Insertion sort into 8 slots; extra kinds are counted in the header, not shown.</div><div><br></div><div><b>Grant:</b> AmmoRep_Grant grows the <i>existing</i> stack first (SetItemStackSize clamps at the cap; ammo caps at 999 since roadmap ammo-stack999), then spills the remainder into CopyItem copies. Growing first guarantees every copy is made from a FULL source, so a copy can never stack-merge into a partial one and corrupt the tally. <b>CopyItem, not CreateItemOnObject</b> — divinearrows/divinebullets are inline store structs with no .uti blueprint on disk, so a resref create would fail; copying also preserves enchantments.</div><div><br></div><div><b>Drops:</b> appended to the ItemList of legolasgreenl001.utc.json and angmar.utc.json (Dropable 1). Angmar is a placed instance, so the fully-inlined item struct was also appended to his entry in area009.git.json — blueprint alone would not reach a placed creature. Legolas Greenleaf needs no .git edit: he is <b>encounter-spawned</b> (area023.git.json Encounter List/0/CreatureList/0), and encounters instantiate from the blueprint. Also added to the Castle Homeless cheat chest (hm_cheat_chest.nss) for testing — a chest copy is a fresh item so it always starts at 2 uses.</div><div><br></div><div><b>Promo code:</b> Code:GottaHaveMoreAmmo in code_redeem.nss grants one quiver, expiring <b>2026-08-08</b>. One redemption per CD key (the existing coderedeem DB rule). Because uses are keyed per item UUID, a redeemed quiver starts at the full 2.</div><div><br></div><div><b>Divine Bolts:</b> the divinearrows inline struct in the heavensfoundry store panel cloned with BaseItem 25, name/tag/resref divinebolts, Infinite 1, StackSize 99 — everything else byte-identical, so enchantments and price match the arrows. MarkUp untouched at 350 per the answered question. No .uti blueprint, matching how divinearrows/divinebullets already exist (inline store items only).</div><div><br></div><div>Gates: 10/10 smoke, dialog-integrity 0 failing across 378 dialogs, palette-coverage 4404/4404, boss-registry 78 bosses OK.</div><div><br></div><div><b>2026-07-23 (commit 50ff0ff):</b> the Númenor weapon/armour store x2_storeweap003 (opened by the “Numenorian Armorer” in <b>Númenor: The Great Forge Of Númenor</b> / heavensfoundry — the forge area adjoining Noirinan/falseheaven, which itself has no store) sold divinearrows (base item 20 = ARROW) and divinebullets (base item 27 = BULLET) as <b>finite</b> 99-stacks (no Infinite flag) — buyable once, then gone. Added \"Infinite\":{byte:1} to both StoreList entries in heavensfoundry.git.json, copied byte-for-byte from the same store's already-infinite items (e.g. divinekatana). No new blueprints, no script or price change. The store sells no bolt (base 25) ammo and there is no divine-tier bolt blueprint, so bolts + any pricing change were left as admin content/balance calls (see design question). Gates: 10/10 smoke, dialog-integrity + palette-coverage green.</div>"
-    design_questions:
-      - question: "Ammo-replication item (the original ask, still open per the admin's own DM note). The shop is now unlimited, which covers the immediate shortage, but the player also wanted a way to copy ammo. Proposed (admin's own two options): EITHER (A) an 'Ammo Replicator' boss-drop item that duplicates a stack a limited number of times before it breaks / needs recharging, OR (B) skip the item and instead raise ammo drop rates on bosses/mobs. Which (if either) do you want, and if (A), what recharge/charge mechanic and which boss drops it? If neither, the unlimited shop already resolves the shortage and this item can close."
-        status: answered
-        answer: "Add a limited ammo replicator item. It will be dropped by Leoglas and Angmar only. It can be used 2 times only before it breaks -- no recharge, tracked via campaign DB, not normal widget charges/uses. \nWhen you use it, a conversation appears, listing out the current stacks of ammo in your inventory (sorted by value descending of a single ammo of that stack, so normalized per unit value): when player picks an ammo type, they are granted 500x more of that type. Make sure to add this item to both instance and blueprints of legolas and angmar."
-        question_h: 112
-        answer_h: 102
-      - question: "Cost + bolt coverage follow-ups (optional). Divine Arrows/Bullets stay at the store's MarkUp 350 (~6-7m each) — lower the MarkUp if the price is still a concern? And the store sells crossbows but no bolts; add a divine-tier bolt (base 25) ammo type so crossbow users are covered? Both are content/balance calls left untouched by the availability fix."
-        status: answered
-        answer: "Keep markup rate the same for that store. Add divine tier bolts that mirror the arrows."
-        question_h: 64
-        answer_h: 64
-    manual_steps:
-      - step: "ICON UAT/TUNE (Quiver of Endless Flight): pull ammoreplicator from the Castle Homeless cheat chest and look at its inventory icon. It is a misc-medium item (base item 29) currently on the placeholder ModelPart1 = 11. If that does not read as a QUIVER, cycle candidate misc-medium models in the toolset item editor until one does, then write the final value into unpacked/ammoreplicator.uti.json. No CEP hak was readable at build time, so the model could only be guessed."
-        status: open
-        blocker: true
-        step_h: 96
-      - step: "UAT drop: kill Angmar (area009, Angmar's Lair) and confirm the Quiver of Endless Flight is on the corpse. Then kill Legolas Greenleaf (area023, Mirkwoods - Halls of Greenleafs, encounter-spawned) and confirm the same."
-        status: open
-        step_h: 64
-      - step: "UAT menu: carry several kinds of arrows/bolts/bullets, activate the quiver, and confirm the list is sorted by PER-UNIT worth descending (a big stack of cheap arrows must NOT outrank a small stack of expensive ones) and the stack counts shown are correct."
-        status: open
-        step_h: 64
-      - step: "UAT grant: pick one entry and confirm exactly 500 more of that same ammunition arrive, with enchantments intact, spilling into a second stack only if the 999 cap is exceeded."
-        status: open
-        step_h: 64
-      - step: "UAT expiry: use the quiver a second time. The grant must land AND the quiver must then be destroyed; a third activation must be impossible. Relog between the two uses to prove the count survives in ammorepdb."
-        status: open
-        step_h: 64
-      - step: "UAT transfer persistence: use a quiver once, then hand it to a second player (and separately: drop it / have it pickpocketed / leave it in a chest for another character). The new holder must see 1 use left, not a fresh 2, and using it must destroy it. Relog both characters first."
-        status: open
-        step_h: 64
-      - step: "UAT independence: hold two quivers (one from each boss) and confirm each carries its own 2 uses."
-        status: open
-        step_h: 64
-      - step: "UAT promo code: type Code:GottaHaveMoreAmmo in chat -> one Quiver of Endless Flight arrives, the line is not broadcast to the server, and a second attempt on the same CD key is refused. Code expires 2026-08-08."
-        status: open
-        step_h: 64
-      - step: "UAT Divine Bolts: in Númenor: The Great Forge Of Númenor (heavensfoundry), buy Divine Bolts from the Numenorian Armorer repeatedly (unlimited), and confirm they load and fire from a crossbow and match the Divine Arrows' enchantments."
-        status: open
-        step_h: 64
-      - step: "UAT: in Númenor: The Great Forge Of Númenor (heavensfoundry), open the Numenorian Armorer's store (x2_storeweap003) and confirm Divine Arrows and Divine Bullets can be bought repeatedly (more than one 99-stack) without the entry running out."
-        status: open
-        step_h: 64
   - id: normal-and-epic-summons
     title: "Allow epic summons + normal summons out at same time"
     group: forge
@@ -552,14 +402,6 @@ ideas:
     type: Defect
     player: "-Methonash-"
     date: "2026-07-08"
-  - id: CEP3-CCOH
-    title: "CEP3 + CCOH"
-    group: qol
-    status: planned
-    type: Enhancement
-    player: "-Methonash-"
-    date: "2026-06-29"
-    notes: "<div><span>Get </span><a href=\"https://neverwintervault.org/project/nwnee/hakpak/combined/cep-3-community-expansion-pack\" target=\"_blank\" rel=\"noopener\">CEP 3</a><span> on the module, and also add </span><a href=\"https://neverwintervault.org/project/nwnee/hakpak/original-hakpak/customize-character-override-hak-extended-edition-ccohee\" target=\"_blank\" rel=\"noopener\">CCOH</a><span> for some incredible character customizations</span></div>"
   - id: mw-counterspell-2
     title: "MW Henchmen: Counterspell mode not working -- needs revisions"
     group: meaningwave
@@ -627,14 +469,6 @@ ideas:
     date: "2026-07-02"
     commit: ed70869c581
     notes: "<div>In stock standard NWN:</div><div><ul><li>For <a href=\"https://nwn.fandom.com/wiki/Shifter#Shifter_forms\" target=\"_blank\" rel=\"noopener\">Shifter Forms</a>: the shape determines which items are merged</li><li>For <a href=\"https://nwn.fandom.com/wiki/Wild_shape\" target=\"_blank\" rel=\"noopener\">Wildshape</a>: Only magical properties of armor, helmet and shield merge<i>d</i></li></ul></div><div>This request is to include more (or all equipped) item's for every shifter form and wildshape.. and/or improve stats on the shapes to be more competitive with bosses on this module.. <b><br></b></div><div><b>Currently Defensive stats are competitive but damage output is not.</b></div><div><br></div><div><b>Implemented 2026-07-02:</b> Every polymorph form now merges <b>all</b> equipped item properties. Your weapon's properties (or your gloves' when unarmed) land on the form's claw/bite/slam attacks as well as its right-hand weapon — this is the damage fix, since vanilla never merged anything onto natural attacks. Armor, helmet, shield, both rings, amulet, cloak, boots, belt and gloves merge onto the form's hide. Covers druid Wild Shape and Elemental Shape, all Shifter shapes (Greater Wildshape I–IV, Humanoid, Undead, Dragon, Outsider, Construct), plus the arcane self-polymorphs Polymorph Self, Shapechange and Tenser's Transformation, which previously merged nothing. Balance: duplicate property types merged onto one item take the highest value only (no stacking six AC rings), and damage is bounded by the same forge-capped weapons every melee class uses. Form base stats are unchanged.</div>"
-  - id: Hobbit-Subrace
-    title: "Hobbit Subrace"
-    group: combat-classes
-    status: soon
-    type: Enhancement
-    player: Magyk
-    date: "2026-06-24"
-    notes: "Add hobbit as a playable subrace"
   - id: Ithilien-Transitions
     title: "At least one of the Norther Forest of Ithilien transitions seems off"
     group: quests-areas
@@ -679,14 +513,6 @@ ideas:
     date: "2026-06-24"
     commit: f1e0b114d7d
     notes: "<div><span>The damage on bard song isn't correct:\n\n38 bard, 121 perform, giving +D4 damage? (expecting +6 instead at this skill and bard level, per </span><a href=\"#idea-bard-song\">Bard Song customized to mirror the customized Curse Song</a><span>) -- Bruno Mars is the character</span></div><div><br></div><div><strong>R</strong>oot cause was that <em>EffectDamageIncrease</em> takes a DAMAGE_BONUS_* constant, not a flat integer — the raw value 6 was being read as DAMAGE_BONUS_1d4, so the top tier rolled 1d4 instead of applying a flat +6. The damage amount is now routed through <em>IPGetDamageBonusConstantFromNumber()</em> so each tier maps to the correct constant (6 → flat +6). The identical bug was fixed in the matching <a href=\"#idea-bard-song\">Curse Song</a> (x2_s2_cursesong) damage tiers (raw 6/8/10 were rolling 1d4/1d8/2d6, now flat −6/−8/−10). Tiers 1–5 were always correct and are unchanged; only the damage column was affected.</div>"
-  - id: Character-Rebirths
-    title: "Character Rebirths"
-    group: progression
-    status: planned
-    type: Enhancement
-    player: Llikanthus
-    date: "2026-06-23"
-    notes: "<div><span>\nWhen a level 40+ character (or 50+) chooses to use rebirth the following happen: </span></div><ol><li><span>They return to level 1 with the character created originally </span></li><li><span>no xp is banked and the character cannot withdraw xp </span></li><li><span>The character can choose 2 ability scores to add +1 </span></li><li><span>The character can choose from a list of \"ascended\" custom feats that may change several aspects of his build and game play </span></li><li><span>The character can get as many rebirths as they like with the threshold for each to be a higher level, perhaps some item prerequisites and of course the bonuses are accumulative</span></li></ol><div><span>the possibilities are endless!</span></div>"
   - id: breebank-storage-loss-logout
     title: "Items lost when logging out without talking to banker"
     group: banking
@@ -717,51 +543,6 @@ ideas:
     manual_steps:
       - step: "UAT: in the upper Kallrist Crypt, place the correct gem in each elemental pillar per the riddle (Red->Earth, Blue->Fire, Green->Water, Golden/Yellow->Air, cued by the ambient sounds) -> use the brazier -> receive the Kallrist Crypt Key -> unlock kallupper2riddledoor -> confirm centralchamber and the lower crypt loot are now reachable."
         status: open
-  - id: server-seasons-character-wipe
-    title: "Server-wide 'seasons' where achievements get archived and characters get wiped with partial XP bank"
-    group: progression
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    notes: "Could be scheduled periodically eventually (e.g. every 3 months), but might be needed ad-hoc as game is re-balanced or major game-changing features are introduced. Season stats would be archived and still viewable on the wiki. Item banks would get wiped, and all characters deleted with with maybe 10% of their XP rolled over into xp bank  (plus keeping 10% of xp already banked)"
-  - id: Hard-mode-no-fasttravel
-    title: "Hardcore Mode with no fast travel options and permadeath"
-    group: progression
-    epic: difficulty-increase
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    notes: "For extra challenge: would give a symbol of some kind next to first kill stats for that player, increased rare loot chance, even faster XP. Heal potions have a cool down. Greater sanctuary has a 1 hour real time cooldown."
-  - id: rod-of-fast-combat
-    title: "Rod of fast combat"
-    group: combat-classes
-    status: unlikely
-    type: Enhancement
-    player: Tukwut
-    date: "2026-06-18"
-    notes: "upon use calculates based on character sheets what creatures you can defeat and instantly kill them all on the entire server. unlimited user per day, no cooldown"
-  - id: Gear-to-boost-specific-mage-spells
-    title: "Gear to boost specific mage spells"
-    group: items-gear
-    status: design
-    type: Enhancement
-    player: "dc0960 (Dungeon_Crawler)"
-    date: "2026-07-23"
-    notes: "<div><em>Original ask:</em> \"An item to improve epic summons would be nice, not to make them more tanks, but more dps so they do something vs higher bosses. Or a way to improve spells in general, obviously there are a lot of spells that can't be used as they are — mobs are just immune to them. Like an item to change implosion to do 'chaos' dmg instead of death. As a whole for casters there are very little ways to kill something, its either damage shields, IGMS or epic spell lucky rolls for the majority. So some boosting to lvl 9 spells would be nice.\"</div><div><br></div><div><strong>The problem.</strong> Against high-tier bosses casters hit a wall: bosses are immune to death/instant-kill and to whole swaths of spells, so the only reliable answers left are damage shields, IGMS, and lucky epic-spell rolls. There is no way to make a favourite spell — or your epic summons — actually matter at the top of the roster.</div><div><br></div><div><strong>Concept: caster gear that <em>drops from high-tier bosses</em>.</strong> Each piece is a single equippable that flags its wearer on equip; a scripted hook then reads that flag plus the spell being cast and adjusts the outcome. Four archetypes:</div><ul><li><strong>Spell / School Amplifier</strong> — multiplies a chosen spell's or school's damage by a capped % (e.g. \"Evocation +25%\", or a single named spell). Rides the same spell-id effect-scaling machinery the module already uses to double spell durations.</li><li><strong>Damage Retyper</strong> — rewrites a spell's damage <em>type</em> to an <strong>existing</strong> type the target isn't immune to (e.g. Implosion's death damage → magical or negative), so immune bosses still take the hit. <em>No new damage type is being invented here</em> — this maps only onto existing NWN types; the separate forge \"true damage type\" idea is out of scope for this item.</li><li><strong>Summoner's Gear</strong> — pushes a summon's attack/damage output (DPS, not tankiness — exactly as asked) up to where it matters against high-CR bosses, extending the existing summon-scaling that already boosts summons at spawn.</li><li><strong>Focus / Caster-Level Gear</strong> — temporarily bumps caster level or save DC for a chosen school so save-based level-9 spells can actually land on high-CR targets. The trickiest to balance — treat as a stretch tier.</li></ul><div><strong>Feasibility.</strong> No native item property can boost a specific spell, so all four are scripted — but the plumbing already exists in the module: tag-based equip markers, the spell-cast hook (the same one that runs the Meaningwave counterspell), the spell-id effect-scaling handler that doubles durations, and the summon-boost hook. Reuse, not new engine work.</div><div><br></div><div><strong>Open questions.</strong> One dedicated slot with hard % caps and no stacking of the same effect; which specific spells/schools ship first; and the drop sources / rarity across the boss roster.</div><div><br></div><div><strong>Starter catalogue (2026-07-09).</strong> A concrete first draft of <strong>20 items — five each for Cleric, Druid, Sorcerer and Wizard</strong> is written up, with signature effects, damage dice / caster-level scaling, stat lines tiered to each source boss's challenge rating, and a thematic boss drop for every one (all existing, reachable bosses — no new areas needed). A new design pillar rewards <strong>pure single-class casters</strong> with a stronger version of every effect. See the full table on the wiki: <a href=\"https://homerslotr.com/manual/CasterGear\" target=\"_blank\" rel=\"noopener\">Caster Signature Gear</a> (linked from <a href=\"https://homerslotr.com/manual/Customizations#caster-gear\" target=\"_blank\" rel=\"noopener\">Customizations → Notable Custom Systems</a>).</div>"
-    impl_notes: "<div><b>Feasibility re-confirmed (autopilot 2026-07-23):</b> no native item property boosts a specific spell, so all four archetypes are scripted, but the plumbing already exists — tag-based equip markers, the module spell-cast hook (same one running the Meaningwave counterspell), the spell-id effect-scaling handler that doubles durations, and the summon-boost hook (summon_boost.nss). The Damage Retyper is the most mechanically contained archetype (a single OnCast interception that swaps an existing damage type) and directly answers the core complaint (bosses immune to death/instant-kill). This is parked rather than built because every archetype shifts high-tier boss balance and the slot/cap/drop policy is the admin's call — see the design questions; on approval the MVP is a small, well-scoped build.</div>"
-    design_questions:
-      - question: "MVP SCOPE - which archetype ships first? Proposed: the DAMAGE RETYPER as the pilot (most contained + directly fixes the immunity wall). Concrete first slice = 3 amulets that retype a chosen death/instant-kill spell's damage to an existing type the boss is not immune to: (a) Implosion death->magical, (b) Wail of the Banshee death->negative, (c) Finger of Death death->negative. Each is one equippable that sets a PC flag on equip; the existing spell-cast hook reads the flag + the spell id and rewrites the damage. Approve Damage Retyper as MVP, or start with Summoner's Gear (extend summon_boost.nss for DPS) / Spell Amplifier instead?"
-        status: open
-        answer: null
-      - question: "SLOT / CAP / STACKING POLICY (needed before any archetype ships). Proposed: ONE dedicated equip slot for this whole system (suggest amulet OR ring - which?), a hard per-effect cap (e.g. Amplifier +25% max, Focus +2 caster level / +2 DC max), and NO stacking of the same effect (two Evocation amplifiers do not add). This keeps casters relevant without trivialising bosses. Approve the slot choice + caps, or set your own numbers?"
-        status: open
-        answer: null
-      - question: "CATALOGUE SOURCE. A 20-item 'Caster Signature Gear' starter catalogue (5 each for Cleric/Druid/Sorcerer/Wizard, with signature effects, scaling, per-boss drops, and a pure-single-class bonus pillar) already exists on the wiki (Customizations -> Caster Signature Gear). Should the MVP build a scoped SUBSET of that catalogue (e.g. just the 3 Damage Retyper amulets above, each from its listed boss), or do you want to revise the catalogue first? Confirm the drop sources are still the intended bosses before anything is placed."
-        status: open
-        answer: null
-    manual_steps:
-      - step: "On approval this becomes a scripting build (equip-flag include + spell-cast-hook interception + the approved item blueprints + boss-drop placement) - re-promote to confirmed. The item blueprints will need palette filing and appearance/equip UAT; boss-drop placement is a per-boss .utc ItemList edit (existing bosses, no new areas)."
-        status: open
   - id: respawn-tracker-well-of-eru
     title: "Respawn Tracker in Well of Eru"
     group: bosses
@@ -771,21 +552,6 @@ ideas:
     date: "2026-07-05"
     commit: 5c627769fc7, 1438125629d, 0ddc3a510fc, 0d72ceb0a08
     notes: "<div>Original ask: \"would a board in well of eru with bosses that are dead and showing how long till respawn be worth it or are respawn times short enough? Standardizing the boss respawn rate and maybe adding drop rates to the loot would be a nice complimenting feature to the bestiary\"</div><div><br></div><div>Shipped as the '<a href=\"https://homerslotr.com/manual/Customizations#boss-respawn-tracker\" target=\"_blank\" rel=\"noopener\">Roll of the Fallen</a>' board next to the Recent Updates sign in the Well of Eru. It lists only bosses that are currently slain, mightiest (highest CR) first, with time-to-return at the end of each name; click a boss to see its lair and the player or party who last slew it (from the bestiary's damage-contributor tracking). Only bosses that can ever have one live copy at a time are tracked (20 bosses: Balrog, Shelob, Kerufall, Xanith, Legolas, both Khamuls, Theoden's Chosen, Gandalf, High Wizard, Sauron, Gwathdor Lord, Boromir, Denethor, Witch King, Radagast, Heir of Haldor, Smaug, Gollum, Thranduil).</div><div><br></div><div>Boss respawns standardized to 15 minutes across the board: encounter bosses' ResetTime lowered from 20-150 min (Shelob 50m, Kerufall 58m, Khamul/Legolas 20m, weathertop-class 100m, Bilbo 150m) to match the Balrog's 15m and the placed-creature respawn; Thranduil, the Carn Dum Khamul and the Heir of Haldor previously never respawned until reboot and now respawn in 15m too. Drop-rate info on the bestiary (the note's last idea) was left out of scope.</div><div><br></div><div><strong>Update:</strong> the boss list is no longer hand-curated. It is now generated from a rule (bin/gen-boss-registry.py): every creature with challenge rating above 60 that can only ever have one live instance at a time, excluding plot/immortal and merchant/utility NPCs. This grew the tracked set from 20 to <strong>78 bosses</strong> — adding the likes of Aragorn, Gimli, Glorfindel, Sarah the Librarian, Gothmog Lord of Barad-Dur, the Rancid Skinner, Summanus, the Basilisk King and dozens more. The in-game board and the wiki <a href=\"https://homerslotr.com/creatures/bosses\" target=\"_blank\" rel=\"noopener\">Creatures → Bosses</a> page are generated from the same registry, so they always match. Encounter bosses keep their real respawn timers (accurate countdowns). The three placed bosses whose death scripts didn't respawn them (the Rancid Skinner, Wart Gondorian Gate Captain and Fell Beast) were fixed to the standard 15-minute respawn.</div>"
-  - id: Discord-server-shout-integration
-    title: "Discord <-> NWN server shout integration"
-    group: wiki-tools
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-06-20"
-    notes: "kind of a random idea, but would anyone like to see a channel in this discord for in-game server shouts? where you could see any shouts coming from the server, and as a discord user, anything you typed into that channel would be sent back to the game also as a shout? In game you would see that as coming from someone named \"Discord\" and it would prefix the message with your discord name (i selfishly want this to give unscheduled reboot warnings easily)"
-  - id: Socket-system-for-weapons
-    title: "Socket system for weapons, max dmg 2d10, max ab +16, limited properties"
-    group: forge
-    status: soon
-    type: Enhancement
-    player: "-Methonash-"
-    date: "2026-06-20"
   - id: Card-mendard-drops-elronds-sword
     title: "Card Menard in Edoras drops Elrond's sword"
     group: items-gear
@@ -1270,26 +1036,6 @@ ideas:
     impl_notes: "<div>Root cause is hardcoded NWN engine behavior, not a module bug: the Attack Bonus property and the <i>attack component</i> of the Enhancement Bonus property do not stack — the engine applies only the higher of the two to the attack roll — while the enhancement's damage and damage-reduction bypass always apply.</div><div><br></div><div>First pass: 199 weapons (blueprints plus all placed/inventory instances) carried both a generic Attack Bonus and Enhancement Bonus; each was collapsed to a single Enhancement Bonus, with a balanced per-item value where Attack Bonus exceeded Enhancement. Driven by bin/ab-enhance-audit.py -&gt; ab-enhance-audit.csv -&gt; bin/ab-enhance-apply.py.</div><div><br></div><div><b>Follow-up (player report: Chosen Kama still +13/+13):</b> the first pass matched the Attack/Enhancement properties only when their unused subtype was encoded as 0, but NWN also encodes it as 65535 (0xFFFF). That hid 54 more weapons (Chosen Kama, the Tournament set, Spear of Destiny, Super Kama, Mindmelter and others) from the audit, the blueprint collapse <i>and</i> the player-inventory repair. All three tools now treat subtype 0 or 65535 as generic; the 54 were collapsed and the server vault re-swept, fixing carried copies in players' character files.</div>"
 
   # ---- Forge & crafting (queued / planned) ---------------------------------
-  - id: legendary-forge-4th
-    title: "A 4th legendary forge for Magical / Positive / Negative damage (component-gated, up to +20)"
-    group: forge
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    notes: "Even the high-quality forge omits these damage types — good candidates for component-required enchanting."
-  - id: cnr-crafting
-    title: "Gathering-based crafting (mining, fishing, hunting, skinning) as a non-boss path to good gear"
-    group: forge
-    status: later
-    type: Enhancement
-    player: Tukwut
-  - id: high-end-mat-crafting
-    title: "Craft high-end gear from materials gathered around the world, up to +20 weapons"
-    group: forge
-    status: later
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-    dupe_of: cnr-crafting
   - id: plot-flag-craft
     title: "Tainted Steel of Morgrond & Skinner's Acidic Plate are flagged Plot and can't be used in the craft-skill menu"
     group: wiki-tools
@@ -1307,39 +1053,6 @@ ideas:
     date: "2026-06-23"
     commit: fd895fd8465
     notes: "Found missing skills and added to forge crafting enchant options:<ul><li>Discipline</li><li>Lore</li><li>Move Silently</li><li>Spellcraft</li><li>Spot</li><li>Use Magic Device</li></ul><br>"
-  - id: sneak-attack-shadowdmg
-    title: "Rework Sneak Attack as a bonus-damage roll (or a new 'shadow' damage type)"
-    group: combat-classes
-    status: later
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-  - id: devcrit-roll
-    title: "Convert Devastating Critical to a roll for bonus damage (or a new 'chaos' damage type)"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-    date: "2026-06-03"
-    notes: "<span><span>Change it to \"a </span><span>dev</span><span> crit will do an additional x1 multiplier\", or \"stun for one round\"... Something like that, you know?</span></span>"
-  - id: ll-modern-leveling
-    title: "Replace the conversation-based Legendary Leveler with normal 1-40 leveling (works with 4x multiclass)"
-    group: combat-classes
-    status: later
-    type: Enhancement
-    player: "-Methonash-"
-  - id: relevel-option
-    title: "A 1-40 re-level / de-level option (when not exploitable)"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: McGondy
-  - id: delevel-mcgondy
-    title: "Be able to de-level a character when not exploitable"
-    group: combat-classes
-    status: later
-    type: Enhancement
-    player: "dc0960 (Dungeon_Crawler)"
-    dupe_of: relevel-option
   - id: summons-boost
     title: "Scale druid summons/companions (HP, saves, AB, AC) with level, Animal Empathy and epic Conjuration"
     group: combat-classes
@@ -1353,31 +1066,6 @@ ideas:
     manual_steps:
       - step: "UAT: re-summon an existing pet and confirm the boost applies (the timing-race fix means pets summoned before it may not have it)."
         status: open
-  - id: dr-stacks
-    title: "Make class/feat damage reduction stack with gear damage reduction"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-  - id: dd-defensive-stance
-    title: "Let Dwarven Defenders move while in Defensive Stance"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-  - id: remove-class-restrictions
-    title: "Remove all class restrictions"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-  - id: class-specific-gear
-    title: "Class-locked signature weapons (need ~20-25 levels of a class to equip)"
-    group: items-gear
-    status: later
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-    notes: "<div><b>Examples </b>(Will work on some more class spec ideas)</div><div><ul><li>Monk: Quarterstaff +15 Enhancement 20 Divine dmg 2d12 Blud 2d12 Sonic Keen +2 Apr (Also, QS needs to be added to Monk weapons for it to work as intended, which they should have been from the start imo)</li><li>Sorc/Wiz: Staff +10 Con +10 Int +10 Cha Flowcasting (Make spell slots reset after doing a certain amount of dmg with spells) </li><li>Paladin: Maul (if you can add them, can add it to Warhammer spec) +15 Enhancement 20 Divine 2d12 Positive 2d12 Lightning Keen Chance on Hit: Sunbeam</li><li>Barbarian: Greataxe +15 Enhancement 20 Slashing 2d12 Piercing 2d12 Blud Keen Call lightning On-Hit (Once per round, if possible) }</li></ul></div>"
   - id: monk-weapons
     title: "Add Shuriken, Katana and Quarterstaff to monk weapon list and count as finessable"
     group: combat-classes
@@ -1389,14 +1077,6 @@ ideas:
     notes: "<div>baseitems.2da: Shuriken, Katana and Quarterstaff are now monk weapons (IsMonkWeapon=1, like Kama), so they get monk attack-bonus progression. Katana and Quarterstaff are now finessable (WeaponFinesseMinimumCreatureSize=2) for <em>any</em> class with the Weapon Finesse feat — not just monks, and small races included.</div><div><br></div><div>Note on flurry: NWN has a single IsMonkWeapon flag that governs both monk-weapon benefits and Flurry of Blows — there is no per-weapon flurry toggle. Kama itself is flurry-compatible, so these weapons are too (the original “not compatible with flurry” ask was dropped after confirming Kama allows flurry).</div><div><br></div><div>Live deployment requires repacking lotr_rules.hak with the new baseitems.2da, then refresh-nwsync + server restart.</div>"
 
   # ---- Bosses & difficulty (queued / planned) ------------------------------
-  - id: balrog-not-healing
-    title: "Balrog not healing itself"
-    group: bosses
-    status: unlikely
-    type: Defect
-    player: Tukwut
-    date: "2026-06-08"
-    notes: "<div>This is working as intended: <a href=\"https://homerslotr.com/creatures/azagoth001\">The Balrog</a> currently has no heal potions or spells, should we add some?</div>"
   - id: sauron-minion-faction
     title: "Sauron's Chosen Minion fights his own faction (faction looks wrong)"
     group: bosses
@@ -1421,27 +1101,6 @@ ideas:
     type: Defect
     player: "-Methonash-"
     date: "2026-06-22"
-  - id: remove-crit-immunity
-    title: "Remove boss crit immunities; rework Dev Crit to an extra multiplier or a stun instead"
-    group: bosses
-    status: later
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-  - id: boss-tuning-post40
-    title: "Boss tuning so you can progress past level 40 (starter bosses are currently unkillable)"
-    group: bosses
-    status: unlikely
-    type: Enhancement
-    player: "Piskan (Alec Cain)"
-    notes: "This is resolved basically by <a href=\"#idea-forge-bree-starter\">updates to the forge system</a>"
-  - id: true-damage-type
-    title: "A new low-dice 'true' damage type no boss is immune to — made incompatible with the forge so you choose optimized gear vs. boss-chipping gear"
-    group: bosses
-    status: later
-    type: Enhancement
-    player: Tukwut
-
-  # ---- Endgame difficulty design brief (docs.manual/boss-updates.html) -----
   - id: boss-stat-tuning-pass
     title: "Per-boss stat tuning: close dumped saves, swap flat DR for % immunity gear, raise auto-hit AC into the ~85 gate window"
     group: bosses
@@ -1529,130 +1188,6 @@ ideas:
         status: open
       - step: "UAT perf: impact should be negligible (+1 creature on 32 triggers module-wide)."
         status: open
-  - id: forbidden-realms-key-tier
-    title: "Forbidden Realms Key tier: journal quest and a Númenor gate opening the orphaned Tombs of the Lost Souls as the Weathertop court's barrow"
-    group: bosses
-    epic: difficulty-increase
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-18"
-    commit: 6b2999e550b
-    notes: "<div>The Forbidden Realms Key has been stealable from Summanus for as long as anyone can remember, and until now it opened precisely nothing. It opens something now. Come by the key and a journal opens telling you what the seven marks cut into its ward actually are — grave-wards. The stone that answers it is a sealed slab in Númenor: Noirinan, and beyond it lie the <b>Tombs of the Lost Souls</b>: not a ruin but a court, whose lords have not gone quiet. The Weathertop King, his Queen and their Archer still hold their places. Bring a party. Full walkthrough: <a href=\"QuestGuide.html#forbidden-realms\">QuestGuide → The Forbidden Realms</a>.</div>"
-    impl_notes: "<div>Opens gravesofthelostk, which had zero connections of any kind, and spawns three previously-unspawned blueprints. New: q_frk_inc.nss (all logic), q_frk_enter/q_frk_tomb (OnEnter wrappers on falseheaven/gravesofthelostk, chaining ent and leash_to_area), q_frk_gate.utp + q_frk_gate.nss (one gate blueprint serving both ends; direction via local string FRK_DEST; the return leg deliberately does not demand the key so a lost key cannot entomb a player), q_frk_death.nss (ScriptDeath on weathertopkin003/que003/arc002, chaining x2_def_ondeath, party-credited). Journal category frk_tombs (@group 'Lord of the Rings', @order 90), entries 1/2/3/10. Hooks: acquireditem_tag on Tag ForbiddenRealmsKey, plus a retroactive FRK_LoginCheck in hgll_cliententer for characters who stole the key before this shipped. Persistence: campaign DB forbiddendb, per character (frk_stage 0-3, advance-only).</div><div><br></div><div>Court picked as the highest non-outlier CR variant of each: King weathertopkin003 (454, rejecting the CR-1514 kin004), Queen weathertopque003 (594), Archer weathertoparc002 (337) — one-line constants at the top of q_frk_inc.nss. Spawn guards are area-scoped by resref, not module-wide by tag, because the court tags are shared with the placed Weathertop variants. Script-spawned creatures are not in gen-boss-registry.py's placed-instance registry, so the court does not appear on the Roll of the Fallen. No new loot was authored — the court drops whatever is on the blueprints, which may be thin for an end-game tier. Gates passed: 7/7 smoke tests, check_boss_registry unchanged at 78, dialog integrity clean. Admin half documented in QuestGuide-DM-Notes.md.</div>"
-    design_questions:
-      - question: "Should the barrow-court respawn? It currently re-forms whenever a PC enters and that member is not standing — so the fight is farmable, though the journal completes only once. One guard swap in FRK_SpawnCourtMember makes it a once-per-server or once-per-character kill instead."
-        status: open
-        answer: "15 min respawn? hm.."
-        question_h: 64
-        answer_h: 64
-      - question: "Should the court appear on the Roll of the Fallen board? Script-spawned creatures are invisible to the boss registry; tracking them needs real placed instances (toolset work) instead of waypoint spawns."
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
-      - question: "Are the CR picks right? The highest non-outlier variant of each was taken (King 454 / Queen 594 / Archer 337), skipping the CR-1514 King. Related: no new loot was authored for the tier."
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
-    manual_steps:
-      - step: "Place waypoint AP_forbiddenrealmskeytier_1 in falseheaven (Númenor: Noirinan) — suggested against a hillside/wall near where Summanus walks. The sealed barrow-gate placeable spawns here. Until it exists the quest opens but has no door and the tier is unreachable."
-        status: open
-        blocker: true
-        step_h: 64
-      - step: "Place waypoint AP_forbiddenrealmskeytier_2 in gravesofthelostk (Tombs of the Lost Souls), just inside the entrance. It is both the arrival point and where the return gate spawns. Until it exists the gate in Noirinan refuses to fire."
-        status: open
-        blocker: true
-        step_h: 64
-      - step: "Place waypoints AP_forbiddenrealmskeytier_3 / _4 / _5 in gravesofthelostk for the Weathertop King, Queen and Archer respectively — spread them across the barrow so the court is not a single pull. Each spawns independently; a missing one simply means that member never appears."
-        status: open
-        blocker: true
-        step_h: 64
-      - step: "UAT: on a test character, pickpocket or spawn the Forbidden Realms Key and confirm journal 'The Forbidden Realms' entry 1 appears immediately."
-        status: open
-        step_h: 64
-      - step: "UAT: log in a character that already carried the key from before this build and confirm entry 1 arrives ~7s after login."
-        status: open
-        step_h: 64
-      - step: "UAT: use the gate in Noirinan without the key — expect the seven-marks refusal message and no teleport."
-        status: open
-        step_h: 64
-      - step: "UAT: use it with the key — expect entry 2, the seal-gives-way message, and arrival in the Tombs with entry 3."
-        status: open
-        step_h: 64
-      - step: "UAT: use the return gate inside the Tombs while NOT carrying the key and confirm it still returns you to Noirinan."
-        status: open
-        step_h: 64
-      - step: "UAT: kill all three court members with a party present and confirm every party member in the area gets journal entry 10 (Completed)."
-        status: open
-        step_h: 64
-      - step: "UAT: leave and re-enter the Tombs and confirm the court re-forms exactly once (no doubling when a party trickles in one player at a time)."
-        status: open
-        step_h: 64
-  - id: tier-areas-moria-nazgul
-    title: "Open two finished-but-unreachable endgame areas: Moria Deep Caverns below the Balrog, and the Temple of Nazgûl off Dol Guldur"
-    group: bosses
-    epic: difficulty-increase
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div>Rounds out the new tier with two existing areas that only need a link-in and named bosses: Moria Deep Caverns (area020, descent from the Abyss of Moria — naturally gated by the Balrog) and the Temple of Nazgûl (area010, linked from Dol Guldur, already contains 7 encounters). Candidate bosses are all currently unspawned: Angmar the Evocator (capstone), Thuringwethil, Shadow Lord of Dol Guldur, Morgrond Captain, the Mutated Basilisks, Sewer Master. Design: <a href=\"https://homerslotr.com/manual/boss-updates#tier-other\">boss-updates#tier-other</a>.</div><div><br></div><div>Second slice of <a href=\"#idea-unlock-more-inacessible-creature\">Unlock Inacessible creatures</a>; follows <a href=\"#idea-forbidden-realms-key-tier\">the Forbidden Realms Key tier</a>. Tune each boss on placement per <a href=\"#idea-boss-stat-tuning-pass\">the tuning pass</a>.</div>"
-  - id: wandering-adaptive-boss
-    title: "The Wandering One: a roaming boss that adaptively builds damage-type immunity as it is hit, punishing mono-damage parties"
-    group: bosses
-    epic: difficulty-increase
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div><b>The Wandering One</b> — a proposed boss with no fixed home: it roams the module, so players have to hunt it rather than look it up. It also learns, building resistance to whatever damage type you keep hitting it with and shedding resistance to types you have stopped using — so a party that rotates its damage keeps it off balance, and a mono-damage party grinds to a halt. Design and feasibility: <a href=\"https://homerslotr.com/manual/boss-updates#gimmick-borg\">boss-updates#gimmick-borg</a>.</div>"
-    impl_notes: "<div>Two ideas fused: roaming (no fixed wiki area) and adaptive immunity drawing from a shared 500% pool in 5-10% increments per damage type, stealing from the least-recently-received type when the pool is empty.</div><div><br></div><div>Build notes: reuses the unused wandering.nss state machine; must set NO_LEASH=1 or leash_to_area snaps it home; OnDamaged juggles percentage-immunity item properties across its gear slots; still qualifies as a single-instance registry boss (board attribution 'roaming').</div>"
-  - id: elemental-swarm-waves
-    title: "Elemental swarm arena: waves of 24 elementals trickle-spawned to surround the party, the element rotating each cleared wave"
-    group: bosses
-    epic: difficulty-increase
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div>An elemental swarm arena: not one boss but waves of two dozen elementals trickling in to surround the party, with the element rotating each time a wave is cleared — fire, then cold, then acid, and on. You cannot pre-gear for it; you have to re-resist and change tactics mid-fight. Design: <a href=\"https://homerslotr.com/manual/boss-updates#gimmick-swarm\">boss-updates#gimmick-swarm</a>.</div>"
-    impl_notes: "<div>4 spawns every 10 seconds over ~1 minute per wave, element rotating per cleared wave. Reusable elemental blueprints already exist; the timed trickle-wave controller is new script. These are trash adds, not registry bosses.</div><div><br></div><div>Honesty guardrail: keep waves short and lethal so each element rotation forces a real counter-swap — the surround also pressures the <a href=\"#idea-heal-soul-fatigue\">healing economy</a>.</div>"
-  - id: clone-parent-boss
-    title: "Clone/parent boss: a chance an existing boss fight is gate-crashed by the boss's 'Mom' — modest stat boost, better gear, two-front surprise"
-    group: bosses
-    epic: difficulty-increase
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div>A chance that a boss fight you thought you knew gets gate-crashed by the boss's <i>mother</i> — a modestly tougher version with better gear, arriving mid-fight and forcing a snap decision about which one to deal with first. A threat multiplier and a surprise, not a second damage sponge. Design: <a href=\"https://homerslotr.com/manual/boss-updates#gimmick-parent\">boss-updates#gimmick-parent</a>.</div>"
-    impl_notes: "<div>Keep the parent's boost modest. Its better drops must be real item blueprints registered via bin/gen-forge-legal.py so the Forge login sweep does not jail looters.</div>"
-  - id: optin-curse-gem-loot
-    title: "Opt-in curse: volunteer for extra damage taken and doubled soul-fatigue in exchange for better rarity-tiered socketed-gem drops"
-    group: bosses
-    epic: difficulty-increase
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-13"
-    notes: "<div>Difficulty as a player choice instead of a wall: take the curse (≈50% more damage taken and/or doubled <a href=\"#idea-heal-soul-fatigue\">soul-fatigue</a>) for a materially better reward roll. The reward vehicle rides on the gem-socketing system (<a href=\"#idea-Socket-system-for-weapons\">Socket system for weapons</a>) — the curse just bumps the gem rarity band / drop chance, no separate loot system. Design: <a href=\"https://homerslotr.com/manual/boss-updates#curse\">boss-updates#curse</a>.</div><div><br></div><div>Depends on both the healing-economy levers and the socket/gem system shipping first; chance-based loot itself is greenfield for the module.</div>"
-
-  # ---- Progression, bestiary & achievements --------------------------------
-  - id: achievements
-    title: "Achievement / kill-tracking system: bosses drop trackable items for all-time / weekly / daily kill counts and rewards"
-    group: progression
-    status: wip
-    type: Enhancement
-    player: Tukwut
-    date: "2026-05-30"
-  - id: long-term-currency
-    title: "A longer-term reward currency (digital or tokens) redeemable for gold, XP, a special shop, a new forge, or to enhance legendary summons"
-    group: progression
-    status: soon
-    type: Enhancement
-    player: Tukwut
   - id: item-slot-tokens
     title: "Increase an item's property slots using boss-drop 'tokens' or a rare boss drop"
     group: forge
@@ -1699,7 +1234,6 @@ ideas:
     commit: 9d5519b
     notes: "<div>Forge limits now scale with how many Roll-of-the-Fallen bosses your character has slain. Ten distinct bosses raises your forge value cap by 5%, 25 by 10%, 50 by 15%, and clearing all 78 gives 20% <b>plus a seventh property slot</b> at the Moria and Kallrist forges. Crucially, gear forged under a boss-slayer's raised cap can be traded freely — the contraband law now judges everyone against the maximum achievable ceiling, so a fresh character holding a veteran's gift will never be jailed for it. The anvil shows your current tier when you use it. Details: <a href=\"Customizations.html#forge\">Customizations → Forge of Wonders</a>.</div>"
     impl_notes: "<div>Progress is distinct Roll-of-the-Fallen bosses slain per character (solo or party credit; bestiarydb joined against the boss registry). Tiers live in one tunable table in forge_inc.nss: 10+ -&gt; +5% value cap; 25+ -&gt; +10%; 50+ -&gt; +15%; all 78 -&gt; +20% plus a 7th property slot at the top-tier forges.</div><div><br></div><div>Bonuses apply at forge time only; the contraband law judges everyone against the maximum-achievable ceiling (900,000 gp / 7 props), which is what makes boss-slayer gear safely transferable — exactly the transferability the original ask wanted. Staged disenchant lawfulness uses the same ceiling functions, so it still cannot mint an illegal item. Existing FORGE_CLEAN stamps stay valid (the ceiling was only loosened, so no rescan). Customizations.html updated with the tier table and the new 900k/7-prop law.</div><div><br></div><div>Related: <a href=\"#idea-bestiary-tracking\">bestiary kill-tracking</a>, <a href=\"#idea-wiki-kill-counts\">wiki kill counts</a>, <a href=\"#idea-wiki-top-killers\">wiki top killers</a>.</div>"
-    dupe_of: achievements
     manual_steps:
       - step: "UAT low tier: a character with under 10 registry boss kills sees a progress hint and unchanged caps."
         status: open
@@ -1713,12 +1247,6 @@ ideas:
         status: open
 
   # ---- Teleports & travel ---------------------------------------------------
-  - id: teleport-expansion
-    title: "Expand rest-menu teleports (earned via quests or by killing each area's boss)"
-    group: travel
-    status: planned
-    type: Enhancement
-    player: Tukwut
   - id: teleport-last-eru
     title: "Rest-menu teleport back to where you last used the Well-of-Eru port"
     group: travel
@@ -1727,7 +1255,6 @@ ideas:
     player: "dc0960 (Dungeon_Crawler)"
     date: "2026-06-27"
     notes: "This idea was implemented as part of the <a href=\"#idea-merit-redemption-poc\">Merit reward system</a>"
-    dupe_of: teleport-expansion
 
   # ---- Banking & storage ----------------------------------------------------
   - id: xp-bank-penalty-warn
@@ -1740,12 +1267,6 @@ ideas:
     notes: "resolved by <a href=\"#idea-remove-multi_class-xp-penalty\">Remove mutli class XP penalty</a>"
 
   # ---- Wiki & tools ---------------------------------------------------------
-  - id: wiki-kill-counts
-    title: "Show per-character kill counts on creature pages, with KD ratio and total deaths"
-    group: wiki-tools
-    status: planned
-    type: Enhancement
-    player: Tukwut
   - id: wiki-top-killers
     title: "On each creature page, show the top players/characters by kills"
     group: wiki-tools
@@ -1756,21 +1277,6 @@ ideas:
     commit: a42c452, 5ac31d8
     notes: "<div>Every creature page on the wiki now carries a <b>Top Killers</b> leaderboard: the ten characters with the most kills on that creature, with solo, party and total counts and the date of the last kill. Boss variants are merged so your kills are not split across leveled copies, and renamed characters show their current name. Only character names appear — never account or key information.</div>"
     impl_notes: "<div>Read from the bestiary kill database. Boss blueprint variants are merged so a character's kills are not split across leveled copies; renamed characters show their most recent name; zero-kill creatures omit the section cleanly. Change lives in the wiki generator (nwn_manager commit a42c452) and appears on the live wiki at the next daily refresh. Verified by scanning all generated pages that CD keys and UUIDs never render.</div><div><br></div><div><b>Scope note:</b> the merged idea's KD-ratio / total-deaths half (<a href=\"#idea-wiki-kill-counts\">wiki-kill-counts</a>) is not buildable from existing data — the bestiary DB tracks kills only, no player deaths; it would need new in-module death tracking first.</div>"
-    dupe_of: wiki-kill-counts
-  - id: discord-bot
-    title: "Discord/wiki bot listing logged-in players and summarizing their gear stats (plus fun stats like unique creatures killed)"
-    group: wiki-tools
-    status: planned
-    type: Enhancement
-    player: Tukwut
-  - id: wiki-chest-stats
-    title: "Wiki stat: how many items each player has added vs. removed from the community chest"
-    group: wiki-tools
-    status: soon
-    type: Enhancement
-    player: Tukwut
-
-  # ---- Items & gear (queued / planned) -------------------------------------
   - id: item-rename
     title: "Let players rename their weapons (e.g. a chisel item)"
     group: items-gear
@@ -1803,12 +1309,6 @@ ideas:
       - step: "Customize appearance/icon of the chisel item (looks like a bowl currently)"
         status: open
         step_h: 64
-  - id: item-morph-type
-    title: "Change an item's type/subtype while keeping its properties (e.g. bastard sword -> kama)"
-    group: items-gear
-    status: planned
-    type: Enhancement
-    player: "Y a z k i r"
   - id: dedupe-item-tags
     title: "Resolve all duplicate-tagged items (module-index/item_tag_conflicts.json) — give each variant a unique Tag/resref"
     group: items-gear
@@ -1822,12 +1322,6 @@ ideas:
     manual_steps:
       - step: "Manually reconcile the 8 deferred conflicts, per quest: BossRing, DyeKit, DenethorsPlate, EpicRing, witchbud, nw_wplmsc004, BlackGalvornPlate, X2_IT_MGLOVE018. Their tag is used as a live quest/script lookup key, so renaming the item would break a quest &mdash; the tool detects and defers these deliberately."
         status: open
-  - id: mail-delivery
-    title: "Mail-delivery system: pay postage by weight to send items to a specific character; they're notified after login (post office if no player house)"
-    group: items-gear
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
   - id: party-loot-roll
     title: "Party Loot Roll system (configurable through rest menu)"
     group: items-gear
@@ -1877,21 +1371,6 @@ ideas:
     commit: f6ab25248a4, d16306dff52
 
   # ---- Combat / rules tweaks (open) ----------------------------------------
-  - id: true-seeing-spot
-    title: "True Seeing should add a bonus to Spot instead of bypassing Hide entirely"
-    group: combat-classes
-    status: planned
-    type: Enhancement
-    player: Tukwut
-  - id: nerf-yazkir
-    title: "Nerf Yazkir (multiboxing shenanigans)"
-    group: combat-classes
-    status: unlikely
-    type: Enhancement
-    player: Tukwut
-    notes: "<font color=\"#2ec27e\">;-)</font>"
-
-  # ---- Meaningwave (open) ---------------------------------------------------
   - id: mw-appearance
     title: "Tune Meaningwave Henchmen appearances (some spawn naked instead of wearing their armor)"
     group: meaningwave
@@ -1928,22 +1407,6 @@ ideas:
   # ===========================================================================
 
   # ---- Audit defects -------------------------------------------------------
-  - id: guilds-journal-never-delivered
-    title: "Guilds server-info journal is never delivered to players"
-    group: quests-areas
-    status: planned
-    hidden: true
-    type: Defect
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-15"
-    commit: b9e45e559ee
-    notes: "<div>The Guild-creation-rules journal was never delivered to players at login. It was fixed, then deliberately un-fixed: the guilds journal turns out to have been retired on purpose, so it is now marked Retired and stays undelivered until the guild system returns. Back under consideration in the meantime.</div>"
-    impl_notes: "<div><b>Audit 2026-07-11:</b> hgll_cliententer.nss delivers rules, website and the six mod_* server-info journals but never the 'guilds' category; only the dead-code mod_enter.nss referenced it (with a 'gguild' typo). The QuestGuide wrongly claimed this was fixed.</div><div><br></div><div><b>Fixed 2026-07-14:</b> added AddJournalQuestEntry(\"guilds\", 1, ...) to the login delivery block in hgll_cliententer.nss alongside rules/website — idempotent, reaching existing characters on their next login.</div><div><br></div><div><b>Re-disabled 2026-07-15</b> (commit b9e45e559ee) per DM validation: the guilds AddJournalQuestEntry was removed again with a comment explaining the deliberate retirement, and QuestGuide's Server Info section now marks the guilds journal Retired — not delivered. The journal category stays in module.jrl.json; re-enabling is one line if the guild system returns.</div>"
-    manual_steps:
-      - step: "UAT: log in with any character and confirm the Guild-creation-rules journal does NOT appear (it is retired on purpose), while Server Rules and Website still do."
-        status: open
-        step_h: 64
-
   - id: p000-duplicate-ferny-journal
     title: "Legacy p000 plot fires a duplicate Bill Ferny journal track"
     group: quests-areas
@@ -2051,80 +1514,6 @@ ideas:
       - step: "UAT dual standing + bleed: as DM, Faction_AdjustStanding(oPC,\"Good\",100) then Faction_AdjustStanding(oPC,\"Evil\",100) and confirm BOTH good_standing and evil_standing are non-zero (playing both sides is not punished), and that the Evil grant reduced good_standing by ~25 (25% bleed) but never below 0 / never reset."
         status: open
 
-  - id: faction-rally-rescue
-    title: "Faction rally: pre-death muster call + timed rescue quest"
-    group: quests-areas
-    epic: faction-quest-system
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    notes: "<div>Today certain landmark defenders shout “Rally Free Peoples of Middle Earth!” / “Rally Servants of Sauron!” only as they <b>die</b> — too late to matter. This refactors the rally so the same NPCs call for aid <b>before</b> they fall: same-faction players get a muster alert + a journal entry, and if they reach the fight in time to help they earn XP, gold, and faction standing. A living, reactive world where your side's landmarks can actually be saved (or lost).</div>"
-    impl_notes: "<div><b>Existing system:</b> rally shouts are hardcoded per-creature via the blueprint ScriptDeath field (area-local SpeakString(TALKVOLUME_SHOUT)) — scripts breachdeath4 (Rivendell), dolguldurshout/skinnerdeath/staticspawndol (Dol Guldur), staticspawnisen (Isengard), staticspawncarn (Carn Dum), taticspawnedoras (Edoras), etc. Three (staticspawnhelms/staticspawnminas/staticspawnloth) are orphaned/unwired. <b>Proposed build (reuse, not new engine work):</b> hook the bestiary OnDamaged wrapper bst_ondamage.nss (already rewires every creature's OnDamaged) so a flagged rally creature dropping below a HP% threshold fires ONCE: a server-wide same-faction broadcast (GetFirstPC/GetNextPC + SendMessageToPC, per bst_ondeath/skinnerdeath), AddJournalQuestEntry to aligned players, and marks its area ‘rally-active’ via the shipped worldstate_inc.nss. A rescuer who reaches the area/creature (GetArea/GetDistanceToObject) within the window (DelayCommand, per q_sow_plant) completes for XP + gold + Faction_AdjustStanding(side,+pts) (faction_db, shipped). Reward/muster template: the q_kwn_* Knight-of-Westernesse quest. Alignment side read from faction_db allegiance. Sets up [[pvp-faction-points]] (the rally-active area flag).</div>"
-    design_questions:
-      - question: "HP threshold + rescue window. Proposed: the pre-death rally fires when the landmark defender drops below 50% HP, and the rescue window is 60s (aligned players who reach the area within 60s and help complete it). Approve 50% / 60s, or set different values?"
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
-      - question: "Which creatures rally, and how are they flagged? Proposed: reuse the existing set that already rally-shouts on death (keyed by side from their current ScriptDeath), plus re-wire the 3 orphan scripts (Helm's Deep / Minas Tirith / Lothlorien). Flag them with a creature local var (e.g. RALLY_SIDE = Good/Evil) set at spawn so bst_ondamage knows who is a landmark defender. Approve, or should only a hand-picked list of named landmark bosses trigger it (to avoid trash mobs spamming rally calls)?"
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
-      - question: "Reward + completion rule. Proposed per successful rescue: modest XP + gold scaled to the creature's CR, and +50 faction standing (via Faction_AdjustStanding, so the -25% opposite bleed applies). Completion = the rescuer arrives AND the defender is still alive when the wave is beaten (not merely arriving). Approve the amounts + &lsquo;arrive and win&rsquo; rule, or prefer &lsquo;arrive in time&rsquo; only / different numbers?"
-        status: open
-        answer: null
-        question_h: 64
-        answer_h: 64
-    manual_steps:
-      - step: "On approval this is a scripting build (bst_ondamage hook + a rally include over worldstate_inc + a rescue quest journal category + reward). No new blueprints expected; wave/creature flags are blueprint/spawn edits. Re-promote to confirmed after the design questions are answered."
-        status: open
-        step_h: 64
-  - id: pvp-faction-points
-    title: "Faction points for PVP kills during active rally calls"
-    group: quests-areas
-    epic: faction-quest-system
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    notes: "<div>When a landmark is under attack and its defenders have called for aid, cutting down enemy <b>players</b> who came to sack it should count. This rewards faction standing for slaying opposite-faction players — but only in the heat of an active rally (not open-field ganking), so PVP matters exactly where the war is being fought.</div>"
-    impl_notes: "<div><b>Depends on [[faction-rally-rescue]]</b> (the ‘rally-active’ area flag it sets in worldstate_inc). Proposed build: hook the module OnPlayerDeath — if GetLastKiller is a PC whose faction_db allegiance is OPPOSITE the victim's, AND the death area is currently rally-active, award Faction_AdjustStanding(killerSide,+pts). Anti-farm: a per (killer+victim) cooldown via the existing quest_cd_inc.nss so repeatedly killing the same low-level alt does not farm standing; ignore same-allegiance and Neutral kills. Reuses faction_db + quest_cd_inc + the rally-active world-state; no new infra.</div>"
-    design_questions:
-      - question: "Points + anti-farm. Proposed: +25 faction standing per qualifying PVP kill, with a per-victim cooldown of ~30 real minutes (quest_cd_inc) so the same target cannot be farmed. Approve the amount + cooldown, or set your own?"
-        status: open
-        answer: null
-      - question: "Eligibility. Proposed: both players must be non-Neutral and on opposite sides, the kill must be in a rally-active area, and it respects the server PvP setting (no new PvP rules — if the server disallows PvP there, no kill happens anyway). Approve, or add extra conditions (e.g. both must have the rally quest active, minimum level, no reward for killing much-lower-level players)?"
-        status: open
-        answer: null
-    manual_steps:
-      - step: "Blocked until faction-rally-rescue ships the rally-active area flag. Then: wire the OnPlayerDeath check + Faction_AdjustStanding + quest_cd_inc anti-farm. Re-promote once the dependency lands and the design questions are answered."
-        status: open
-        blocker: true
-  - id: world-state-tick-logic
-    title: "Living-world server-state tick logic (daily/weekly resets)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<div>Groundwork for a living world: a scheduled daily and weekly reset for shared server-wide state — the Isengard war machine, the goblin civil war, corsair pressure, control of the Deeps and so on — so those situations can actually shift over time instead of sitting frozen. Nothing player-facing on its own, but every server-state quest depends on it.</div>"
-    impl_notes: "<div>Add daily/weekly reset ticks to the module heartbeat (bleeding.nss) for the shared SetCampaignInt living-world variables. One infra item unblocking every server-state quest.</div>"
-
-  - id: capstone-item-encoding-ref
-    title: "Reference: encoding non-stock item properties for quest capstones"
-    group: items-gear
-    epic: quest-overhaul
-    status: later
-    hidden: true
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>One-page reference item mapping non-stock properties (+N caster level, Spell DC +N, Sneak Attack +Nd6, Stunning Fist DC +N, +2 saves aura) to CEP / OnHit / OnEquip spellscript substitutes. Needed before authoring class-line and prestige capstones.</span>"
-
-  # ---- Module-grounded quests (all areas exist; cheapest to ship) ----------
   - id: ferny-return
     title: "Quest: Ferny's Return (Bree, prequel to Ferny's Ring)"
     group: quests-areas
@@ -2275,57 +1664,6 @@ ideas:
         status: open
         step_h: 64
 
-  - id: tharbad-bridge-watcher
-    title: "Quest: The Watcher of Tharbad Bridge"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L20). Twilight boss spawn with a server-locking choice (slay vs pact, tharbad_watcher flag). Areas exist.</span>"
-
-  - id: carndum-ledger
-    title: "Quest: The Carn Dum Ledger (weekly, weakens the Witch-King)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 weekly (L28+). Steal ledger pages; each success decrements carndum_ledger_pages and weakens the Witch-King. Depends on the quest-cooldown helper.</span>"
-
-  - id: faramir-watch
-    title: "Quest: Faramir's Watch (Ithilien, weekly)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 weekly (L32+). Rotating side-objective (intel / supply / stealth). Needs a Faramir NPC (clone Aragorn). Depends on the quest-cooldown helper.</span>"
-
-  - id: grey-lord-annuminas
-    title: "Quest: The Grey Lord's Errand at Annuminas"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L38). Three king-shade trials for a sceptre reward; needs 3 new undead UTCs. Area (ruinsofannuminas) exists.</span>"
-
-  - id: empty-throne-dolguldur
-    title: "Quest: The Empty Throne of Dol Guldur"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L42). Alignment branch (consecrate vs claim) across the full Dol Guldur complex; shadow-priest boss. Area exists.</span>"
-
-  # ---- Prestige-class quests (all gated on the prestige trainer hub) -------
   - id: harper-scout-quest
     title: "Prestige quest: Harper Scout (L6+)"
     group: quests-areas
@@ -2543,43 +1881,6 @@ ideas:
         status: open
         step_h: 64
 
-  - id: blackguard-quest
-    title: "Prestige quest: Blackguard's fall (L14+)"
-    group: quests-areas
-    epic: prestige-quests
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-17"
-    commit: c835e1eba3a
-    notes: "<div><b>The Fall</b> — the Blackguard initiation, and the twelfth and final order, completing Halmir's hub. Swear the Black Oath at the torture-rack in the Keep of Barad-dûr while wounded. <b>This one marks you: it shifts your alignment permanently toward evil</b>, once and only once. Pays 1,000 XP and the <b>Sigil of the Fallen</b> (Bluff +3, UMD +3, saves vs. negative +3). Details: <a href=\"QuestGuide.html#blackguard\">Quest Guide → Blackguard</a>.</div><div><br></div><div><br></div><div>-- This module (normally) allows FREE alignment changes in bree appearance changing area, and free faction shifts to evil or good from well of eru</div><div>--&gt; update 'this one marks you' so that you can NO LONGER use the good teleporter in well of eru and no longer use the alignment adjuster</div>"
-    impl_notes: "<div>Journal pc_blackguard; prestigedb key 'blackg', one-off, relog-safe. Cloned exactly from the Divine Champion skeleton (prsg_inc framework, prestigedb stage idiom). Offer requires 1+ Blackguard level (CLASS_TYPE_BLACKGUARD = 31); non-Blackguards at L14+ get the existing pointer line.</div><div><br></div><div>Uses existing placed instance 94 of plc_torture1 in the Keep of Barad-dûr, retagged BkgFallAltar with Static cleared and OnUsed q_bkg_altar added; it had no prior script or tag references so nothing was chained or broken. The wounded check is GetCurrentHitPoints &lt; max, deterministic, no dice.</div><div><br></div><div>The alignment shift is the order's signature mechanic: AdjustAlignment(oPC, ALIGNMENT_EVIL, 50, FALSE) applied on the stage 1-&gt;2 transition only, so it is non-farmable and the re-give-brand path never re-shifts. Brand of the Fall is plot+cursed. Reward skills distinct from the eleven siblings, no AB/damage so forge-cap-safe. No new waypoint or placement. Build passed all gates.</div><div><br></div><div><b>Faction oath-lock (2026-07-23, commit da33a3c):</b> the Black Oath fall (q_bkg_altar, stage 1-&gt;2) now also calls Faction_SetOath(oPC,\"Evil\") — it commits the character to the Evil (Sauron) faction and locks them out of the Good/Free-Peoples Well of Eru light-shaft. Optional, one-time, non-farmable (same stage guard as the alignment shift). See [[faction-scaffolding]].</div>"
-    manual_steps:
-      - step: "UAT faction oath-lock: after the Black Oath fall, confirm the character is Evil-aligned by faction and that the GOOD Well of Eru light-shaft (zep_lightshft009) now refuses to switch them (message, no change); the EVIL shaft still works."
-        status: open
-      - step: "Verify the Barad-dur rack is actually clickable in-game. The instance follows the shipped-sibling retag shape (Static:0 + OnUsed, no explicit Useable override, exactly like the RDD Forge-of-Durin anvil). If the CEP plc_torture1 base is not useable-by-default the rack will not be clickable and the quest cannot be completed &mdash; if so, add a single Useable:1 field to that instance, and note the same one-line fix would apply to the sibling anvil/altar retags."
-        status: open
-        blocker: true
-        step_h: 64
-      - step: "UAT gating: non-Blackguard L14+ character at Halmir gets only the pointer line. (Halmir needs AP_prestigehub_1 placed to appear; this quest adds no new waypoint of its own.)"
-        status: open
-        step_h: 64
-      - step: "UAT: a character with 1+ Blackguard level accepts -> journal 1, stage survives relog."
-        status: open
-        step_h: 64
-      - step: "UAT at the rack: clean-handed click fails with the flavor message; a wounded click shifts alignment noticeably toward evil and grants the Brand + journal 2."
-        status: open
-        step_h: 64
-      - step: "UAT turn-in: Brand consumed, XP + Sigil granted, journal ends."
-        status: open
-        step_h: 64
-      - step: "UAT non-farmability: re-clicking the rack after the fall must NOT shift alignment again, and re-running Halmir must NOT re-award."
-        status: open
-        step_h: 64
-      - step: "UAT regression: the other eleven Halmir branches and the summary line are unchanged."
-        status: open
-        step_h: 64
-
   - id: divine-champion-quest
     title: "Prestige quest: Divine Champion (L14+)"
     group: quests-areas
@@ -2665,66 +1966,6 @@ ideas:
         step_h: 64
 
   # ---- Faction quests (all depend on faction scaffolding) ------------------
-  - id: palantir-watch
-    title: "Faction quest (Good): The Palantir Watch (daily)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L20+). Escort a blindfolded lore-keeper to the palantir vault and defend 2-3 Uruk waves; stacking rep-token reward. Areas exist. Depends on faction scaffolding + cooldown helper.</span>"
-
-  - id: riders-of-the-mark
-    title: "Faction quest (Good): Riders of the Mark (weekly)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 (L30+). Investigate a silent Rohirric patrol near Helm's Deep; 4-wave escalating defence with friendly reinforcements. Eored-armor reward (encode +5 + situational, not +8). Depends on faction scaffolding.</span>"
-
-  - id: dead-marshes-lantern
-    title: "Faction quest (Good): The Dead Marshes Lantern"
-    group: quests-areas
-    epic: faction-quest-system
-    status: wip
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 (L35). Rescue an entranced hobbit; Will save every 30s or be Confused. Reward: an Elven waystone teleport token. Areas exist. Depends on faction scaffolding.</span>"
-
-  - id: white-council-errand
-    title: "Faction quest (Good): The White Council's Errand (weekly)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L40+). Retrieve a map fragment. Ship the linear version first; add the branching Saruman-betrayal path (persist whitecouncil_status=-1, sours Gandalf) as a v2. Eregion absent — substitute ruinsofannuminas/tharbad. Depends on faction scaffolding.</span>"
-
-  - id: eagles-eyrie-quest
-    title: "Faction quest (Good): Eagles' Eyrie"
-    group: quests-areas
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T6 (L50+). Clear corrupted wargs to earn the Eagles' favour. Needs a new Eagles' Eyrie area + Gwaihir NPC (authoring). Split from the Eagle Courier network.</span>"
-
-  - id: eagle-courier-network
-    title: "Feature: Eagle Courier fast-travel network (good PCs)"
-    group: travel
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Unlocked by the Eagles' Eyrie quest: courier placeables in every capital giving good-aligned PCs a fast-travel network. Split out as its own feature; depends on the Eyrie quest.</span>"
-
   - id: sowing-discord-bree
     title: "Faction quest (Evil): Sowing Discord in Bree (daily)"
     group: quests-areas
@@ -2754,47 +1995,6 @@ ideas:
         status: open
         step_h: 64
 
-  - id: sarumans-voice
-    title: "Faction quest (Evil): Saruman's Voice (social, no combat)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L25). Pure social Bluff/Persuade tree to divert a mithril shipment; failure turns guards hostile. Reward: Ring of Silver Tongue (stock +5 Bluff/Persuade). Depends on faction scaffolding.</span>"
-
-  - id: unmaking-wards
-    title: "Faction quest (Evil): Unmaking Lothlorien's Wards (weekly)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L40+). Sneak past detection traps and destroy 3 Lothlorien ward-stones (UTP OnUsed counter), then extract before Haldir patrols. Needs a Haldir NPC (clone elf guard). Depends on faction scaffolding.</span>"
-
-  - id: nine-are-abroad
-    title: "Faction quest (Evil): The Nine Are Abroad"
-    group: quests-areas
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L45). Recover a Nazgul horse's iron shoes before sunrise (GetTimeHour past dawn). Witch-King + Nazgul guildhouse exist. Depends on faction scaffolding.</span>"
-
-  - id: sacking-pelargir
-    title: "Faction quest (Evil): The Sacking of Pelargir (weekly)"
-    group: quests-areas
-    epic: faction-quest-system
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 (L35+). Corsair raid: burn 3 warehouses, sink 2 ships, capture the harbormaster. Ship the PvE raid first; the optional live-PvP contested layer (SetIsTemporaryEnemy) is a separate follow-up. Pelargir absent — needs area authoring (substitute hiddenport interim).</span>"
-
-  # ---- Location quests -----------------------------------------------------
   - id: pass-the-pass
     title: "Quest: Pass the Pass (Misty Mountains, daily escort)"
     group: quests-areas
@@ -2858,177 +2058,6 @@ ideas:
       - step: "UAT regression: Thranduil still fights, dies and respawns as a tracked boss, and the respawn keeps the conversation."
         status: open
 
-  - id: lumber-ent-tugofwar
-    title: "Quest pair: Lumber Runners (Evil) vs Ent-Watch (Good), Fangorn dailies"
-    group: quests-areas
-    epic: quest-overhaul
-    status: design
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    notes: "<span>T2 (L15+). A linked server-state tug-of-war — a shared isengard_warmachine var scales the Helm's Deep event. Ship the pair together. Depends on cooldown helper + world-state tick logic.</span>"
-    impl_notes: "<div><b>Dependency audit (autopilot 2026-07-23):</b> the item's note 'Depends on cooldown helper + world-state tick logic' is now half-stale. The <b>quest-cooldown helper already exists</b> — quest_cd_inc.nss (QCD_IsOnCooldown / QCD_IsDoneToday / QCD_IsDoneThisWeek / QCD_Stamp, backed by the questcddb campaign DB, real wall-clock, survives reboots) — so carndum-ledger, faramir-watch and palantir-watch are NOT blocked on cooldowns, only on world-state. The genuinely-missing infra is a shared <b>world-state</b> layer: server-wide persistent variables (not per-character) that several players read/affect and that change over time. See the design question for the proposed shared helper; once approved it unblocks this pair plus claim-the-deeps (deeps_control), goblin-town-throne (7-day halved-orc-spawn buff), and the Helm's Deep scaling here.</div><div><br></div><div><b>Shared world-state helper BUILT 2026-07-23 (commit 0b17611), independent of this quest:</b> worldstate_inc.nss over campaign DB worldstatedb — WS_GetInt/WS_SetInt/WS_AdjustInt (server-wide int globals, optional clamp), WS_GetStr/WS_SetStr (e.g. a weekly-claim owner pckey), WS_RegisterDecay(key,rate,target,period) / WS_RegisterWeekly(key,resetTo) / WS_ClearRule, and a self-throttled WS_Tick() (~1/min) wired into the module heartbeat bleeding.nss (after the existing PC loop, petrify/bleed logic untouched). Real wall-clock via strftime, survives reboots. This resolves the infra dependency for this quest AND for claim-the-deeps (deeps_control), goblin-town-throne (7-day buff via period=604800), and mithril-seam (weekly claim). What remains open for THIS item is only the tug-of-war mechanic below.</div>"
-    design_questions:
-      - question: "SHARED WORLD-STATE HELPER (the real second infra unblocker; the cooldown helper already exists as quest_cd_inc.nss). Proposed: a thin include 'worldstate_inc.nss' over a 'worldstatedb' campaign DB — WS_GetInt/WS_SetInt/WS_Adjust for server-wide persistent globals plus a ~1/min WS_Tick for per-key decay/weekly reset."
-        status: answered
-        answer: "Approved: Campaign DB + heartbeat tick + decay. Build worldstate_inc.nss + worldstatedb + WS_Tick as shared infra (autopilot is building this independently of the tug-of-war quest, which still needs its mechanic decision below)."
-      - question: "LUMBER/ENT TUG-OF-WAR MECHANIC (creative/balance, needs your call). Concept: a shared isengard_warmachine world-state var that both sides push — players felling trees / aiding Isengard raise it, players defending Fangorn / doing Ent objectives lower it — and its value scales the difficulty/rewards of the linked Helm's Deep event ('ship the pair together'). Open: what raises/lowers it and by how much per action, the min/max clamp, whether it decays toward centre over time (via WS_Tick), and what the Helm's Deep event does at each band. Proposed starting point: range 0-100, start 50, +/-5 per qualifying action, decay 1/hour toward 50, three difficulty bands (<=25 / 26-74 / >=75). Approve/tweak, and confirm the two areas (Fangorn + Helm's Deep) to wire."
-        status: open
-        answer: null
-    manual_steps:
-      - step: "DONE: shared world-state helper built (commit 0b17611 — worldstate_inc.nss + worldstatedb + WS_Tick heartbeat). Remaining for this quest: build the tug-of-war scripts + Helm's Deep scaling once the mechanic below is approved, then re-promote to confirmed. The cooldown half needs nothing new (quest_cd_inc.nss exists)."
-        status: open
-      - step: "UAT the world-state helper (infra): as DM, WS_RegisterDecay(\"uat_ws\",1,0) + WS_SetInt(\"uat_ws\",5); after ~5 min confirm WS_GetInt(\"uat_ws\") has decayed toward 0 (~1/min via the heartbeat), and confirm a set value survives a server restart (worldstatedb persistence). WS_Clear(\"uat_ws\") to tidy."
-        status: open
-
-  - id: goblin-town-throne
-    title: "Quest: The Goblin-Town Throne (Misty Mountains)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L18). Assassinate the successor and plant a false document to trigger a server-wide 7-day halved-orc-spawn buff. Areas exist. Depends on world-state tick logic.</span>"
-
-  - id: mithril-seam
-    title: "The Mithril Seam"
-    group: quests-areas
-    epic: quest-overhaul
-    status: design
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    notes: "<div><b>The Mithril Seam</b> — a proposed T3 weekly race (L28+) in the Misty Mountains. One seam, one claim, first to reach it takes it, and it does not come back until the next week. Server-wide competition rather than a personal daily.</div>"
-    impl_notes: "<div><b>Infra-gated on the shared world-state helper</b> (see lumber-ent-tugofwar's proposal). A weekly SERVER-WIDE single-claim race is not a per-character cooldown - quest_cd_inc.nss (QCD_IsDoneThisWeek) is per-PC, so it cannot express 'one seam, first to claim, gone until next week for EVERYONE'. That needs a shared world-state key (e.g. mithril_seam_claimed + claim owner + week stamp) reset weekly by the WS_Tick. Build once the world-state helper is approved.</div>"
-    design_questions:
-      - question: "SERVER-WIDE WEEKLY CLAIM (depends on the world-state helper proposed on lumber-ent-tugofwar). Proposed: a single seam node in the Misty Mountains; the first L28+ character to mine/claim it in a given ISO week sets world-state mithril_seam_owner=<pckey> + mithril_seam_week=<isoweek> and receives the reward; everyone else sees it depleted until WS_Tick rolls the week over. Approve this model? And WHAT is the reward for winning the weekly race (a mithril ingot / crafting mat, a unique item, gold/XP)? - that reward is a balance/design call for you."
-        status: open
-        answer: null
-    manual_steps:
-      - step: "Blocked until the world-state helper (worldstate_inc.nss + worldstatedb + WS_Tick) is approved and built. Then: place the seam node (AP_ waypoint / usable placeable) in the Misty Mountains area, wire OnUsed to the weekly-claim check, and grant the approved reward. Re-promote once world-state ships."
-        status: open
-        blocker: true
-  - id: claim-the-deeps
-    title: "Quest: Claim the Deeps (Moria, daily faction-control)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: wip
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L20+). A faction-control state (deeps_control) that gates access to a crafting table. Areas exist. Depends on cooldown helper + world-state tick logic.</span>"
-
-  - id: thranduil-jailbreak
-    title: "Quest: Halls of Thranduil Jailbreak (Mirkwood, weekly)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L22+). Alignment-mirrored (two journal tags, same layout, opposite objective). Areas exist. Depends on cooldown helper.</span>"
-
-  - id: thirteenth-ent
-    title: "The Thirteenth Ent"
-    group: quests-areas
-    epic: quest-overhaul
-    status: design
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    notes: "<span>T4 (L32). Restore a tree-still Ent via a Druid/Bard/Lore branch; permanent +1 STR/CON draught reward. Areas exist.</span>"
-    impl_notes: "<div>Self-contained (no faction/world-state dependency; areas exist). Mechanically buildable once the branch content + reward are approved: a giver NPC (Ent) with a conversation offering three solution paths gated on skill/class, a persistent per-character completion stamp (quest_cd_inc or a simple advance-only flag), and a reward item. The creative/balance decisions below are the admin's call.</div>"
-    design_questions:
-      - question: "THREE-BRANCH SOLUTION (approve/tweak the content). The quest restores a 'tree-still' Ent via a Druid / Bard / Lore branch. Proposed shape: DRUID branch - a skill/class-gated dialogue + cast (or a component gathered nearby) that channels growth into the Ent; BARD branch - perform/Perform-gated to sing the Ent awake (Entish is song); LORE branch - Lore/Knowledge check to recall the Ent's true name and speak it. Each branch reaches the same restoration but with different flavour. Approve these three, or change the gating skills/classes? What Perform/Lore/skill DCs (suggest scaling to L32: e.g. Lore/Perform DC ~40)?"
-        status: open
-        answer: null
-      - question: "REWARD (power decision). Proposed: a one-time 'Draught of the Ent' consumable granting a PERMANENT +1 STR and +1 CON (as asked). Permanent stat boosts are strong end-game power creep - confirm +1 STR / +1 CON permanent is intended, or would you prefer a smaller/temporary buff, a once-per-character cap only, or a non-stat reward? (It must be non-farmable: advance-only per-character stamp so the draught can be earned once.)"
-        status: open
-        answer: null
-    manual_steps:
-      - step: "On approval: build the Ent giver NPC + conversation (3 branches) + the draught item + a per-character once-only completion stamp; place the giver via an AP_ waypoint in the existing Fangorn/Ent area (name the exact area at build time). Then re-promote to confirmed. New NPC + item -> appearance/equip UAT and palette filing."
-        status: open
-  - id: twentyfirst-hall
-    title: "Quest: The Twenty-First Hall (Moria, party dungeon)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 (L36). A party-of-4 crawl to the Chamber of Mazarbul with an ambush finale. Areas exist.</span>"
-
-  - id: smaugs-curse
-    title: "Quest: Smaug's Lingering Curse (Mirkwood)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L40). Trace a dragon-curse to a shrine; crafting turn-in. Areas exist.</span>"
-
-  - id: mordor-forage
-    title: "Quest: Mordor Forage (weekly, Evil)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L40+). Gather rare crafting components under a lava-damage OnEnter. Areas exist. Depends on cooldown helper.</span>"
-
-  - id: durins-bane-remnant
-    title: "Quest: Durin's Bane Remnant (Moria, weekly)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T6 (L50+). Reuse the Balrog UTC; failure spawns fire-wraiths server-wide. Depends on cooldown helper + world-state tick logic.</span>"
-
-  - id: cracks-of-doom-finale
-    title: "Quest (epic): Cracks of Doom — endgame group finale"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T6 (L58-60), up to 6 players. Umbrella epic — split into per-leg items (Gorgoroth approach, Shelob's Pass, the ascent, the Chamber of Fire) and per final-objective variant (endgame_mode var); ties into Smeagol's Side.</span>"
-
-  - id: grey-havens-area
-    title: "Area authoring: the Grey Havens (+ Cirdan NPC)"
-    group: quests-areas
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Author the Grey Havens area (.are/.git/.gic + module.ifo entry + gen-map-notes rerun) and a Cirdan NPC. Shared prerequisite for the two Grey Havens quests below.</span>"
-
-  - id: last-ships-cargo
-    title: "Quest: The Last Ship's Cargo (Grey Havens)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T6 (L55). Recover cargo for the last ship west; no swim mechanic — flavour substitute. Blocked on Grey Havens area + Cirdan authoring.</span>"
-
-  - id: harbour-watch
-    title: "Quest: Harbour Watch (Grey Havens, daily)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Daily whose difficulty scales off a corsair_pressure var. Blocked on Grey Havens area authoring; depends on cooldown helper + world-state tick logic.</span>"
-
-  # ---- Wildcard quests -----------------------------------------------------
   - id: hobbit-post
     title: "Quest: Hobbit Post (Shire, daily deliveries)"
     group: quests-areas
@@ -3085,200 +2114,6 @@ ideas:
         status: open
         step_h: 64
 
-  - id: concerning-hobbits
-    title: "Quest: Concerning Hobbits (Shire genealogy)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: design
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-17"
-    commit: 7ed910b39b3
-    notes: "<div><b>Concerning Hobbits</b> — a new T1 daily (L5) in Hobbiton. Odo Proudfoot is deep in a genealogy dispute and wants five questions of Shire lineage settled. Four right pays 40-100 gp, 100 XP and a pouch of pipe-weed; a perfect five upgrades the keepsake to a <b>Greater Ring of Scholars</b>. The dispute — and the answers — change with the season, and the whole server argues over the same one. Details: <a href=\"QuestGuide.html#concerning-hobbits\">Quest Guide → Concerning Hobbits</a>.</div>"
-    notes_h: 353
-    impl_notes: "<div>Journal tag concern_hob; custom tokens 6420-6428; all logic in q_hob_inc.nss. Built on the established riddle-game pattern (token-driven dialogue, StartingConditional Active scripts, quest_cd_inc/questcddb, journal wiring).</div><div><br></div><div>Odo Proudfoot (q_hob_odo) draws five questions from a bank of 16 canon Tolkien-genealogy questions; question set and answer order are seeded from the in-game calendar season (GetCalendarYear()*4 + season, stride walk over the bank), so the correct answer rotates each season and the whole server shares one seasonal dispute. Rewards witchbud and grscholar, both verified existing module blueprints.</div><div><br></div><div>Daily gate (QCD_IsDoneToday) applies win or lose, finalized atomically on the fifth answer so escape-closing cannot dodge the stamp or double-pay. Hobbiton OnEnter wrapped (q_hob_enter chains leash_to_area then q_hob_spawn); giver spawns at AP_concerninghobbits_1; conversation q_hob_conv on the blueprint.</div>"
-    design_questions:
-      - question: "The original card's reward was 'Bag End housing access (owner-check workaround, no instancing)'. That is design-sensitive &mdash; which door and interior, persistent housing entry vs. a campaign flag, and what eviction semantics apply &mdash; so a concrete gold/XP/keepsake reward shipped instead and the housing piece was deferred. Should housing access be added later as a win-hook in QHOB_PayOut, and if so on what terms?"
-        status: open
-        answer: null
-    manual_steps:
-      - step: "Place waypoint AP_concerninghobbits_1 in shirehobbiton001. Odo is script-spawn-only and the scripts no-op gracefully until the waypoint exists, so the quest is unreachable without it."
-        status: open
-        blocker: true
-      - step: "UAT: enter Hobbiton, talk to Odo, accept -> journal concern_hob opens."
-        status: open
-      - step: "UAT rewards: answer the five questions &mdash; 4/5 pays 40-100 gp + 100 XP + pipe-weed; a perfect 5/5 gives the Greater Ring of Scholars; the journal closes on finish."
-        status: open
-      - step: "UAT cooldown: re-ask the same day -> 'come back tomorrow' countdown to 00:00 UTC; resets the next UTC day. DM can reset with QCD_Clear."
-        status: open
-      - step: "UAT rotation: the offered question set and answer positions differ across in-game seasons."
-        status: open
-      - step: "UAT exploit guard: escape-closing on the fifth answer still stamps and pays exactly once (no double-pay)."
-        status: open
-
-  - id: bombadils-errand
-    title: "Quest: Bombadil's Errand (Old Forest)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T1 but level-immune: abilities suppressed and the forest rearranges (SetTransitionTarget rewrite). Needs a Tom Bombadil NPC + area rewrite, so mid-sized.</span>"
-
-  - id: smeagols-side
-    title: "Quest: Smeagol's Side (narrative, no combat)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L20). Pure split-personality dialogue; a meter persists to smeagol_alignment and is read later by Cracks of Doom.</span>"
-
-  - id: ents-dont-hasty
-    title: "Quest: Ents Don't Hasty (Fangorn, weekly drip)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T3 (L25+). A 7-day drip narrative (one sentence/day) ending in a 7-day self-destructing buff item. Depends on cooldown helper.</span>"
-
-  - id: watcher-in-water
-    title: "Quest: The Watcher in the Water (Moria gate)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: soon
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T4 (L30). Sequential fishing (OnUsed): trout to tentacle to a boss escalation. Needs a CEP aquatic clone.</span>"
-
-  - id: istaris-bet
-    title: "Quest: The Istari's Bet (no-magic crossing)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T5 (L45). A solo no-magic crossing of the Brown Lands/Emyn Muil under a 24h clock with item suppression. Brown Lands absent — substitute dagorlad/nindalf.</span>"
-
-  - id: ungoliants-hunger
-    title: "Quest: Ungoliant's Hunger (mirror-puzzle boss)"
-    group: quests-areas
-    epic: quest-overhaul
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>T6 (L52). A mirror-rotation puzzle vs an unlight shadow-elemental under a lethal timer. Nan Dungortheb absent — rebrand eredduathroada.</span>"
-
-  - id: long-winter-state-machine
-    title: "The Long Winter (seasonal): server state machine & progress tracking"
-    group: quests-areas
-    epic: long-winter
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>The 30-day server event's state machine: start/advance/end ticks, a collective progress counter, and a +10% seasonal XP payoff wrapper (GiveXPToCreature; Mod_XPScale is static). Depends on world-state tick logic.</span>"
-
-  - id: long-winter-cold-auras
-    title: "The Long Winter (seasonal): cold-aura effects across Eriador"
-    group: quests-areas
-    epic: long-winter
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Apply a cold aura / periodic damage on Eriador zones while the event is active, driven by the Long Winter state machine.</span>"
-
-  - id: long-winter-subquests
-    title: "The Long Winter (seasonal): gather & forge sub-quest chain"
-    group: quests-areas
-    epic: long-winter
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>The gather/forge sub-quests that feed collective progress during the event.</span>"
-
-  - id: long-winter-forochel-boss
-    title: "The Long Winter (seasonal): Bay of Forochel finale boss"
-    group: quests-areas
-    epic: long-winter
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>The finale boss. Bay of Forochel absent — substitute the existing icequeen areas.</span>"
-
-  # ---- Class questlines (per-tier chunks; capstone folds into endgame) -----
-  - id: fighter-line-early
-    title: "Fighter line I — The Unbroken Shield (L1-15)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    commit: 28a780855716c10986c7cfe4d2808ed996e8177e
-    notes: "<div><b>The Unbroken Shield</b> — the first three chapters (L1, L8, L15) of the Fighter class line. Hallas the Shieldwarden keeps a corner of the Prancing Pony and takes the oath of only those who fight for a living: swear it for the <b>Warden's Buckler</b>, come back at L8 for a dead captain's notched shard, and at L15 see the shard reforged into the <b>Warden's Reforged Blade</b>. Details: <a href=\"QuestGuide.html#unbroken-shield\">Quest Guide → The Unbroken Shield</a>.</div><div><br></div><div>UAT Fail: Why is Hallas spawned in naked and unarmored ( no shield, as a shield warden?)</div>"
-    impl_notes: "<div>Journal category ftr_shield (@group 'Class Lines'). Giver q_ftr_hallas, plot/immortal Gondorian veteran; offer gated on GetLevelByClass(CLASS_TYPE_FIGHTER) &gt;= 1 (value 4 verified), non-fighters get a flavour line.</div><div><br></div><div>Per-character one-off state in the fighterlinedb campaign DB (key ubshield_stage 0-&gt;3, advance-only so rewards are not farmable). Reward properties use verified stock encodings. Prancing Pony OnEnter wrapped q_ftr_enter (chains the existing q_hrp_ent1 so the leash and Harper contact are preserved) -&gt; q_ftr_spawn; conversation q_ftr_conv; 6 StartingConditionals + 3 reply scripts referenced in the DLG.</div><div><br></div><div><b>Follow-up fix 2026-07-17 (01b242056d0):</b> the three reward action scripts (q_ftr_oath/shrd/forge, void main()) had been wired into the reply-link <b>Active</b> (show-conditional) fields as well as the correct Script fields; as StartingConditionals they evaluate FALSE, which hid the swear-oath / receive-shard / reforge replies and made the quest unadvanceable in-game. The dialog-integrity gate does not catch semantic Active misuse. Blanked those three Active fields (matching the prsg_conv / rogue-line pattern); the scripts still fire from each target node's Script field. Caught while building the rogue-line-early sibling.</div><div><br></div><div><b>Deliberately deferred to fighter-line-mid/later:</b> the Aeglos Reborn spear capstone and the Osgiliath wave-defence; the shard and blade are named generically to keep the Narsil lore for the finale.</div><div><br></div><div><b>2026-07-23 UAT fixes (commits 3007f78, 28a7808):</b> (1) the L8 shard q_ftr_shard was a Plot longsword-token with an empty PropertiesList; per admin UAT it is now a usable fighter-only broken-blade dagger (BaseItem 1→22, dagger model 63/53/53) carrying +3 Attack Bonus (PN56/CT2/CV3), -1 Decreased Damage (PN21/CT20/CV1) and On-Hit: Wounding/bleeding (PN48/sub25/CT24/CV1), plus Use Limitation: Class Fighter (PN63/sub4) — all encodings cloned from real items (azuredgethrowing/rustedoutlongswo/3longswordofwoun). Tag q_ftr_shard unchanged so FTR_Reforge still consumes it at L15; anti-farm is the advance-only persistent stage guard. PaletteID 36→34. (2) Hallas q_ftr_hallas spawned unarmored because his Equip_ItemList held only plain clothing (clo32244) + creature fists; replaced with gondorianplate (chest slot 2), gondorianlongswo (right hand slot 16) and shieldofgondor (left hand slot 32), cloned slot-for-slot from gondorianguar001/conall/ds_beregond (all appearance 6). Added the proficiency feats he lacked (2 Heavy / 4 Medium / 32 Shield / 44 Exotic / 45 Martial / 46 Simple) so the Jasperre AI no longer strips the gear; he is Lootable:0 + Plot:1 so the loadout is not farmable. Gates green (10/10 smoke incl. check_reward_exploit + palette-coverage).</div>"
-    manual_steps:
-      - step: "Place waypoint AP_fighterlineearly_1 in theprancingpo001. Hallas is script-spawn-only and the scripts no-op gracefully until then, so the line is unreachable without it."
-        status: done
-        blocker: true
-        step_h: 64
-      - step: "UAT the Active-field fix specifically: confirm the swear-oath, receive-shard and reforge replies are now selectable (they were hidden before commit 01b242056d0).\n\nResult: What shard? What reforge replies? -> RESOLVED 2026-07-23: the flow works end to end in later UAT (shard obtained at L8); the earlier confusion was a stale-module test before 01b242056d0."
-        status: done
-        step_h: 64
-      - step: "UAT gating: a Fighter sees Hallas's oath offer; a non-fighter gets only the flavour line."
-        status: done
-        step_h: 64
-      - step: "UAT node 1: accept -> journal ftr_shield opens + the fighter-restricted Warden's Buckler."
-        status: done
-        step_h: 64
-      - step: "UAT level gates: the L8 and L15 gates hold (below-level shows a 'come back at N' line)."
-        status: done
-        step_h: 64
-      - step: "UAT nodes 2-3: at L8 the shard is granted; at L15 it is consumed and the Reforged Blade granted; journal advances 1->2->3(End).\n\nResult: at level 8 was able to get the shard -- it should have a property to deal reduced damage (-1) but then also have bleeding 1, and +3 attack bonus -> DONE 2026-07-23 (commit 3007f78): shard now has exactly -1 damage, on-hit bleeding and +3 attack bonus."
-        status: done
-        step_h: 92
-      - step: "UAT restrictions: buckler and blade are unusable by non-fighters."
-        status: done
-        step_h: 64
-      - step: "UAT regression: the Prancing Pony leash and the Harper-contact spawn (Della) still fire from the wrapped OnEnter."
-        status: done
-        step_h: 64
-      - step: "UAT (shard weapon): at Fighter 8 take the shard from Hallas and confirm it is now an equippable fighter-only dagger with +3 attack bonus, -1 damage, and causes bleeding (On Hit: Wounding) on hit; confirm a non-fighter cannot equip it; at Fighter 15 confirm the reforge still consumes it and grants the Warden's Reforged Blade."
-        status: open
-      - step: "UAT appearance (Hallas): spawn q_ftr_hallas in The Prancing Pony (theprancingpo001) at AP_fighterlineearly_1 and confirm he now appears in Gondorian plate with a shield and a drawn longsword, the gear stays equipped (not stripped) after spawn, and players cannot loot/steal his armor, shield, or sword."
-        status: open
-
-  - id: fighter-line-mid
-    title: "Fighter line II — The Unbroken Shield (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Fighter line.</span>"
-
-  - id: fighter-line-endgame
-    title: "Fighter line III — The Unbroken Shield (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Fighter line, culminating in the class-restricted capstone. Depends on the capstone-item-encoding reference.</span>"
-
   - id: wizard-line-early
     title: "Wizard line I — The Colour of Power (L1-15)"
     group: quests-areas
@@ -3313,82 +2148,6 @@ ideas:
       - step: "UAT regression: the Bag End leash still fires from the wrapped OnEnter."
         status: open
         step_h: 64
-
-  - id: wizard-line-mid
-    title: "Wizard line II — The Colour of Power (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Wizard line.</span>"
-
-  - id: wizard-line-endgame
-    title: "Wizard line III — The Colour of Power (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Wizard line. L46 is a colour branch (White / Many-Colours / Brown) persisted via wizard_colour, each with different capstone properties — split branch selection from the three payoffs. Depends on the capstone-item-encoding reference.</span>"
-
-  - id: rogue-line-early
-    title: "Rogue line I — The Long Shadow (L1-15)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-17"
-    commit: c8d85dc109b
-    notes: "<div><b>The Long Shadow</b> — the first three chapters (L1, L8, L15) of the Rogue class line. Fenn the Shade runs a net of Bree-land watchers out of the Prancing Pony and swears in only those who know how to go unseen: the <b>Shadowmantle</b> at L1, a cipher-token at L8, and <b>Nightthorn</b> at L15. Details: <a href=\"QuestGuide.html#long-shadow\">Quest Guide → The Long Shadow</a>.</div><div><br></div><div>UAT: Fenn also spawns in naked and looks identical to the Shield Warden from fighter quest line also in bree tavern..</div><div>UAT: Dialogue when level 8 says 5 levels more, to 15.. but 5+8 = 13 not 15.. and a character might be level 9, or 10, etc. when coming back so just drop the \"5 levels more\" bit, and state desired/intended level requirement: check similar verbiage on the other class quest givers</div>"
-    impl_notes: "<div>Journal category rog_shadow (@group 'Class Lines' @order 2). Giver q_rog_fenn, plot/immortal hooded rogue; offer gated on GetLevelByClass(CLASS_TYPE_ROGUE) &gt;= 1 (value 8 verified), non-rogues get a flavour line. Cloned structurally from fighter-line-early.</div><div><br></div><div>Three level-gated one-off nodes; per-character state in the roguelinedb campaign DB (key shadow_stage 0-&gt;3, advance-only). Reward properties use verified stock encodings (Use-Limitation:Class subtype 8 = Rogue).</div><div><br></div><div>Prancing Pony OnEnter wrapped q_rog_enter (chains the existing q_ftr_enter -&gt; q_hrp_ent1, preserving leash + Harper contact + Hallas's spawn) -&gt; q_rog_spawn; conversation q_rog_conv, reply-link Actives left blank, avoiding the fighter-line bug fixed in the same session. Build passed all gates. Capstone (Shelob / Cirith Ungol / dual-swords finale) deliberately deferred to rogue-line-mid/later.</div>"
-    impl_notes_h: 167
-    manual_steps:
-      - step: "Place waypoint AP_roguelineearly_1 in theprancingpo001. Fenn is script-spawn-only and no-ops gracefully until then."
-        status: done
-        blocker: true
-        step_h: 64
-      - step: "UAT gating: a Rogue sees Fenn's oath offer; a non-rogue gets only the flavour line.\n\n(Non-rogue path tested and working)\n(Rogue path working)"
-        status: done
-        step_h: 64
-      - step: "UAT node 1: accept -> journal rog_shadow opens + the rogue-restricted Shadowmantle."
-        status: done
-        step_h: 64
-      - step: "UAT level gates: L8 and L15 gates hold (below-level shows a 'come back' line)."
-        status: done
-        step_h: 64
-      - step: "UAT nodes 2-3: at L8 the token is granted; at L15 it is consumed and Nightthorn granted; journal advances 1->2->3(End).\n\nUAT result: token granted at level 8.."
-        status: wip
-        step_h: 64
-      - step: "UAT restrictions: cloak and blade are unusable by non-rogues.\n(Cloak confirmed)"
-        status: wip
-        step_h: 64
-      - step: "UAT regression: Prancing Pony leash, Harper (Della) and Fighter-line (Hallas) spawns all still fire from the chained OnEnter."
-        status: done
-        step_h: 64
-
-  - id: rogue-line-mid
-    title: "Rogue line II — The Long Shadow (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Rogue line.</span>"
-
-  - id: rogue-line-endgame
-    title: "Rogue line III — The Long Shadow (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Rogue line, culminating in the class-restricted capstone (Sneak Attack +Nd6 encoding). Depends on the capstone-item-encoding reference.</span>"
 
   - id: druid-line-early
     title: "Druid line I — The Breathing of the World (L1-15)"
@@ -3425,26 +2184,6 @@ ideas:
         status: open
         step_h: 64
 
-  - id: druid-line-mid
-    title: "Druid line II — The Breathing of the World (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Druid line.</span>"
-
-  - id: druid-line-endgame
-    title: "Druid line III — The Breathing of the World (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Druid line, culminating in the class-restricted capstone. Depends on the capstone-item-encoding reference.</span>"
-
   - id: ranger-line-early
     title: "Ranger line I — The Uncrowned Path (L1-15)"
     group: quests-areas
@@ -3479,26 +2218,6 @@ ideas:
       - step: "UAT regression: the Ranger Waystation leash still fires from the wrapped OnEnter."
         status: open
         step_h: 64
-
-  - id: ranger-line-mid
-    title: "Ranger line II — The Uncrowned Path (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Ranger line.</span>"
-
-  - id: ranger-line-endgame
-    title: "Ranger line III — The Uncrowned Path (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Ranger line, culminating in the class-restricted capstone. Depends on the capstone-item-encoding reference.</span>"
 
   - id: cleric-line-early
     title: "Cleric line I — Flame of Anor (L1-15)"
@@ -3535,213 +2254,6 @@ ideas:
       - step: "UAT regression: the Temple leash still fires from the wrapped OnEnter."
         status: open
         step_h: 64
-
-  - id: cleric-line-mid
-    title: "Cleric line II — Flame of Anor (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Cleric line.</span>"
-
-  - id: cleric-line-endgame
-    title: "Cleric line III — Flame of Anor (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Cleric line. The L46 node (Unlight of Ungoliant) needs Nan Dungortheb (absent — rebrand eredduathroada). Depends on the capstone-item-encoding reference.</span>"
-
-  - id: paladin-line-early
-    title: "Paladin line I — Oathsworn to the West (L1-15)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-18"
-    commit: 6d6c89d5231
-    notes: "<div><b>Oathsworn to the West</b> — the first three chapters (Paladin 1, 8, 15) of the Paladin class line. Hallas the Oathkeeper, an old knight of the Citadel who has outlived most of the men he swore beside, keeps his post in the Keep of Minas Tirith and still watches an eastern sky that has shown him nothing for years. He takes the <b>oath of the West</b> from any paladin who comes to it — not for Gondor's sake, he says, but so that there is one more person in the world who has said the thing out loud in front of a witness: the <b>Token of the White Tree</b> at Paladin 1, the Sealed Oath of Fealty at Paladin 8, and the <b>Sword of the Oathsworn</b> at Paladin 15. The level gates count Paladin levels only. Details: <a href=\"QuestGuide.html#oathsworn-west\">Quest Guide → Oathsworn to the West</a>.</div><div><br></div><div>\n<div>-- This module (normally) allows FREE alignment changes in bree \nappearance changing area, and free faction shifts to evil or good from \nwell of eru</div><div>--&gt; Make this quest 'marks you' as part of taking the oath,  so that you can\n NO LONGER use the evil teleporter in well of eru and no longer use the \nalignment adjuster</div>\n\n<br></div>"
-    impl_notes: "<div>Journal category pld_oath (@group 'Class Lines' @order 9). Giver q_pld_keep (Hallas the Oathkeeper, Paladin 30, plot/immortal, Lawful Good) in area005 (Minas Tirith: Keep); offer gated on GetLevelByClass(CLASS_TYPE_PALADIN) &gt;= 1, non-paladins get a flavour brush-off. Structurally cloned from the shipped druid-line-early template.</div><div><br></div><div>Prefix is q_pld_ rather than q_pal_ — <b>q_pal_* was already taken</b> by the Pale Master prestige quest (\"The Twenty-First Tomb\"). Worth noting for any future Paladin-line chunk.</div><div><br></div><div>Three-node one-off arc; per-character state in the pldlinedb campaign DB (key oath_stage 0-&gt;3, advance-only, so rewards are not farmable). <b>All three level gates use GetLevelByClass(CLASS_TYPE_PALADIN)</b> (&gt;=1 / &gt;=8 / &gt;=15), not GetHitDice — a deliberate tightening over the cleric/ranger/druid lines, whose L8/L15 nodes count total character level and can therefore be reached with levels taken outside the class. Follow-up: consider retrofitting those three lines to match.</div><div><br></div><div>Rewards q_pld_amul (+1 CHA amulet, BaseItem 19), q_pld_seal (plot token, BaseItem 24), q_pld_swrd (BaseItem 1 long sword, Enhancement +2 / +1 CHA, models 114/121/111). Use-Limitation:Class subtype 6 = Paladin, the same iprp_classes row order as the verified Cleric 2 / Druid 3 / Ranger 7 rows; class id 6 additionally cross-checked against creature003 (Denethor), which carries a real Paladin class entry.</div><div><br></div><div>area005 OnEnter wrapped q_pld_enter (chains the area's existing leash_to_area) -&gt; q_pld_spawn; conversation q_pld_conv, StartingConditionals q_pld_c_off/s1w/s1r/s2w/s2r/dn, reply scripts q_pld_oath/tok/rtn. DLG follows the reply-gate rule (verified programmatically). Wiring due-diligence passed: every new .nss has a proven caller, q_pld_conv is referenced by q_pld_keep's Conversation field, and the AP_paladinlineearly_1 literal is hyphen-less and byte-identical across script and manual_steps. Build passed all gates (7/7 smoke tests, dialog integrity 0 failing, 12 scripts compiled / 0 errors).</div><div><br></div><div>No existing Minas Tirith NPC was reused — Denethor, the Gondorian guardsmen and the Temple/Arcane shopkeepers all carry their own conversations or stores — so Hallas is authored fresh. No capstone built; the brief's Eowyn/Theoden/Witch-king material, plus its open mounted-charge and smite-scaling problems, is deferred to paladin-line-mid/endgame.</div><div><br></div><div><b>Faction oath-lock (2026-07-23, commit da33a3c):</b> PLD_TakeOath now also calls Faction_SetOath(oPC,\"Good\") — swearing the Oath of the West commits the character to the Good (Free Peoples) faction and locks them out of the Evil Well of Eru light-shaft. Optional, one-time (stage 0-&gt;1 only). See [[faction-scaffolding]].</div>"
-    manual_steps:
-      - step: "UAT faction oath-lock: after swearing the Oath of the West, confirm the character is Good-aligned by faction and that the EVIL Well of Eru light-shaft (solred) now refuses to switch them (message, no change); the GOOD shaft still works."
-        status: open
-      - step: "Place waypoint AP_paladinlineearly_1 in area005 (Minas Tirith: Keep) — suggested spot is the parapet/wall side of the hall, facing east. Hallas the Oathkeeper is script-spawn-only and no-ops gracefully until then — the entire quest line is invisible in-game until this is placed."
-        status: open
-        blocker: true
-        step_h: 64
-      - step: "UAT gating: a Paladin in the Keep sees Hallas's offer of the oath of the West; a non-paladin gets only the civil word on the wall."
-        status: open
-        step_h: 64
-      - step: "UAT node 1: swear the oath -> journal pld_oath opens at entry 1 and the Token of the White Tree (+1 CHA) is received and is Paladin-only."
-        status: open
-        step_h: 64
-      - step: "UAT node 2: at Paladin 8 return -> journal entry 2, Sealed Oath of Fealty received as a plot item; below Paladin 8 Hallas gives the come-back-grown line instead."
-        status: open
-        step_h: 64
-      - step: "UAT node 3: at Paladin 15 return -> journal entry 3 (quest closes), seal consumed, Sword of the Oathsworn (+2 / +1 CHA long sword) received and Paladin-only."
-        status: open
-        step_h: 64
-      - step: "UAT multiclass gate: a character with 5 Paladin levels and 20 levels elsewhere is held at the come-back-grown line — the gates must count Paladin levels only, not total level."
-        status: open
-        step_h: 64
-      - step: "UAT persistence/no-farm: relog after each node and re-speak to Hallas — stages must persist via pldlinedb and never re-award an item."
-        status: open
-        step_h: 64
-
-  - id: paladin-line-mid
-    title: "Paladin line II — Oathsworn to the West (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Paladin line. Paladin mounts are flavour-only in stock NWN unless Mod_HorseEnabled.</span>"
-
-  - id: paladin-line-endgame
-    title: "Paladin line III — Oathsworn to the West (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Paladin line, culminating in the class-restricted capstone (Smite +Nd6 encoding). Depends on the capstone-item-encoding reference.</span>"
-
-  - id: bard-line-early
-    title: "Bard line I — Tales That Live Forever (L1-15)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-23"
-    commit: 82f97f86ded
-    notes: "<div>Bards now have the first chapter of their own class line. <b>Lindir of the Hall of Fire</b> keeps the Rivendell Upper Halls, where the singing never entirely stops, and will take any bard as a student. He teaches one thing free of charge — a song only ever sung by the one who made it dies with them — and hands over a six-hundred-year-old lay that breaks off in the middle of a line, for you to finish. Rewards at Bard 1 and Bard 15: the Chorister’s Torc and the Rapier of the Deathless Song. Full walkthrough: <a href=\"QuestGuide.html#tales-forever\">Tales That Live Forever</a>.</div>"
-    impl_notes: "<div>Structurally cloned from the shipped monk-line-early template. Prefix q_bard_ chosen deliberately over q_brd_ — the boss-respawn tracker already owns the bare brd_* namespace (brd_db, brd_open_*, brd_vis_*, brd_sign.dlg), and q_brd_* next to it in a flat single-directory source tree is a grep trap; every q_bard_* resref still fits the 16-char limit. No pre-existing bard work was found.</div><div><br></div><div>Giver q_bard_mstr (Lindir, Bard 30, elf, plot/immortal, conv q_bard_conv) script-spawned by q_bard_spawn from the rivendellupperha OnEnter wrapper q_bard_enter, which chains the area's existing mw_riv_enter (preserving leash_to_area, d_cleartrash and the Meaningwave Peterson spawn). Spawn no-ops until AP_bardlineearly_1 exists and is tag-guarded against double-spawn.</div><div><br></div><div>Reward scripts q_bard_lrn/stn/rtn (Reply Script fields only); StartingConditionals q_bard_c_off/s1w/s1r/s2w/s2r/dn (Active fields only). All three gates use GetLevelByClass(CLASS_TYPE_BARD) ≥ 1/8/15 — the tightened paladin/monk rule, not GetHitDice. State in bardlinedb (song_stage 0-3), stage-only-advances so rewards are unfarmable.</div><div><br></div><div>Items q_bard_torc (amulet, BaseItem 19, +1 CHA), q_bard_lay (plot token, BaseItem 24), q_bard_rap (rapier, BaseItem 51, model 141, Enh +2 / +1 CHA) — all Use Limitation: Class Bard, <b>subtype 1</b>, verified against cloakofthebard.uti.json rather than guessed, consistent with Cleric 2 / Druid 3 / Monk 5 / Paladin 6 / Ranger 7. Journal category bard_lay (@group 'Class Lines', @order 11). Gates: 7/7 smoke tests, dialog integrity 0 failing, 12 scripts compiled / 0 errors.</div>"
-    manual_steps:
-      - step: "Place a waypoint tagged AP_bardlineearly_1 in Rivendell Upper Halls (rivendellupperha) — somewhere by the fire / seating, out of the main walking line. Lindir of the Hall of Fire spawns there on area entry. He is spawn-only: the entire Bard line is invisible and unreachable in-game until this waypoint exists."
-        status: done
-        blocker: true
-        step_h: 64
-      - step: "UAT: enter Rivendell Upper Halls on any character and confirm Lindir spawns once at the waypoint and does not duplicate on re-entry.\nFAILED: Lindir did not spawn.\n2026-07-23 DIAGNOSIS (autopilot): no code bug. q_bard_spawn/q_bard_inc/q_bard_enter + rivendellupperha OnEnter are byte-identical to the working monk sibling (Orovan @ AP_monklineearly_1), the tag literal AP_bardlineearly_1 is correct and hyphen-less, blueprint q_bard_mstr exists (Tag+resref match, appearance 1=Elf), the OnEnter=q_bard_enter chains mw_riv_enter then q_bard_spawn, and the double-spawn guard only fires after a successful spawn (no pre-placed instance). The failure is admin-side — see the two verification steps below."
-        status: wip
-        step_h: 64
-      - step: "Verify the placed waypoint's TAG in Rivendell Upper Halls (rivendellupperha) is byte-for-byte AP_bardlineearly_1 (lowercase, no hyphens, trailing _1). A common miss is tagging it AP_bard-line-early_1 / AP_bardline_1 / leaving the tag blank — any of those means GetWaypointByTag never finds it and Lindir never spawns (same failure mode as the 2026-07-14 mismatch). It is the Tag, not the ResRef, that the script looks up. Correct it in the toolset if it differs, then re-UAT."
-        status: open
-        blocker: true
-      - step: "If the tag is correct, confirm the live server is running a .mod built at or after commit 82f97f86ded — that commit repointed rivendellupperha's OnEnter from mw_riv_enter to q_bard_enter. A stale module still spawns Peterson (via mw_riv_enter) but never calls q_bard_spawn: exactly 'Peterson yes, Lindir no'. Rebuild/redeploy if stale."
-        status: open
-      - step: "UAT: speak to Lindir on a non-bard — confirm the fire-side greeting with only a farewell option, and no journal entry or item."
-        status: open
-        step_h: 64
-      - step: "UAT: on a Bard 1, take the lesson — confirm journal 'Tales That Live Forever' stage 1 and receipt of the Chorister's Torc, and that a non-bard cannot equip it."
-        status: open
-        step_h: 64
-      - step: "UAT: re-speak below Bard 8 — confirm the brush-off and that no second torc is given."
-        status: open
-        step_h: 64
-      - step: "UAT: at Bard 8, confirm The Unfinished Lay is given once and journal advances to stage 2."
-        status: open
-        step_h: 64
-      - step: "UAT: at Bard 15, confirm the Rapier of the Deathless Song is given, the Unfinished Lay is consumed, and the journal closes at stage 3."
-        status: open
-        step_h: 64
-      - step: "UAT: confirm the line does not repeat after completion — re-speaking gives only the epilogue — and that state survives a relog (bardlinedb)."
-        status: open
-        step_h: 64
-      - step: "UAT: confirm a multiclass with high total level but low Bard level is still gated (e.g. Bard 3 / Fighter 20 cannot get node 2)."
-        status: open
-        step_h: 64
-      - step: "UAT: confirm the Rivendell Upper Halls OnEnter chain still works after the wrapper swap — Meaningwave's Peterson still spawns and area leashing still applies."
-        status: open
-        step_h: 64
-
-  - id: bard-line-mid
-    title: "Bard line II — Tales That Live Forever (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Bard line.</span>"
-
-  - id: bard-line-endgame
-    title: "Bard line III — Tales That Live Forever (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Bard line. Do NOT edit the global nw_s2_bardsong (affects all bards) — encode the capstone as a CEP feat property instead. Depends on the capstone-item-encoding reference.</span>"
-
-  - id: monk-line-early
-    title: "Monk line I — The Empty Hand (L1-15)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: manual
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-18"
-    commit: cb60ebee521
-    notes: "<div>The <b>Monk class line</b> opens with <b>The Empty Hand</b>. Orovan the Windless keeps the bare summit of Emyn Arnen, above the last of the trees, and teaches exactly one thing to those already on that road: a hand which is holding something cannot be used for anything else. Three nodes gated on <i>Monk</i> level — be taken as a student at 1, receive the Unspoken Stone at 8, and bring it back at 15 to have it set into the haft of the Kama of the Windless Peak. Every reward is monk-legal, so nothing on this line costs you your AC bonus or your flurry of blows. See <a href=\"QuestGuide.html#empty-hand\">the quest guide</a>.</div><div><br></div><div>--&gt; WP AP_monklineearly_1 placed in \nemynarnen001, not in the emynarnen (PEAK) area, because the peak had too many combat encounters, and too far well of eru -- refactor docs, UAT tasks, and anything else as needed</div>"
-    impl_notes: "<div>Early chunk (L1/8/15) of the Monk line, structurally cloned from the shipped paladin-line-early template (q_pld_* -&gt; q_mnk_*). Giver Orovan the Windless (q_mnk_mstr, Monk 30, plot/immortal, Lawful Neutral, conversation q_mnk_conv), script-spawned at AP_monklineearly_1 by q_mnk_spawn, fired from the emynarnen OnEnter wrapper q_mnk_enter (chains the area's existing leash_to_area). emynarnen held zero creatures, so no existing NPC was displaced.</div><div><br></div><div>Per-character state in the mnklinedb campaign DB, key hand_stage 0-3, advance-only so rewards cannot be farmed. All three gates use GetLevelByClass(CLASS_TYPE_MONK) &gt;= 1/8/15 — matching the paladin line's tightened rule, not the older lines' GetHitDice. Reply scripts q_mnk_lrn/stn/rtn; StartingConditionals q_mnk_c_off/s1w/s1r/s2w/s2r/dn. DLG rule verified programmatically: conditionals only in Active, reward scripts only in reply Script fields.</div><div><br></div><div>Items q_mnk_cord (amulet, BaseItem 19, +1 WIS), q_mnk_stne (plot token, BaseItem 24), q_mnk_kama (kama, BaseItem 40, Enhancement +2 / +1 WIS) — all monk-legal (no armour/shield/non-monk weapon); Use Limitation: Class Monk subtype 5, verified against epicmonkrobe.uti.json rather than guessed. Journal category mnk_hand (@group 'Class Lines', @order 10). Gates passed: 7/7 smoke tests, dialog integrity 0 failing, 12 scripts compiled / 0 errors.</div>"
-    manual_steps:
-      - step: "Place a waypoint tagged AP_monklineearly_1 in emynarnen (Emyn Arnen: Peak) — on the bare summit rock, ideally facing outward over Anduin. Orovan the Windless spawns there on area entry. He is spawn-only: until this waypoint exists the entire Monk line is invisible and unreachable in-game."
-        status: done
-        blocker: true
-        step_h: 64
-      - step: "UAT: enter Emyn Arnen: Peak and confirm Orovan the Windless spawns exactly once (re-enter the area a few times — he must not duplicate)."
-        status: open
-        step_h: 64
-      - step: "UAT: speak to him on a non-monk character and confirm you get only the civil greeting with no quest offer."
-        status: open
-        step_h: 64
-      - step: "UAT: on a Monk 1 character, take the lesson — journal 'The Empty Hand' opens under Class Lines, and the Cord of the Empty Hand appears (equippable, +1 WIS, refused by non-monks)."
-        status: open
-        step_h: 64
-      - step: "UAT: re-speak below Monk 8 and confirm the come-back-lighter brush-off, with no second cord handed out."
-        status: open
-        step_h: 64
-      - step: "UAT: at Monk 8 collect the Unspoken Stone; confirm journal entry 2 and that re-speaking does not mint a second stone."
-        status: open
-        step_h: 64
-      - step: "UAT: at Monk 15 return the stone — confirm the stone is consumed, journal entry 3 closes the quest, and the Kama of the Windless Peak is granted, equips as a monk weapon, and works with flurry of blows."
-        status: open
-        step_h: 64
-      - step: "UAT: verify the level gates count Monk levels only — a Monk 1 / Fighter 20 multiclass must still be treated as Monk 1 at the second node."
-        status: open
-        step_h: 64
-      - step: "UAT: relog after each node and confirm mnklinedb persistence holds the stage (rewards must not be re-obtainable)."
-        status: open
-        step_h: 64
-
-  - id: monk-line-mid
-    title: "Monk line II — The Empty Hand (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Monk line.</span>"
-
-  - id: monk-line-endgame
-    title: "Monk line III — The Empty Hand (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Monk line, culminating in the class-restricted capstone (Stunning Fist DC encoding). Depends on the capstone-item-encoding reference.</span>"
 
   - id: sorcerer-line-early
     title: "Sorcerer line I — Blood of Elder Days (L1-15)"
@@ -3793,22 +2305,3 @@ ideas:
         status: open
         step_h: 64
 
-  - id: sorcerer-line-mid
-    title: "Sorcerer line II — Blood of Elder Days (L22-38)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: later
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Mid nodes (L22/30/38) of the Sorcerer line.</span>"
-
-  - id: sorcerer-line-endgame
-    title: "Sorcerer line III — Blood of Elder Days (L46-60)"
-    group: quests-areas
-    epic: class-quest-lines
-    status: planned
-    type: Enhancement
-    player: "HomelessSon (Server Admin)"
-    date: "2026-07-11"
-    notes: "<span>Endgame nodes (L46/55/60) of the Sorcerer line, culminating in the class-restricted capstone (+caster-level encoding). Depends on the capstone-item-encoding reference.</span>"
