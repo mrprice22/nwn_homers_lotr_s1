@@ -1,0 +1,105 @@
+#!/usr/bin/env bash
+# Build-time smoke tests for Homer's LOTR, run by `nwn-manager repack` before
+# packing (non-zero exit aborts the repack and blocks install). Add module
+# checks here; each must exit non-zero on failure.
+#
+# nwn-manager invokes this generically: it only knows to run tests/smoke-test
+# from the project root. The actual test logic lives in this repo.
+# NOTE: no `-e` — each check reports ok:/fail: and we accumulate rc, so one
+# failure doesn't hide the others. A non-zero exit still aborts the repack.
+set -uo pipefail
+
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+rc=0
+
+# Each check prints "ok: <name>" or "fail: <name>" so nwn-manager can report an
+# "X/Y smoke tests passed" count. The "running:" line shows progress in verbose.
+echo "[smoke-test] running: spawn-leash coverage…"
+if python3 "$HERE/check_spawn_leash.py"; then
+  echo "ok: spawn-leash coverage"
+else
+  echo "fail: spawn-leash coverage"
+  rc=1
+fi
+
+echo "[smoke-test] running: forge disenchant wiring…"
+if python3 "$HERE/check_forge_disenchant.py"; then
+  echo "ok: forge disenchant wiring"
+else
+  echo "fail: forge disenchant wiring"
+  rc=1
+fi
+
+echo "[smoke-test] running: legendary leveler transaction…"
+if python3 "$HERE/check_hgll_transactional.py"; then
+  echo "ok: legendary leveler transaction"
+else
+  echo "fail: legendary leveler transaction"
+  rc=1
+fi
+
+echo "[smoke-test] running: creature respawn-override divergence…"
+if python3 "$HERE/check_divergent_creatures.py"; then
+  echo "ok: creature respawn-override divergence"
+else
+  echo "fail: creature respawn-override divergence"
+  rc=1
+fi
+
+echo "[smoke-test] running: boss respawn registry…"
+if python3 "$HERE/check_boss_registry.py"; then
+  echo "ok: boss respawn registry"
+else
+  echo "fail: boss respawn registry"
+  rc=1
+fi
+
+echo "[smoke-test] running: MeaningWave quiz banks…"
+if python3 "$HERE/check_mw_quiz.py"; then
+  echo "ok: MeaningWave quiz banks"
+else
+  echo "fail: MeaningWave quiz banks"
+  rc=1
+fi
+
+echo "[smoke-test] running: manual nav menus…"
+if python3 "$HERE/check_manual_menus.py"; then
+  echo "ok: manual nav menus"
+else
+  echo "fail: manual nav menus"
+  rc=1
+fi
+
+echo "[smoke-test] running: palette coverage…"
+if python3 "$HERE/check_palette_coverage.py"; then
+  echo "ok: palette coverage"
+else
+  echo "fail: palette coverage"
+  rc=1
+fi
+
+echo "[smoke-test] running: reward turn-in exploit…"
+if python3 "$HERE/check_reward_exploit.py"; then
+  echo "ok: reward turn-in exploit"
+else
+  echo "fail: reward turn-in exploit"
+  rc=1
+fi
+
+echo "[smoke-test] running: locked-container keys…"
+if python3 "$HERE/check_container_keys.py"; then
+  echo "ok: locked-container keys"
+else
+  echo "fail: locked-container keys"
+  rc=1
+fi
+
+echo "[smoke-test] running: season branding…"
+if python3 "$HERE/check_season_brand.py"; then
+  echo "ok: season branding"
+else
+  echo "fail: season branding"
+  rc=1
+fi
+
+exit $rc

@@ -1,0 +1,5533 @@
+{
+  "__data_type": "JRL ",
+  "Categories": {
+    "type": "list",
+    "value": [
+      {
+        "__struct_id": 0,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@hidden\nLegacy leftover from the original ported campaign: this is the stock BioWare plot-wizard template quest 'Assassination (no proof required)', with placeholder [Villain]/[Plot Giver] text. It is NOT a Bill Ferny quest despite having sat next to them under the same group.\n\nDead code as of 2026-07-18: its two blueprints (nw_innkeeper023 / ct_PlotGiver_AsnNP and nw_bandit030 / ct_Villain_AsnNP) are placed in no area and no encounter pool, so the only AddJournalQuestEntry(\"p000\") call (p000c001ondeath.nss, the villain OnDeath) can never fire. Hidden from the wiki rather than deleted so it stays reversible. The live Bree Ferny plot is the custom \"Ferny's Ring\" -> \"ferny_return\" chain."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "id": 8621
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "id": 3726
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "id": 3729
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "id": 8619
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "p000"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 1,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@group-order 3\n@order 1"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "You have agreed to help out the Miller of Bree with his lost son and shipment of Ale.The miller said that his son and the shipment was destined for Tharbad along the South Greenway Road."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Having taken care of the grim business of delivering the bad news to the Miller. His grieve will hold with him till the next harvest. But perphaps he can find solace in his wife and the Ale he makes."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Bree Millers Son"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Bree Millers Son"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 2,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 7"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Elrond has set me two tasks.\n1. Break the siege of the Urukai threatening the Trollshaws, east of Rivendell, and bring back the Helm of Azog the Warlord.\n2. Venture into the Mines of Moria and descend to Balin's Tomb, deep within Dwarrow Delf. A mutant horror has defiled the dwarven tomb — slay it and recover its head as proof for Elrond."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "My missions to Elrond have been completed, I now have a new place to call home."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Elrond's Request"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 0
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Elrond's Request"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 2000
+        }
+      },
+      {
+        "__struct_id": 3,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 5"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I am to help the Temple Illuvatar feed the hungry citizens of Tharbad. I am to purchase venison from the local general store.And proceed to the bridge of Tharbad.There the hungry refugees await.Imust feed 20 of them to recieve compensation."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The downtroden refugees will not loose sleep over muscle spasms brought on by hunger.Their children will not wither and die.You have given selflessly for a noble cause and overcome another side affect of the war against Sauron."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Feeding Tharbad"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Feeding Tharbad"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 2"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "A man named Bill Ferny has lost a ring to an underling who was chased into a nearby cave. I agreed to go search the cave and return the ring. Although Ferny sure does seem the shifty type."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I brought back Ferny's Ring. Although I am concerned by the enscription.\"Servant of Sharkey\" doesn't sound to appealing. Well I best go collect my reward and then maybe see what I can find out about this Sharkey character."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "An ambush awaited me in Ferny's Hole of a house. I kept the letter in the hopes of finding someone who can tell me more about it."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "An Ambush awaited me in Ferny's Hole of a house. I gave Ferny back his stupid letter, and i shall keep my eye out for more Servants of Sharkey."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Ferny's Ring"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Ferny's Ring"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 2"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "A Guardian of Bree told me Bill Ferny has been seen skulking about his own house -- yet Ferny himself has been standing in the market all the while. A man can't skulk in two places at once. I said I'd go knock on that door and see who answers."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The 'Bill Ferny' squatting in the house is no Ferny at all -- one of Sharkey's ruffians, wearing Ferny's face so his master can keep eyes on Bree. I've settled with him, one way or another. The Guardian of Bree will want to hear of this."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I told the Bree watch what I found in Ferny's house, and they paid me from the watch purse. Word of the deed is sure to reach old Ferny's ears. Sharkey, though... that name keeps turning up."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Ferny's Return"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ferny_return"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 5,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 8"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Travel to the Ruins of Dale and retrieve the heirloom stolen from Gloisin."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "You were well rewarded for your return of Gloisin's heirloom.  Adventuring does have its advantages."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Gloison's Heirloom"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Gloison's Heirloom"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 6,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@hidden"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Guilds ===\nTired of having parties...wanna make something big with many people?\nThen you can make a Guild. Keep it safe and no swearing.\n\nIf you wanna create you own Guild then you must undergo these tasks;\n\n1* Be in the Hall of Legends\n\n2* You must have the ability to run and maintain your Guild or else it WILL BE disbanded.\n\n3* Your Guild must have an ACCEPTABLE name, speak to a DM about it.\n\n4* Find a CO Leader to join you in your quest to create a Guild...CO Leaders must undergo tasks 1 and 5 .\n\n5* All your characters will be deleted but your MAIN Guild Leader character. That will be the MAIN MAIN MAIN character you will use for any Guild affiliation. Before becoming a leader, you may transfer your gear to your MAIN before getting your other characters deleted. Your MAIN MUST LOOK GOOD, and once your MAIN is created, you will automatically get 40 lvls for your MAIN only. After all this, you may create new characters but they must have your Guild name on.(((THIS WILL HAPPEND AFTER MAKE YOUR GUILD))) If you dont understand this then E-Mail Lord Deems with your question.\n\nFeatures of Creating a Guild;\n\nOnce you create your Guild, then you may purchase a Lair for your Guild, there members may meet and socialize and do whatever. Also, with a Lair you get access to special things. To see a DEMO of a normal Guild Lair please visit the Lair Area. \n\nGuild Leaders will receive a 'special item' , only 4 will be in the server. Also Leaders will get DM Powers(Lesser) to help maintaining the Guild. Leaders may make their owns Ranking system and give power to members. There is so MUCH things you can do as a Leader of a Guild.....its great!\n\n\nJoining a Guild....\n\nJoining a Guild will be determined by the Leader and CO Leader of the Guild. DMs cannot interfere with any Guild activity or affiliation, unless permitted by a Lord Deems or a Leader of the Guild.\n\nWanna increase your chances of joining a Guild? Then try hitting to be in Hall of Legends!"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Guilds"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "guilds"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 7,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 6"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "An old woman in Bree told me to seek out the Ruins of Annuminas which lay North along the Greenway Pass. Once an ancient realm of the Dunandain, I might be able to seek adventuring uncovering it's mysteries."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I slew Azagoth and brought his head to old Hanee in Bree. She cackled with delight and raved that the fancy wizard folk at the Tower of the High Wizard in Gondor would give their pointy hats to see it. Perhaps I should take the head to them."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Ruin of Annuminas"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Ruin of Annuminas"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 8,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@group-order 1\n@order 1"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "===  Server Rules ===\nThese rules must be sctrictly and specifically followed, there is no loop hole to trick the rules. Please abide to the rules as much as you can.\n\n1) Never use Cheats or do Cheats of any kind, that INCLUDES item duplicating of any kind and even the lesser kind of cheating. DMs and Mods will be keeping an eye on the Server. We Know them all. If you know any, don't Abuse them. .2da editing is not allowed, YOU WILL BE COUGHT.Report them and you'll be rewarded accordingly.\n\n2) No swearing on shout, incase you dont know what it means, swearing is cursing, bad words, insults, anything stupid. Use shout frequently and for GOOD purposes.\n\n3) If you loose items, please talk to a DM about it. Remember you won't always get the items you lost back. So unless your reason is REASONABLE then you will be helped. No not complaining!\n\n4) And when in a Guild PLEASE YOU MUST FOLLOW SERVER RULES 1- 10 + Guild RULES!!!! Braking this rule will cause you to loose your Membership in a Guild. Same applies to Leaders\n\n5)  Although Role Playing is not required, people that Role Play to any extent are often the most likely to be chosen Ranked in the Hall of Legends, rewards will come in handy.\n\n6) PVP - REMEMBER when you just killed some creature who dropped something you all want, never ninja loot it...remember to ROLL FOR IT, whoever rolls the highest gets it. Its only fair. Thats why I made that Roll script in the emote wand. NINJA LOOTING IS PATETHIC, do not do it. You may not ninja loot your own party or Guild members. Pick Pocketing IS NOT ALLOWED IN THE ARENA AT ANY TIME. Ransoming someones items is not required, but encouraged. Ransoming is Role Playing, and Role Playing gets you Ranks and reward. Monk Speed Thieves are not welcome here, but are allowed. You will simply be disputed and disliked, eventually someone will get you banned.Pick Pocketing, Disarming, and Ninja Looting are all allowed. But as I said, you will simply be disputed and disliked, eventually someone will get you banned.\n\n7) Leading NPCs to other areas by running from them or Domination are not acceptable actions here. Please do not do this, Running for your life is one this leading a NPC to other areas is another. If a creature chases you to another area, please report it to a DM immediatly.\n\n8) If you are in a Guild you MUST answer a shout for aid by an NPC of your faction. \n\n9) Do not disrespect DMs or other Players, the DM is always right.\n\n10)  Following the rules at the best of your abilities will get you rewarded.\n\n"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Server Rules"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rules"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 9,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 9"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "You have agreed to face Azagoth and attempt to stop his entrance to the Well of Souls. May god grace your steps for no one else will walk them."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Azagoth is dead and the Well of Souls is safe. Your task completed, you think perphaps a drink at the prancing pony and stories of your vistory are in order."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Well of Souls"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "The Well of Souls"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 10,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 2"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Join the community on Discord for server updates, announcements, in-game reward codes, and more.\n\n  https://discord.gg/VpAtSpe"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Website"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "website"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 11,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@group-order 4\n@order 1\nMeaningWave meta-quest. Stage 1 added on first module entry; stages 2-8 tick per guide unlock; stage 9 ends at Akira's finale."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "A strange music whispers across Middle-earth — fragments of wisdom carried on a beat that should not exist here. Seven legends are scattered across the world. Find them, prove yourself, and the Hall of Legends will open to you."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "One legend recognises me. Six remain."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Two of the seven walk beside me now in spirit. Five remain."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Three legends have shared their wisdom. Four remain."
+                }
+              }
+            },
+            {
+              "__struct_id": 4,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 5
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Four legends. The music grows clearer."
+                }
+              }
+            },
+            {
+              "__struct_id": 5,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 6
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Five legends gathered. Two voices still hidden."
+                }
+              }
+            },
+            {
+              "__struct_id": 6,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 7
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Six legends recognise me. One voice remains."
+                }
+              }
+            },
+            {
+              "__struct_id": 7,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 8
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "All seven legends are mine. Akira the Don awaits in the Hall of Legends — find the Wayshrine in the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 8,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 9
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Akira the Don passed me the mixtape. The path of meaning is walked, but the journey never ends."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Path of Meaning"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 2
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Path of Meaning"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 2000
+        }
+      },
+      {
+        "__struct_id": 12,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 2"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have encountered Jordan Peterson, the Sage of Order. He asks me to prove I understand responsibility, hierarchy, and meaning before he will walk with me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Peterson recognises me as a willing bearer of weight. I may summon him as a guide when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Jordan Peterson"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Jordan Peterson"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 13,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 3"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Alan Watts, the Mystic of the Tao, waits beside a quiet stream. He will teach me only if I can answer his questions about the play of the universe."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Watts laughed and called me a fellow rascal. He will appear when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Alan Watts"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Alan Watts"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 14,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 4"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Joseph Campbell, the Mythkeeper, sits in an old barrow surrounded by relics. He has set me a hero's-journey of my own to walk before he will accept me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Campbell smiled and said I was following my bliss. He will guide me when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Joseph Campbell"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Joseph Campbell"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 15,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 5"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Terence McKenna, the Bard of the Mushroom, offered me a strange fungus. He says I must eat it and survive the visions to truly meet him."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I returned from the vision. McKenna will appear when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Terence McKenna"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Terence McKenna"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 16,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 6"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Jocko Willink, the Iron Captain, drills his men at a forward camp. He says I must complete his combat trial before he marches with anyone."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "GOOD. Jocko owns me as a brother-in-arms. He will rise when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Jocko Willink"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Jocko Willink"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 17,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 7"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Carl Jung, the Shadow-Walker, holds a dark mirror. He says I cannot know him until I have faced what stands behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I integrated my shadow. Jung walks with me when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Carl Jung"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Carl Jung"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 18,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 8"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Marcus Aurelius, the Philosopher King, sits on a ruined throne. He will judge me only if I can speak about what is and is not in my power."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The Emperor nodded once. He will summon when I rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW: Marcus Aurelius"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 3
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Marcus Aurelius"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 500
+        }
+      },
+      {
+        "__struct_id": 19,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 9\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Jordan Peterson has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Jordan Peterson"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Jordan Peterson Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 20,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 10\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Alan Watts has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Alan Watts"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Alan Watts Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 21,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 11\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Joseph Campbell has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Joseph Campbell"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Joseph Campbell Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 22,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 12\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Terence McKenna has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Terence McKenna"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Terence McKenna Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 23,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 13\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Jocko Willink has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Jocko Willink"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Jocko Willink Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 24,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 14\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Carl Jung has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Carl Jung"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Carl Jung Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 25,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'MeaningWave'\n@order 15\nLoyalty quest scaffold; content TBD."
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Marcus Aurelius has a task for me. (Content forthcoming.)"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "MW Loyalty: Marcus Aurelius"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "MW Marcus Aurelius Loyalty"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 26,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 11"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Sald, a potion merchant on Kallrist Island, will pay 200 gold for every Kallrist Tiger Heart I bring him. The tigers prowl the island's shores, interior, and crypts. This is open-ended work — I can return with hearts whenever I please."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Kallrist Tiger Hunt"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "Kallrist Tiger Hunt"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 27,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 4"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The keeper of the Green Dragon Inn asked me to recover a ring stolen by one of Sharkey's men. Sharkey's henchmen are lurking nearby — I will need to deal with them and bring the ring back."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I recovered the stolen ring and returned it to the keeper of the Green Dragon Inn. He rewarded me well, and I am always welcome there now."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Green Dragon Inn"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "gdquest1"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 28,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 10"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the Erab Oasis of Gwathdor I learned that the Gwathdor Lord is preparing to destroy the oasis that holds the evil of the Gwathdor Caves at bay. I agreed to help stop his servants before their attack can come."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Oasis of Gwathdor"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "gwathquest"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 29,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 3"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "A headstone in Bree radiates a foul curse, and the restless undead will not lie quiet. Perhaps a dispelling — or a remove curse — cast upon the grave would put the spirits to rest."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I cleansed the cursed grave in Bree. The unquiet dead trouble it no longer."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Cursed Grave"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "cursedgrave"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 250
+        }
+      },
+      {
+        "__struct_id": 30,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 3"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Spells & Magic ===\n\nEpic spells are enhanced and cannot be dispelled:\n  Dragon Knight: Level-60 Red Dragon Fighter, 540 HP, 30-round duration.\n  Mummy Dust: Level-60 undead warrior, 520 HP, 30-hour duration.\n  Epic Ward: DR 60/+20, duration scales with caster level.\n  Hellball: 10d20 of each of 4 damage types; knocks down if total exceeds 200.\n  Greater Ruin: ~5250 avg damage to single target; Fort save divides by 300.\n  Curse Song: 23-tier scaling by Perform+level. Top tier: -15 atk, -15 AC, -7 saves, 98 sonic dmg in 30 ft AoE.\n  Summon Creature I-IX: Fixed 24-hour duration.\n  Time Stop: Disabled.\n  Duration: Every temporary effect you or your companions create lasts twice as long (stacks with the Extend metamagic, so an Extended buff is 4x base). Effects enemies place on you are unchanged.\n\nUnchanged from stock NWN: True Seeing, Stealth/Hide, subraces, critical hits.\n\nSee wiki: Manual > Customizations > Spell Changes"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Spells & Magic"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "modcustoms"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 31,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 20"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I struck a dread figure enthroned in the Dimholt and my blows did it no harm at all. \"No mortal weapon can wound the King of the Dead,\" it mocked. If any can master the Oathbreakers, it would be the heir of Isildur. I should seek him at the gates of Minas Tirith."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 10
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Aragorn, son of Arathorn, bears Anduril, the Flame of the West, reforged from the shards of Narsil. He will entrust a copy of the blade only to one who proves worthy: I am to slay the Witch-king of Angmar, chief of the Nazgul, and return with proof of the deed."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 30
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I would not wait on Aragorn's leave. I cut him down and took the Flame of the West from his body. The blade is mine now -- but Gondor will not forget what was done at her gates."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 40
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I brought the crown-shard of the fallen Witch-king to Aragorn, and he placed the Flame of the West in my hands. Now I can return to the Dimholt and lay the King of the Dead to rest."
+                }
+              }
+            },
+            {
+              "__struct_id": 4,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 50
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "With Anduril in hand I faced the King of the Dead, and this time my blade bit true. The Oathbreakers of the Dimholt are at peace at last."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Paths of the Dead"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "paths_of_the_dead"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 32,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 4"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Character Progression ===\n\n  Max HP on every level-up (no die roll).\n  Item ability score bonus cap raised from +12 to +24.\n  Legendary Levels 41-60 via HGLL — gain HP, skill points, ability scores, and 1 feat/level.\n    Does NOT extend caster level, spell slots, or class progression.\n    XP cost: ~49k at level 41, over 3M at level 60 (~17.5M total to reach 60).\n\n  Monk Weapons: Three weapons reclassified from stock NWN:\n    Shuriken     - monk weapon; benefits from Weapon Finesse.\n    Quarterstaff - monk weapon; benefits from Weapon Finesse.\n    Katana       - monk weapon; still requires Exotic Weapon Proficiency; no Weapon Finesse.\n\nSee wiki: Manual > Customizations > Character Progression"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Character Progression"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_progress"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 33,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 5"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Death & Respawn ===\n\n  Bleed-out: drop at 0 HP, lose 1 HP/round, die at -20 HP (standard is -10).\n  10% chance to stabilize each round without assistance.\n  Death state persists across logouts — no relog escape.\n  Respawn: return at 5 HP, no XP loss, 10% gold penalty dropped as a lootable bag at your death location.\n\nSee wiki: Manual > Customizations > Death, Dying & Respawn"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Death & Respawn"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_death"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 34,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 6"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Appearance & Crafting ===\n\n  Player Appearance: Talk to a cow in Bree — 315+ creature forms, free and permanent.\n  Alignment changes also available (enables monk/barbarian, paladin/blackguard, etc.).\n  Item Appearance: CEP crafting system, zero fail chance.\n\nForge of Wonders (item enchanting — 3 tiers):\n  Tagget's Smithy (Bree)  — Low:  250k gp cap, 4 properties max. Open to all.\n  Rivendell Smithy        — Mid:  500k gp cap, 5 properties. Requires Elrond's Writ.\n  Moria Forge             — High: 750k gp cap, 6 properties. Requires Forgekey (from Balrog).\n  Appraise skill (take 20) raises each cap up to +500k gp at Appraise 65.\n  Cost = increase in item's assessed value. Disenchanting strips one property; no refund.\n  Contraband: items over 750k gp or 6 enchantments trigger Pit Prison at Well of Eru.\n\n  Rod of Fast Buffing: store buff spells by casting at it; activate out-of-combat to replay all.\n\nSee wiki: Manual > Customizations > Appearance & Crafting"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Appearance & Crafting"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_forge"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 35,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 7"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Custom Systems ===\n\n  Appraise & Selling: Appraise check (take 20) lifts shop sell cap up to double at Appraise 65.\n  Banking: Deposit/withdraw gold and XP at bank NPCs. Family accounts shared across all your characters.\n  Merit Reward System: DMs award points for bug reports and ideas; redeem at Keeper-of-Records.\n  MeaningWave: 8 philosopher NPCs — answer their questions to unlock them as summonable companions.\n  Instant Resting: No cooldown. Rest menu also offers teleport and henchman summoning.\n  Dungeon Solitaire: A card-game-style encounter arena in Moria.\n\nSee wiki: Manual > Customizations > Notable Custom Systems"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Custom Systems"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_systems"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 36,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 8"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Good/Evil Factions ===\n\n  Two factions: Good (Gondor, Rivendell, Lothlorien) and Evil (Mordor, Isengard).\n  D&D alignment on your character sheet has NO effect on NPC hostility — it is cosmetic only.\n  Set your faction each session in the Well of Eru by clicking an orb:\n    Shaft of Light (white) = Good\n    Shaft of Light (red)   = Evil\n  Use Guardian of Light or Guardian of Darkness to reach faction-appropriate teleport hubs.\n\nSee wiki: Manual > Customizations > Good/Evil Faction"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Good/Evil Factions"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_factions"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 37,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 25"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Glorfindel, Captain of the Guard of Rivendell, asked me to gather three ingredients for Lord Elrond's curative potion: the Athelas plant along the riverbank of the Foothills of the Misty Mountains, the headstone of the Statue of Arathorn in the Barrow Downs, and the essence of a drake from the caves of the Carrok."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have gathered 1 of the 3 ingredients for Glorfindel's curative potion."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have gathered 2 of the 3 ingredients for Glorfindel's curative potion."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have gathered all 3 ingredients for the curative potion. I should return to Glorfindel in Rivendell."
+                }
+              }
+            },
+            {
+              "__struct_id": 4,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 5
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I delivered the ingredients to Glorfindel and was rewarded with the Bracers of Glorfindel for my service to Rivendell."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Glorfindel's Curative"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "glorfindel_potion"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 1"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Han the Bree Miller has a second grief: his other son, Dob, took his brother's death hard and fell in with a rough crowd trading down the Tharbad road -- and word in Bree says they are no traders at all, but cultists of the Red Eye. Han begged me to find his boy and bring him home, or at least bring back the truth of him."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "A peddler at Tharbad Bridge has seen the boy: he is with Red Eye cultists camped in the ruins east of the bridge, kept close by their leader -- a man they call the Voice. That is no company for a miller's son."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I talked the Voice of the Red Eye down -- whatever hold he had over Dob, my words broke it. The boy is running home to Bree ahead of me. Han will want to hear of this."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The Voice of the Red Eye would not give the boy up, so I answered him in steel. Dob is cut loose from the cult camp and on the road home to Bree. Han will want to hear of this."
+                }
+              }
+            },
+            {
+              "__struct_id": 4,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 5
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I found Dob among the cultists east of Tharbad -- and I left him there. Perhaps some folk cannot be saved; perhaps I simply chose not to try. Either way, Han deserves to hear it from me."
+                }
+              }
+            },
+            {
+              "__struct_id": 5,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 6
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Dob came home to Bree, footsore and ashamed, and Han paid me from the ale money -- and threw in the trading pack that was to be the boy's. There will be a keg with my name on it come harvest."
+                }
+              }
+            },
+            {
+              "__struct_id": 6,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 7
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I told Han the truth: his boy chose the Red Eye over the mill. He did not weep this time. Some griefs are colder than a grave."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Miller's Other Son"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "bree_miller_son2"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 12"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The common room of the Whitfurrow Inn is at war over the last drop of the Frogmorton harvest cask -- the Floating Log's own brew, and the last barrel of it anywhere. Rigrin the innkeeper judges the matter by 'the custom of the cask', which turns with the month, and he's asked me to hear out the five claimants and name the rightful drinker. One judgment a day, he says."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The day's judgment on the Frogmorton cask is done -- Rigrin poured the drop where the custom pointed, whether or not that was where I pointed. By tomorrow the custom will have a new wrinkle and the room a new argument."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Last Drop at Frogmorton Inn"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "frogmorton_ale"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 13"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Posco Whitfoot has the Hobbit Post running out of Hobbiton -- one sealed parcel a real day, delivered for honest pay. Today's parcel is in my pack; Posco read me the address off the label, and if I lose track of it he'll read it again. Sixty pennies on delivery, forty more if the seal is still warm when it lands -- and if the label has gone astray (it happens, with Posco), whoever it truly belongs to will see me right for sorting it."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Another parcel delivered for the Hobbit Post and the fee pocketed. Posco will have a new parcel with a new address on it tomorrow -- the Shire's post never sleeps, though its post-master frequently does."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Hobbit Post"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "hobbit_post"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 14"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Thranduil, King of Eryn Lasgalen, has set me a day's hunting: the great spiders that choke Mirkwood spin silk stronger than steel wire, and his weavers pay a bounty of three hundred gold for six bolts of it. The named horrors of the wood -- the Giant Spiders and their Queens, the Lava Climbers, the Death Weepers, the Black Spear and the Sword Spiders -- yield the silk where they fall, anywhere beneath Mirkwood's boughs. When I carry six bolts, the King's stewards will weigh and pay."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I laid six bolts of spider silk before the throne of Eryn Lasgalen and was paid three hundred gold for the day's hunt. The King's weavers can card no more before the morrow -- but Mirkwood breeds spiders faster than any hunter can cull them, and Thranduil will pay again tomorrow."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Spider Silk Harvest"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mirkwood_silk"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 15"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "In the cave beneath Bree-hill a pale whispering wretch has challenged me to the old game: seven riddles, asked and answered. If I guess five of the seven rightly it must give up a present from its hoard, along with a purse of gold; guess fewer and I win nothing but its laughter. It will only play once while the week lasts -- it says the riddles must ripen."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The riddle-game beneath Bree-hill is played and done. Win or lose, the wretch will not play again until the week turns -- but it will be waiting in the dark with seven new riddles, precious, and its hoard is not yet empty."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Riddle Game"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "riddle_game"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 16"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Grimbeorn the Old, Lord of the Beornings, has set me a day's work in his father's garden: a warg pack has been raiding the bee-meadows below the Carrock. I am to harvest the three great honey hives about the homestead and the Carrock heights -- the broken hives will draw the raiders in -- and bring him six warg pelts and the honey. He pays each day the work is done."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Grimbeorn weighed the pelts and the honey and paid in gold and good things from Beorn's stores. The garden will want the same tending again tomorrow -- wargs breed faster than bees."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Beorn's Garden"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "beorn_garden"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 17"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "In the Chamber of Records I met Frár, a restless shade of Balin's colony. A hidden codicil to the Book of Mazarbul names twenty burial plots whose seal-fires keep the dead of Moria at rest; nineteen were lit before the colony fell, but the twentieth never was. I am to light the three seal-braziers — one in the Chamber of Records, two in Balin's Tomb — and face whatever rises when the third one burns."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The third seal-brazier burns — and a wraith has risen from the twentieth plot to smother the flames. I must destroy it. If it slips from sight, stirring any brazier's flame will draw it back."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The Wraith of the Twentieth Plot is destroyed. I should return to Frár's shade in the Chamber of Records."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Frár's shade is at rest. The twentieth plot of Mazarbul is sealed at last, and he pressed the warden's seal — the Seal of the Twentieth — into my hand in thanks, with what gold the colony still owed its friends."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Twentieth Plot of Mazarbul"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mazarbul_20"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 18"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has set me the Harpers' first errand: find his friend at the corner table of the Prancing Pony in Bree -- a traveller in a fern-green cloak -- sit with her in patience, and bring him back the word she trusts me with."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The watcher at the Prancing Pony tested me with a line of road-cant -- each word written tail-first, the line read from its far end -- and I read it true: 'The Grey watches the West Road.' She trusted me with the counter-word, 'The road remembers,' and word of me goes north and south tonight, to Rivendell and the Golden Wood. I should carry the word back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir heard the word and entered my name on the rolls of the Harper Scouts. He gave me the Harper Pin -- a harp and a crescent, worn beneath the collar, not upon it -- and the quiet watchers of the North now count me among their own."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Cipher in the Inn"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_harper"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 19"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has set me the Knights of Westernesse's proving: the banner of the West must fly over the Pelennor again, by my hand. I am to report to Wart, the Gate Captain at the Gates of Minas Tirith, and do as he bids."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The Gate Captain will not move a standard of the City without spears around it -- nor trust them to a knight who has not mustered them himself. I am to rally three of his gate-watch guardsmen to the banner-detail, naming it to them plain, then return to him."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Three spears of the gate-watch answer my command. I should report back to the Gate Captain at the Gates of Minas Tirith."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 4
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The captain has released the standard of the West to my detail; they carry it out to the old banner-stone by the Rammas, on the Pelennor Fields. The last part is mine alone: set the banner in the stone with my own hand."
+                }
+              }
+            },
+            {
+              "__struct_id": 4,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 5
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The banner of the West flies over the Pelennor again, set by my hand. Halmir the Grey at the Well of Eru should hear of it."
+                }
+              }
+            },
+            {
+              "__struct_id": 5,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 6
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir heard it, and rose, and named me before the roll: my name is entered among the Knights of Westernesse. He gave me the Banner of the West -- a tall shield of the old out-wall's line -- and behind it, other hands hold steadier."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Banner of the West"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_pdk"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 21"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has set me the Pale Masters' errand: beneath the Bree Crypt lies a lower vault where the old families sleep under carved names. Twenty tombs bear names and one bears none -- I am to open the twenty-first with my own hands, take a measure of the pale dust within, and carry it back to him unspilled."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Beneath the unmarked lid of the twenty-first tomb I found only pale grave-dust, and took a measure of it, unspilled. I should carry it back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the dust and entered my name on the rolls of the Pale Masters. He gave me the Talisman of the Twenty-First Tomb, and the scholars of the sealed crypt now count me among their own."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Twenty-First Tomb"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_palemaster"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 22"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Shadowdancers' trial: under the mountains in Moria, beside Balin's tomb, stands a Deep Well no plumb-line ever fathomed. I am to go down through the dark and stand at the well's lip bearing no light at all -- no torch, no glowing blade, no conjured flame -- and carry back to Halmir whatever the unlit deep leaves in my hand. If I come to the well carrying light, the dark will give me nothing."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the Deep Well beside Balin's tomb, in darkness unbroken by any light of mine, something wound itself about my fingers -- a skein of the unlit deep, like black thread spun on nothing. I should carry it back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the skein and entered my name on the dim page of his roll. He gave me the Boots of the Unlit Road, and the Shadowdancers now count me among those who have crossed the dark unaided."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Unlit Deep"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_shadowdancer"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 23"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Arcane Archers' trial: on the proving ground of Rivendell stands the oldest target the wardens ever set, and deep in its gold ring a grey-fletched shaft loosed by a warden of the Galadhrim in an elder year. I am to draw the shaft from the mark and carry it back to Halmir at the Well of Eru. The mark will yield it only to a hand that comes as an archer comes -- bow in hand, arrow nocked, quiver full; come any other way and the shaft will not move."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the old target on Rivendell's proving ground, with my bow in hand and an arrow nocked, the warden's shaft came free like a note leaving a string -- grey-fletched, straight as the day it flew, and faintly humming. I should carry it back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the warden's shaft and entered my name on the grey-feathered page of his roll. He gave me the Bracers of the Grey Fletching, and the Arcane Archers now count me among those whose arrow and art are one motion."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Warden's Mark"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_arcanearcher"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 24"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Red Dragon Disciples' trial: in the great hall of the Lonely Mountain stands the Forge of Durin, and under its banked coals an ember of the old wyrm's fire -- the fire that ruined Dale -- still glows, and has not gone out in all the years since. I am to rake the ember out and carry it back to Halmir at the Well of Eru. The fire gives itself only to its own kin: I must shed every ward against the elements and reach in with a bare hand -- the blood must feel the flame."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the Forge of Durin in the Lonely Mountain's great hall, with a bare and unwarded hand, I drew the Ember of the Old Wyrm from under the banked coals. It did not burn me -- it beats instead, slow and patient, like a second heart that has recognized its own. I should carry it back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the ember in his bare palm and entered my name on the scorched page of his roll. He gave me the Wyrmblood Amulet, and the Red Dragon Disciples now count me among those whose blood has felt the flame and answered it."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Old Wyrm's Fire"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_dragondisciple"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 25"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Assassins' trial -- and it is not a killing; any brawler can kill. A sealed writ has been left at one of the quiet knives' dead drops: the old wine barrel standing against the houses of Bree. I am to lift it as the order would -- moving in shadow, unseen, with no eye able to mark my hand when I reach for it. If I come to the barrel openly, the drop will stay empty. The writ must return to Halmir at the Well of Eru sealed and unread."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the old wine barrel in Bree, moving unseen, I drew out the Sealed Writ from beneath the rim. The black wax is unbroken and the name inside unread, as instructed. It should go back to Halmir at the Well of Eru -- quietly."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir broke the seal himself, read the single name written there, and held the writ to the candle until it was ash. The name was my own: the quiet knives' trial is to collect your own death warrant unseen, and the order strikes it from the ledger exactly once. He gave me the Gloves of the Quiet Hand, and the Assassins now count me among them -- on the page no one will ever read."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Quiet Knives"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_assassin"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 26"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Weapon Masters' trial. Below the white walls of Minas Tirith the Guard keeps its training row -- scarred practice posts that have taken the cuts of every swordmaster Gondor ever raised. I am to strike the first post and cut my notch with the weapon my soul is sworn to -- my chosen weapon, the one my hand has mastered -- and no other. Bare hands or a borrowed blade will earn nothing from the wood. The notch I cut must go back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the training row below Minas Tirith my sworn blade went through the seasoned oak in one stroke, and the post gave up a notch -- a chip of scarred wood with a century of other masters' cuts in the grain. It goes back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir read the grain of the notch the way other men read letters: one stroke, one blade, no second mark beside it. The Weapon Masters count me among them now -- one blade, one life. He gave me the Buckle of the Sworn Blade, and the training row below Minas Tirith keeps my cut with all the others."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Sworn Blade"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_weaponmaster"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 27"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Divine Champions' vigil. In the temple of Minas Tirith stands the Altar of the Istari, its stone polished by the hands of the faithful. I am to keep the vigil there as the order keeps it -- a shield borne on my arm, for the champion's vow is not to strike harder but to stand between. A bare arm, or a second blade where the shield should ride, earns nothing from the altar. The oath-light the vigil kindles must go back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the Altar of the Istari my vigil was kept rightly -- shield on arm, nothing in my keeping that takes -- and the altar gave up an oath-light: a small flame that weighs nothing and does not gutter. It goes back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the oath-light in both hands, and for a moment his grey cloak remembered being white. The Divine Champions count me among them now -- the shield of others, sworn before the White Tree. He gave me the Mantle of the Westward Vow, and the altar in Minas Tirith keeps its light."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Shield of Others"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_divinechampion"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 28"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Dwarven Defenders' trial. In Moria, in Balin's Tomb, lies Balin son of Fundin under a stone that was not broken. I am to stand at his grave as his guard stood -- clad in the war-weight of Khazad, heavy armor, splint or plate -- and lay my hand on the stone. Come in traveler's leathers or a wizard's cloth and the stone will not know me. The shard the stone gives up must go back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At Balin's Tomb my stand was kept rightly -- heavy iron on my shoulders, my hand on the unbroken stone -- and the tomb gave up a single clean-edged shard, heavier than stone has any right to be: the Shard of the Unbroken Stone. It goes back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir set the shard on his roll, and it sat there like a mountain on a map. The Dwarven Defenders count me among them now -- the last hold of Khazad, the feet that are not moved. He gave me the Warhelm of Durin's Watch, and Balin's stone keeps its rest."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Unbroken Stone"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_dwarvendefender"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 29"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has named the Shifters' trial. At Beorn's steading in the shadow of the Carrock lies a still pool where the master of the house drinks on four legs as often as two. I am to look into the water wearing another skin -- wild-shaped, a borrowed face over my own -- for the pool shows a true form nothing but itself. The tuft of the first skin the water gives up must go back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At Beorn's pool my trial was kept rightly -- another skin over my own when I looked into the water -- and the pool gave up a tuft of coarse dark hair, warm as though it remembered being worn: the Tuft of the First Skin. It goes back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the tuft, and it stirred in his palm. The Shifters count me among them now -- those who wear another shape and keep their own name inside it. He gave me the Charm of the Carrock, and Beorn's pool keeps its stillness."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Second Skin"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_shifter"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 30"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir the Grey, keeper of the rolls of the old orders, has told me how a Blackguard's fall is written. In the Keep of Barad-Dur -- the Dark Tower itself -- the instruments of cruelty still stand. I am to lay my hand on the torture-rack there and swear the Black Oath: no quarter given, none asked, the light I once carried spent for good. But I must come to it bleeding, for the oath takes blood freely given or nothing at all. Whatever the iron brands into my hand, I am to carry back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the rack in the Keep of Barad-Dur I swore the Black Oath with my own blood on the iron, and something in me turned and did not turn back -- the fall the Black Captain's book is written to remember. A brand of cold black iron came away in my hand. It goes back to Halmir at the Well of Eru."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halmir took the cold brand in both hands, and for a moment his grey cloak seemed greyer still. The Blackguards count me among them now -- the forsworn, the fallen. He gave me the Sigil of the Fallen, which others may know at a distance. What I gave up at the Dark Tower will not come back; but that was the price, and I paid it knowing."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Fall"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pc_blackguard"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 30"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Bill Ferny has a quiet, ugly job for quiet, ugly pay: three forged letters -- poison-pen accusations in fine respectable handwriting, none of it his -- to be planted under three DIFFERENT tables in the Prancing Pony. Each must be slipped into place while I move unseen, in shadow; come at a table openly and the plant fails. When the letters are found, Bree's neighbors will do the rest to each other."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The third forged letter is wedged under its tabletop and the taproom is already muttering. The letters name names -- the Sheriff of Bree will come storming in at any moment, and he will not be storming in alone. Ferny didn't pay for me to be found standing over the evidence. Slip out, let the pot boil, and collect what he owes."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Ferny paid out in morgul-silver -- and seemed genuinely delighted by the shouting from the Pony. Bree will patch itself up, probably; the letters were lies, mostly. He hinted there'd be more paper needing planting once the Watch stops prowling the common room -- one batch a day is about all the town can bear."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Sowing Discord in Bree"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "sowing_discord"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 16"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Odo Proudfoot, keeper of the Hobbiton family-books, has set me to settle a dispute at the Ivy Bush: five questions of Shire lineage, Bagginses and Boffins and Tooks and all. Answer four of the five rightly and he'll count me a friend of the family-books and reward me from the family stores. He'll only put the questions once a day -- and the matter under dispute shifts with every season."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The day's genealogy dispute is settled, for good or ill. Odo won't put the questions again until tomorrow -- and come the turn of the season he'll have a whole new argument from the Ivy Bush to try me with."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Concerning Hobbits"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "concern_hob"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 17"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Baldor the Caravan-Master, at the western foot of the High Pass, has hired me to see his wagons safe across the Misty Mountains to the eastern waystation. I chose the risk of the road myself -- the greater the danger, the greater the pay -- and goblin-kin (or worse) are sure to fall on the caravan somewhere on the pass. I must fight my way across and report to Wilrun the Quartermaster on the far side. Baldor will only hire once a day."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The caravan is down off the mountain and Wilrun has counted out my pay at the eastern waystation. The High Pass is quiet again -- until tomorrow, when Baldor will have another train to move."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Pass the Pass"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pass_pass"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 1"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Hallas the Shieldwarden, a grey veteran of Gondor's Guard who keeps a corner of the Prancing Pony, has taken my oath of the Unbroken Shield -- to hold the line when it would break, and to stand for those who cannot. He has given me a plain warden's buckler and set me on a soldier's road. I am to grow in the fighter's trade and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have returned to Hallas at the eighth level of my strength. He has entrusted me with a notched, broken blade -- all that came back of a captain who fell holding a ford against the shadow. I am to bear the shard faithfully and bring it back to him when I have grown into a captain's own years, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the broken shard back to Hallas, and his smith reforged it whole: the Warden's Reforged Blade, honest steel that answers a fighter's hand. I have walked the first road of the Unbroken Shield. Hallas speaks of harder oaths and heavier charges yet to come, when the wars of the South and East come calling -- but that is a tale for another day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Unbroken Shield"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "ftr_shield"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 4,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 2"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Fenn the Shade, a hooded watcher who keeps to a doorway of the Prancing Pony, has taken me into the Long Shadow -- a quiet net of thieves and watchers who count the Enemy's spies so honest folk need not. He has given me an ash-grey Shadowmantle and set me on the quiet road. I am to grow sharp in the rogue's craft and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have returned to Fenn at the eighth level of my craft. He has entrusted me with a Long Shadow cipher-token -- a watchword of the net that came back alone when one of his people went quiet on the East Road. I am to carry it unseen through the wide world, drawing no guard's eye, and bring it back to him when I have grown into the trade, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the cipher-token back to Fenn, home and unseen. His fence worked the good steel hidden in its core into a slim, blacked blade -- the Nightthorn, patient steel that throws back no light. I have walked the first of the quiet road. Fenn speaks of longer shadows yet to come, when the East and the spider's country come calling -- but that is a tale for a darker night."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Long Shadow"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rog_shadow"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 38,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 3"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Findegil the Grey, a loremaster who keeps a quiet study by the hearth of Bag End, has taken me up as a student of the Colour of Power -- the deep lore by which the Istari came to wear their hues. He has given me an Apprentice's Amulet to steady my mind to the Art, and set me on the first of the wizard's road. I am to grow deep in the craft and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have returned to Findegil at the eighth level of my craft. He has entrusted me with the Loremaster's Tome of the Grey Study -- his own close-written study of the Colour of Power, much of which I cannot yet read. I am to carry it into the wide world, study as I walk, and bring it back to him when I have grown into the Art, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the Loremaster's Tome back to Findegil, my study deepened by long roads. He bound its lore into the Staff of the Grey Study -- tall grey ash, its head wound with quiet power, though no colour is set upon it yet. I have walked the first of the wizard's road. Findegil speaks of a choice yet to come, when my power comes into its full: White, or Brown, or the Many Colours -- but that is a choice for a far greater day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Colour of Power"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "wiz_colour"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 39,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 6"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Aldamir, Keeper of the Flame, who tends the Secret Fire in the Temple of Illuvatar, has taken me up as a tender of the sacred fire -- the Flame of Anor the faithful set against the Shadow. He has given me an Acolyte's Censer-Amulet to steady my heart to the calling, and set me upon the first of the priest's road. I am to grow deep in faith and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have returned to Aldamir at the eighth level of my calling. He has entrusted me with the Reliquary of the Kindled Ember -- a warded relic holding a single undying splinter of the Secret Fire. I am to carry it into the wide world, keep its flame as I walk, and bring it back to him when I have grown into the calling, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the Reliquary of the Kindled Ember back to Aldamir, my faith deepened by long roads. He kindled its ember into the Mace of the Kindled Flame -- pale steel, its censer-head warm with the Secret Fire, though no greater consecration is set upon it yet. I have walked the first of the priest's road. Aldamir speaks of consecrations yet to come, when my calling comes into its full: the aura of Narya, and gifts beyond it -- but that is for a far greater day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Flame of Anor"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "clr_anor"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 39,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 7"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Halbarad, a warden of the Grey Company, keeps a lonely watch at the Ranger waystation. He has taken me up into the grey vigil -- the uncrowned path of the Rangers of the North, who guard the free lands unthanked while the world sleeps easy. He has given me a Brooch of the Grey Watch to steady me to the road, and set my feet upon the first of it. I am to walk it hard and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I returned to Halbarad at the eighth level of the craft. He has entrusted me with the Star of the Dunedain -- a warden's token of the Grey Company, worn hidden, as every man who keeps a road no one knows is kept. I am to carry it into the wild, keep the watch as I go, and bring it back to him when I have grown into the road, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the Star of the Dunedain back to Halbarad, the watch still kept. He had it worked into the Bow of the Uncrowned -- grey yew, the silver star set into the grip -- though nothing greater is laid upon it yet. I have walked the first of the uncrowned path. Halbarad speaks of what lies further down that road, when the hour comes round: the Elendilmir, the Grey Company mustered and riding, and a crown at the end of it -- but that is for a far greater day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Uncrowned Path"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "rng_path"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 40,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 8"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Naldor the Green, an old Woodman of the vales of Anduin and a pupil of Radagast, keeps the trees about Rhosgobel. He says the world breathes -- leaf and root and beast, all turning slowly together -- and that I already hear a little of it. He has taken me up into the Green Listening and given me an Amulet of the Green Listening to quiet my head enough to hear the wood. I am to go walk hard in the wild lands and return to him when I have eight levels behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I returned to Naldor at the eighth level of the craft. He has entrusted me with the Seed of the Elder Wood -- a single dark seed off a tree older than the Shire, and older than most of the names in it. I am to carry it out through the wild lands, listening as I go, and bring it back to Rhosgobel when I have grown into it, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the Seed of the Elder Wood back to Naldor the Green, still listening. He has grown it -- not carved, grown -- into the Staff of the Breathing World: pale mallorn with the dark seed set fast in the head, the grain still creeping slowly around it. Nothing greater is woken in it yet. I have walked the first of the Green Listening. Naldor speaks of greater wakings down the years, when the hour comes round: the Entmoot roused, the Old Forest set walking, the whole wild wroth and moving against those who burn it -- but that is for a far greater day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Breathing of the World"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "drd_breath"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 40,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 9"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Hallas the Oathkeeper, an old knight of the Citadel, keeps his post in the Keep of Minas Tirith and watches an eastern sky that has shown him nothing for years. He had me swear the oath of the West out loud on the wall, in the wind, where anyone might hear it -- that, he says, is the whole point of an oath. He has given me a Token of the White Tree to keep where I can feel it. I am to go and get some of the world on me, and return to him when I have eight levels of the oath behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I returned to Hallas at the eighth level of the oath. He set the words down in ink, sealed the parchment with the White Tree, and put it in my hands unopened -- the Sealed Oath of Fealty. I am to carry it wherever I am sent, never break the seal, and bring it back to Minas Tirith whole when I have made the words in it true rather than merely said, at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I brought the Sealed Oath of Fealty back to Hallas the Oathkeeper with the wax unbroken. He did not read it. He took it to a smith in the second circle who owed him an old favour, and it is closed now into the pommel of the Sword of the Oathsworn -- plain Gondorian steel, and my own oath inside it where I cannot set it down without noticing. I have kept the first of the oath of the West. Hallas speaks of greater charges to come when the hour comes round: the ride to the Pelennor, the breaking of the Black Gate, and the ending of the thing on the wind that no man may kill -- but that is for a far greater day."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Oathsworn to the West"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "pld_oath"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 41,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 10"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Orovan the Windless keeps the bare summit of Emyn Arnen, above the last of the trees, where there is nothing at all to hold on to. He came west out of the far East a long time ago and stopped walking there. He had me set down everything I was carrying on the rock -- and then everything I was carrying that was not in my hands, which took considerably longer -- and gave me a plain cord with nothing hung on it. A hand that is already full, he says, cannot be used for anything else. I am to go down and come back up when I have eight levels of the discipline behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I climbed back to the peak at the eighth level of the discipline. Orovan gave me a grey river pebble out of Anduin, with nothing written on it and no virtue in it whatever, and told me to carry it until I stop noticing that I am carrying it. He will not say what happens then. I am to bring the Unspoken Stone back up the mountain at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I came up the peak and held the stone out without mentioning it, and Orovan said that was the correct way to return it. He set it flush into the haft of a kama that had apparently been lying on the rock behind me since the first day, where the hand will never feel it, and handed it over on the grounds that it was now the least interesting thing about me. I have kept the first of the empty hand. Orovan speaks of what comes later when the hour comes round -- the unbreathing form, the still point, and the open palm that stops a blade -- but he will not be hurried up a mountain."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Empty Hand"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mnk_hand"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 42,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 11"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Lindir of the Hall of Fire keeps the upper halls of Rivendell, where the singing never entirely stops. He told me the only thing about the craft he thinks is worth knowing free of charge: a song that is only ever sung by the one who made it dies with them, and my whole job is to hand it on in a state fit to be handed on again. He taught me the opening phrase of the Lay of the Second Spring -- eleven times, stopping me each time -- and put a thin silver torc about my neck with that same phrase cut into it. I am to go out and let the world happen to me, and come back when I have eight levels of the craft behind me."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I came back to Lindir at the eighth level of the craft. He took a folded leaf of vellum out of his harp case: the Lay of the Second Spring, which breaks off in the middle of a line and has done for six hundred years, because the elf writing it went to the Havens and did not think the ending was his to put on. It is in my hands now. I am not to write on it, not to show it to anybody clever, only to carry it and let it be unfinished at me until something happens to me that belongs in it -- and to bring it back at the fifteenth level."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "At the fifteenth level I said the missing line to Lindir in the Hall of Fire, and he laughed once, delighted and slightly outraged, the way a man laughs at being beaten at a game he invented. He took the whole finished Lay down to the smithy of Rivendell, and what came back up was not a page: the Rapier of the Deathless Song, with the verse and my own ending cut along the blade. It goes about the world on an edge now and will not need either of us again. I have finished the first of the craft. Lindir speaks of longer roads -- the naming-songs, the lament that stops a fight, the making of a true name that a thing cannot refuse -- but those are for a later evening than this one."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Tales That Live Forever"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "bard_lay"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 70,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Class Lines'\n@order 12"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Among the Ruins of Annuminas, where the old Numenorean capital is going quietly back into the lake, a woman called Erendis of the Drowned House keeps a fire nobody laid. She had no more teaching than I did -- our sort never does -- and the one thing she says can be handed on is this: stop fighting the blood. Half of what a young sorcerer calls losing control is the power shoving back against a hand held over its mouth. She stood up, put a hand on my breastbone, and said what I am out loud in Adunaic, which she says is not a sentence and not a gift but a fact, like my height. She gave me a plain grey signet -- not an heirloom, she keeps a box of them; it only means somebody knew and did not run. I am to come back eight levels deeper into the blood than I am now."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I came back to Erendis at the eighth level of the blood. She gave me a thumb-sized shard of pale green sea-glass that came off a window in Armenelos, has been in the sea for an Age and in her pocket for ninety years, and has never once done anything. That is the point of it -- it is not a charm, it is a bill that has not been presented. Everyone of our sort pays sooner or later: a friend, a door shut in the face, a thing done that cannot be put down, and the ones who go bad are the ones who never noticed they had paid. I am to carry the glass, not stare at it, and come back at the fifteenth level and say out loud what it cost me."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I went back to Erendis at the fifteenth level and told her the price in the words I would have used while angry, which is what she had asked for and the only version she says is worth anything. She did not comfort me. She listened all the way to the end, took the glass out of my hand, and set it into the head of a black lebethron staff she had evidently had ready for a while. The Staff of Elder Days is not lending me anything -- it only means I have stopped arguing. She named what is still ahead: the speech that dragons answer to, the sceptre that drowned with Armenelos, the unbinding. None of it was hers to give me today."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Blood of Elder Days"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 5
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "sor_blood"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 71,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Lord of the Rings'\n@order 90"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I have come by the Forbidden Realms Key -- a black thing of Numenorean make, heavier than its size wants to be, cut with seven marks along the ward. Whoever carried it last had no more right to it than I do. It is not a house key or a chest key: the wards on it are grave-wards, and the seven marks are the sort the old kings cut into a door they did not intend anyone to open again. Somewhere in the drowned country of Numenor there is a stone that answers it."
+                }
+              }
+            },
+            {
+              "__struct_id": 1,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 2
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "I found the stone. In Noirinan, under the hill, there is a slab of grey Numenorean stone with no handle, no hinge and no keyhole -- and the same seven marks cut into its face. The key turned in a lock I never saw, and the seal gave way."
+                }
+              }
+            },
+            {
+              "__struct_id": 2,
+              "End": {
+                "type": "word",
+                "value": 0
+              },
+              "ID": {
+                "type": "dword",
+                "value": 3
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "Beyond the gate lie the Tombs of the Lost Souls. This is no ruin: it is a court, laid out for the dead the way a hall is laid out for the living, and its lords have not gone quiet. The Weathertop King, his Queen and their Archer are all still here, and all still hold their places. They were sealed in for a reason, and I have just undone it."
+                }
+              }
+            },
+            {
+              "__struct_id": 3,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 10
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "The barrow-court of Weathertop is broken. The King, the Queen and the Archer are all down, and the Tombs of the Lost Souls are silent for the first time in an Age. I keep the key. There is no telling what else in the drowned country was cut with seven marks."
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "The Forbidden Realms"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 2
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "frk_tombs"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      },
+      {
+        "__struct_id": 72,
+        "Comment": {
+          "type": "cexostring",
+          "value": "@group 'Server Info'\n@order 9"
+        },
+        "EntryList": {
+          "type": "list",
+          "value": [
+            {
+              "__struct_id": 0,
+              "End": {
+                "type": "word",
+                "value": 1
+              },
+              "ID": {
+                "type": "dword",
+                "value": 1
+              },
+              "Text": {
+                "type": "cexolocstring",
+                "value": {
+                  "0": "=== Combat & Bosses ===\n\n  Soul-fatigue on Heal (Heal spell, Mass Heal, and Heal potions):\n    1. The heal resolves in full — you go to 100% HP as normal.\n    2. You then take 10% of your max HP as damage per stack you already had.\n       This is a scripted cost: no resistance, immunity or DR reduces it, and it can kill you.\n    3. One new stack is added.\n    Each stack falls off on its own 3-minute timer.\n    A heal at 0 stacks is free. At 10 stacks the post-heal hit is 100% of max HP.\n    Casting Heal at undead is an attack, not a heal — no stack, no damage.\n\n  Boss enrage-on-retreat (Roll of the Fallen bosses only):\n    Disengaging — leaving its area, moving more than 40m away, or logging out for ~12 seconds —\n    makes the boss taunt you by name, gain +2 to ALL ability scores for the rest of that life,\n    and instantly heal 25% of its missing HP.\n    It fires even if your party keeps fighting. Every retreat stacks.\n    Dying is not retreating. The enrage never carries onto a respawn.\n\nSee wiki: Manual > Customizations > Combat & Bosses"
+                }
+              }
+            }
+          ]
+        },
+        "Name": {
+          "type": "cexolocstring",
+          "value": {
+            "0": "Combat & Bosses"
+          }
+        },
+        "Picture": {
+          "type": "word",
+          "value": 65535
+        },
+        "Priority": {
+          "type": "dword",
+          "value": 4
+        },
+        "Tag": {
+          "type": "cexostring",
+          "value": "mod_combat"
+        },
+        "XP": {
+          "type": "dword",
+          "value": 0
+        }
+      }
+    ]
+  }
+}

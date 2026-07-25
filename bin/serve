@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+# serve — launch the Homer's LOTR VEL v3 dedicated server in podman.
+#
+# Reads ../server.env for all tuning. Pass any extra args you'd give
+# `podman run` (e.g. `--detach`); they are appended after the env-derived
+# flags. Default mode is foreground with stdout streaming so the app-grid
+# launcher window shows server output.
+#
+# Stop a backgrounded run with: podman stop -t 8 nwnxee-homer
+
+set -euo pipefail
+
+PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+ENV_FILE="$PROJECT_ROOT/server.env"
+LOCAL_ENV_FILE="$PROJECT_ROOT/server.env.local"
+
+if [[ ! -f $ENV_FILE ]]; then
+  echo "error: $ENV_FILE not found" >&2
+  exit 1
+fi
+
+# shellcheck disable=SC1090
+. "$ENV_FILE"
+if [[ -f $LOCAL_ENV_FILE ]]; then
+  # shellcheck disable=SC1090
+  . "$LOCAL_ENV_FILE"
+fi
+
+mkdir -p "$NWN_RUN_DIR"
+
+# Bring up the nwsync nginx container first so it's already listening when
+# the first client connects. Idempotent: a no-op if already running.
+"$PROJECT_ROOT/bin/serve-nwsync" || \
+  echo "[serve] warning: serve-nwsync failed; continuing without nwsync hosting" >&2
+
+# Stop any prior instance so the bind-mounted /nwn/run isn't fought over.
+if podman container exists "$NWN_CONTAINER_NAME" 2>/dev/null; then
+  echo "[serve] stopping existing $NWN_CONTAINER_NAME"
+  podman stop -t 8 "$NWN_CONTAINER_NAME" >/dev/null 2>&1 || true
+  podman rm -f "$NWN_CONTAINER_NAME" >/dev/null 2>&1 || true
+fi
+
+# Build the env-var list. Only NWN_, NWNX_ and ANVIL_ prefixed vars are
+# forwarded — intentional, so accidental shell vars don't leak in.
+env_files=("$ENV_FILE")
+[[ -f $LOCAL_ENV_FILE ]] && env_files+=("$LOCAL_ENV_FILE")
+env_args=()
+while IFS='=' read -r k _; do
+  case "$k" in
+    NWN_IMAGE|NWN_CONTAINER_NAME|NWN_RUN_DIR|NWN_HOME_DIR) continue ;;
+    TZ|NWN_*|NWNX_*|ANVIL_*) env_args+=(-e "$k=${!k}") ;;
+  esac
+done < <(cat "${env_files[@]}" | grep -E '^[A-Z_][A-Z0-9_]*=')
+
+# NWN_NWSYNCURL in server.env interpolates NWNSYNC_PUBLIC_URL — re-resolve it
+# here, after both env files have been sourced, and override whatever the
+# parsing loop captured (which would have been the unresolved literal).
+if [[ -n "${NWNSYNC_PUBLIC_URL:-}" ]]; then
+  env_args+=(-e "NWN_NWSYNCURL=$NWNSYNC_PUBLIC_URL")
+fi
+
+# nwserver self-fetches its NWN_NWSYNCURL on startup. When that URL is the
+# server's own public DDNS hostname, the request resolves to the WAN IP and
+# bounces off the router — and most consumer routers don't NAT-hairpin, so
+# the fetch times out and nwserver aborts with "Cannot continue."
+# Pin the public hostname to 127.0.0.1 inside the container so the self-check
+# stays on loopback (nginx is bound *:8000, --network=host shares loopback).
+hairpin_args=()
+if [[ -n "${NWNSYNC_PUBLIC_URL:-}" ]]; then
+  nwsync_host="${NWNSYNC_PUBLIC_URL#*://}"
+  nwsync_host="${nwsync_host%%[:/]*}"
+  if [[ -n "$nwsync_host" ]]; then
+    hairpin_args+=(--add-host "$nwsync_host:127.0.0.1")
+  fi
+fi
+
+echo "[serve] image:   $NWN_IMAGE"
+echo "[serve] module:  $NWN_MODULE"
+echo "[serve] port:    ${NWN_PORT}/udp"
+echo "[serve] runtime: $NWN_RUN_DIR"
+echo "[serve] logs:    $NWN_RUN_DIR/logs/  (also: podman logs $NWN_CONTAINER_NAME)"
+if [[ -n "${NWNSYNC_PUBLIC_URL:-}" ]]; then
+  echo "[serve] nwsync:  $NWNSYNC_PUBLIC_URL  (nginx on :${NWNSYNC_PORT}/tcp)"
+else
+  echo "[serve] nwsync:  not advertised (set NWNSYNC_PUBLIC_URL in server.env.local)"
+fi
+echo
+
+# Start the activity-page monitor alongside the server.  When the last player
+# leaves, it refreshes docs/activity.html and pushes the change to git so the
+# public wiki stays current without a full rebuild.
+(
+  cd "$PROJECT_ROOT"
+  export PATH="$HOME/.nimble/bin:/var/home/james/GIT/nwn_manager/bin:$PATH"
+  nwn-manager serve \
+    --log-dir "$NWN_RUN_DIR" \
+    --poll-interval 5 \
+    --auto-publish \
+    --backup-cmd "$PROJECT_ROOT/bin/backup-homers-lotr"
+) &
+_SERVE_PID=$!
+trap 'kill "$_SERVE_PID" 2>/dev/null || true; wait "$_SERVE_PID" 2>/dev/null || true' EXIT INT TERM
+echo "[serve] activity monitor started (PID $_SERVE_PID)"
+
+# nwserver regenerates settings.tml from CLI args on every startup, resetting
+# values like sticky-modes to false. Patch the file now and mount it read-only
+# so the server reads our values but cannot overwrite them.
+_settings="$NWN_RUN_DIR/settings.tml"
+if [[ -f "$_settings" ]]; then
+  python3 - "$_settings" <<'PYEOF'
+import re, sys
+txt = open(sys.argv[1]).read()
+txt = re.sub(r'(always-roll-max-hitpoints-on-levelup\s*=\s*)false', r'\g<1>true', txt, count=1)
+txt = re.sub(r'(\t\tsticky-modes\s*=\s*)false', r'\g<1>true', txt, count=1)
+
+# Force the item/effect ability-bonus cap to 24 under [ruleset.combat].
+# Self-healing and idempotent: handles a pristine file, an already-24 file, or
+# the corruption a previous buggy patch could leave behind. (The old code used
+# the replacement r'\124', which Python parses as the OCTAL escape \124 = 'T',
+# clobbering the whole line to a lone "T"; use r'\g<1>24' to mean group-1 + 24.)
+txt = re.sub(r'(?m)^\t\tT[ \t]*\r?\n', '', txt)           # drop the stray-'T' artifact
+if re.search(r'(?m)^[ \t]*max-ability-bonus[ \t]*=', txt):
+    txt = re.sub(r'(max-ability-bonus\s*=\s*)\d+', r'\g<1>24', txt, count=1)
+else:                                                     # key missing: insert it
+    txt = re.sub(r'(?m)^(\t\[ruleset\.combat\]\n)', r'\g<1>\t\tmax-ability-bonus = 24\n', txt, count=1)
+open(sys.argv[1], 'w').write(txt)
+PYEOF
+  echo "[serve] patched settings.tml: sticky-modes=true, always-roll-max-hitpoints-on-levelup=true, max-ability-bonus=24"
+fi
+
+# Cross-season shared campaign DBs (meritdb, admindb) live outside every
+# season's home dir and are ABSOLUTE symlinks inside database/. An absolute
+# symlink only resolves if the same absolute path exists inside the container,
+# so the shared dir is mounted at its own host path. Without this the engine
+# aborts at module load with `what(): database unavailable` — the symlinks
+# dangle and nwserver treats an unopenable campaign DB as fatal.
+# See season-cutover-prereqs.md item 2.
+shared_args=()
+NWN_SHARED_DIR="${NWN_SHARED_DIR:-$HOME/.local/share/nwn-shared}"
+if [[ -d $NWN_SHARED_DIR ]]; then
+  shared_args=(-v "$NWN_SHARED_DIR:$NWN_SHARED_DIR:rw,z")
+fi
+
+podman run --rm --name "$NWN_CONTAINER_NAME" \
+  --userns=keep-id --user "$(id -u):$(id -g)" \
+  --network=host \
+  "${hairpin_args[@]}" \
+  "${env_args[@]}" \
+  -v "$NWN_RUN_DIR:/nwn/run:rw,Z" \
+  -v "$NWN_HOME_DIR:/nwn/home:rw,z" \
+  -v "$NWN_RUN_DIR/settings.tml:/nwn/run/settings.tml:ro,Z" \
+  "${shared_args[@]}" \
+  "$@" \
+  "$NWN_IMAGE"
+
+# Note: --network=host (instead of `-p 5121:5121/udp`) is required so the
+# container sees UDP *broadcast* packets from LAN clients running the
+# multiplayer server browser. Pasta (rootless podman's default userspace
+# net) port-forwards unicast only; broadcast probes never reach the
+# container, so the server stays invisible to the LAN list. With host
+# networking the container binds NWN_PORT directly on the host's
+# interfaces, picks up broadcasts, and shows up in the LAN browser.

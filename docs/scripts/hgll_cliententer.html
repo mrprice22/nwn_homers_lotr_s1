@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script hgll_cliententer</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>hgll_cliententer</code></h1><pre class="nss-source"><code>// hgll_cliententer — NWNX:EE port
+//
+// Originally cleared a queued Letoscript string left over from logout (the
+// NWNX2 plugin replayed it on next login). NWNX:EE applies HGLL changes
+// in-memory at the moment they happen, so there&#x27;s nothing to replay.
+// We still wipe the legacy locals in case they&#x27;re hanging around on
+// pre-port characters.
+
+#include &quot;pers_state_inc&quot;
+#include &quot;merit_db&quot;
+#include &quot;bst_db&quot;
+#include &quot;forge_inc&quot;
+#include &quot;tele_db&quot;
+#include &quot;boost_db&quot;
+#include &quot;q_frk_inc&quot;
+#include &quot;faction_db&quot;
+
+// Death amulet check + persistent state restore. Delayed so the engine&#x27;s
+// own post-login passes (inventory hydration, spellbook sync, &quot;fresh PC&quot;
+// HP/spell resets) have settled before we read or override state.
+void HgllPostEnter(object oPC)
+{
+    object oItem = GetFirstItemInInventory(oPC);
+    while (GetIsObjectValid(oItem))
+    {
+        if (GetTag(oItem) == &quot;deathamulet&quot;)
+        {
+            ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectDeath(FALSE, FALSE), oPC);
+            return;
+        }
+        oItem = GetNextItemInInventory(oPC);
+    }
+
+    // Bleeding-out login resolution: HP was saved as 0 to -9 (dying state).
+    // Roll Con save DC 12 — pass returns player at 2 HP, fail kills them.
+    if (NWNX_Object_GetInt(oPC, PERS_HP_VALID) == 1)
+    {
+        int nSaved = NWNX_Object_GetInt(oPC, PERS_HP);
+        if (nSaved &gt;= -9 &amp;&amp; nSaved &lt;= 0)
+        {
+            int nConMod = GetAbilityModifier(ABILITY_CONSTITUTION, oPC);
+            int nRoll   = d20(1);
+            int nTotal  = nRoll + nConMod;
+            string sMsg = &quot;You logged out while bleeding out (HP: &quot;
+                + IntToString(nSaved) + &quot;). Constitution survival check DC 12 — &quot;
+                + &quot;rolled &quot; + IntToString(nRoll)
+                + &quot; + CON &quot; + IntToString(nConMod)
+                + &quot; = &quot; + IntToString(nTotal) + &quot;. &quot;;
+            if (nTotal &gt;= 12)
+            {
+                SendMessageToPC(oPC, sMsg + &quot;You cling to life! (2 HP)&quot;);
+                PersState_Restore(oPC);
+                NWNX_Object_SetCurrentHitPoints(oPC, 2);
+                NWNX_Player_UpdateCharacterSheet(oPC);
+            }
+            else
+            {
+                SendMessageToPC(oPC, sMsg + &quot;You succumb to your wounds.&quot;);
+                ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectDeath(FALSE, FALSE), oPC);
+            }
+            return;
+        }
+    }
+
+    PersState_Restore(oPC);
+}
+
+void main()
+{
+    object oPC = GetEnteringObject();
+    SetLocalString(oPC, &quot;LetoScript&quot;, &quot;&quot;);
+    SetLocalString(oPC, &quot;LetoscriptLL&quot;, &quot;&quot;);
+
+    Merit_InitDb();
+    Merit_RecordLogin(oPC);
+    DelayCommand(3.0, Merit_LoginMessage(oPC));
+
+    // Bestiary kill-tracking: ensure the DB exists and force this character&#x27;s
+    // persistent UUID (stored in the .bic) to be generated, since it is the
+    // per-character identity key for all kill records.
+    Bst_InitDb();
+    GetObjectUUID(oPC);
+
+    // Rest-menu teleport unlocks (merit redemptions 101-107): ensure the
+    // saved-slot / return-state tables exist.
+    Tele_InitDb();
+
+    // Faction allegiance re-apply (roadmap: faction-scaffolding): restore the
+    // Good/Evil allegiance this character chose (and thus the hostile-on-sight
+    // reputation against the enemy side) from factiondb. No-op for characters
+    // that never picked a side. Delayed so the anchor NPCs and the PC&#x27;s
+    // reputation tables are settled before we AdjustReputation.
+    Faction_InitDb();
+    DelayCommand(4.5, Faction_ApplyLive(oPC));
+
+    // Premium 2x gold/XP boosts (merit redemptions 201-204): ensure the tables
+    // exist, then report any active/pending server + personal subscriptions —
+    // who bought each and the estimated end date. Delayed past the login flood.
+    Boost_InitDb();
+    DelayCommand(4.0, Boost_LoginReport(oPC));
+
+    // Server-info reference journals (Rules/Guilds/Website). Each category&#x27;s
+    // entry 1 has End=1, so these land in the player&#x27;s Completed section.
+    // AddJournalQuestEntry is idempotent (re-adding the same state just resets
+    // it), so we deliver unconditionally on every login — this reaches existing
+    // characters too, not just first-time logins. mod_enter.nss (the old, never-
+    // wired delivery, which also had a &quot;gguild&quot; tag typo) is bypassed entirely.
+    AddJournalQuestEntry(&quot;rules&quot;,        1, oPC, FALSE, FALSE);
+    // &quot;guilds&quot; is deliberately NOT delivered: the guild system is retired/
+    // suspended (admin call, 2026-07-15). Re-add it here if guilds return.
+    AddJournalQuestEntry(&quot;website&quot;,      1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;modcustoms&quot;,   1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_progress&quot;, 1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_death&quot;,    1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_forge&quot;,    1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_systems&quot;,  1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_factions&quot;, 1, oPC, FALSE, FALSE);
+    AddJournalQuestEntry(&quot;mod_combat&quot;,   1, oPC, FALSE, FALSE);
+
+    // The Forbidden Realms: characters who stole the Forbidden Realms Key from
+    // Summanus before the tier shipped never saw an OnAcquireItem for it, so
+    // catch them up here. Idempotent and a no-op without the key; delayed so
+    // the inventory is hydrated before we scan it.
+    DelayCommand(7.0, FRK_LoginCheck(oPC));
+
+    DelayCommand(1.0, HgllPostEnter(oPC));
+
+    // Build stamp: nwn-manager generates &quot;nwnmgr_bstamp&quot; at repack with the module&#x27;s
+    // last-edited timestamp + git revision. Resolved at runtime, so it safely no-ops
+    // in dev builds where the script isn&#x27;t packed. Delayed so it lands after the
+    // login flood and the merit login message (3s).
+    DelayCommand(5.0, ExecuteScript(&quot;nwnmgr_bstamp&quot;, oPC));
+
+    // Contraband sweep: illegally forged gear jails the bearer on login too,
+    // so skipping the Well of Eru doesn&#x27;t dodge the check. Delayed so the
+    // inventory is fully hydrated before we scan it. Chunked (one item per
+    // delayed step) to stay under the script instruction cap.
+    DelayCommand(6.0, ForgeBeginScan(oPC));
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

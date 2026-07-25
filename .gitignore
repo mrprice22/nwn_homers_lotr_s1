@@ -1,0 +1,26 @@
+/.nasher/
+/dist/
+/module-index/*
+!/module-index/.gitkeep
+*.mod
+*.ncs
+*.erf
+*.hak
+/tlk/
+/server.env.local
+
+# Admin CD-key whitelist seed — contains plaintext public CD keys; lives only on
+# this machine and is loaded into the admindb campaign DB out of band. The
+# admindb itself is a campaign SQLite file (never part of the .mod or this repo).
+/bin/seed-admindb.sh
+__pycache__/
+*.pyc
+
+# LibreOffice lock files
+.~lock.*#
+
+# build-stamp script generated at repack; leaks into unpacked/ via toolset round-trip unpacks
+unpacked/nwnmgr_bstamp.nss
+
+# autopilot mid-item marker — local machine-only state, never needs to travel with the repo
+/autopilot-wip.md

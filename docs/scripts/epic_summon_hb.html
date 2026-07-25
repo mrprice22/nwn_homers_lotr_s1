@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script epic_summon_hb</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>epic_summon_hb</code></h1><pre class="nss-source"><code>//::///////////////////////////////////////////////
+//:: Epic summon heartbeat  (Mummy Reaper / Dragon Knight)
+//:: epic_summon_hb
+//:://////////////////////////////////////////////
+/*
+    OnHeartbeat for the epic summon blueprints (mummyreaper.utc,
+    epicdragonknight.utc). Runs the standard henchman heartbeat AI, then
+    fixes the &quot;dismissed but left standing&quot; defect (roadmap:
+    epic-summon-unsummon):
+
+    Epic summons live on the HENCHMAN slot (see epic_summon_inc.nss), and
+    kicking a henchman via the party/dismiss flow only severs the master
+    link -- the engine never destroys the creature the way it does a real
+    ASSOCIATE_TYPE_SUMMONED. Detect the orphaned state (marker set, no
+    master) and unsummon properly: clear the owner&#x27;s tracking local, play
+    the unsummon visual, and disappear.
+
+    Real Meaningwave henchmen and other companions are untouched -- this
+    script is only wired to the two epic summon blueprints, and the check
+    additionally requires the EPIC_SUMMON_TAG marker that only
+    EpicSummon_Cast sets.
+*/
+//:://////////////////////////////////////////////
+
+#include &quot;epic_summon_inc&quot;
+
+void main()
+{
+    // Standard henchman heartbeat AI (stock resource, resolved by resman).
+    ExecuteScript(&quot;x0_ch_hen_heart&quot;, OBJECT_SELF);
+
+    object oSelf = OBJECT_SELF;
+    if (!GetLocalInt(oSelf, EPIC_SUMMON_TAG)) return;
+    if (GetIsObjectValid(GetMaster(oSelf))) return;
+
+    // Orphaned: the master link was severed outside EpicSummon_Dismiss /
+    // EpicSummon_Expire (party-kick, or any other RemoveHenchman path).
+    // Clear the owner&#x27;s tracking local if it still points at us so a later
+    // EpicSummon_Cast/Dismiss doesn&#x27;t chase a stale reference.
+    object oOwner = GetLocalObject(oSelf, EPIC_SUMMON_OWNER);
+    if (GetIsObjectValid(oOwner)
+        &amp;&amp; GetLocalObject(oOwner, EPIC_SUMMON_OBJ) == oSelf)
+    {
+        DeleteLocalObject(oOwner, EPIC_SUMMON_OBJ);
+    }
+
+    AssignCommand(oSelf, ClearAllActions());
+    ApplyEffectToObject(DURATION_TYPE_INSTANT,
+        EffectVisualEffect(VFX_IMP_UNSUMMON), oSelf);
+    ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectDisappear(), oSelf);
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

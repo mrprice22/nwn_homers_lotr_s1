@@ -1,0 +1,85 @@
+{
+  "__data_type": "UTI ",
+  "AddCost": {
+    "type": "dword",
+    "value": 0
+  },
+  "BaseItem": {
+    "type": "int",
+    "value": 24
+  },
+  "Charges": {
+    "type": "byte",
+    "value": 0
+  },
+  "Comment": {
+    "type": "cexostring",
+    "value": "Rune of Expansion: consumable that binds +1 forge property slot into ONE targeted item (item-local FORGE_EXTRA_SLOTS, capped at FORGE_TOKEN_MAX_SLOTS in forge_inc.nss). Activate (Unique Power, targeted) then click the item to expand. Dispatched by dmfi_activate -> slot_token.nss. Drop-source/rarity is a deferred admin decision. (roadmap: item-slot-tokens)"
+  },
+  "Cost": {
+    "type": "dword",
+    "value": 50000
+  },
+  "Cursed": {
+    "type": "byte",
+    "value": 0
+  },
+  "DescIdentified": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "A rune-etched shard of star-iron, warm to the touch, torn from the hoard of a fallen lord of the Elder Days. The smiths of old, it is said, learned to fold such shards into finished work -- coaxing the very lattice of a blade or byrnie to open and admit one enchantment more than the common law of the forge would suffer.\n\nIt is no charm to be spent on a whim: only a master at a Forge of Wonders can bind it. Lay the piece you would strengthen upon the anvil, keep the rune in your pack, and bid the smith widen its lattice -- the rune is consumed in the working, and that item may thereafter bear one enchantment beyond the common limit, fully lawful and never seized for it.\n\nYet no lattice is boundless. A single item will suffer no more than three such runes before its weave is strained to the utmost; a fourth finds no purchase, and the smith will hand the rune back rather than waste it. The expansion is intrinsic to the item itself -- it endures across the ages, and passes to whatever hand the item passes to."
+    }
+  },
+  "Description": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "A warm, rune-etched shard of dark star-iron. Its worked surface hints at forge-craft -- a smith would know its use."
+    }
+  },
+  "Identified": {
+    "type": "byte",
+    "value": 1
+  },
+  "LocalizedName": {
+    "type": "cexolocstring",
+    "value": {
+      "0": "Rune of Expansion"
+    }
+  },
+  "ModelPart1": {
+    "type": "byte",
+    "value": 31
+  },
+  "PaletteID": {
+    "type": "byte",
+    "value": 0
+  },
+  "Plot": {
+    "type": "byte",
+    "value": 0
+  },
+  "PropertiesList": {
+    "type": "list",
+    "value": []
+  },
+  "StackSize": {
+    "type": "word",
+    "value": 1
+  },
+  "Stolen": {
+    "type": "byte",
+    "value": 0
+  },
+  "Tag": {
+    "type": "cexostring",
+    "value": "SlotToken"
+  },
+  "TemplateResRef": {
+    "type": "resref",
+    "value": "slot_token"
+  },
+  "xModelPart1": {
+    "type": "word",
+    "value": 31
+  }
+}

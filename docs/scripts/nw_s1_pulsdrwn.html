@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script nw_s1_pulsdrwn</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>nw_s1_pulsdrwn</code></h1><pre class="nss-source"><code>//::///////////////////////////////////////////////
+//:: Pulse Drown
+//:: NW_S1_PulsDrwn
+//:: Copyright (c) 2001 Bioware Corp.
+//:://////////////////////////////////////////////
+/*
+    CHANGED JANUARY 2003
+     - does an actual &#x27;drown spell&#x27; on each target
+     in the area of effect.
+     - Each use of this spells consumes 50% of the
+     elementals hit points.
+
+    Module override: the self-damage above was written for
+    elemental casters only, but this ability is granted to several
+    non-elemental NPCs (e.g. the High Wizard of Gondor, Boromir),
+    who were bleeding half their current HP to themselves on every
+    cast. Gate the self-damage to actual elementals to match the
+    original intent.
+*/
+//:://////////////////////////////////////////////
+//:: Created By: Preston Watmaniuk
+//:: Created On: April 15, 2002
+//:://////////////////////////////////////////////
+
+#include &quot;NW_I0_SPELLS&quot;
+void Drown(object oTarget)
+{
+
+    effect eVis = EffectVisualEffect(VFX_IMP_FROST_S);
+    // * certain racial types are immune
+    if ((GetRacialType(oTarget) != RACIAL_TYPE_CONSTRUCT)
+     &amp;&amp;(GetRacialType(oTarget) != RACIAL_TYPE_UNDEAD)
+     &amp;&amp;(GetRacialType(oTarget) != RACIAL_TYPE_ELEMENTAL))
+    {
+        //Make a fortitude save
+        if(MySavingThrow(SAVING_THROW_FORT, oTarget, 20) == FALSE)
+        {
+            //Apply the VFX impact and damage effect
+            ApplyEffectToObject(DURATION_TYPE_INSTANT, eVis, oTarget);
+            //Set damage effect to kill the target
+            ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectDeath(), oTarget);
+
+         }
+    }
+}
+void main ()
+{
+    if (GetRacialType(OBJECT_SELF) == RACIAL_TYPE_ELEMENTAL)
+    {
+        int nDamage = GetCurrentHitPoints() / 2;
+        ApplyEffectToObject(DURATION_TYPE_PERMANENT, EffectDamage(nDamage), OBJECT_SELF);
+    }
+    //Declare major variables
+    object oTarget;
+    int bSave = FALSE;
+    int nIdx;
+
+    effect eImpact = EffectVisualEffect(VFX_IMP_PULSE_WATER);
+    ApplyEffectToObject(DURATION_TYPE_INSTANT, eImpact, OBJECT_SELF);
+    oTarget = GetFirstObjectInShape(SHAPE_SPHERE, RADIUS_SIZE_LARGE, GetLocation(OBJECT_SELF));
+    while(GetIsObjectValid(oTarget) == TRUE)
+    {
+      	if(!GetIsReactionTypeFriendly(oTarget) &amp;&amp; oTarget != OBJECT_SELF)
+    	{
+            //Fire cast spell at event for the specified target
+            SignalEvent(oTarget, EventSpellCastAt(OBJECT_SELF, SPELLABILITY_PULSE_DROWN));
+            Drown(oTarget);
+        }
+        oTarget = GetNextObjectInShape(SHAPE_SPHERE, RADIUS_SIZE_LARGE, GetLocation(OBJECT_SELF));
+    }
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

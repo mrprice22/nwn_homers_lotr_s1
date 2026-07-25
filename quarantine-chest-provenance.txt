@@ -1,0 +1,45 @@
+================================================================================
+FORGE WARDEN QUARANTINE CHEST — RECOVERED PLAYER PROVENANCE
+================================================================================
+Generated: 2026-06-17
+Chest DB : ~/.local/share/Neverwinter Nights/database/craftdb.sqlite3  (chest_*)
+Log src  : ~/.local/state/nwnxee-homer/logs.0/anvil.log
+
+WHY THIS FILE EXISTS
+--------------------
+The 14 items currently sitting in the quarantine chest (ZEP_CR_QUARANTINE,
+House of Homer) were sequestered BEFORE provenance was stamped onto the item
+object, so the chest snapshot carries no submitter info. The transient
+quarantine_*_info rows that DID hold it were deleted the moment a DM first
+opened the chest (zep_cr_qrestore.nss). Player/character info below was instead
+recovered by cross-referencing each item's ResRef against the server's logged
+"[FORGE DISPUTE] ... sequestered from" / "Illicit donations item ... reclaimed
+from" lines in anvil.log.
+
+Going forward this archaeology is unnecessary: items are now stamped with a
+QUARANTINE_INFO local variable that rides with the object into the chest and
+survives until the item is physically removed (see forge_inc.nss /
+welloferuenter.nss; bin/list-forge-quarantine.py reads it back).
+
+SOURCE TYPES
+------------
+  [DISPUTE]  Player contested a flagged item at the Forge Warden — log line
+             includes the account name.
+  [ILLICIT]  Item was an illicit Donations-Chest item auto-reclaimed on Well of
+             Eru entry — log line records only the CHARACTER, not the account.
+             Account resolved from the player DB playerid (account+charname);
+             noted where ambiguous.
+
+================================================================================
+ITEMS IN THE CHEST (14) — BY PLAYER
+================================================================================
+
+--------------------------------------------------------------------------------
+Account: Alek Cain   (character: Millhouse Manastorm)   — 1 item
+--------------------------------------------------------------------------------
+[chest 1]  Hoarmouth's Sash
+    ResRef        : beltofdivinem001    Tag: BeltofDivineMight
+    Value / props : 394,917 gp (item cost); refund logged 1,974,585 gp
+    Source        : [ILLICIT]  2026/06/10 09:41:44
+
+

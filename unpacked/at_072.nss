@@ -1,0 +1,13 @@
+//::///////////////////////////////////////////////
+//:: FileName at_072
+//:://////////////////////////////////////////////
+//:://////////////////////////////////////////////
+//:: Created By: Script Wizard
+//:: Created On: 11/11/2002 11:11:39 AM
+//:://////////////////////////////////////////////
+void main()
+{
+	// Ferny's Ring intro advanced. Persist on "fret"/ring_qstart (was the
+	// non-persistent LocalInt "queststart").
+	SetCampaignInt("fret", "ring_qstart", 2, GetPCSpeaker());
+}

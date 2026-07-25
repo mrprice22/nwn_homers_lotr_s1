@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script mw_hench_hb</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>mw_hench_hb</code></h1><pre class="nss-source"><code>//::///////////////////////////////////////////////
+//:: mw_hench_hb -- shared heartbeat for MeaningWave guide henchmen.
+//:: Delegates to nw_ch_ac1 for standard associate AI, then adds
+//:: master-follow / despawn-on-master-lost (same model as hench_demon_hb).
+//::
+//:: Also runs an out-of-style safety net: any guide carrying the spell will
+//:: auto-cast Stone-to-Flesh on a petrified party member, or Restoration on a
+//:: party member suffering ability-score damage -- regardless of combat style,
+//:: in or out of combat. Casters are granted 3 memorized charges of each
+//:: (engine refreshes on rest; a fresh summon restores them too).
+//::
+//:: Counterspell (MW_STYLE 3): with a foe in sight the guide stands ground --
+//:: we skip the stock associate AI (nw_ch_ac1) so it doesn&#x27;t resume casting --
+//:: and the X2PreSpellCastCode spell hook does the actual countering (see
+//:: mw_counter_inc.nss), including the 3-miss-streak melee fallback and
+//:: auto-resume. Out of combat the stock AI still runs so the guide follows
+//:: the master normally.
+//:://////////////////////////////////////////////
+
+#include &quot;mw_counter_inc&quot;
+
+int MW_HasPetrify(object o)
+{
+    effect e = GetFirstEffect(o);
+    while (GetIsEffectValid(e))
+    {
+        if (GetEffectType(e) == EFFECT_TYPE_PETRIFY) return TRUE;
+        e = GetNextEffect(o);
+    }
+    return FALSE;
+}
+
+int MW_HasAbilityDamage(object o)
+{
+    effect e = GetFirstEffect(o);
+    while (GetIsEffectValid(e))
+    {
+        if (GetEffectType(e) == EFFECT_TYPE_ABILITY_DECREASE) return TRUE;
+        e = GetNextEffect(o);
+    }
+    return FALSE;
+}
+
+// Scan the party (master + henchmen) and cure the first affliction found.
+void MW_CureScan(object oMaster)
+{
+    // Don&#x27;t keep re-queuing a cure while one is already in flight.
+    if (GetCurrentAction(OBJECT_SELF) == ACTION_CASTSPELL) return;
+
+    int bStone = (GetHasSpell(SPELL_STONE_TO_FLESH, OBJECT_SELF) &gt; 0);
+    int bRest  = (GetHasSpell(SPELL_RESTORATION,    OBJECT_SELF) &gt; 0);
+    if (!bStone &amp;&amp; !bRest) return;
+
+    int n;
+    for (n = 0; n &lt;= 5; n++)
+    {
+        object oM;
+        if (n == 0) oM = oMaster;
+        else        oM = GetHenchman(oMaster, n);
+
+        if (n &gt; 0 &amp;&amp; !GetIsObjectValid(oM)) break; // henchmen slots are contiguous
+        if (!GetIsObjectValid(oM) || oM == OBJECT_SELF) continue;
+        if (GetIsDead(oM)) continue;
+        if (GetArea(oM) != GetArea(OBJECT_SELF)) continue;
+
+        if (bStone &amp;&amp; MW_HasPetrify(oM))
+        {
+            ClearAllActions();
+            ActionCastSpellAtObject(SPELL_STONE_TO_FLESH, oM);
+            return;
+        }
+        if (bRest &amp;&amp; MW_HasAbilityDamage(oM))
+        {
+            ClearAllActions();
+            ActionCastSpellAtObject(SPELL_RESTORATION, oM);
+            return;
+        }
+    }
+}
+
+void main()
+{
+    // Counterspell mode with a foe in sight: stand ground (skip the stock
+    // associate AI so the guide doesn&#x27;t resume casting) -- the spell hook
+    // handles the actual countering, streak-based melee fallback, and
+    // auto-resume. Otherwise run the stock AI as usual (handles following,
+    // and melee attacks once MW_STYLE has fallen back to 0).
+    int bStyle3 = MW_Style3();
+    int bEnemy  = GetIsObjectValid(GetNearestCreature(
+        CREATURE_TYPE_REPUTATION, REPUTATION_TYPE_ENEMY, OBJECT_SELF,
+        1, CREATURE_TYPE_PERCEPTION, PERCEPTION_SEEN));
+    if (!(bStyle3 &amp;&amp; bEnemy))
+        ExecuteScript(&quot;nw_ch_ac1&quot;, OBJECT_SELF);
+
+    object oMaster = GetMaster();
+    if (!GetIsObjectValid(oMaster))
+    {
+        ApplyEffectToObject(DURATION_TYPE_INSTANT, EffectDisappear(), OBJECT_SELF);
+        return;
+    }
+    if (GetArea(OBJECT_SELF) != GetArea(oMaster))
+    {
+        location lTarget = GetLocation(oMaster);
+        AssignCommand(OBJECT_SELF, ClearAllActions());
+        DelayCommand(0.1, AssignCommand(OBJECT_SELF, ActionJumpToLocation(lTarget)));
+        return;
+    }
+
+    MW_CureScan(oMaster);
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script my_createbelt</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>my_createbelt</code></h1><pre class="nss-source"><code>// my_createbelt.nss -- loot for the Setti belt-coffer in Numenor: Noirinan.
+//
+// A near-end-game chest: mints one random end-game belt for the opener. The old
+// pool (be_all_* / be_wizard_* ...) referenced blueprints that do not exist in
+// the module, so the chest minted nothing; it was also level-gated to HD&lt;=12,
+// excluding the level-40 characters who actually reach Noirinan. Both are fixed:
+// the pool is a curated set of real end-game belts and the cap is raised at the
+// call site (chest_settibelt passes 60). See the numenor-chests roadmap item.
+//
+// Selection is vetted against module-index/inaccessible_items.json: every entry
+// is a complete, non-plot belt -- either already dropped by a boss (a second
+// source is harmless) or a source-less &quot;orphan&quot; this chest gives a home to.
+
+#include &quot;my_charfuncs&quot;
+
+void CreateBelt(object oContainer, object oPC, int nMaxLevel)
+{
+    string sItem;
+
+    if(!GetIsPC(oPC) || (GetHitDice(oPC) &gt; nMaxLevel))
+        return;
+
+    switch(Random(6) + 1)
+    {
+        case 1: sItem = &quot;beltofgreatness&quot;;  break; // Belt of Greatness (Balrog)
+        case 2: sItem = &quot;beltofsorcerery&quot;;  break; // Belt of Sorcerery (Gandalf)
+        case 3: sItem = &quot;beltofdarkwardin&quot;; break; // Belt of Dark Warding (Khamul)
+        case 4: sItem = &quot;item121&quot;;          break; // Sauron&#x27;s Chosen Belt
+        case 5: sItem = &quot;epicbelt&quot;;         break; // Epic Belt (orphan)
+        case 6: sItem = &quot;beltofpower002&quot;;   break; // Belt of Power (orphan)
+    }
+
+    if(sItem != &quot;&quot;)
+        CreateItemOnObject(sItem, oContainer, 1);
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

@@ -1,0 +1,137 @@
+#!/usr/bin/env bash
+# refresh-nwsync — rebuild the NWSync manifest for Homer's LOTR VEL v3.
+#
+# Reads ../server.env for NWNSYNC_REPO and NWN_HOME_DIR, then invokes
+# nwn_nwsync_write so connecting EE clients auto-download CEP haks + the
+# cep.tlk instead of needing them pre-installed.
+#
+# Run this after every repack (the repack shortcut chains it automatically),
+# or directly via the "Refresh Homer's LotR NWSync" app-grid shortcut.
+
+set -euo pipefail
+
+SILENT=0
+FORCE=0
+PRUNE=0
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --silent) SILENT=1 ;;
+    --force)  FORCE=1 ;;   # rewrite all blobs even if identical (slow; corruption recovery)
+    --prune)  PRUNE=1 ;;   # garbage-collect orphaned blobs after writing (safe; min-age 2wk)
+    *) echo "unknown option: $1" >&2; exit 2 ;;
+  esac
+  shift
+done
+
+PROJECT_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+ENV_FILE="$PROJECT_ROOT/server.env"
+LOCAL_ENV_FILE="$PROJECT_ROOT/server.env.local"
+
+# shellcheck disable=SC1090
+. "$ENV_FILE"
+[[ -f $LOCAL_ENV_FILE ]] && . "$LOCAL_ENV_FILE"
+
+: "${NWN_HOME_DIR:?server.env must define NWN_HOME_DIR}"
+: "${NWN_MODULE:?server.env must define NWN_MODULE}"
+: "${NWNSYNC_REPO:?server.env must define NWNSYNC_REPO}"
+
+NWN_NWSYNC_WRITE="${NWN_NWSYNC_WRITE:-$HOME/.nimble/bin/nwn_nwsync_write}"
+if [[ ! -x $NWN_NWSYNC_WRITE ]]; then
+  echo "error: nwn_nwsync_write not found at $NWN_NWSYNC_WRITE" >&2
+  echo "       install niv/neverwinter.nim or set NWN_NWSYNC_WRITE in server.env.local" >&2
+  exit 1
+fi
+
+MOD_FILE="$NWN_HOME_DIR/modules/${NWN_MODULE}.mod"
+if [[ ! -f $MOD_FILE ]]; then
+  echo "error: module not found: $MOD_FILE" >&2
+  echo "       run the repack shortcut first" >&2
+  exit 1
+fi
+
+# Persistent content-addressed store: do NOT wipe it. nwsync hashes every
+# resource by SHA1 and reuses any blob that already exists, writing only the
+# resources that actually changed — so a routine refresh is incremental and
+# fast. (Pass --force to rewrite everything; see below.)
+mkdir -p "$NWNSYNC_REPO"
+
+echo "[nwsync] repo:    $NWNSYNC_REPO"
+echo "[nwsync] module:  $MOD_FILE"
+echo "[nwsync] hak dir: $NWN_HOME_DIR/hak"
+echo "[nwsync] tlk dir: $NWN_HOME_DIR/tlk"
+echo
+
+# No --with-module: this is a persistent world, clients don't need the .mod
+# itself, only the haks + tlk it references. nwn_nwsync_write reads the .mod
+# to discover its dependency list and pulls them from --path dirs.
+manifest_name="${NWN_SERVERNAME:-Homers LOTR VEL v3}"
+
+# --force re-adds nwsync's -f (force rewrite of existing data). Without it the
+# tool dedupes against the existing store, writing only changed resources.
+force_flag=()
+[[ $FORCE -eq 1 ]] && force_flag=(-f)
+
+nwsync_args=(
+  --name "$manifest_name"
+  --description "Homers LotR VEL v3 — CEP 2 content pack"
+  --path "$NWN_HOME_DIR/hak"
+  --path "$NWN_HOME_DIR/tlk"
+  "${force_flag[@]}"
+  "$NWNSYNC_REPO"
+  "$MOD_FILE"
+)
+if [[ $SILENT -eq 1 ]]; then
+  _nwsync_tmp=$(mktemp)
+  trap 'rm -f "$_nwsync_tmp"' EXIT
+  "$NWN_NWSYNC_WRITE" "${nwsync_args[@]}" >"$_nwsync_tmp" 2>&1 &
+  _nwsync_pid=$!
+  _spin='|/-\'
+  _si=0
+  _nwsync_start=$(date +%s)
+  while kill -0 "$_nwsync_pid" 2>/dev/null; do
+    _elapsed=$(( $(date +%s) - _nwsync_start ))
+    _ch="${_spin:$_si:1}"; _si=$(( (_si + 1) % 4 ))
+    printf "\r[nwsync] %s writing manifest...  (%ds)          " "$_ch" "$_elapsed"
+    sleep 0.3
+  done
+  if ! wait "$_nwsync_pid"; then
+    printf "\n"
+    cat "$_nwsync_tmp" >&2
+    exit 1
+  fi
+  printf "\r[nwsync] manifest written  (%ds)          \n" "$(( $(date +%s) - _nwsync_start ))"
+else
+  "$NWN_NWSYNC_WRITE" "${nwsync_args[@]}"
+fi
+
+echo
+if [[ -f "$NWNSYNC_REPO/latest" ]]; then
+  hash=$(cat "$NWNSYNC_REPO/latest")
+  echo "[nwsync] latest manifest: $hash"
+  url="${NWNSYNC_PUBLIC_URL:-}"
+  if [[ -n $url ]]; then
+    echo "[nwsync] clients will fetch from: ${url}/manifests/$hash"
+  else
+    echo "[nwsync] (set NWNSYNC_PUBLIC_URL in server.env.local to advertise to clients)"
+  fi
+fi
+
+# Optional housekeeping: incremental writes leave orphaned blobs from manifests
+# they superseded. nwn_nwsync_prune drops any blob no manifest references
+# (self-protecting data < 2 weeks old). Opt-in; run it occasionally, not every
+# refresh.
+if [[ $PRUNE -eq 1 ]]; then
+  NWN_NWSYNC_PRUNE="${NWN_NWSYNC_PRUNE:-$HOME/.nimble/bin/nwn_nwsync_prune}"
+  if [[ -x $NWN_NWSYNC_PRUNE ]]; then
+    echo "[nwsync] pruning orphaned blobs..."
+    "$NWN_NWSYNC_PRUNE" "$NWNSYNC_REPO"
+  else
+    echo "[nwsync] warning: nwn_nwsync_prune not found at $NWN_NWSYNC_PRUNE — skipping prune" >&2
+  fi
+fi
+
+# The repo directory is now updated in place (no rm -rf, so the inode is stable),
+# which means nginx's live bind mount keeps serving the newly written blobs and
+# the updated /latest with no restart. Just make sure the container is up;
+# serve-nwsync is idempotent and leaves a healthy running container alone.
+"$PROJECT_ROOT/bin/serve-nwsync" || true

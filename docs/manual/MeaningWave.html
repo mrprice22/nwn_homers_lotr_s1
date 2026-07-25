@@ -1,0 +1,2150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>MeaningWave: A Guide to the Guides</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+
+  <main>
+  <style>
+    .mw-layout {
+      display: flex;
+      gap: 2.5em;
+      align-items: flex-start;
+    }
+    .mw-toc-pane {
+      flex: 0 0 220px;
+      position: sticky;
+      top: 1.5em;
+      max-height: calc(100vh - 3em);
+      overflow-y: auto;
+    }
+    .mw-content {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 700px) {
+      .mw-layout { flex-direction: column; }
+      .mw-toc-pane { position: static; max-height: none; flex: none; width: 100%; }
+    }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1em 1.2em;
+    }
+    .toc h2 {
+      font-size: 1em;
+      margin: 0 0 0.5em;
+      border: none;
+      padding: 0;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc ol { margin: 0; padding-left: 1.3em; }
+    .toc li { margin: 0.2em 0; }
+    .toc a { color: var(--link); }
+
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 0.8em;
+      margin: 1em 0 1.5em;
+    }
+    .legend-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75em 1em;
+    }
+    .legend-card .lc-name { font-size: 1.05em; color: var(--accent); margin: 0 0 0.15em; }
+    .legend-card .lc-arch { font-size: 0.88em; color: var(--muted); font-style: italic; margin: 0 0 0.35em; }
+    .legend-card .lc-meta { font-size: 0.88em; }
+    .legend-card .lc-meta span { display: inline-block; margin-right: 1em; }
+    .legend-card a.lc-link { font-size: 0.82em; color: var(--link); }
+
+    blockquote {
+      background: rgba(107,58,28,0.05);
+      border-left: 4px solid var(--accent-soft);
+      margin: 1em 0;
+      padding: 0.6em 1.1em;
+      border-radius: 0 4px 4px 0;
+    }
+    blockquote p { margin: 0.3em 0; }
+
+    .hop-path { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 0.6em 1em 0.6em 1.5em; margin: 0.6em 0 1em; }
+    .hop-path li { margin: 0.25em 0; }
+
+    .reward-box {
+      background: rgba(200,165,119,0.12);
+      border: 1px solid var(--accent-soft);
+      border-radius: 4px;
+      padding: 0.7em 1.1em;
+      margin: 1em 0;
+    }
+
+    h2, h3 { scroll-margin-top: 1.5em; }
+
+    .mw-fannotice {
+      background: rgba(30, 30, 60, 0.07);
+      border: 1px solid var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 0.8em 1.2em;
+      margin: 1.2em 0 1.6em;
+      font-size: 0.93em;
+    }
+    .mw-fannotice p { margin: 0.35em 0; }
+    .mw-fannotice .mw-official-link {
+      font-size: 1.05em;
+      font-weight: 600;
+    }
+
+    .yt-links { margin: 0.3em 0 0; padding-left: 1.4em; }
+    .yt-links li { margin: 0.25em 0; font-size: 0.9em; }
+    .yt-type { color: var(--muted); font-size: 0.82em; text-transform: uppercase; letter-spacing: 0.03em; margin-left: 0.4em; }
+
+    /* Per-legend practice quiz (data injected by bin/gen-mw-quiz.py). */
+    .mw-quiz {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.9em 1.1em;
+      margin: 1em 0 1.4em;
+    }
+    .mw-quiz h4 { margin: 0 0 0.5em; font-size: 1em; color: var(--accent); }
+    .mw-quiz .mwq-intro { margin: 0 0 0.8em; font-size: 0.9em; color: var(--muted); }
+    .mw-quiz .mwq-progress {
+      margin: 0 0 0.5em; font-size: 0.8em; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .mw-quiz .mwq-question { font-weight: 600; margin: 0 0 0.8em; }
+    .mw-quiz .mwq-options { display: flex; flex-direction: column; gap: 0.45em; }
+    .mw-quiz button {
+      font: inherit;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: border-color 0.12s, background 0.12s, filter 0.12s;
+    }
+    .mw-quiz button.mwq-btn {
+      text-align: left;
+      color: inherit;
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.55em 0.85em;
+    }
+    .mw-quiz button.mwq-btn:hover,
+    .mw-quiz button.mwq-btn:focus-visible {
+      border-color: var(--accent);
+      background: rgba(200,165,119,0.14);
+      outline: none;
+    }
+    .mw-quiz button.mwq-start,
+    .mw-quiz button.mwq-again {
+      background: var(--accent); color: #fff; border: none; padding: 0.55em 1.1em;
+    }
+    .mw-quiz button.mwq-start:hover,
+    .mw-quiz button.mwq-again:hover { filter: brightness(1.08); }
+    .mw-quiz .mwq-result { text-align: center; }
+    .mw-quiz .mwq-score { font-size: 2em; font-weight: 700; margin: 0.1em 0 0.2em; color: var(--accent); }
+    .mw-quiz .mwq-verdict { margin: 0 0 0.4em; font-size: 1.05em; }
+    .mw-quiz .mwq-verdict.pass { color: var(--accent); font-weight: 600; }
+    .mw-quiz .mwq-note { margin: 0 0 0.9em; font-size: 0.85em; color: var(--muted); }
+  </style>
+  <div class="mw-layout">
+  <aside class="mw-toc-pane">
+    <nav class="toc" aria-label="Page contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#roster">The Roster</a></li>
+        <li><a href="#peterson">Jordan Peterson — Sage of Order</a></li>
+        <li><a href="#watts">Alan Watts — Mystic of the Tao</a></li>
+        <li><a href="#campbell">Joseph Campbell — The Mythkeeper</a></li>
+        <li><a href="#mckenna">Terence McKenna — Bard of the Mushroom</a></li>
+        <li><a href="#jocko">Jocko Willink — The Iron Captain</a></li>
+        <li><a href="#jung">Carl Jung — The Shadow-Walker</a></li>
+        <li><a href="#aurelius">Marcus Aurelius — The Philosopher King</a></li>
+        <li><a href="#hall">The Hall of Legends</a></li>
+        <li><a href="#tactics">Combat Styles</a></li>
+        <li><a href="#gear">Gear &amp; Growth</a></li>
+        <li><a href="#cures">Battlefield Cures</a></li>
+      </ol>
+    </nav>
+  </aside>
+  <div class="mw-content">
+
+<h1>MeaningWave: A Guide to the Guides</h1>
+
+<div class="mw-fannotice">
+  <p><em>"Even here, in the Third Age, we hear the signal. The Wave does not respect the boundaries between worlds."</em></p>
+  <p><strong>This is a fan page</strong> — not affiliated with or endorsed by Akira the Don or Meaningwave. It is a player's guide to the Meaningwave content woven into <strong>Homer's LOTR</strong>, a Neverwinter Nights module, where the Wave Lord's signal has somehow bled through the Veil into Middle-earth. Seven philosopher-legends, summoned by Akira's mixtape, now walk the roads of Arda and wait to be found.</p>
+  <p>To hear the real music, support Akira, and explore the full catalogue of philosopher-music from the source:</p>
+  <p class="mw-official-link">&#9654; <a href="https://www.meaningwave.com/" target="_blank" rel="noopener">meaningwave.com</a> — official home of the Wave Lord, Akira the Don</p>
+</div>
+
+<p>Seven legends have been pulled across worlds into Middle-earth by Akira the Don's mixtape.
+Find them, prove yourself worthy, and they will walk with you in dream and in deed.</p>
+
+<p>This guide lists where each legend stands, the shortest route from the Well of Eru to find
+them, and how each is unlocked. Once you have unlocked at least one, the
+<strong>Wayshrine of the Wave</strong> in the Well of Eru opens the door to the Hall of Legends —
+Akira's hub.</p>
+
+<blockquote>
+  <p><strong>How unlocking works.</strong> Each guide keeps a <strong>bank of 20 questions</strong> and
+  asks you <strong>five, drawn at random</strong> — with the answer options <strong>shuffled every
+  time</strong>, so there is no fixed pattern to memorise. Answer at least <strong>four of the five</strong>
+  correctly and the guide will recognise you. Fall short and you can simply try again: a fresh five
+  are drawn. Once unlocked they appear in the rest-time / emote-wand menu under
+  <em>"[Summon a Legend.]"</em> — pick them to bring them along as a henchman for the journey.</p>
+  <p><strong>Study up.</strong> Because the questions now span each legend's whole body of work, the
+  "Further reading" and "On Meaningwave" links under every guide below are your best prep — all are
+  free and online (Wikipedia, the figures' own sites, and Akira the Don's tracks).</p>
+  <p><strong>Tip.</strong> Resting (or activating the emote wand item) opens the legacy emote menu.
+  A new option, "[Summon a Legend.]", appears at the bottom once you have at least one guide.
+  Only the legends you have unlocked appear in the submenu.</p>
+  <p><strong>Practice here.</strong> Each legend below has a <strong>practice quiz</strong> right on this
+  page &mdash; the same five-of-twenty draw and 4-of-5 pass mark as in-game, so you can rehearse before
+  you make the trip. It only reports your score; it does not unlock anything in the module.</p>
+</blockquote>
+
+<h2 id="roster">The Roster</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Name</th><th>Archetype</th><th>Region</th><th>Hops from Well of Eru</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td><strong>Jordan Peterson</strong></td><td>Sage of Order</td><td><a href="../areas/rivendellupperha.html">Rivendell Upper Halls</a></td><td>2</td></tr>
+    <tr><td>2</td><td><strong>Alan Watts</strong></td><td>Mystic of the Tao</td><td><a href="../areas/oldforest001.html">Old Forest</a></td><td>4</td></tr>
+    <tr><td>3</td><td><strong>Joseph Campbell</strong></td><td>The Mythkeeper</td><td><a href="../areas/balinstomb.html">Balin's Tomb (Moria)</a></td><td>6</td></tr>
+    <tr><td>4</td><td><strong>Terence McKenna</strong></td><td>Bard of the Mushroom</td><td><a href="../areas/hennethannun002.html">Henneth Annun</a></td><td>6</td></tr>
+    <tr><td>5</td><td><strong>Jocko Willink</strong></td><td>The Iron Captain</td><td><a href="../areas/helmsdeep001.html">Helm's Deep</a></td><td>1</td></tr>
+    <tr><td>6</td><td><strong>Carl Jung</strong></td><td>The Shadow-Walker</td><td><a href="../areas/cryptsofthelosts.html">Esgaroth Crypts</a></td><td>2</td></tr>
+    <tr><td>7</td><td><strong>Marcus Aurelius</strong></td><td>The Philosopher King</td><td><a href="../areas/gwaththrone.html">Gwathdor: Throne of the Lord</a></td><td>9</td></tr>
+    <tr><td>&#9733;</td><td><strong>Akira the Don</strong> <em class="muted">(hub, not summonable)</em></td><td>Curator</td><td><a href="../areas/hallofleg.html">Hall of Legends</a></td><td>1 (Wayshrine, after first unlock)</td></tr>
+  </tbody>
+</table>
+
+<p class="muted"><em>These are the Wave 1 legends. More philosopher-guides are being pulled through the signal — keep watch for future arrivals.</em></p>
+
+<hr>
+
+<h2 id="peterson">1. Jordan Peterson — Sage of Order</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/rivendellupperha.html">Rivendell Upper Halls</a> — opposite side of the chamber from Elrond.</dd>
+  <dt>Build</dt>
+  <dd><strong>Wizard 60.</strong> Pure arcane devastation. Peterson leads with Epic Warding to protect himself, then unleashes Hellball, Ruin, and Dragon Knight on priority targets. Intelligence-primary; his spell penetration and memorized loadout (Wail of the Banshee, Meteor Swarm, Horrid Wilting) make him the party's nuclear option.</dd>
+  <dt>Quiz themes</dt>
+  <dd>Responsibility, hierarchy, meaning, slaying the dragon you would rather ignore, and setting your house in order. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Jordan_Peterson">Jordan Peterson — Wikipedia</a> ·
+    <em>12 Rules for Life: An Antidote to Chaos</em> (2018) is the primary quiz source — the bank now draws on <strong>all twelve rules</strong>, not just a few; the <a href="https://en.wikipedia.org/wiki/12_Rules_for_Life">12 Rules for Life — Wikipedia</a> article lists every rule with a summary, ideal quick prep ·
+    On hierarchy and the much-cited lobster, see the book's Rule 1 and <a href="https://en.wikipedia.org/wiki/Dominance_hierarchy">Dominance hierarchy — Wikipedia</a> ·
+    <em>Maps of Meaning: The Architecture of Belief</em> (1999) and <em>Beyond Order</em> (2021) for deeper background ·
+    Peterson's warnings about ideology lean on <a href="https://en.wikipedia.org/wiki/The_Gulag_Archipelago">Solzhenitsyn's <em>The Gulag Archipelago</em></a> ·
+    His free lecture series <em>Personality and Its Transformations</em> is available on YouTube
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=oH0Xs3Y8US8" target="_blank" rel="noopener">42 Rules For Life</a> <span class="yt-type">single · music video</span> — distills the 12 Rules into verse; closest to the quiz material</li>
+      <li><a href="https://www.youtube.com/watch?v=rGxhJXxXxNY" target="_blank" rel="noopener">You Can Say No</a> <span class="yt-type">single · music video</span> — responsibility and the right to refuse</li>
+      <li><a href="https://www.youtube.com/watch?v=DeTmMPtdtX0" target="_blank" rel="noopener">Deadwood</a> <span class="yt-type">single · JBPWAVE</span> — hierarchy and the cost of letting things rot</li>
+      <li><a href="https://www.youtube.com/watch?v=pZ8EY-MHjSU" target="_blank" rel="noopener">Be A Plumber</a> <span class="yt-type">single</span> — practical wisdom; do the meaningful thing in front of you</li>
+      <li><a href="https://www.youtube.com/playlist?list=PLQUliLxVLcV5x32Yisxz7FBLhZDg_OhNg" target="_blank" rel="noopener">JBPWAVE — Full Playlist</a> <span class="yt-type">playlist</span> — all Peterson tracks by Akira the Don</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="peterson">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(2 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → <a href="../areas/rivendell.html">Rivendell</a></strong>: talk to the <strong>Guardian of Light</strong> and choose Rivendell.</li>
+  <li><strong>Rivendell → <a href="../areas/rivendellupperha.html">Rivendell Upper Halls</a></strong>: use the <code>rivendell2upper</code> door.</li>
+</ol>
+
+<hr>
+
+<h2 id="watts">2. Alan Watts — Mystic of the Tao</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/oldforest001.html">Old Forest</a> (the deeper inner area, not the Withywindle approach).</dd>
+  <dt>Build</dt>
+  <dd><strong>Cleric 30 / Monk 30.</strong> An Episcopal priest who became a Zen teacher — his divine magic and monastic disciplines combine into a formidable healer and melee fighter. Wisdom is his primary stat, fuelling both his Cleric spells and the Monk's Wisdom-to-AC bonus.</dd>
+  <dt>Quiz themes</dt>
+  <dd>Ego, flow, the universe at play, and how to let go. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Alan_Watts">Alan Watts — Wikipedia</a> (his life as an Episcopal-priest-turned-Zen-teacher comes up in the bank) ·
+    <em>The Book: On the Taboo Against Knowing Who You Are</em> (1966) — best starting point for ego and self-dissolution ·
+    <em>The Way of Zen</em> (1957) for flow and the Tao — see also <a href="https://en.wikipedia.org/wiki/Wu_wei">Wu wei</a>, <a href="https://en.wikipedia.org/wiki/Satori">satori</a>, and <a href="https://en.wikipedia.org/wiki/Yin_and_yang">yin and yang</a> on Wikipedia for the Taoist/Zen terms the quiz asks about ·
+    <em>The Wisdom of Insecurity</em> (1951) — the letting-go themes ·
+    Recordings and transcripts at <a href="https://alanwatts.org">alanwatts.org</a>
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=HONn4QGri6g" target="_blank" rel="noopener">This Is Why I Love The Ocean</a> <span class="yt-type">full album</span> — deep cuts on ego, flow, and belonging; good intro to the Watts catalogue</li>
+      <li><a href="https://www.youtube.com/watch?v=4IhFCmd9yuo" target="_blank" rel="noopener">Wattswave II — How To Be A Better Person</a> <span class="yt-type">full album · lofi hip-hop</span> — covers the letting-go and self-dissolution themes directly relevant to the quiz</li>
+      <li><a href="https://www.youtube.com/watch?v=d6VTQZNULlA" target="_blank" rel="noopener">It Takes Two (What's The Difference Remix)</a> <span class="yt-type">single · Alan Watts × Dr. Dre</span> — a playful collision of worlds, much like finding Watts in the Old Forest</li>
+      <li><a href="https://www.youtube.com/playlist?list=PLQUliLxVLcV5GM_mNNY5-yoXYzsNNY3bt" target="_blank" rel="noopener">Wattswave — Full Playlist</a> <span class="yt-type">playlist</span> — all Alan Watts lofi mixes by Akira the Don</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="watts">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(4 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → Bree</strong>: use the door (the main Bree gate).</li>
+  <li><strong>Bree → Old Forest: Withywindle Path</strong>: step on the <code>bree2brandy</code> trigger.</li>
+  <li><strong>Withywindle Path → Old Forest (Tom Bombadil's house)</strong>: <code>withy2tom</code> trigger.</li>
+  <li><strong>Tom's → <a href="../areas/oldforest001.html">Old Forest (inner)</a></strong>: <code>tom2oldforest</code> trigger.</li>
+</ol>
+
+<hr>
+
+<h2 id="campbell">3. Joseph Campbell — The Mythkeeper</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/balinstomb.html">Balin's Tomb</a>, Moria.</dd>
+  <dt>Build</dt>
+  <dd><strong>Bard 60.</strong> Myth woven into music and magic. Campbell sustains Inspirational Song and Curse Song to buff the party and debuff enemies, heals the wounded when needed, and controls the battlefield with Dominate Person and Dirge. Charisma-primary; his bardic performance scales with Epic Skill Focus in Perform.</dd>
+  <dt>Quiz themes</dt>
+  <dd>The monomyth — Call to Adventure, threshold guardians, descent and rebirth, bliss, and the returned boon. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Joseph_Campbell">Joseph Campbell — Wikipedia</a> (covers his career at Sarah Lawrence and his influence on George Lucas's <em>Star Wars</em>, both now in the bank) ·
+    <em>The Hero with a Thousand Faces</em> (1949) is the direct quiz source ·
+    <a href="https://en.wikipedia.org/wiki/Hero%27s_journey">Hero's journey — Wikipedia</a> lays out every stage (Call, Refusal, threshold, belly of the whale, descent, the boon, the return) — the single best map for the expanded quiz ·
+    The PBS documentary <em>The Power of Myth</em> (1988, with Bill Moyers) covers the same ground accessibly ·
+    <a href="https://www.jcf.org">Joseph Campbell Foundation (jcf.org)</a>
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=ZL2mdM9SN-I" target="_blank" rel="noopener">Kill the Dragon Save the World</a> <span class="yt-type">single · music video</span> — the hero's task in three words; most direct overlap with the quiz</li>
+      <li><a href="https://www.youtube.com/watch?v=jjbwZvI2wXs" target="_blank" rel="noopener">Songs of Mythology</a> <span class="yt-type">full visual album</span> — Call, threshold, descent, bliss, the boon: all five quiz themes covered</li>
+      <li><a href="https://www.youtube.com/watch?v=trmxwwA2Plo" target="_blank" rel="noopener">MYTHOS</a> <span class="yt-type">full album</span> — deeper cuts on the monomyth; pick up after <em>Songs of Mythology</em></li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="campbell">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(6 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → Lothlorien: Main</strong>: Guardian of Light, choose Lothlorien.</li>
+  <li><strong>Lothlorien Main → Lothlorien North</strong>: <code>Lorien2LorienNorth</code> trigger.</li>
+  <li><strong>Lothlorien North → Sîr Ninglor</strong>: <code>lorien2silver</code> trigger.</li>
+  <li><strong>Sîr Ninglor → Durin's Bridge</strong>: <code>silver2moria</code> trigger.</li>
+  <li><strong>Durin's Bridge → Chamber of Records Walkway</strong>: <code>durin2chr</code> door.</li>
+  <li><strong>Chamber of Records → <a href="../areas/balinstomb.html">Balin's Tomb</a></strong>: <code>chr2balin</code> door.</li>
+</ol>
+<p class="muted">Long trek. The dwarven crypts will likely fight back.</p>
+
+<hr>
+
+<h2 id="mckenna">4. Terence McKenna — Bard of the Mushroom</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/hennethannun002.html">Henneth Annun</a>.</dd>
+  <dt>Build</dt>
+  <dd><strong>Druid 60.</strong> The deep wild in humanoid form. McKenna calls Storm of Vengeance and Elemental Swarm for raw elemental force, uses Creeping Doom and Entangle to control the field, and keeps the party standing with Heal and Cure Critical Wounds. Wisdom-primary; nature's cycles made manifest.</dd>
+  <dt>Quiz themes</dt>
+  <dd>Culture as operating system, the felt presence of immediate experience, the timewave, the Other, and language as organism. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Terence_McKenna">Terence McKenna — Wikipedia</a> ·
+    <em>Food of the Gods</em> (1992) — culture as operating system, and the <a href="https://en.wikipedia.org/wiki/Stoned_ape_hypothesis">Stoned Ape hypothesis</a> (now in the bank) ·
+    <em>The Archaic Revival</em> (1991) — essay collection including language-as-organism and the Other ·
+    On the timewave, see <a href="https://en.wikipedia.org/wiki/Novelty_theory">Novelty theory / Timewave zero — Wikipedia</a>; his brother and collaborator <a href="https://en.wikipedia.org/wiki/Dennis_McKenna">Dennis McKenna</a> also appears in the quiz ·
+    His lectures are the best source for the felt-presence themes; many are free on YouTube and at the <a href="https://psychedelicsalon.com">Psychedelic Salon podcast</a>
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=rA2YbO4s03o" target="_blank" rel="noopener">TIMEWAVE</a> <span class="yt-type">full album</span> — the culture-as-OS, timewave, and the Other themes all appear here; start here for quiz prep</li>
+      <li><a href="https://www.youtube.com/watch?v=qKnTDBTbS80" target="_blank" rel="noopener">The Archaic Revival</a> <span class="yt-type">single</span> — language as organism and the return to archaic consciousness</li>
+      <li><a href="https://www.youtube.com/watch?v=ALcGQf8tfMw" target="_blank" rel="noopener">Catalysts (Reclaim Your Mind)</a> <span class="yt-type">single · music video</span> — the felt presence of immediate experience</li>
+      <li><a href="https://www.youtube.com/watch?v=ZKh5Tv7azyQ" target="_blank" rel="noopener">Don't Worry</a> <span class="yt-type">single · music video</span> — timewave zero and the nature of anxiety about the unknown</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="mckenna">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(6 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → <a href="../areas/minastirithgates.html">Minas Tirith: Gates</a></strong>: talk to the <strong>Guardian of Light</strong> and choose Minas Tirith.</li>
+  <li><strong>Minas Tirith: Gates → The Pelennor Fields</strong>: <code>gates2pel</code> trigger.</li>
+  <li><strong>The Pelennor Fields → Northern Forests of Ithilien SW</strong>: <code>pel2northernith</code> trigger.</li>
+  <li><strong>Northern Forests of Ithilien SW → Northern Forests of Ithilien (S)</strong>: <code>ithfrstSW2forestsS</code> trigger.</li>
+  <li><strong>Northern Forests of Ithilien (S) → Vale of Henneth Annun</strong>: <code>ithfrstS2vale</code> trigger.</li>
+  <li><strong>Vale of Henneth Annun → <a href="../areas/hennethannun002.html">Henneth Annun</a></strong>: area transition.</li>
+</ol>
+<p class="muted">A long walk south through Gondor and Ithilien; come well levelled.</p>
+
+<hr>
+
+<h2 id="jocko">5. Jocko Willink — The Iron Captain</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/helmsdeep001.html">Helm's Deep</a>.</dd>
+  <dt>Build</dt>
+  <dd><strong>Fighter 30 / Monk 30.</strong> Discipline embodied. Jocko combines the Fighter's Weapon Specialization and bonus feats with the Monk's Stunning Fist, unarmed progression, Abundant Step, and Perfect Self (DR 20/+5 epic). Strength-primary; Monk adds Wisdom to AC. Every combat round, he hits first and hits hard.</dd>
+  <dt>Quiz themes</dt>
+  <dd>Discipline, extreme ownership, "Good.", waking up, and doing what you do not feel like doing. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Jocko_Willink">Jocko Willink — Wikipedia</a> ·
+    <em>Extreme Ownership: How U.S. Navy SEALs Lead and Win</em> (with Leif Babin, 2015) is the primary quiz source — the bank now covers its leadership principles too: Cover and Move, Simple, Prioritize and Execute, Decentralized Command, and the Dichotomy of Leadership (see <a href="https://en.wikipedia.org/wiki/Extreme_Ownership">Extreme Ownership — Wikipedia</a>) ·
+    <em>Discipline Equals Freedom: Field Manual</em> (2017) — the "Discipline equals freedom" maxim and the 0430 wake-up ·
+    The "Good." philosophy originated in a podcast story; search "Jocko Good" on YouTube for the clip ·
+    <a href="https://jockopodcast.com">Jocko Podcast</a> — discipline, early rising, and doing what you don't feel like doing
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=CGh3KDkonQE" target="_blank" rel="noopener">GOOD.</a> <span class="yt-type">single · music video</span> — the quiz asks about this directly; start here</li>
+      <li><a href="https://www.youtube.com/watch?v=0pp2LF0T4yE" target="_blank" rel="noopener">Default Aggressive</a> <span class="yt-type">single</span> — discipline and the posture of constant readiness</li>
+      <li><a href="https://www.youtube.com/watch?v=nVBfAjhSiTg" target="_blank" rel="noopener">Get Some</a> <span class="yt-type">full album</span> — extreme ownership, early mornings, doing the work</li>
+      <li><a href="https://www.youtube.com/watch?v=dih3QWoNT2k" target="_blank" rel="noopener">Warpath</a> <span class="yt-type">full album</span> — discipline as a way of life; cover to cover</li>
+      <li><a href="https://www.youtube.com/playlist?list=PLQUliLxVLcV46lbKliNhk2p-Y0fvsiMxd" target="_blank" rel="noopener">Jocko Willink — Full Playlist</a> <span class="yt-type">playlist</span> — all Jocko tracks by Akira the Don</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="jocko">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(1 hop)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → <a href="../areas/helmsdeep001.html">Helm's Deep</a></strong>: Guardian of Light, choose Helm's Deep.</li>
+</ol>
+<p class="muted">The shortest journey of the seven. Get after it.</p>
+
+<hr>
+
+<h2 id="jung">6. Carl Jung — The Shadow-Walker</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/cryptsofthelosts.html">Esgaroth Crypts</a>.</dd>
+  <dt>Build</dt>
+  <dd><strong>Fighter 20 / Rogue 20 / Shadowdancer 20.</strong> The concept of "The Shadow" finds its natural form in the Shadowdancer prestige class. Jung fights from the darkness — Hide in Plain Sight, sneak attacks, and shadow evade make him a lethal flanker. Dexterity-primary with Epic Concealment and Epic Dodge.</dd>
+  <dt>Quiz themes</dt>
+  <dd>The shadow, individuation, the collective unconscious, and the persona. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Carl_Jung">Carl Jung — Wikipedia</a> (his break with Freud comes up in the bank) ·
+    <em>Man and His Symbols</em> (1964) — the most accessible entry point; Jung wrote the opening chapter himself and it covers shadow, persona, individuation, and the collective unconscious in plain language ·
+    <em>Modern Man in Search of a Soul</em> (1933) — shorter and very readable ·
+    Direct quiz prep on Wikipedia: the <a href="https://en.wikipedia.org/wiki/Shadow_(psychology)">Shadow</a>, <a href="https://en.wikipedia.org/wiki/Individuation">Individuation</a>, <a href="https://en.wikipedia.org/wiki/Collective_unconscious">Collective unconscious</a>, <a href="https://en.wikipedia.org/wiki/Jungian_archetypes">Archetypes</a>, <a href="https://en.wikipedia.org/wiki/Anima_and_animus">Anima and animus</a>, <a href="https://en.wikipedia.org/wiki/Synchronicity">Synchronicity</a>, and <a href="https://en.wikipedia.org/wiki/The_Red_Book_(Jung)">The Red Book</a>
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <p class="muted" style="margin:0.2em 0 0.5em; font-size:0.88em;">Akira the Don uses Alan Watts as the vocal source for Jung's ideas — the tracks are branded as WATTSWAVE but the content is drawn from Jung's 1928 address <em>Psychotherapists or the Clergy</em>.</p>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=ymJolgqx4sE" target="_blank" rel="noopener">The Wolf E.P.</a> <span class="yt-type">full EP · Watts × Jung · WATTSWAVE</span> — shadow, individuation, and the persona; three tracks with visuals, all quiz-adjacent</li>
+      <li><a href="https://www.youtube.com/watch?v=SaiBuCtCrt0" target="_blank" rel="noopener">The Wolf</a> <span class="yt-type">single · music video</span> — the shadow as the beast within; the quiz's shadow theme distilled</li>
+      <li><a href="https://www.youtube.com/watch?v=-5R3G0KiR4o" target="_blank" rel="noopener">Accepted Too</a> <span class="yt-type">single · music video</span> — integrating what has been rejected</li>
+      <li><a href="https://www.youtube.com/watch?v=jI2oKB4dLWM" target="_blank" rel="noopener">Anything</a> <span class="yt-type">single · music video</span> — individuation and the cost of becoming whole</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="jung">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(2 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → Esgaroth (Lake Town)</strong>: Guardian of Darkness, choose Esgaroth.</li>
+  <li><strong>Esgaroth → <a href="../areas/cryptsofthelosts.html">Esgaroth Crypts</a></strong>: <code>laketowncryptsenter</code> door.</li>
+</ol>
+
+<hr>
+
+<h2 id="aurelius">7. Marcus Aurelius — The Philosopher King</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/gwaththrone.html">Gwathdor: Throne of the Lord</a>.</dd>
+  <dt>Build</dt>
+  <dd><strong>Paladin 60.</strong> The Philosopher King in heavy armor. Aurelius heals the master and himself with Cure Critical and Cure Serious Wounds, uses Divine Grace to shore up party saves, and punishes evil with Smite. Guardian mode keeps the master alive at any cost; Offensive mode pulls aggro by targeting the enemies attacking you.</dd>
+  <dt>Quiz themes</dt>
+  <dd>What is in your power, the obstacle as the way, <em>memento mori</em>, the soul dyed by its thoughts, and how to begin each day. Five questions are drawn at random from a bank of 20, with the answer options shuffled; pass 4 of 5.</dd>
+  <dt>Further reading</dt>
+  <dd>
+    <a href="https://en.wikipedia.org/wiki/Marcus_Aurelius">Marcus Aurelius — Wikipedia</a> ·
+    <a href="https://en.wikipedia.org/wiki/Meditations"><em>Meditations</em> — Wikipedia</a> — the core quiz source; it is public domain and free to read in full at <a href="https://www.gutenberg.org/ebooks/2680">Project Gutenberg</a> ·
+    For the broader Stoic ideas the bank now tests — the dichotomy of control, virtue as the only good, and <em>amor fati</em> — see <a href="https://en.wikipedia.org/wiki/Stoicism">Stoicism — Wikipedia</a> ·
+    The Gregory Hays translation (Modern Library, 2002) is the most readable modern edition ·
+    Ryan Holiday's <em>The Obstacle Is the Way</em> (2014) is a modern guide built directly on Aurelius's core ideas
+  </dd>
+  <dt>On Meaningwave</dt>
+  <dd>
+    <ul class="yt-links">
+      <li><a href="https://www.youtube.com/watch?v=jk1Sr1kfIL4" target="_blank" rel="noopener">Meditations Vol. 1</a> <span class="yt-type">full visual album · STOICWAVE</span> — drawn directly from the <em>Meditations</em>; the single best prep for the quiz</li>
+      <li><a href="https://www.youtube.com/watch?v=x88YaIji18E" target="_blank" rel="noopener">Grateful to the Gods</a> <span class="yt-type">single · music video</span> — <em>memento mori</em> and gratitude; themes that appear in the quiz</li>
+      <li><a href="https://www.youtube.com/playlist?list=PLQUliLxVLcV53qaa3NUYt9NoMVgDqEGiS" target="_blank" rel="noopener">Marcus Aurelius — Full Playlist</a> <span class="yt-type">playlist</span> — all Aurelius tracks by Akira the Don</li>
+    </ul>
+  </dd>
+</dl>
+<div class="mw-quiz" data-guide="aurelius">
+  <noscript><p class="mwq-note">Enable JavaScript to take the practice quiz.</p></noscript>
+</div>
+<h3>Path from Well of Eru <span class="muted">(9 hops)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → Edoras</strong>: Guardian of Light, choose Edoras.</li>
+  <li><strong>Edoras → Path To Helm's Deep</strong>: <code>edoras2helm</code> trigger.</li>
+  <li><strong>Path → Hidden Port</strong>: <code>path2hiddenport</code> trigger.</li>
+  <li><strong>Hidden Port → <a href="../areas/gwathdoroutskirt.html">Gwathdor: Outskirts</a></strong>: talk to <strong>Laxus the Ship Captain</strong>.</li>
+  <li><strong>Outskirts → <a href="../areas/gwathdorcave.html">Gwathdor: Cave</a></strong>: <code>GwathDoorEntrance</code> door.</li>
+  <li><strong>Cave → East Deeps</strong> (trigger).</li>
+  <li><strong>East Deeps → West Deeps</strong> (trigger).</li>
+  <li><strong>West Deeps → <a href="../areas/gwathtomb.html">Tomb</a></strong> (trigger).</li>
+  <li><strong>Tomb → <a href="../areas/gwaththrone.html">Throne of the Lord</a></strong> (trigger).</li>
+</ol>
+<p class="muted">The longest of the seven. Stoic discipline indeed.</p>
+
+<hr>
+
+<h2 id="hall">The Hall of Legends</h2>
+<dl class="kv">
+  <dt>Location</dt>
+  <dd><a href="../areas/hallofleg.html">The Hall of Legends</a> — a hub area reached only via the Wayshrine.</dd>
+  <dt>Unlock</dt>
+  <dd>Unlock any one of the seven legends first.</dd>
+</dl>
+<h3>Path from Well of Eru <span class="muted">(1 hop)</span></h3>
+<ol class="hop-path">
+  <li><strong>Well of Eru → <a href="../areas/hallofleg.html">The Hall of Legends</a></strong>: touch the <strong>Wayshrine of the Wave</strong>, the black obelisk in the Well of Eru.</li>
+</ol>
+<p>Inside the Hall, <strong>Akira the Don</strong> stands at the centre, surrounded by seven pedestals.
+Each pedestal that still holds a stone statue is a legend you have yet to unlock; pedestals
+whose statue you have already earned now show the live figure, who will greet you with a
+short post-unlock benediction.</p>
+<div class="reward-box">
+  <strong>Final reward — Akira's Mixtape.</strong> When all seven legends are yours, return to
+  the Hall and ask Akira for the mixtape. He will press into your hand a black slab called
+  <strong>Akira's Mixtape</strong> — a ring that grants +2 to all six ability scores and
+  closes the Path of Meaning quest. <strong>The ring can optionally be consumed to permanently
+  grant +1 to all ability scores.</strong>
+</div>
+
+<hr>
+
+<h2 id="tactics">Combat Styles</h2>
+
+<p>Once a guide is walking with you as a henchman, you can tell them how to fight.
+Talk to them and choose <strong>"Let's talk tactics."</strong> — the option only appears
+while they are summoned. Each guide remembers their style until you change it or they
+are dismissed.</p>
+
+<table>
+  <thead>
+    <tr><th>Guide</th><th>Style 0 (default)</th><th>Style 1</th><th>Style 2</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Jordan Peterson</strong> (Wizard)</td>
+      <td><strong>Calculated</strong> — applies Epic Warding on himself first, then unleashes offensive spells</td>
+      <td><strong>Aggressive</strong> — leads immediately with Hellball, Ruin, or Dragon Knight; no waiting</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Alan Watts</strong> (Cleric/Monk)</td>
+      <td><strong>Enlightened</strong> — heals party members below half health, buffs himself with Divine Power, then fights normally</td>
+      <td><strong>Guardian</strong> — pure support; heals anyone below 70% health and keeps the party buffed; will not attack</td>
+      <td><strong>Zen Strike</strong> — buffs himself with Divine Power then closes to melee, using Quivering Palm on the strongest foe</td>
+    </tr>
+    <tr>
+      <td><strong>Joseph Campbell</strong> (Bard)</td>
+      <td><strong>Balanced</strong> — heals at &lt;25% HP, otherwise follows the standard AI (CC, song, light offense)</td>
+      <td><strong>Combat</strong> — casts offensive spells and control effects; only heals in emergencies (&lt;15%)</td>
+      <td><strong>Healer</strong> — heals anyone below 50% HP and casts Haste on the master when the party is stable</td>
+    </tr>
+    <tr>
+      <td><strong>Terence McKenna</strong> (Druid)</td>
+      <td><strong>Balanced</strong> — as Campbell above</td>
+      <td><strong>Combat</strong> — Storm of Vengeance, offensive nature magic, emergency heals only</td>
+      <td><strong>Healer</strong> — as Campbell above</td>
+    </tr>
+    <tr>
+      <td><strong>Jocko Willink</strong> (Fighter/Monk)</td>
+      <td><strong>Get After It</strong> — opens every round with a Stunning Fist on the nearest enemy, then presses the attack normally</td>
+      <td><strong>Extreme Ownership</strong> — locates whoever is targeting you and attacks them directly, pulling their focus so you can fight freely</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Carl Jung</strong> (Shadowdancer)</td>
+      <td><strong>Shadow</strong> — hides mid-combat (Hide in Plain Sight) and attacks enemies that are targeting you, maximising sneak attack damage</td>
+      <td><strong>Warrior</strong> — open combat; no stealth, straightforward aggression</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td><strong>Marcus Aurelius</strong> (Paladin)</td>
+      <td><strong>Guardian</strong> — heals you when your HP drops below half; otherwise follows the standard combat AI</td>
+      <td><strong>Offensive</strong> — self-heals only when critical; actively hunts down enemies that are attacking you to pull their focus away</td>
+      <td>—</td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="muted"><em>Tip: Set Peterson to Aggressive going into a boss fight — he will open with an epic nuke. Swap Watts to Guardian if you are taking heavy damage and need a dedicated healer. Jung in Shadow mode is most effective when you are tanking: his sneak attacks land consistently against foes already focused on you. Jocko in Extreme Ownership keeps heat off you in a crowd — put him on it and let him handle the pile-on.</em></p>
+
+<h3 id="counterspell">Counterspell (caster mode)</h3>
+
+<p>The five spellcasting legends — <strong>Jordan Peterson, Alan Watts, Joseph Campbell,
+Terence McKenna, and Marcus Aurelius</strong> — have a fourth tactical option:
+<strong>"Counter the enemy's magic."</strong> In this mode the guide stops nuking or healing
+and instead readies <em>counterspells</em> against the nearest enemy spellcaster, tearing apart
+their magic as it is cast. A guide's Spellcraft is greatly sharpened while they walk with you,
+so the counters land reliably. If no enemy mage is in sight they fall back to their normal
+combat behaviour, so the mode is safe to leave on against mixed groups.</p>
+
+<h2 id="gear">Gear &amp; Growth</h2>
+
+<p>Every legend who walks with you wears the <strong>Aegis of Meaning</strong>, a bound ring that
+cannot be removed, looted, or sold. It grants <strong>15/- damage resistance</strong> and
+<strong>25% immunity</strong> against <em>every</em> type of damage — bludgeoning, piercing and
+slashing, plus acid, cold, fire, electrical, magical, divine, positive, negative, and sonic —
+making the guides far more durable in the late game.</p>
+
+<p>The legends also grow stronger the more of them you have awakened. Each time you summon a
+guide they are empowered according to <strong>how many of the seven you have unlocked</strong>:</p>
+
+<ul>
+  <li><strong>+6 to every ability score</strong> for each legend unlocked — so the full roster of
+  seven grants <strong>+42 to all stats</strong>.</li>
+  <li><strong>+2 divine and +2 positive weapon damage</strong> for each legend unlocked, applied to
+  their weapon — or, for the unarmed monks <strong>Watts</strong> and <strong>Jocko</strong>, to
+  their gloves and bracers.</li>
+</ul>
+
+<p class="muted"><em>The growth is recalculated every time a guide is summoned, so unlocking another
+legend immediately strengthens whoever you bring along next. (Each weapon damage type is capped at
++20.)</em></p>
+
+<h2 id="cures">Battlefield Cures</h2>
+
+<p>Some legends carry emergency restorative magic that they cast automatically to save the party —
+<em>no matter which combat style you have set</em>, and whether or not they are in combat:</p>
+
+<ul>
+  <li><strong>Stone to Flesh</strong> — if a party member is turned to stone, <strong>Peterson,
+  Watts, or McKenna</strong> will restore them. <strong>3 uses</strong>, refreshed by resting.</li>
+  <li><strong>Restoration</strong> — if a party member suffers ability-score damage,
+  <strong>Peterson, Watts, McKenna, or Aurelius</strong> will cure it. <strong>3 uses</strong>,
+  refreshed by resting.</li>
+</ul>
+
+<p class="muted"><em>Only one legend walks with you at a time, so keep a caster summoned if you expect
+basilisks, medusas, cockatrices, or ability-draining foes.</em></p>
+
+  </div><!-- .mw-content -->
+  </div><!-- .mw-layout -->
+
+  <!-- MW-QUIZ-DATA:START (generated by bin/gen-mw-quiz.py -- do not edit) -->
+  <script id="mw-quiz-bank" type="application/json">
+{
+  "meta": {
+    "draw": 5,
+    "pass": 4,
+    "options": 4
+  },
+  "guides": {
+    "jocko": {
+      "display_name": "Jocko Willink",
+      "tested_on": "extreme ownership, discipline, and the laws of combat leadership",
+      "questions": [
+        {
+          "q": "Complete my maxim: \"Discipline equals ___.\"",
+          "correct": "Freedom.",
+          "distractors": [
+            "Success.",
+            "Respect.",
+            "Strength."
+          ]
+        },
+        {
+          "q": "When the mission fails, whose fault is it?",
+          "correct": "Mine.",
+          "distractors": [
+            "The team's.",
+            "The plan's.",
+            "Bad luck's."
+          ]
+        },
+        {
+          "q": "When I get bad news, what single word do I say?",
+          "correct": "\"Good.\"",
+          "distractors": [
+            "\"Okay.\"",
+            "\"Understood.\"",
+            "\"Ready.\""
+          ]
+        },
+        {
+          "q": "The alarm goes off before dawn. What do I do?",
+          "correct": "Get up. Now.",
+          "distractors": [
+            "Stretch first.",
+            "Plan the day.",
+            "Start slow."
+          ]
+        },
+        {
+          "q": "I do not feel like doing the work. What then?",
+          "correct": "Do it anyway.",
+          "distractors": [
+            "Push through later.",
+            "Start small.",
+            "Build the habit first."
+          ]
+        },
+        {
+          "q": "Who owns a team's performance?",
+          "correct": "The leader.",
+          "distractors": [
+            "The whole team.",
+            "Each individual.",
+            "The commander above."
+          ]
+        },
+        {
+          "q": "What does \"Default: Aggressive\" mean?",
+          "correct": "Attack the problem before it attacks you.",
+          "distractors": [
+            "Take the fight to the enemy first.",
+            "Keep the pressure on constantly.",
+            "Meet force with greater force."
+          ]
+        },
+        {
+          "q": "The dichotomy of leadership means balancing traits. Which pairing is it?",
+          "correct": "Lead, but be ready to follow.",
+          "distractors": [
+            "Lead hard from the front.",
+            "Trust your team completely.",
+            "Own every call yourself."
+          ]
+        },
+        {
+          "q": "What does \"Cover and Move\" demand?",
+          "correct": "Teams support each other toward the goal.",
+          "distractors": [
+            "Advance under covering fire.",
+            "Hold position and defend.",
+            "Split up to move faster."
+          ]
+        },
+        {
+          "q": "How complex should a plan be?",
+          "correct": "Simple enough for anyone to execute.",
+          "distractors": [
+            "Detailed enough for every case.",
+            "Flexible enough to change fast.",
+            "Clear enough for the leader."
+          ]
+        },
+        {
+          "q": "Many problems hit at once. What do I do?",
+          "correct": "Prioritize, then execute.",
+          "distractors": [
+            "Delegate across the team.",
+            "Solve the easiest first.",
+            "Attack the biggest head-on."
+          ]
+        },
+        {
+          "q": "How do discipline and freedom relate?",
+          "correct": "Discipline creates freedom.",
+          "distractors": [
+            "Freedom means doing as you please.",
+            "Talent matters more than habit.",
+            "Rest is what sets you free."
+          ]
+        },
+        {
+          "q": "What does \"Decentralized Command\" mean?",
+          "correct": "Push decisions down to those closest to the fight.",
+          "distractors": [
+            "Give clear orders from the top.",
+            "Share command among equals.",
+            "Let the team vote on calls."
+          ]
+        },
+        {
+          "q": "In which branch did I serve?",
+          "correct": "The Navy, with the SEAL Teams.",
+          "distractors": [
+            "The Army, with the Green Berets.",
+            "The Marines, with Force Recon.",
+            "The Air Force, with the Pararescuemen."
+          ]
+        },
+        {
+          "q": "My man makes a mistake. What do I ask first?",
+          "correct": "How did I fail to lead him?",
+          "distractors": [
+            "Did he understand the plan?",
+            "Was he trained enough?",
+            "What will fix it next time?"
+          ]
+        },
+        {
+          "q": "What place do excuses have?",
+          "correct": "None. Own the outcome.",
+          "distractors": [
+            "A reason helps you learn.",
+            "Context explains the loss.",
+            "Some things are truly beyond us."
+          ]
+        },
+        {
+          "q": "How should I treat a hard task?",
+          "correct": "As a chance to get better.",
+          "distractors": [
+            "As a test to endure.",
+            "As a job to finish fast.",
+            "As a duty to bear."
+          ]
+        },
+        {
+          "q": "Amid chaos, how do I see clearly?",
+          "correct": "Detach and assess the whole.",
+          "distractors": [
+            "Trust your gut and move.",
+            "Focus on the nearest threat.",
+            "Fall back on the training."
+          ]
+        },
+        {
+          "q": "Where does ownership point first?",
+          "correct": "Inward, at myself.",
+          "distractors": [
+            "At the team's effort.",
+            "At the plan's flaws.",
+            "At the conditions we faced."
+          ]
+        },
+        {
+          "q": "You feel overwhelmed. What saves you?",
+          "correct": "One priority at a time.",
+          "distractors": [
+            "A short rest to reset.",
+            "Leaning on your team.",
+            "Trusting the training."
+          ]
+        }
+      ]
+    },
+    "peterson": {
+      "display_name": "Jordan Peterson",
+      "tested_on": "responsibility, hierarchy, meaning, and the order-chaos balance",
+      "questions": [
+        {
+          "q": "How should you carry yourself in the world?",
+          "correct": "Stand up straight, shoulders back.",
+          "distractors": [
+            "Stay humble and quiet.",
+            "Blend in with the crowd.",
+            "Guard your energy."
+          ]
+        },
+        {
+          "q": "What is responsibility, truly?",
+          "correct": "The path to meaning, freely chosen.",
+          "distractors": [
+            "A duty owed to others.",
+            "The price of freedom.",
+            "A weight we must bear."
+          ]
+        },
+        {
+          "q": "Whom should you measure yourself against?",
+          "correct": "Who you were yesterday.",
+          "distractors": [
+            "The best in your field.",
+            "Your closest peers.",
+            "The person you hope to be."
+          ]
+        },
+        {
+          "q": "What dragon must you face?",
+          "correct": "The chaos within yourself.",
+          "distractors": [
+            "The obstacles in your path.",
+            "The people who wrong you.",
+            "The fear of failing."
+          ]
+        },
+        {
+          "q": "Before you criticise the world, what must you do?",
+          "correct": "Set your own house in order.",
+          "distractors": [
+            "Understand it deeply first.",
+            "Earn the right to speak.",
+            "Offer a better answer."
+          ]
+        },
+        {
+          "q": "What must you do, even when it costs you?",
+          "correct": "Tell the truth.",
+          "distractors": [
+            "Keep your word.",
+            "Do what is right.",
+            "Stand your ground."
+          ]
+        },
+        {
+          "q": "What is a hierarchy of competence?",
+          "correct": "An ancient order, not a mere invention.",
+          "distractors": [
+            "A ladder anyone can climb.",
+            "A useful modern tool.",
+            "A fair way to reward skill."
+          ]
+        },
+        {
+          "q": "You should pursue what?",
+          "correct": "What is meaningful, not expedient.",
+          "distractors": [
+            "What makes you happy.",
+            "What you are good at.",
+            "What the world needs."
+          ]
+        },
+        {
+          "q": "I point to which creature to show hierarchy runs deep in nature?",
+          "correct": "The lobster.",
+          "distractors": [
+            "The wolf.",
+            "The ape.",
+            "The bee."
+          ]
+        },
+        {
+          "q": "What is the antidote to resentment?",
+          "correct": "Aim up and take responsibility.",
+          "distractors": [
+            "Forgive and move on.",
+            "Name what is unfair.",
+            "Count your blessings."
+          ]
+        },
+        {
+          "q": "How should you treat yourself?",
+          "correct": "As someone you must help.",
+          "distractors": [
+            "As your harshest critic.",
+            "As your own best friend.",
+            "As a work in progress."
+          ]
+        },
+        {
+          "q": "Where is meaning found?",
+          "correct": "On the border of order and chaos.",
+          "distractors": [
+            "In a life of order.",
+            "In freedom from all rules.",
+            "In serving something greater."
+          ]
+        },
+        {
+          "q": "When you listen to someone, what should you assume?",
+          "correct": "They might know something you don't.",
+          "distractors": [
+            "They mean well.",
+            "They see it their own way.",
+            "They want to be heard."
+          ]
+        },
+        {
+          "q": "What befalls a person who abandons truth?",
+          "correct": "He descends into his own hell.",
+          "distractors": [
+            "He loses others' trust.",
+            "He forgets who he is.",
+            "He weakens over time."
+          ]
+        },
+        {
+          "q": "In what must you be precise?",
+          "correct": "Your speech.",
+          "distractors": [
+            "Your aim.",
+            "Your habits.",
+            "Your promises."
+          ]
+        },
+        {
+          "q": "Where does order begin?",
+          "correct": "With the small things you can fix now.",
+          "distractors": [
+            "With a clear plan.",
+            "With honest self-reflection.",
+            "With the right values."
+          ]
+        },
+        {
+          "q": "What is the tragedy of Being?",
+          "correct": "Suffering is woven in, yet can be borne.",
+          "distractors": [
+            "Suffering falls only on the unlucky.",
+            "Enough progress will end it.",
+            "Meaning removes all pain."
+          ]
+        },
+        {
+          "q": "What kind of friends should you make?",
+          "correct": "Those who want the best for you.",
+          "distractors": [
+            "Those who are fun to be with.",
+            "Those who challenge you.",
+            "Those loyal no matter what."
+          ]
+        },
+        {
+          "q": "What two forces must you balance?",
+          "correct": "Order and chaos.",
+          "distractors": [
+            "Reason and emotion.",
+            "Freedom and duty.",
+            "Self and others."
+          ]
+        },
+        {
+          "q": "Why measure yourself only against your past self?",
+          "correct": "To escape envy and false comparison.",
+          "distractors": [
+            "To track real progress.",
+            "To stay humble.",
+            "To set fair goals."
+          ]
+        }
+      ]
+    },
+    "watts": {
+      "display_name": "Alan Watts",
+      "tested_on": "ego, nonduality, flow, and the universe at play",
+      "questions": [
+        {
+          "q": "Who is doing the experiencing?",
+          "correct": "No separate self apart from the experience.",
+          "distractors": [
+            "The mind behind your eyes.",
+            "The soul within the body.",
+            "The 'I' that watches it all."
+          ]
+        },
+        {
+          "q": "What is the great secret you were never told?",
+          "correct": "You are the whole universe, not a separate ego.",
+          "distractors": [
+            "Your fate is already written.",
+            "Desire is the root of suffering.",
+            "The world is a passing dream."
+          ]
+        },
+        {
+          "q": "What is the universe, really?",
+          "correct": "A cosmic game of hide-and-seek.",
+          "distractors": [
+            "A grand design with a purpose.",
+            "A vast, living organism.",
+            "A mystery beyond knowing."
+          ]
+        },
+        {
+          "q": "Why act at all, if the goal is incidental?",
+          "correct": "Because the doing is the play.",
+          "distractors": [
+            "Because growth is the point.",
+            "Because the world needs you.",
+            "Because effort is its own reward."
+          ]
+        },
+        {
+          "q": "The self is more like which part of speech?",
+          "correct": "A verb, not a noun.",
+          "distractors": [
+            "A noun, solid and real.",
+            "A story we tell.",
+            "A name we answer to."
+          ]
+        },
+        {
+          "q": "How do you truly let go?",
+          "correct": "By yielding, not gripping harder.",
+          "distractors": [
+            "By understanding its cause.",
+            "By replacing it with something better.",
+            "By simply deciding to."
+          ]
+        },
+        {
+          "q": "Where is real security found?",
+          "correct": "In accepting that all things pass.",
+          "distractors": [
+            "In building something lasting.",
+            "In faith and trust.",
+            "In knowing yourself well."
+          ]
+        },
+        {
+          "q": "Which two ways of seeing do I draw from most?",
+          "correct": "Zen and the Tao.",
+          "distractors": [
+            "Stoicism and Zen.",
+            "Hinduism and Sufism.",
+            "Buddhism and Christianity."
+          ]
+        },
+        {
+          "q": "What is \"wu wei\"?",
+          "correct": "Effortless action, with the grain of things.",
+          "distractors": [
+            "Patient, steady effort.",
+            "Action guided by reason.",
+            "Stillness and quiet."
+          ]
+        },
+        {
+          "q": "What is the ego, really?",
+          "correct": "A useful illusion, a social mask.",
+          "distractors": [
+            "The core of who you are.",
+            "The voice of conscience.",
+            "The seat of the will."
+          ]
+        },
+        {
+          "q": "Chase pleasure head-on, and what happens?",
+          "correct": "It slips through your fingers.",
+          "distractors": [
+            "It leaves you wanting more.",
+            "It costs more than it gives.",
+            "It dulls over time."
+          ]
+        },
+        {
+          "q": "Believing you are a lone ego in a bag of skin is what?",
+          "correct": "A hallucination of separateness.",
+          "distractors": [
+            "Simple common sense.",
+            "The way we are built to feel.",
+            "A hard truth to accept."
+          ]
+        },
+        {
+          "q": "What is \"satori\"?",
+          "correct": "A sudden flash of awakening.",
+          "distractors": [
+            "A lifetime of practice.",
+            "A deep, calm peace.",
+            "A state of pure focus."
+          ]
+        },
+        {
+          "q": "Life is like music. Why?",
+          "correct": "The point is the playing, not the end.",
+          "distractors": [
+            "Every part has its rhythm.",
+            "It rises and falls in time.",
+            "It moves us beyond words."
+          ]
+        },
+        {
+          "q": "What do yin and yang teach?",
+          "correct": "Opposites need each other.",
+          "distractors": [
+            "Balance is the goal.",
+            "All things are in flux.",
+            "Light will outlast the dark."
+          ]
+        },
+        {
+          "q": "What are you, at the deepest level?",
+          "correct": "The universe knowing itself.",
+          "distractors": [
+            "A spark of the divine.",
+            "A mind made of matter.",
+            "A soul on a journey."
+          ]
+        },
+        {
+          "q": "\"You are the universe experiencing itself\" points to what?",
+          "correct": "Nonduality: self and cosmos are one.",
+          "distractors": [
+            "Pantheism: God is all things.",
+            "Idealism: all is mind.",
+            "Humanism: we make our own meaning."
+          ]
+        },
+        {
+          "q": "What of the present moment?",
+          "correct": "It is the only place life happens.",
+          "distractors": [
+            "It shapes the future.",
+            "It passes too quickly to hold.",
+            "It is best not to dwell in."
+          ]
+        },
+        {
+          "q": "How does the sage meet nature?",
+          "correct": "Flowing with it, not forcing it.",
+          "distractors": [
+            "Studying its every law.",
+            "Living simply within it.",
+            "Tending it with care."
+          ]
+        },
+        {
+          "q": "What is the cosmos, in a word?",
+          "correct": "Playful and all connected.",
+          "distractors": [
+            "Vast and mysterious.",
+            "Ordered and lawful.",
+            "Sacred and alive."
+          ]
+        }
+      ]
+    },
+    "campbell": {
+      "display_name": "Joseph Campbell",
+      "tested_on": "the monomyth: departure, initiation, and the return",
+      "questions": [
+        {
+          "q": "What begins every hero's journey?",
+          "correct": "The Call to Adventure.",
+          "distractors": [
+            "A great loss.",
+            "A chance meeting.",
+            "A restless longing."
+          ]
+        },
+        {
+          "q": "What does the threshold guardian do?",
+          "correct": "Tests whether you are worthy to cross.",
+          "distractors": [
+            "Warns of the dangers ahead.",
+            "Demands a price to pass.",
+            "Points the hero's way."
+          ]
+        },
+        {
+          "q": "Why must the hero descend into the dark?",
+          "correct": "To die to the old self and be reborn.",
+          "distractors": [
+            "To find a hidden strength.",
+            "To face his deepest fear.",
+            "To win the great prize."
+          ]
+        },
+        {
+          "q": "What single counsel do I give for a life?",
+          "correct": "Follow your bliss.",
+          "distractors": [
+            "Know thyself.",
+            "Serve a cause.",
+            "Seek the truth."
+          ]
+        },
+        {
+          "q": "What do I call the one myth beneath all cultures?",
+          "correct": "The monomyth.",
+          "distractors": [
+            "The archetype.",
+            "The great story.",
+            "The eternal return."
+          ]
+        },
+        {
+          "q": "The hero's journey is ultimately a figure for what?",
+          "correct": "Inner transformation.",
+          "distractors": [
+            "The path to power.",
+            "The search for home.",
+            "The triumph of good."
+          ]
+        },
+        {
+          "q": "To cross the first threshold means what?",
+          "correct": "Leaving the ordinary world behind.",
+          "distractors": [
+            "Passing the first test.",
+            "Making the fateful choice.",
+            "Facing the unknown at last."
+          ]
+        },
+        {
+          "q": "The one who gives supernatural aid is usually what?",
+          "correct": "A mentor or wise guide.",
+          "distractors": [
+            "A loyal companion.",
+            "A hidden god.",
+            "A former hero."
+          ]
+        },
+        {
+          "q": "What is the \"Refusal of the Call\"?",
+          "correct": "The hero's first hesitation.",
+          "distractors": [
+            "The villain's challenge.",
+            "A test of resolve.",
+            "The turning point."
+          ]
+        },
+        {
+          "q": "The three phases of the hero's journey are Departure, Initiation, and what?",
+          "correct": "Return.",
+          "distractors": [
+            "Trial.",
+            "Reward.",
+            "Renewal."
+          ]
+        },
+        {
+          "q": "What does the \"belly of the whale\" mark?",
+          "correct": "The passage into transformation.",
+          "distractors": [
+            "The point of no return.",
+            "The darkest despair.",
+            "A time of hidden rest."
+          ]
+        },
+        {
+          "q": "What do myths do for us?",
+          "correct": "Give life meaning and shape the soul.",
+          "distractors": [
+            "Preserve a people's past.",
+            "Teach right from wrong.",
+            "Explain the mysteries of nature."
+          ]
+        },
+        {
+          "q": "What ordeal awaits at the darkest point?",
+          "correct": "The supreme trial.",
+          "distractors": [
+            "The final reward.",
+            "The long road home.",
+            "The mentor's parting."
+          ]
+        },
+        {
+          "q": "\"Meeting the goddess\" and \"atonement with the father\" belong to which phase?",
+          "correct": "Initiation.",
+          "distractors": [
+            "Departure.",
+            "Return.",
+            "The Call."
+          ]
+        },
+        {
+          "q": "Where does the hero's road begin?",
+          "correct": "In the ordinary, everyday world.",
+          "distractors": [
+            "At a moment of crisis.",
+            "In a place of safety.",
+            "At the edge of the unknown."
+          ]
+        },
+        {
+          "q": "What does \"follow your bliss\" truly mean?",
+          "correct": "Pursue your deepest calling, whatever it costs.",
+          "distractors": [
+            "Do what brings you joy.",
+            "Trust where life leads you.",
+            "Find work you love."
+          ]
+        },
+        {
+          "q": "Whom does the hero's journey ultimately serve?",
+          "correct": "The community he returns to.",
+          "distractors": [
+            "The hero's own growth.",
+            "The generations to come.",
+            "The gods who sent him."
+          ]
+        },
+        {
+          "q": "What is the \"ultimate boon\"?",
+          "correct": "The prize that can renew the world.",
+          "distractors": [
+            "The wisdom hard-won.",
+            "The treasure long sought.",
+            "The hero's true name."
+          ]
+        },
+        {
+          "q": "What befalls the hero who refuses to return?",
+          "correct": "His gift is lost to the world.",
+          "distractors": [
+            "He remains forever changed.",
+            "He must begin again.",
+            "He finds peace apart."
+          ]
+        },
+        {
+          "q": "What does the hero carry home?",
+          "correct": "A boon for his people.",
+          "distractors": [
+            "The scars of his trials.",
+            "A story worth telling.",
+            "Wisdom he cannot share."
+          ]
+        }
+      ]
+    },
+    "mckenna": {
+      "display_name": "Terence McKenna",
+      "tested_on": "culture, novelty, the Other, and direct experience",
+      "questions": [
+        {
+          "q": "What is culture, really?",
+          "correct": "Your operating system.",
+          "distractors": [
+            "A shared way of life.",
+            "The story a people tells.",
+            "A set of inherited rules."
+          ]
+        },
+        {
+          "q": "Complete my phrase: \"the felt presence of ___.\"",
+          "correct": "immediate experience.",
+          "distractors": [
+            "the living cosmos.",
+            "the eternal now.",
+            "another mind."
+          ]
+        },
+        {
+          "q": "What is the timewave?",
+          "correct": "A fractal of rising novelty.",
+          "distractors": [
+            "A cycle of endless return.",
+            "A map of history's turns.",
+            "A rhythm of the cosmos."
+          ]
+        },
+        {
+          "q": "How near is \"the Other\"?",
+          "correct": "Closer than your own breath.",
+          "distractors": [
+            "Just beyond ordinary sight.",
+            "Deep within the mind.",
+            "At the edge of the cosmos."
+          ]
+        },
+        {
+          "q": "What is language, to me?",
+          "correct": "A living thing that longs to be shared.",
+          "distractors": [
+            "A tool for shaping thought.",
+            "A bridge between minds.",
+            "A gift we are born to use."
+          ]
+        },
+        {
+          "q": "What sparked the leap in the human mind?",
+          "correct": "Psilocybin in the primate diet.",
+          "distractors": [
+            "The mastery of fire.",
+            "The dawn of language.",
+            "The making of tools."
+          ]
+        },
+        {
+          "q": "What is the mushroom, to me?",
+          "correct": "A teacher, not a drug.",
+          "distractors": [
+            "A door to other worlds.",
+            "A gift from the earth.",
+            "A medicine for the mind."
+          ]
+        },
+        {
+          "q": "What \"return\" did I call for?",
+          "correct": "A return to shamanic ways.",
+          "distractors": [
+            "A return to nature.",
+            "A return to wonder.",
+            "A return to the body."
+          ]
+        },
+        {
+          "q": "What is \"novelty\"?",
+          "correct": "Rising complexity and connection.",
+          "distractors": [
+            "The birth of new ideas.",
+            "The thrill of the unknown.",
+            "A break from routine."
+          ]
+        },
+        {
+          "q": "What waits at the end of time?",
+          "correct": "An attractor drawing all novelty on.",
+          "distractors": [
+            "A great awakening.",
+            "A merging of all minds.",
+            "A door beyond time."
+          ]
+        },
+        {
+          "q": "What is \"boundary dissolution\"?",
+          "correct": "Self and world melting into one.",
+          "distractors": [
+            "The mind opening wide.",
+            "A release from all fear.",
+            "The fading of the ego."
+          ]
+        },
+        {
+          "q": "What is the \"syntactic prison\"?",
+          "correct": "Being trapped inside habitual language.",
+          "distractors": [
+            "The limits of the thinking mind.",
+            "The rules society imposes.",
+            "The cage of old beliefs."
+          ]
+        },
+        {
+          "q": "What is the imagination, to me?",
+          "correct": "A real ground of being to explore.",
+          "distractors": [
+            "The source of all creation.",
+            "A window to the soul.",
+            "The mind's deepest power."
+          ]
+        },
+        {
+          "q": "What does the psychedelic doorway open?",
+          "correct": "A path to meaning and mind.",
+          "distractors": [
+            "A glimpse of the divine.",
+            "The doors of perception.",
+            "A journey within."
+          ]
+        },
+        {
+          "q": "What should you trust above dogma?",
+          "correct": "Your own direct experience.",
+          "distractors": [
+            "The wisdom of nature.",
+            "An open, questioning mind.",
+            "The evidence of your senses."
+          ]
+        },
+        {
+          "q": "Who are the truest teachers?",
+          "correct": "The plants and the living world.",
+          "distractors": [
+            "The old shamans and sages.",
+            "Your own inner voice.",
+            "The great mystics of history."
+          ]
+        },
+        {
+          "q": "How should you treat any one guru?",
+          "correct": "Follow none of them blindly.",
+          "distractors": [
+            "Learn what you can, then move on.",
+            "Question all they teach.",
+            "Trust only what you test."
+          ]
+        },
+        {
+          "q": "What did I feel about the future?",
+          "correct": "A shift in consciousness is coming.",
+          "distractors": [
+            "A great transformation awaits.",
+            "Wonders we cannot yet imagine.",
+            "A return to older wisdom."
+          ]
+        },
+        {
+          "q": "What is a \"heroic dose\"?",
+          "correct": "A big dose, taken in silent dark.",
+          "distractors": [
+            "A dose taken with a guide.",
+            "The largest one can bear.",
+            "A dose for deep questions."
+          ]
+        },
+        {
+          "q": "\"Culture is not your friend\" warns you to do what?",
+          "correct": "Not let culture define you.",
+          "distractors": [
+            "Question what you were taught.",
+            "Think for yourself.",
+            "See past its illusions."
+          ]
+        }
+      ]
+    },
+    "jung": {
+      "display_name": "Carl Jung",
+      "tested_on": "the shadow, individuation, persona, and the archetypes",
+      "questions": [
+        {
+          "q": "What is the shadow?",
+          "correct": "The disowned parts of yourself.",
+          "distractors": [
+            "The dark side of the mind.",
+            "The self you hide from others.",
+            "The instincts we repress."
+          ]
+        },
+        {
+          "q": "How do you become whole?",
+          "correct": "By integrating the shadow.",
+          "distractors": [
+            "By mastering your instincts.",
+            "By rising above the ego.",
+            "By healing old wounds."
+          ]
+        },
+        {
+          "q": "What is individuation?",
+          "correct": "Becoming all of who you are.",
+          "distractors": [
+            "Standing apart from the crowd.",
+            "Finding your true purpose.",
+            "Making peace with the past."
+          ]
+        },
+        {
+          "q": "What fills the collective unconscious?",
+          "correct": "Shared archetypes of all humankind.",
+          "distractors": [
+            "Memories from this life alone.",
+            "Instincts passed from your parents.",
+            "Urges left over from childhood."
+          ]
+        },
+        {
+          "q": "What is the persona?",
+          "correct": "The mask you wear for the world.",
+          "distractors": [
+            "The role you play in life.",
+            "The face you show at work.",
+            "The self you present to others."
+          ]
+        },
+        {
+          "q": "What do I call the deep images shared by us all?",
+          "correct": "Archetypes.",
+          "distractors": [
+            "Symbols.",
+            "Instincts.",
+            "Myths."
+          ]
+        },
+        {
+          "q": "What is the \"anima\"?",
+          "correct": "The inner feminine in a man.",
+          "distractors": [
+            "The soul's true voice.",
+            "A guide met in dreams.",
+            "The gentler side of the self."
+          ]
+        },
+        {
+          "q": "What do I call a meaningful coincidence?",
+          "correct": "Synchronicity.",
+          "distractors": [
+            "Fate.",
+            "Providence.",
+            "Intuition."
+          ]
+        },
+        {
+          "q": "What does it mean to hold the tension of opposites?",
+          "correct": "Bear both sides until they unite.",
+          "distractors": [
+            "Choose the wiser path.",
+            "Find the middle way.",
+            "Let time resolve it."
+          ]
+        },
+        {
+          "q": "What is the \"Self\", with a capital S?",
+          "correct": "The whole psyche's uniting centre.",
+          "distractors": [
+            "The soul within us all.",
+            "The person we truly are.",
+            "The image of God within."
+          ]
+        },
+        {
+          "q": "What becomes of a shadow left unowned?",
+          "correct": "It is cast onto others.",
+          "distractors": [
+            "It grows in the dark.",
+            "It surfaces in dreams.",
+            "It rules from behind."
+          ]
+        },
+        {
+          "q": "The persona is useful, but what is its danger?",
+          "correct": "Mistaking the mask for your true self.",
+          "distractors": [
+            "Wearing it too often.",
+            "Losing touch with others.",
+            "Hiding your real gifts."
+          ]
+        },
+        {
+          "q": "What do dreams do, in my view?",
+          "correct": "Speak and balance from the unconscious.",
+          "distractors": [
+            "Reveal our hidden wishes.",
+            "Work through the day's cares.",
+            "Warn us of what may come."
+          ]
+        },
+        {
+          "q": "The \"wise old man\" and \"great mother\" are what?",
+          "correct": "Archetypes.",
+          "distractors": [
+            "Symbols.",
+            "Spirits.",
+            "Instincts."
+          ]
+        },
+        {
+          "q": "What is a \"complex\"?",
+          "correct": "A charged knot of feelings and ideas.",
+          "distractors": [
+            "A deep-seated fear.",
+            "A pattern of behaviour.",
+            "A wound from the past."
+          ]
+        },
+        {
+          "q": "What should the second half of life turn toward?",
+          "correct": "Meaning and the inner world.",
+          "distractors": [
+            "Passing on what you have learned.",
+            "Making peace with the end.",
+            "Deepening your closest bonds."
+          ]
+        },
+        {
+          "q": "What is the \"animus\"?",
+          "correct": "The inner masculine in a woman.",
+          "distractors": [
+            "The strength within the self.",
+            "A figure seen in dreams.",
+            "The voice of reason inside."
+          ]
+        },
+        {
+          "q": "How do I see religious symbols?",
+          "correct": "As voices of deep psychic truth.",
+          "distractors": [
+            "As maps of the inner life.",
+            "As humanity's oldest wisdom.",
+            "As bridges to the sacred."
+          ]
+        },
+        {
+          "q": "How does facing your shadow feel at first?",
+          "correct": "Uneasy, even shameful.",
+          "distractors": [
+            "Strange and unfamiliar.",
+            "Frightening yet freeing.",
+            "Humbling but honest."
+          ]
+        },
+        {
+          "q": "What is the aim of the whole work?",
+          "correct": "Wholeness of the psyche.",
+          "distractors": [
+            "Peace of mind.",
+            "Self-knowledge.",
+            "Freedom from the past."
+          ]
+        }
+      ]
+    },
+    "aurelius": {
+      "display_name": "Marcus Aurelius",
+      "tested_on": "the dichotomy of control, virtue, and memento mori",
+      "questions": [
+        {
+          "q": "What is truly in your power?",
+          "correct": "Your judgements and reactions.",
+          "distractors": [
+            "Your words and deeds.",
+            "Your effort and will.",
+            "Your duty to others."
+          ]
+        },
+        {
+          "q": "Complete the maxim: \"The obstacle is ___.\"",
+          "correct": "the way.",
+          "distractors": [
+            "a teacher.",
+            "a test.",
+            "temporary."
+          ]
+        },
+        {
+          "q": "What does \"memento mori\" mean?",
+          "correct": "Remember that you will die.",
+          "distractors": [
+            "Live each day fully.",
+            "Honour those now gone.",
+            "Time is always fleeting."
+          ]
+        },
+        {
+          "q": "By what is the soul dyed?",
+          "correct": "The colour of its thoughts.",
+          "distractors": [
+            "The company it keeps.",
+            "The deeds it does.",
+            "The trials it endures."
+          ]
+        },
+        {
+          "q": "How should you begin each day?",
+          "correct": "Braced to meet difficult people, unshaken.",
+          "distractors": [
+            "Grateful to be alive.",
+            "Set on your duties.",
+            "Calm and clear of mind."
+          ]
+        },
+        {
+          "q": "Into which two kinds do I sort all things?",
+          "correct": "What is up to us, and what is not.",
+          "distractors": [
+            "The good and the harmful.",
+            "The lasting and the fleeting.",
+            "The body and the mind."
+          ]
+        },
+        {
+          "q": "What alone is truly good?",
+          "correct": "A virtuous character.",
+          "distractors": [
+            "A tranquil mind.",
+            "A life well lived.",
+            "Wisdom hard-won."
+          ]
+        },
+        {
+          "q": "When wronged, how do you answer?",
+          "correct": "Return to reason, not revenge.",
+          "distractors": [
+            "Forgive and let it go.",
+            "Set a firm boundary.",
+            "Consider their reasons."
+          ]
+        },
+        {
+          "q": "Complete the thought: \"The best revenge is ___.\"",
+          "correct": "to be unlike your enemy.",
+          "distractors": [
+            "to rise above it.",
+            "to live well.",
+            "to feel no anger."
+          ]
+        },
+        {
+          "q": "What of things beyond your control?",
+          "correct": "Accept them with calm.",
+          "distractors": [
+            "Prepare for them wisely.",
+            "Trust they serve a purpose.",
+            "Turn your mind elsewhere."
+          ]
+        },
+        {
+          "q": "What should you recall about all things?",
+          "correct": "They pass and are soon forgotten.",
+          "distractors": [
+            "They change without cease.",
+            "They serve the whole.",
+            "They are as nature wills."
+          ]
+        },
+        {
+          "q": "What does \"amor fati\" mean?",
+          "correct": "Love of your own fate.",
+          "distractors": [
+            "Trust in providence.",
+            "Peace with what is.",
+            "Courage before death."
+          ]
+        },
+        {
+          "q": "What should you do instead of complaining?",
+          "correct": "The work in front of you.",
+          "distractors": [
+            "Give quiet thanks.",
+            "Accept what is.",
+            "Look for the lesson."
+          ]
+        },
+        {
+          "q": "What should reason, the ruling part, govern?",
+          "correct": "Your impulses and reactions.",
+          "distractors": [
+            "Your daily choices.",
+            "Your desires and fears.",
+            "Your whole way of life."
+          ]
+        },
+        {
+          "q": "How do I picture the cosmos?",
+          "correct": "One ordered, connected whole.",
+          "distractors": [
+            "A living, breathing being.",
+            "A work of divine reason.",
+            "A dance of endless change."
+          ]
+        },
+        {
+          "q": "How does the sage stand amid change?",
+          "correct": "Tranquil and steadfast.",
+          "distractors": [
+            "Watchful and ready.",
+            "Humble and accepting.",
+            "Patient and wise."
+          ]
+        },
+        {
+          "q": "For whose good should you act?",
+          "correct": "The good of the whole.",
+          "distractors": [
+            "The good of your city.",
+            "Those in your care.",
+            "Future generations."
+          ]
+        },
+        {
+          "q": "How should you regard death?",
+          "correct": "As natural, nothing to fear.",
+          "distractors": [
+            "As a return to nature.",
+            "As the door to rest.",
+            "As the price of life."
+          ]
+        },
+        {
+          "q": "What, in truth, can harm you?",
+          "correct": "Your own judgement of events.",
+          "distractors": [
+            "A life without virtue.",
+            "The loss of reason.",
+            "Turning from duty."
+          ]
+        },
+        {
+          "q": "Where should your attention rest?",
+          "correct": "On the task before you now.",
+          "distractors": [
+            "On living by virtue.",
+            "On the good of others.",
+            "On what you can control."
+          ]
+        }
+      ]
+    }
+  }
+}
+  </script>
+  <!-- MW-QUIZ-DATA:END -->
+
+  <script>
+  /* MeaningWave per-legend practice quiz engine (hand-authored).
+     Reads the question bank from the #mw-quiz-bank JSON island above and drives
+     each .mw-quiz[data-guide] widget: draw meta.draw of the guide's questions at
+     random, shuffle the options, ask one at a time, then report % + pass/fail
+     only (never which questions were right or wrong). Pure self-test: nothing
+     here unlocks a guide in-game. */
+  (function () {
+    "use strict";
+    var island = document.getElementById("mw-quiz-bank");
+    if (!island) return;
+    var BANK;
+    try { BANK = JSON.parse(island.textContent); } catch (e) { return; }
+    var META = BANK.meta || {};
+    var DRAW = META.draw || 5, PASS = META.pass || 4;
+
+    function shuffle(a) {
+      for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1)), t = a[i];
+        a[i] = a[j]; a[j] = t;
+      }
+      return a;
+    }
+
+    function buildRun(guide) {
+      var qs = guide.questions || [], pool = [];
+      for (var i = 0; i < qs.length; i++) pool.push(i);
+      shuffle(pool);
+      return pool.slice(0, Math.min(DRAW, qs.length)).map(function (i) {
+        var q = qs[i];
+        return { q: q.q, correct: q.correct,
+                 options: shuffle([q.correct].concat(q.distractors || [])) };
+      });
+    }
+
+    function el(tag, cls, text) {
+      var n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text != null) n.textContent = text;
+      return n;
+    }
+
+    function render(container, guide) {
+      function clear() { while (container.firstChild) container.removeChild(container.firstChild); }
+
+      function showIdle() {
+        clear();
+        container.appendChild(el("h4", null, "Practice quiz"));
+        container.appendChild(el("p", "mwq-intro",
+          "Take the same test " + (guide.display_name || "this legend") +
+          " gives in-game: " + DRAW + " questions drawn at random, options shuffled. " +
+          "Score " + PASS + " of " + DRAW + " to pass. Practice only — this does not " +
+          "unlock anything in the module."));
+        var start = el("button", "mwq-start", "Take the practice quiz");
+        start.type = "button";
+        start.addEventListener("click", showRun);
+        container.appendChild(start);
+      }
+
+      function showRun() {
+        var run = buildRun(guide), pos = 0, score = 0;
+        clear();
+        container.appendChild(el("h4", null, "Practice quiz"));
+        var prog = el("p", "mwq-progress");
+        var qEl = el("p", "mwq-question");
+        var opts = el("div", "mwq-options");
+        container.appendChild(prog);
+        container.appendChild(qEl);
+        container.appendChild(opts);
+
+        function step() {
+          if (pos >= run.length) { showResult(score, run.length); return; }
+          var item = run[pos];
+          prog.textContent = "Question " + (pos + 1) + " of " + run.length;
+          qEl.textContent = item.q;
+          while (opts.firstChild) opts.removeChild(opts.firstChild);
+          item.options.forEach(function (opt) {
+            var b = el("button", "mwq-btn", opt);
+            b.type = "button";
+            b.addEventListener("click", function () {
+              if (opt === item.correct) score++;
+              pos++;
+              step();
+            });
+            opts.appendChild(b);
+          });
+        }
+        step();
+      }
+
+      function showResult(score, total) {
+        clear();
+        var pct = Math.round((score / total) * 100);
+        var passPct = Math.round((PASS / total) * 100);
+        var passed = score >= PASS;
+        container.appendChild(el("h4", null, "Result"));
+        var wrap = el("div", "mwq-result");
+        wrap.appendChild(el("p", "mwq-score", "You scored " + pct + "%"));
+        wrap.appendChild(el("p", "mwq-verdict" + (passed ? " pass" : ""),
+          passed ? "That's a pass — the guide would recognise you."
+                 : "Not a pass this time."));
+        wrap.appendChild(el("p", "mwq-note",
+          "Pass mark: " + passPct + "% (" + PASS + " of " + total + ")."));
+        var again = el("button", "mwq-again", "Try again");
+        again.type = "button";
+        again.addEventListener("click", showRun);
+        wrap.appendChild(again);
+        container.appendChild(wrap);
+      }
+
+      showIdle();
+    }
+
+    function init() {
+      var nodes = document.querySelectorAll(".mw-quiz[data-guide]");
+      Array.prototype.forEach.call(nodes, function (node) {
+        var guide = (BANK.guides || {})[node.getAttribute("data-guide")];
+        if (guide) render(node, guide);
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+  </script>
+  </main>
+
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

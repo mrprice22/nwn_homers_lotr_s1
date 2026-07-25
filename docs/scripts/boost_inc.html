@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script boost_inc</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>boost_inc</code></h1><pre class="nss-source"><code>// boost_inc.nss -- premium 2x gold/XP buff helpers.
+//
+// GOLD is boosted at the call site: reward scripts call Boost_GiveGold. Bank
+// withdrawals and merchant sales call GiveGoldToCreature directly, so they stay
+// un-boosted.
+//
+// XP is boosted centrally, NOT here: the NWNX_ON_SET_EXPERIENCE_BEFORE handler
+// (boost_xp_evt.nss) doubles every positive XP delta while a boost is active.
+// The ONE thing that must be shielded from it is banked XP (deposit-&gt;withdraw
+// would otherwise pay out 2x) -- bank XP scripts call Boost_GiveXPNoBoost, which
+// raises a per-PC &quot;boost_no_xp&quot; flag the handler honours.
+//
+// See boost_db.nss for the subscription model; Boost_Mult just reads the cached
+// absolute expiry timestamps.
+
+#include &quot;boost_db&quot;
+
+// 2 if the player currently benefits from any boost (their personal chain OR the
+// server-wide chain is active), else 1. Cheap: two indexed reads, no reconcile.
+int Boost_Mult(object oPC)
+{
+    if (!GetIsPC(oPC)) return 1;
+    int nNow = Boost_Now();
+
+    sqlquery qs = SqlPrepareQueryCampaign(BOOST_DB,
+        &quot;SELECT server_active_until FROM boost_state WHERE id=1&quot;);
+    if (SqlStep(qs) &amp;&amp; SqlGetInt(qs, 0) &gt; nNow) return BOOST_MULT;
+
+    sqlquery qp = SqlPrepareQueryCampaign(BOOST_DB,
+        &quot;SELECT personal_active_until FROM player_boost WHERE cdkey=@k&quot;);
+    SqlBindString(qp, &quot;@k&quot;, GetPCPublicCDKey(oPC));
+    if (SqlStep(qp) &amp;&amp; SqlGetInt(qp, 0) &gt; nNow) return BOOST_MULT;
+
+    return 1;
+}
+
+void Boost_GiveGold(object oPC, int nBase)
+{
+    GiveGoldToCreature(oPC, nBase * Boost_Mult(oPC));
+}
+
+// Grant XP that must NEVER be boosted (banked XP withdrawals). Raises the
+// boost_no_xp flag so boost_xp_evt.nss leaves this write at face value. The
+// SET_EXPERIENCE BEFORE event fires synchronously inside GiveXPToCreature, so a
+// set-flag / grant / clear-flag sequence fully brackets it.
+void Boost_GiveXPNoBoost(object oPC, int nXP)
+{
+    SetLocalInt(oPC, &quot;boost_no_xp&quot;, 1);
+    GiveXPToCreature(oPC, nXP);
+    DeleteLocalInt(oPC, &quot;boost_no_xp&quot;);
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

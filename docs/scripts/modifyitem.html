@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script modifyitem</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>modifyitem</code></h1><pre class="nss-source"><code>#include &quot;forge_inc&quot;
+#include &quot;itemprocs&quot;
+
+void main()
+{
+    object oPC = GetPCSpeaker();
+
+    //Transfer gold
+    int iValue = GetLocalInt(oPC, &quot;MODIFY_VALUE&quot;);
+    int iDiff = GetLocalInt(oPC, &quot;MODIFY_DIFF&quot;);
+    object oItem = GetLocalObject(oPC, &quot;MODIFY_ITEM&quot;);
+
+    //Resolve the pending property up front: the cap below assesses the item
+    //*with this property applied*, not the stale quote from a prior node.
+    itemproperty ipNew = GetNewProperty(oItem);
+
+    //Per-forge value ceiling: refuse enchants that would raise the item&#x27;s
+    //assessed value past this forge&#x27;s cap (0 = uncapped), plus a hard backstop
+    //at the global jailable ceiling so a missing/cleared area var can never let
+    //a forge mint an item the login contraband scan would jail.
+    //We assess the projected value directly — copy the item, add the pending
+    //property, and price the copy (identified, non-plot via ForgeItemValue) —
+    //so enforcement does NOT depend on the MODIFY_VALUE/MODIFY_DIFF locals an
+    //earlier dialog node set; any stale-local path is still capped. A failed
+    //valuation refuses rather than passing as cheap.
+    int iMax = GetLocalInt(oPC, &quot;MODIFY_MAX&quot;);
+    // A high Appraise raises both this forge&#x27;s per-tier cap (already folded into
+    // MODIFY_MAX by isitemonanvil) and the global legal backstop below, by the
+    // same amount, so lawful high-Appraise forging never trips the jail scan.
+    int iBonus = ForgeAppraiseBonus(oPC);
+    int iCurValue = ForgeItemValue(oItem);
+    int iProjected = iCurValue;
+    if (GetIsItemPropertyValid(ipNew))
+        {
+        object oHolder = ForgeHolder();
+        object oProbe = GetIsObjectValid(oHolder)
+            ? CopyItem(oItem, oHolder, TRUE) : OBJECT_INVALID;
+        if (GetIsObjectValid(oProbe))
+            {
+            CustomAddProperty(oProbe, ipNew);
+            iProjected = ForgeItemValue(oProbe);
+            DestroyObject(oProbe);
+            }
+        else
+            iProjected = -1;
+        }
+    if (iCurValue &lt; 0 || iProjected &lt; 0)
+        {
+        SpeakString(&quot;I cannot take the measure of this piece just now — try me &quot;
+            + &quot;again in a moment.&quot;);
+        return;
+        }
+    // The backstop is the UNIFORM legal ceiling (base + top boss-tier bonus,
+    // see ForgeLegalMaxValue) + Appraise; the player&#x27;s own boss-tier
+    // entitlement is already enforced by the per-forge cap iMax below.
+    if (iProjected &gt; ForgeLegalMaxValue() + iBonus)
+        {
+        SpeakString(&quot;No forge in these lands may bind so much worth into one &quot;
+            + &quot;piece — that lies beyond what the law allows. I&#x27;ll not do it.&quot;);
+        return;
+        }
+    if (iMax &gt; 0 &amp;&amp; iProjected &gt; iMax)
+        {
+        SpeakString(&quot;I&#x27;m sorry — my forge cannot work this piece any further. I &quot;
+            + &quot;dare not raise its worth past &quot; + ForgeGold(iMax) + &quot; gold. Take &quot;
+            + &quot;it to a greater forge if you would push it beyond that.&quot;);
+        return;
+        }
+
+    //Per-forge property-count ceiling (0 = uncapped), with a hard backstop at
+    //the global jailable property limit. Replacing an existing property of the
+    //same type doesn&#x27;t grow the count, so it stays allowed.
+    int iMaxProps = GetLocalInt(oPC, &quot;MODIFY_MAX_PROPS&quot;);
+    if (GetIsItemPropertyValid(ipNew)
+        &amp;&amp; !ForgePropMatchesExisting(oItem, ipNew))
+        {
+        int iProps = ForgeCountProps(oItem);
+        // Uniform legal backstop (ForgeItemMaxProps = ForgeLegalMaxProps, incl.
+        // the top boss-tier +1 slot, PLUS any Runes of Expansion bound into this
+        // specific item); the per-forge/per-player cap iMaxProps below is what
+        // actually limits characters who haven&#x27;t earned the extra slots.
+        int iItemMaxProps = ForgeItemMaxProps(oItem);
+        if (iProps &gt;= iItemMaxProps)
+            {
+            SpeakString(&quot;No forge may bind more than &quot;
+                + IntToString(iItemMaxProps) + &quot; enchantments into one &quot;
+                + &quot;piece — that is the limit of the law for this item. Have me &quot;
+                + &quot;strike one from it first.&quot;);
+            return;
+            }
+        if (iMaxProps &gt; 0 &amp;&amp; iProps &gt;= iMaxProps)
+            {
+            SpeakString(&quot;This piece already carries &quot; + IntToString(iMaxProps)
+                + &quot; enchantments — as much power as my forge dares bind into one &quot;
+                + &quot;item. Have me strike an enchantment from it first, or seek a &quot;
+                + &quot;greater forge.&quot;);
+            return;
+            }
+        }
+
+    //No refunds: refuse any change that would lower the item&#x27;s assessed value.
+    //The forges only enchant an item upward — never pay out for a downgrade.
+    if (iDiff == -1)
+        {
+        SpeakString(&quot;I shape metal forward, not back — I&#x27;ll not unmake the work &quot;
+            + &quot;already in this piece for a handful of coin. Choose an enchantment &quot;
+            + &quot;that betters it, or take it as it is.&quot;);
+        return;
+        }
+
+    if (iDiff == 1 &amp;&amp; GetGold(oPC) &lt; iValue)
+        {
+        SpeakString(&quot;Oops.. looks like you don&#x27;t have the gold for this.&quot;);
+        return;
+        }
+
+    if (iDiff == 1)
+        {
+        TakeGoldFromCreature(iValue, oPC, TRUE);
+        SetLocalInt(oItem, &quot;FORGE_GP_INVESTED&quot;,
+            GetLocalInt(oItem, &quot;FORGE_GP_INVESTED&quot;) + (iValue * 80 / 100));
+        }
+
+    //Modify item
+    if ( GetIsItemPropertyValid(ipNew))
+        {
+        CustomAddProperty(oItem, ipNew);
+        // Enchanting changes the item&#x27;s legality footprint — drop its &quot;clean&quot;
+        // stamp so the next login contraband scan re-evaluates it.
+        DeleteLocalInt(oItem, &quot;FORGE_CLEAN&quot;);
+        // If this lawful enchant carried the item above the default global
+        // ceiling (the player&#x27;s Appraise allowed it), record the lawful ceiling
+        // on the item so the contraband scan / Warden never jail it later, even
+        // if the bearer&#x27;s Appraise changes or the item is traded. Keep the
+        // highest ceiling ever applied.
+        if (iProjected &gt; ForgeLegalMaxValue())
+            {
+            int iCeil = ForgeLegalMaxValue() + iBonus;
+            if (iCeil &gt; GetLocalInt(oItem, FORGE_CEIL))
+                SetLocalInt(oItem, FORGE_CEIL, iCeil);
+            }
+        }
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

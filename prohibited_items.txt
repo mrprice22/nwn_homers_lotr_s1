@@ -1,0 +1,69 @@
+Prohibited Items — Donations Chest Audit
+==========================================
+
+These items were mistakenly included in the Well of Eru Donations Chest bonus pool.
+None of them have a legitimate in-game acquisition source for players.
+If you have any of these, you will be automatically compensated with FIVE TIMES their
+gold value and the item will be moved to the House of Homer quarantine chest.
+
+Total: 57 items
+
+Item Name                                      ResRef                   GP Value     Refund (5x)
+-------------------------------------------------------------------------------------------------
+Spectral Brand +5                              spectralbrand5            203,610    1,018,050
+Storm Star                                     stormstar                 213,140    1,065,700
+Orc Quivers                                    orcquivers                215,387    1,076,935
+Great Shield of Rivendell                      greatshieldofriv          220,869    1,104,345
+The Merrymen's Amulet                          rorammy001                223,653    1,118,265
+Epic Ring                                      epicring                  227,813    1,139,065
+Staff of the Ram +5                            staffoftheram5            227,912    1,139,560
+Hindo's Doom +4                                hindosdoom4               233,358    1,166,790
+Garb of the White Ninja                        garbofthewhitebe          234,397    1,171,985
+Belt of Hero's                                 item063                   240,251    1,201,255
+Mesh of Barad-Dur                              item014                   240,561    1,202,805
+Mordor Bowman Armor                            mordorbowmana001          240,949    1,204,745
+Ring of the Red Warrior                        040                       241,861    1,209,305
+The Paladins Choice                            theword001                245,335    1,226,675
+ShadowStaff                                    shadowstaff               247,596    1,237,980
+Orcish Carapace                                orcstatbuff               249,167    1,245,835
+Marilith Scimitar                              marilithscimitar          250,908    1,254,540
+Goreshovel                                     goreshovel                250,920    1,254,600
+Longsword of Weathertop                        longswordofweath          253,154    1,265,770
+The Eye of Madusa                              theeyeofmadusa            255,938    1,279,690
+Angurvadal                                     ls_angurvadal             259,948    1,299,740
+Ring of Grimbeorn the Old                      060                       269,816    1,349,080
+Soulrazor                                      soulrazor                 270,310    1,351,550
+Wall of Pain                                   wallofpain001             301,302    1,506,510
+Soulkeeper's Robes                             item094                   310,113    1,550,565
+Cloak of Orc                                   009                       321,665    1,608,325
+Crown of Weathertop                            crownofweathe004          322,564    1,612,820
+Boots of Darkness                              145                       331,605    1,658,025
+Elite Shot                                     item097                   334,264    1,671,320
+Lava Plate                                     lavaplate                 334,412    1,672,060
+Arrow of Haldir                                arrowofhaldir             336,996    1,684,980
+Circlet of Flame                               armhe011                  342,371    1,711,855
+Kama of the Green Ninja                        glamhkama2                348,484    1,742,420
+Isaac's Ring                                   item050                   348,920    1,744,600
+Branch of Rivendell                            branchofriven001          351,126    1,755,630
+Mordor Orc Tower Shield                        026                       363,352    1,816,760
+Gwathdor Helmet                                gwathdorhelmet            369,027    1,845,135
+Cursed Ones Helm                               cursedoneshelm            370,372    1,851,860
+Garb of the Green Ninja                        garbofthewhit001          376,264    1,881,320
+Sarumon's Favor                                023                       383,183    1,915,915
+The Drow Assassin                              thedrowassassin           384,553    1,922,765
+Road To Helms Arrow                            weathertoparrow           386,162    1,930,810
+Hoarmouth's Sash                               beltofdivinem001          394,917    1,974,585
+Helm of the Ridermark Archer                   helmoftheride004          399,403    1,997,015
+Shield of the Rohan                            shieldofthero003          404,462    2,022,310
+Mesh of Eryn Lasgalen                          meshoferynlas002          407,180    2,035,900
+Balor Sword                                    wswmls003                 407,580    2,037,900
+Plate of The Khamûl                            item001                   416,360    2,081,800
+Arrow of Thranduil                             arrowofthranduil          416,988    2,084,940
+Rune Hammer +5                                 runehammer5               442,650    2,213,250
+Hide of the Forest Spirit                      hideofthefore             449,229    2,246,145
+Fist of the Ninja                              fistoftheninja            451,563    2,257,815
+Warhammer of the Life Sapper                   warhammerofth001          458,310    2,291,550
+Ring of Danger Sense                           ringofdangersens          460,800    2,304,000
+Epic Arwen Arrow                               wammar048                 479,160    2,395,800
+Cloak of Mist                                  cloakofmist               480,158    2,400,790
+The Elfbone Ring of Kiran-Hai                  theelfboneringof          481,426    2,407,130

@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Customizations</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+
+  <main>
+  <style>
+    .mw-layout {
+      display: flex;
+      gap: 2.5em;
+      align-items: flex-start;
+    }
+    .mw-toc-pane {
+      flex: 0 0 240px;
+      position: sticky;
+      top: 1.5em;
+      max-height: calc(100vh - 3em);
+      overflow-y: auto;
+    }
+    .mw-content {
+      flex: 1;
+      min-width: 0;
+    }
+    @media (max-width: 700px) {
+      .mw-layout { flex-direction: column; }
+      .mw-toc-pane { position: static; max-height: none; flex: none; width: 100%; }
+    }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1em 1.2em;
+    }
+    .toc h2 {
+      font-size: 1em;
+      margin: 0 0 0.5em;
+      border: none;
+      padding: 0;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc ol { margin: 0; padding-left: 1.3em; }
+    .toc li { margin: 0.2em 0; }
+    .toc a { color: var(--link); }
+    .toc ol ol { margin: 0.15em 0 0.3em 0; font-size: 0.9em; }
+
+    .section-header {
+      background: rgba(107,58,28,0.08);
+      border-left: 4px solid var(--accent);
+      padding: 0.5em 1em;
+      margin: 2em 0 0.8em;
+      border-radius: 0 4px 4px 0;
+    }
+    .section-header h2 { margin: 0; border: none; padding: 0; }
+    .section-header .section-sub { font-size: 0.88em; color: var(--muted); margin: 0.2em 0 0; }
+
+    .tip-box {
+      background: rgba(30,30,60,0.07);
+      border-left: 4px solid var(--accent-soft);
+      border-radius: 0 4px 4px 0;
+      padding: 0.7em 1.1em;
+      margin: 0.8em 0 1em;
+      font-size: 0.93em;
+    }
+    .tip-box p { margin: 0.3em 0; }
+
+    .warn-box {
+      background: rgba(179,38,30,0.07);
+      border-left: 4px solid #b3261e;
+      border-radius: 0 4px 4px 0;
+      padding: 0.7em 1.1em;
+      margin: 0.8em 0 1em;
+      font-size: 0.93em;
+    }
+    .warn-box p { margin: 0.3em 0; }
+    .warn-box strong { color: #b3261e; }
+
+    .stock-box {
+      background: rgba(40,90,50,0.08);
+      border: 1px solid var(--accent-soft);
+      border-left: 4px solid #3a7d44;
+      border-radius: 0 4px 4px 0;
+      padding: 0.8em 1.2em;
+      margin: 0.8em 0 1em;
+    }
+    .stock-box dt { font-weight: 600; margin-top: 0.6em; }
+    .stock-box dt:first-child { margin-top: 0; }
+    .stock-box dd { margin: 0.15em 0 0 0; color: var(--muted); font-size: 0.93em; }
+
+    .change-table td, .change-table th { font-size: 0.92em; vertical-align: top; }
+    .change-table th { white-space: nowrap; }
+
+    .tourn-list { columns: 3; column-gap: 1.6em; margin: 0.6em 0 0; padding-left: 1.2em; }
+    .tourn-list li { margin: 0.15em 0; break-inside: avoid; }
+    @media (max-width: 600px) { .tourn-list { columns: 2; } }
+
+    h2, h3, h4 { scroll-margin-top: 1.5em; }
+  </style>
+  <div class="mw-layout">
+  <aside class="mw-toc-pane">
+    <nav class="toc" aria-label="Page contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#systems">Notable Custom Systems</a>
+          <ol>
+            <li><a href="#appraise-selling">Appraise &amp; Selling to Merchants</a></li>
+            <li><a href="#banking">Banking &amp; Family Accounts</a></li>
+            <li><a href="#merit">Merit Reward System</a></li>
+            <li><a href="#meaningwave">MeaningWave Philosopher Guides</a></li>
+            <li><a href="#instant-rest">Instant Resting &amp; the Rest Menu</a></li>
+            <li><a href="#party-loot">Party Loot Rolls</a></li>
+            <li><a href="#boss-respawn-tracker">Boss Respawn Tracker</a></li>
+            <li><a href="#boss-enrage">Boss Enrage on Retreat</a></li>
+            <li><a href="#caster-gear">Caster Signature Gear</a></li>
+            <li><a href="#dungeon-solitaire">Dungeon Solitaire</a></li>
+          </ol>
+        </li>
+        <li><a href="#appearance">Appearance &amp; Crafting</a>
+          <ol>
+            <li><a href="#player-appearance">Player Appearance &amp; Alignment</a></li>
+            <li><a href="#item-appearance">Item Appearance Crafting</a></li>
+            <li><a href="#dye-studio">Dye Studio — Recolour Your Gear</a></li>
+            <li><a href="#weapon-rename">Weapon Renaming — Engraver's Chisel</a></li>
+            <li><a href="#forge">Forge of Wonders</a></li>
+          </ol>
+        </li>
+        <li><a href="#items">Custom Gameplay Items</a>
+          <ol>
+            <li><a href="#rod-fast-buffing">Rod of Fast Buffing</a></li>
+            <li><a href="#rod-fast-lore">Rod of Fast Lore</a></li>
+          </ol>
+        </li>
+        <li><a href="#factions">Good/Evil Faction</a>
+          <ol>
+            <li><a href="#choosing-side">Choosing Your Side</a></li>
+          </ol>
+        </li>
+        <li><a href="#spells">Spell Changes</a>
+          <ol>
+            <li><a href="#epic-spells">Epic Spell Enhancements</a></li>
+            <li><a href="#cursesong-table">Curse Song Ladder</a></li>
+            <li><a href="#bardsong-table">Bard Song Ladder</a></li>
+            <li><a href="#shape-merge">Shapeshifting: Full Equipment Merge</a></li>
+            <li><a href="#scaled-summons">Scaled Summons &amp; Animal Companions</a></li>
+            <li><a href="#other-spells">Other Spell Changes</a></li>
+            <li><a href="#soul-fatigue">Soul-fatigue on Heal</a></li>
+            <li><a href="#spell-duration">Doubled Spell &amp; Effect Duration</a></li>
+          </ol>
+        </li>
+        <li><a href="#progression">Character Progression</a>
+          <ol>
+            <li><a href="#max-hp">Maximum Hit Points</a></li>
+            <li><a href="#max-ability">Maximum Ability Bonus from Items</a></li>
+            <li><a href="#multiclass-xp">No Multiclass XP Penalty</a></li>
+            <li><a href="#legendary-levels">Legendary Levels: 41–60</a></li>
+            <li><a href="#monk-weapons">Monk Weapons</a></li>
+          </ol>
+        </li>
+        <li><a href="#death">Death, Dying &amp; Respawn</a>
+          <ol>
+            <li><a href="#bleeding">Bleeding Out</a></li>
+            <li><a href="#no-logout-death">No Logging Out of Death</a></li>
+            <li><a href="#respawn-penalty">Respawn Penalty</a></li>
+          </ol>
+        </li>
+        <li><a href="#stock">Not Changed (Stock Standard)</a></li>
+      </ol>
+    </nav>
+  </aside>
+  <div class="mw-content">
+
+<h1>Customizations — Homer's LOTR</h1>
+
+<p>This module runs on stock Neverwinter Nights rules (plus CEP 2 content), but a number of
+spells, mechanics, and whole systems have been deliberately changed. This page is the full
+reference for <strong>what has — and has not — been modified</strong> relative to a vanilla NWN
+game, drawn directly from the module's scripts. A short, in-game version lives in your journal
+under <em>Server&nbsp;Info → Module Customizations</em>.</p>
+
+<div class="tip-box">
+  <p>Looking for <em>where to play</em> rather than <em>how the rules differ</em>? See the
+  <a href="../manual/LevelingGuide.html">Leveling Guide</a> and the
+  <a href="../manual/QuestGuide.html">Quest Guide</a>.</p>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="systems">
+  <h2>Notable Custom Systems</h2>
+  <p class="section-sub">Larger persistent systems layered on top of the base game — the things you will interact with most.</p>
+</div>
+
+<h3 id="appraise-selling">Appraise &amp; Selling to Merchants</h3>
+<p>A high <strong>Appraise</strong> skill raises the <strong>maximum gold a merchant will pay you</strong>
+for an item. Many shops cap how much they will hand over for any single piece; Appraise lifts that
+cap for <em>you specifically</em> — up to <strong>double (+100%)</strong> at an Appraise check of
+<strong>65</strong> (you always "take 20", so your Appraise skill + 20). The benefit is
+per-character and never shared with other shoppers. You need at least one point of Appraise before
+it helps; with none, you sell at the shop's normal cap. Merchants that don't buy from players still
+don't, and shops with no buy cap are unchanged.</p>
+
+<h3 id="banking">Banking &amp; Family Accounts</h3>
+<p>Bank NPCs (in Bree, Minas Tirith, and elsewhere) let you deposit and withdraw <strong>gold and
+XP</strong>. Beyond a personal balance, a <strong>family account</strong> is shared across every
+character on your account, so you can pool gold and pass items between your own characters. XP
+banking is capped so it cannot be used to over-level past the module's ceiling.</p>
+
+<h3 id="merit">Merit Reward System</h3>
+<p>You earn <strong>merit points</strong> when your reported bugs get fixed, your reported exploits
+get closed, or your suggested features ship — defects are worth 1, features 2, and exploits 3.
+Points are tracked per account and never expire. Spend them from the rest menu (or with a DM) at the
+Keeper-of-Records, <strong>Barliman Butterbur</strong>, in the Prancing Pony. See the
+<a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a> page for what has shipped and who
+earned merit for it.</p>
+
+<h4 id="merit-shop">Merit Redemption Shop</h4>
+<p>Spend merit on any of the following. Costs may still be tuned over time.</p>
+
+<h5>Teleport &amp; travel <span class="muted">(rest-menu features)</span></h5>
+<p>These are live rest-menu teleports, <strong>unlocked in order</strong> — each one requires that
+you already own the one above it (the menu shows a locked option as
+<em>"buy the previous one first"</em> until then). Once unlocked, the teleport appears in your rest
+menu permanently.</p>
+<table class="data change-table">
+  <thead><tr><th>Merit</th><th>Reward</th><th>How it works</th></tr></thead>
+  <tbody>
+    <tr><td>3</td><td>Teleport to your party leader</td><td>Rest-menu jump to wherever your party leader currently is.</td></tr>
+    <tr><td>4</td><td>Return to your last Well-of-Eru point</td><td>One-shot: armed only when you take the rest menu's "To. The Well of Eru." teleport, and consumed when you use it (death never arms it). Brings you back to exactly where you left.</td></tr>
+    <tr><td>6</td><td>Save-slot teleport (Slot 1)</td><td rowspan="5">Five dedicated, <strong>rewriteable</strong> save points. Set a slot to your current spot, then teleport back to it any time. Each saved location is per-character and persists across reboots.</td></tr>
+    <tr><td>7</td><td>Save-slot teleport (Slot 2)</td></tr>
+    <tr><td>8</td><td>Save-slot teleport (Slot 3)</td></tr>
+    <tr><td>9</td><td>Save-slot teleport (Slot 4)</td></tr>
+    <tr><td>10</td><td>Save-slot teleport (Slot 5)</td></tr>
+  </tbody>
+</table>
+
+<h5>Premium boosts (2× gold &amp; XP)</h5>
+<table class="data change-table">
+  <thead><tr><th>Merit</th><th>Reward</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>1 week of 2× gold &amp; XP for you (all your characters)</td></tr>
+    <tr><td>3</td><td>1 month of 2× gold &amp; XP for you</td></tr>
+    <tr><td>4</td><td>1 week of 2× gold &amp; XP for the whole server — your name joins the login welcome message</td></tr>
+    <tr><td>8</td><td>1 month of 2× gold &amp; XP for the whole server — your name joins the login welcome message</td></tr>
+  </tbody>
+</table>
+
+<p><strong>What is boosted.</strong> The 2× multiplier applies to gold and XP you <em>earn</em>: killing creatures (kill XP and the gold they drop) and turning in quests. It never stacks beyond 2× — a personal boost and a server boost do not multiply together.</p>
+
+<p><strong>What is <em>not</em> boosted.</strong> Withdrawing gold or XP from a bank (the Bree gold bank, the family bank, or the XP bank) is not boosted — banking just moves value you already have, it does not create it. Selling items to merchants is not boosted either. (Separately, several merchants had their per-item buy cap doubled, so a genuinely valuable item can now fetch its full price — but the sell <em>rate</em> is unchanged.)</p>
+
+<p><strong>Queueing — boosts never overlap.</strong> Running two boosts of the same kind at once would waste one, so extra purchases queue instead of stacking:</p>
+<ul>
+  <li>Buy a second boost of a kind you already have and its time is <em>held in reserve</em>; it starts counting down only when the current one runs out.</li>
+  <li>A live <strong>server-wide</strong> boost <strong>pauses everyone's personal boost</strong> — you are already getting 2× from the server, so your personal time is frozen and resumes, undiminished, once the server boost ends.</li>
+  <li>Server boosts from different players queue into a single server-wide chain, one after another.</li>
+</ul>
+<p>When you log in, the server tells you every active and pending boost — server-wide and your own — who bought each, and the estimated date the whole chain ends.</p>
+
+<h5>Vanity &amp; swag</h5>
+<table class="data change-table">
+  <thead><tr><th>Merit</th><th>Reward</th></tr></thead>
+  <tbody>
+    <tr><td>5</td><td>Permanently graffiti the Well of Eru: add a floor/wall placeable with your name &amp; description (within reason, DM approval)</td></tr>
+    <tr><td>10</td><td>A piece of Tournament gear — pick one from the curated list below, delivered on the spot</td></tr>
+    <tr><td>25</td><td>A real, hand-made duct-tape wallet mailed to you — pick up to 3 colors and a logo/design</td></tr>
+    <tr><td>100</td><td>Become a DM</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Tournament gear (10 merit).</strong> The shop opens a picker with one solid piece per
+weapon type plus armour, a tower shield, gauntlets, and bows. You choose one and it is created in
+your inventory immediately. Each links to its full stats on the item wiki:</p>
+<ul class="tourn-list">
+  <li><a href="../items/tournamaentlongs.html">Tournament Longsword</a></li>
+  <li><a href="../items/tournamentshorts.html">Tournament Short Sword</a></li>
+  <li><a href="../items/tournamentgreats.html">Tournament Greatsword</a></li>
+  <li><a href="../items/item093.html">Tournament Bastard Sword</a></li>
+  <li><a href="../items/tournamentscimit.html">Tournament Scimitar</a></li>
+  <li><a href="../items/tournamentdagger.html">Tournament Dagger</a></li>
+  <li><a href="../items/tournamentkama.html">Tournament Kama</a></li>
+  <li><a href="../items/tournamentkuk001.html">Tournament Kukri</a></li>
+  <li><a href="../items/tournamentclub.html">Tournament Club</a></li>
+  <li><a href="../items/tournamentmace.html">Tournament Mace</a></li>
+  <li><a href="../items/tournamentmornin.html">Tournament Morningstar</a></li>
+  <li><a href="../items/tournamentwarham.html">Tournament Warhammer</a></li>
+  <li><a href="../items/tournamentbattle.html">Tournament Battleaxe</a></li>
+  <li><a href="../items/tournamentgreata.html">Tournament Greataxe</a></li>
+  <li><a href="../items/tournamenthalber.html">Tournament Halberd</a></li>
+  <li><a href="../items/tournamentscythe.html">Tournament Scythe</a></li>
+  <li><a href="../items/tournamentmaugdo.html">Tournament Maug Double Sword</a></li>
+  <li><a href="../items/tournamentlongbo.html">Tournament Longbow</a></li>
+  <li><a href="../items/tournamentshortb.html">Tournament Shortbow</a></li>
+  <li><a href="../items/tournamentdarts.html">Tournament Darts</a></li>
+  <li><a href="../items/tournamentarmour.html">Tournament Armour</a></li>
+  <li><a href="../items/tournamenttowers.html">Tournament Tower Shield</a></li>
+  <li><a href="../items/tournamentgauntl.html">Tournament Gauntlets</a></li>
+</ul>
+
+<h4 id="merit-housing">Player Housing</h4>
+<p>Turn an unused town door into your own home. Claim any unoccupied locked door in any town as your
+home (1 per player / CD key; moving or upgrading later refunds nothing). You build the area in the
+toolset and send the file; a fast-travel option to it is added to your rest menu. You teleport in,
+and leave through the front door to your chosen city.</p>
+
+<p>Cost scales with area size (Length &times; Width). An area may be split at no cost across up to 2
+areas with transitions (basement, attic, arena, etc.).</p>
+<table class="data change-table">
+  <thead><tr><th>Area size (L&times;W)</th><th>2</th><th>4</th><th>8</th><th>16</th><th>32</th><th>64</th><th>81</th><th>100</th></tr></thead>
+  <tbody>
+    <tr><th>Merit</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Optional add-ons:</strong></p>
+<table class="data change-table">
+  <thead><tr><th>Merit</th><th>Feature</th></tr></thead>
+  <tbody>
+    <tr><td>2</td><td>Persistent storage chest shared across your characters</td></tr>
+    <tr><td>2</td><td>A Well-of-Eru store with a 100K max buy limit — you pick the NPC name &amp; appearance</td></tr>
+    <tr><td>5</td><td>Add a Tagget-tier forge to your home</td></tr>
+    <tr><td>10</td><td>Add a Rivendell-tier forge to your home</td></tr>
+    <tr><td>15</td><td>Add a Balrog-tier forge to your home</td></tr>
+  </tbody>
+</table>
+
+<h3 id="meaningwave">MeaningWave Philosopher Guides</h3>
+<p>Eight philosopher NPCs are scattered across Middle-earth. Answer each one's questions to unlock
+them as a powerful summonable companion that persists between sessions. See the dedicated
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a> for routes and details.</p>
+
+<h3 id="instant-rest">Instant Resting &amp; the Rest Menu</h3>
+<p>Resting is fully custom. There is <strong>no rest cooldown</strong> — you can rest whenever you
+are not in active combat, and each rest is an <strong>instant full rest</strong> (HP and spells
+restored immediately, no waiting). Resting opens a <strong>custom rest menu</strong> that also lets
+you take other actions from the same place, including <strong>teleporting</strong> to key
+destinations and <strong>summoning henchmen and Legend companions</strong>.</p>
+
+<h3 id="party-loot">Party Loot Rolls</h3>
+<p>When you pick up a valuable item and <strong>other party members are in the same area</strong>, a
+clickable <strong>Need / Greed / Pass</strong> window pops up for everyone in the party — a fair way
+to decide who gets the drop, with no out-of-character arguing. It is loosely modelled on the loot
+roll from MMOs.</p>
+<ul>
+  <li><strong>Need</strong> beats <strong>Greed</strong>: the highest Need roll wins; if nobody
+  needs it, the highest Greed roll wins. <strong>Pass</strong> bows out and can never win.</li>
+  <li>The <strong>finder rolls too</strong> and keeps the item if they win. Otherwise the item is
+  <strong>handed to the winner automatically</strong>.</li>
+  <li>You have <strong>30 seconds</strong> to choose; no answer counts as a Pass.</li>
+  <li>The window shows the item's <strong>type</strong> (e.g. <em>Scimitar</em>, <em>Wand</em>,
+  <em>Heavy Armor</em>), its <strong>gold value</strong>, and a grouped list of its
+  <strong>magical properties</strong>.</li>
+</ul>
+<p><strong>Unidentified items.</strong> If the item is not yet identified, every player who would roll
+first makes a <strong>Lore check</strong> (your Lore skill plus a d20 against a difficulty based on
+the item's value — the same rule the Rod of Fast Lore uses). The results are shown in your combat
+log. If <em>anyone</em> succeeds, the item is identified for the whole party. If <em>nobody</em>
+does, the popup reveals <strong>only the item's type</strong> and marks it Unidentified — its name,
+value, and properties stay hidden, so you roll on a mystery.</p>
+<p><strong>Configuring it (rest menu → Party loot roll settings).</strong></p>
+<ul>
+  <li><strong>Any player</strong> can <strong>opt out</strong> of party loot rolls (you will never be
+  prompted, and rolls won't trigger just for you).</li>
+  <li>The <strong>party leader</strong> sets the <strong>minimum item value</strong> that triggers a
+  roll (default <strong>10,000 gp</strong>; choose 5k, 10k, 50k, 100k, 250k, 500k, or 1M), or
+  <strong>disables</strong> party rolling entirely.</li>
+  <li>You get a <strong>green confirmation message</strong> of the current settings whenever you join
+  a party, become a party leader, or the leader changes a setting.</li>
+</ul>
+
+<h3 id="boss-respawn-tracker">Boss Respawn Tracker — the Roll of the Fallen</h3>
+<p>A billboard in the <strong>Well of Eru</strong> (next to the Recent Updates sign) that shows which
+of Middle-earth's great powers are <strong>currently slain</strong> and when each will walk again — so
+you can plan a boss run instead of hiking to an empty lair.</p>
+<ul>
+  <li>Only bosses that are <strong>dead right now</strong> are listed, sorted
+  <strong>mightiest first</strong> (by challenge rating), with the <strong>time until it
+  returns</strong> at the end of each name — e.g. <em>The Mighty Smaug&nbsp;— returns in
+  12m&nbsp;30s</em>.</li>
+  <li><strong>Click a name</strong> to see the boss's lair and the <strong>player or party who last
+  slew it</strong> (party credit uses the same damage-contribution rules as the Bestiary).</li>
+  <li>Every <strong>unique boss</strong> is tracked — the board covers each of Middle-earth's
+  named great powers (formally: any creature with a challenge rating above 60 that exists as a
+  single, unique foe rather than a repeatable spawn).</li>
+  <li>The <strong>full list of tracked bosses</strong> is on the wiki under
+  <a href="../creatures/bosses.html">Creatures&nbsp;→&nbsp;Bosses</a> — the page is generated from
+  the very registry the game loads, so it always matches the board. Think a boss is missing?
+  Suggest it on Discord.</li>
+  <li>A <strong>server restart revives every boss</strong>, so the board starts each session
+  empty.</li>
+</ul>
+<div class="tip-box">
+  <p><strong>Respawn timing:</strong> most bosses return on a <strong>15-minute</strong> timer, and
+  the board shows a live countdown for each. A handful of lair bosses keep their own longer timers
+  (shown accurately on the board). Every tracked boss now respawns on its own — none are stuck
+  until a reboot.</p>
+</div>
+
+<h3 id="boss-enrage">Boss Enrage on Retreat</h3>
+<p><strong>Retreating from a great boss makes it stronger.</strong> Disengage from one of the
+<a href="#boss-respawn-tracker">Roll of the Fallen</a> bosses and it will taunt you by name, grow in
+power, and claw back part of the damage you had done. This applies <em>only</em> to those unique
+bosses — ordinary creatures you walk away from behave exactly as before.</p>
+<ul>
+  <li><strong>You are "in the fight"</strong> from the moment you damage the boss — in melee, at
+  range, with spells, or through your summons, animal companion or henchman (their damage counts as
+  yours).</li>
+  <li><strong>You have "retreated"</strong> if you leave the boss's area, move more than about
+  <strong>40 metres</strong> away, or log out — and stay that way for roughly
+  <strong>12&nbsp;seconds</strong>. Landing another hit resets the count, so an archer or caster
+  fighting from long range stays engaged as long as they keep contributing.</li>
+  <li><strong>What the boss gains, each time:</strong> a shouted taunt naming you, <strong>+2 to all
+  six ability scores</strong> for the rest of its life, and an instant heal of <strong>25% of its
+  missing HP</strong>.</li>
+  <li>The enrage <strong>stacks</strong> — every retreat is another +2 and another quarter-heal — and
+  it <strong>cannot be dispelled</strong>.</li>
+  <li>It fires <strong>per player</strong>: if you run while the rest of your party keeps fighting,
+  the boss still enrages.</li>
+  <li><strong>Dying is not retreating.</strong> If the boss kills you, it gains nothing.</li>
+  <li>The enrage <strong>never carries onto a respawn</strong> — a boss that returns to its lair is
+  back at its base statistics.</li>
+</ul>
+<div class="warn-box">
+  <p><strong>Every retreat undoes a quarter of your progress</strong> and leaves you facing a
+  stronger enemy than the one you ran from. The winning line against a great boss is a single
+  sustained engagement, brought with the gear and build to see it through — not attrition in
+  shifts.</p>
+</div>
+<div class="tip-box">
+  <p>This is the companion mechanic to <a href="#soul-fatigue">Soul-fatigue on Heal</a>: fatigue makes
+  chain-healing lethal, and enrage removes the option of backing off to wait the stacks out. Design
+  background: <a href="Draft/boss-updates.html#enrage">Endgame Difficulty — Enrage-on-retreat</a>.</p>
+</div>
+
+<h3 id="caster-gear">Caster Signature Gear</h3>
+<p>A planned line of <strong>boss-drop gear that boosts specific spells</strong>, giving Clerics,
+Druids, Sorcerers, and Wizards a real way to threaten high-tier bosses instead of relying on damage
+shields and lucky epic-spell rolls. Each piece pairs top-tier stats with one <strong>signature
+effect</strong> — amplifying a spell's damage, retyping it past an immunity, or supercharging your
+summons — and every item grants a <strong>stronger version to pure single-class casters</strong>.</p>
+<ul>
+  <li>Twenty items (five each per caster class), each looted from a thematically matched boss already
+  in the world — see the full catalogue with stats and drop sources on the
+  <a href="CasterGear.html">Caster Signature Gear</a> page.</li>
+  <li>Builds on <a href="#scaled-summons">Scaled Summons</a> (for the summon-boost pieces) and the
+  same spell-effect machinery as <a href="#spell-duration">Doubled Spell Duration</a>.</li>
+</ul>
+<div class="tip-box">
+  <p><strong>In design.</strong> This system isn't in game yet — the
+  <a href="CasterGear.html">catalogue</a> is a preview and its numbers may change. Track it on the
+  <a href="Roadmap.html#idea-Gear-to-boost-specific-mage-spells">Roadmap</a>.</p>
+</div>
+
+<h3 id="dungeon-solitaire">Dungeon Solitaire</h3>
+<p>A custom card-game-style encounter arena: a sequence of drawn challenges with its own creatures
+and dialogue, distinct from the open-world encounter zones. It is an in-game port of
+<a href="https://github.com/mrprice22/Dungeon-Solitaire" target="_blank" rel="noopener">Dungeon
+Solitaire</a> — which can also be played stand-alone on any computer with the .NET framework.</p>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="appearance">
+  <h2>Appearance &amp; Crafting</h2>
+  <p class="section-sub">Free cosmetic changes to your character and gear, plus paid enchanting at the Forge of Wonders.</p>
+</div>
+
+<h3 id="player-appearance">Player Appearance &amp; Alignment</h3>
+<p>Visit the <a href="../areas/appearancechange.html"><strong>Appearance Changer and Character
+Modifying Area</strong></a> in Bree to open an appearance menu with <strong>315+ creature
+forms</strong>. The change is <strong>free and permanent</strong> until you change it again.</p>
+<p>The same area also lets you <strong>change your alignment</strong> (good/evil and law/chaos). This
+is how you set up otherwise-impossible <strong>class combinations</strong> — shift your alignment to
+qualify for builds like a monk/barbarian or a paladin/blackguard.</p>
+
+<h3 id="item-appearance">Item Appearance Crafting</h3>
+<p>Armor, cloak, shield and weapon appearance can be remodelled with the CEP crafting system (the
+Craft Armor / Craft Weapon options). There is <strong>no fail chance</strong> — every appearance
+change succeeds automatically, regardless of your skill ranks. Reshaping the <em>model</em> of a
+piece (shoulders, boots, weapon parts, shield model, etc.) is reached from the
+<a href="#dye-studio"><strong>Dye Studio</strong></a> via its <strong>Reshape appearance…</strong>
+button; recolouring is done in the Dye Studio itself.</p>
+
+<h3 id="dye-studio">Dye Studio — Recolour Your Gear</h3>
+<p>The <strong>Dye Studio</strong> is a point-and-click colour picker for your armor, helmet and
+cloak. It's <strong>free, instant, and can't fail</strong>, every colour is previewed live on your
+character, and dyeing <strong>never changes an item's stats</strong>.</p>
+
+<div class="tip-box">
+  <p><strong>Where to get it:</strong> buy a <strong>Dye Kit</strong> from the
+  <strong>Well Mart</strong> in the <a href="../areas/thewelloferu.html">Well of Eru</a>, or at
+  <a href="../areas/taggetssmithshop.html"><strong>Tagget's Smith Shop</strong></a> in Bree. Keep it
+  in your inventory and <strong>use (activate) it</strong> to open the Dye Studio window.</p>
+</div>
+
+<p>The window opens beside your character so you can watch the preview. Work through it top to
+bottom:</p>
+<ul>
+  <li><strong>Pick a piece</strong> — the top row of buttons chooses which equipped item to dye:
+  <strong>Armor</strong>, <strong>Helmet</strong> or <strong>Cloak</strong>. The active piece is
+  highlighted.</li>
+  <li><strong>Pick a colour channel</strong> — the two rows below are the six tint channels:
+  <strong>Cloth 1/2</strong>, <strong>Leather 1/2</strong> and <strong>Metal 1/2</strong>. Each part
+  of a piece uses one of these; the active channel is highlighted, and there is a separate palette
+  for cloth/leather versus metal.</li>
+  <li><strong>Pick a colour</strong> — click any swatch in the grid to apply it <em>instantly</em>
+  to your character. There are <strong>176 colours</strong> per channel; use
+  <strong>Prev colors</strong> / <strong>More colors</strong> to page through them. The line above
+  the grid names the current colour (e.g. <em>Color #88 — Red</em>).</li>
+</ul>
+
+<p>The buttons along the bottom:</p>
+<ul>
+  <li><strong>Revert</strong> — undo everything back to how the piece looked when you opened the
+  window.</li>
+  <li><strong>Reshape appearance…</strong> — switch to the model editor to change the <em>shape</em>
+  of armor/cloak/shield/weapon parts (see <a href="#item-appearance">Item Appearance Crafting</a>).</li>
+  <li><strong>Copy colors</strong> / <strong>Paste colors</strong> — copy a piece's full six-channel
+  colour scheme, then paste it onto another piece so all your gear matches. Your copied scheme is
+  <strong>saved to your character</strong> and stays copied across sessions and reboots (until you
+  copy a different one).</li>
+  <li><strong>Save and Close</strong> — keep your changes and close the window. (Your colours are
+  already applied as you click, so simply closing keeps them.)</li>
+</ul>
+
+<div class="tip-box">
+  <p><strong>Shields &amp; weapons:</strong> their colours are baked into the model rather than the
+  six tint channels, so recolour or restyle them through <strong>Reshape appearance…</strong> rather
+  than the swatch grid.</p>
+</div>
+
+<h3 id="weapon-rename">Weapon Renaming — Engraver's Chisel</h3>
+<p>The <strong>Engraver's Chisel</strong> lets you give your weapon a name of your own — turn
+<em>Longsword +5</em> into <em>Goblin-Cleaver</em> or <em>Sting</em>. Renaming is purely cosmetic:
+it <strong>never changes an item's stats</strong>, and the new name is saved on the item itself, so
+it survives logouts and server reboots.</p>
+
+<div class="tip-box">
+  <p><strong>Where to get it:</strong> buy an <strong>Engraver's Chisel</strong> from the
+  <strong>Well Mart</strong> in the <a href="../areas/thewelloferu.html">Well of Eru</a> for
+  <strong>25,000 gp</strong>. Each chisel is <strong>single-use</strong> — one chisel, one
+  engraving.</p>
+</div>
+
+<p>How to use it:</p>
+<ul>
+  <li><strong>Equip the weapon</strong> you want to rename in your <strong>main hand</strong>.</li>
+  <li><strong>Use (activate) the chisel</strong> from your inventory.</li>
+  <li><strong>Speak the new name in chat</strong> — your very next chat line becomes the weapon's
+  new name. The line is not broadcast to other players.</li>
+</ul>
+
+<div class="warning-box">
+  <p><strong>Name rules:</strong> at most <strong>40 characters</strong>, and the characters
+  <code>&lt;</code> and <code>&gt;</code> are not allowed. Say <strong>cancel</strong> (or activate
+  the chisel and change your mind with any invalid name) and the chisel is <em>not</em> consumed —
+  only a successful engraving spends it.</p>
+</div>
+
+<h3 id="forge">Forge of Wonders — Item Enchanting</h3>
+<p>Four Forge of Wonders locations let you permanently add or replace magical properties on any
+equippable item, for a gold cost equal to the increase in the item's assessed value. Each forge is
+staffed by a smith NPC. Place <em>exactly one item</em> on the nearby anvil, then speak to the
+smith; pick the property you want and the smith quotes the cost before you confirm. When a property
+of the same type is already on the item it is <em>replaced</em>, not stacked.</p>
+
+<div class="tip-box">
+  <p><strong>Pricing is on the item's true value:</strong> the cost is always computed as if the
+  item were fully identified and unrestricted — leaving an item unidentified (or any other trick
+  that zeroes its sell value) no longer discounts the enchantment or slips past the value caps.</p>
+</div>
+
+<p>Each tier enforces a <strong>maximum item value</strong> and a <strong>maximum number of
+properties</strong>. Refusals are graceful: if an enchantment would push the item past either
+ceiling the smith says the item is already as fine as that forge can make it and
+<em>no gold is charged</em>. Forges only enchant an item <em>upward</em> — they never apply a change
+that lowers its assessed value, and replacing an existing property is always allowed even at the
+property cap (adding a <em>new</em> one past the cap is not). Each forge enforces only its own
+ceiling, so taking an item to a higher tier raises the limits.</p>
+
+<table class="data change-table">
+  <thead><tr><th>Forge</th><th>Location</th><th>Access</th><th>Tier</th><th>Max item value</th><th>Max properties</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Tagget's Smith Shop</td>
+      <td><a href="../areas/taggetssmithshop.html">Taggets Smith Shop</a> (Bree)</td>
+      <td>Open to all — no key required</td>
+      <td>Low</td>
+      <td>250,000 gp</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>Rivendell Smithy</td>
+      <td><a href="../areas/thesmithyofriven.html">The Smithy of Rivendell</a></td>
+      <td><strong>Elrond's Writ</strong> must be in your inventory to access the forge option</td>
+      <td>Mid</td>
+      <td>500,000 gp</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>Moria Forge of Wonders</td>
+      <td><a href="../areas/area057.html">Moria: Forge of Wonders</a></td>
+      <td><a href="../items/forgekey.html">Forgekey</a> (dropped by the Balrog of Moria)</td>
+      <td>High</td>
+      <td>750,000 gp</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>Kallrist Crypt forge</td>
+      <td><a href="../areas/kallristcryptlow.html">Kallrist Crypt</a> (lower level)</td>
+      <td>Solve the elemental-pillar riddle for the <strong>Kallrist Crypt Key</strong>, then defeat the
+        <a href="../creatures/badass_2.html">crypt guardian</a> and carry its <strong>Horn of the Fell Beast</strong></td>
+      <td>Signature (crypt-only)</td>
+      <td>750,000 gp</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="tip-box">
+  <p><strong>Appraise raises the value ceiling.</strong> A high <strong>Appraise</strong> skill lets
+  a forge bind more worth into a single item. The smith always lets you <strong>"take 20"</strong>
+  (your Appraise skill + 20, no dice roll), and the extra headroom scales with that result up to a
+  maximum of <strong>+500,000 gp</strong> at an Appraise check of <strong>65</strong> — reachable by
+  a level-40 character with full Appraise ranks and a little Charisma or an Appraise item. You need at
+  least one point of Appraise before any bonus applies. The bonus stacks on each tier's ceiling: a
+  maxed appraiser can push a piece to <strong>750,000 gp at Tagget's</strong>,
+  <strong>1,000,000 gp at Rivendell</strong>, and <strong>1,250,000 gp at the Moria and
+  Kallrist Crypt forges</strong>.
+  The forge tells you its current ceiling and your remaining headroom before you spend.</p>
+</div>
+
+<div class="tip-box">
+  <p><strong>Boss-kill forge bonuses.</strong> Slaying <em>distinct</em> bosses from the
+  <strong>Roll of the Fallen</strong> (the boss board in the Well of Eru — solo or party credit both
+  count, but killing the same boss twice does not) earns your character a personal bonus to the
+  forge caps. The bonus is a percentage of each forge's own value ceiling, applied <em>before</em>
+  any Appraise headroom, and the forge tells you your current tier when you work its anvil:</p>
+  <table class="data">
+    <thead><tr><th>Distinct bosses slain</th><th>Forge value cap</th><th>Extra</th></tr></thead>
+    <tbody>
+      <tr><td>10+</td><td>+5%</td><td>—</td></tr>
+      <tr><td>25+</td><td>+10%</td><td>—</td></tr>
+      <tr><td>50+</td><td>+15%</td><td>—</td></tr>
+      <tr><td><strong>All of them</strong> (78 tracked today)</td><td>+20%</td>
+        <td>+1 enchantment slot (7 total) at the <strong>top-tier forges only</strong>
+        (Moria and Kallrist Crypt)</td></tr>
+    </tbody>
+  </table>
+  <p>A full boss-slayer can therefore push a piece to <strong>900,000 gp at Moria or the Kallrist
+  Crypt</strong> (1,400,000 with maxed Appraise) with <strong>7 enchantments</strong>. Gear forged
+  with these bonuses is <strong>safe to trade</strong>: the contraband law judges every item against
+  the maximum earnable ceiling, never against the holder's own progress.</p>
+</div>
+
+<div class="loot-box">
+  <p><strong>Runes of Expansion — extra enchantment slots.</strong> A rare boss drop, the
+  <strong>Rune of Expansion</strong> is a consumable that permanently widens a single item so a forge
+  may bind <em>one more</em> enchantment into it than the law would otherwise allow. Activate the rune
+  and target the item in your pack you want to expand; the rune is consumed and that item gains
+  <strong>+1 property slot</strong>. Up to <strong>three runes</strong> may be bound into a single
+  item (10 enchantments total on a fully-runed piece worked at a top-tier forge). The expansion is
+  <strong>intrinsic to the item</strong> — it persists across sessions and travels with the item when
+  you trade it, and the contraband law honors the extra slots so an expanded item is never seized for
+  them. See the <a href="../items/slot_token.html"><strong>Rune of Expansion</strong></a> item page for
+  where it can be obtained.</p>
+</div>
+
+<div class="tip-box">
+  <p><strong>Disenchanting (no refunds):</strong> every forge smith offers
+  <em>"Strip an enchantment from the item on the anvil"</em>. You pick exactly one property and the
+  smith destroys it permanently. The magic is simply lost — <strong>no gold is ever paid out</strong>
+  for removed enchantments.</p>
+</div>
+
+<div class="loot-box">
+  <p><strong>Kallrist Crypt — the Signature Wardings.</strong> Deep beneath the Kallrist Crypt,
+  past the elemental-pillar riddle and the <a href="../creatures/badass_2.html">crypt guardian</a>,
+  <strong>Kalrûn the Deathless</strong> keeps a fourth forge. It works at the same top ceiling as
+  Moria (6 properties, 750,000 gp), but it is a <strong>small, specialized forge</strong>: it does
+  <em>not</em> offer the shared Low/Mid/High enchant menu at all. Its whole trade is the crypt's own
+  signature work — protective wardings no other smith will bind, and a negative-energy edge drawn
+  from the grave. Kalrûn will only wake for one who bears the <strong>Horn of the Fell Beast</strong>
+  looted from the guardian — keep the horn in your pack or the anvil stays cold.</p>
+  <table class="data">
+    <thead><tr><th>Warding</th><th>Item property</th><th>What it turns aside</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Deathless</strong></td><td>Immunity: Death Magic</td>
+        <td>Finger of Death, Wail of the Banshee, Weird and other death-magic spells</td></tr>
+      <tr><td><strong>Voidshield</strong></td><td>Immunity: Implosion</td>
+        <td>the Implosion spell cast by the crypt's evocators — otherwise an instant kill</td></tr>
+      <tr><td><strong>Unbroken</strong></td><td>Immunity: Paralysis</td>
+        <td>hold effects and the <em>petrifying gaze</em> of basilisk and medusa (petrification is a
+        paralysis-family effect, so this immunity turns it aside)</td></tr>
+    </tbody>
+  </table>
+  <p>Only the Kallrist forge binds <strong>Death Magic</strong> and <strong>Implosion</strong>
+  immunity into gear. Alongside the three wardings, it is also the only forge that binds a
+  <strong>negative-energy damage bonus</strong> onto a weapon's edge — the grave-chill that no other
+  smith will touch.</p>
+  <p><strong>The Kallrist forge — its entire menu.</strong> Unlike the other three forges, this is
+  <em>everything</em> Kalrûn offers; there are no other enchant types here.</p>
+  <table class="data change-table">
+    <thead><tr><th>Property</th><th>Options</th></tr></thead>
+    <tbody>
+      <tr><td>Negative-Energy Damage Bonus <sup title="A Damage Bonus of the Negative Energy type — extra negative-energy damage on each hit">†</sup></td>
+        <td>+4, 2d4, 1d6, 1d10, 1d12</td></tr>
+      <tr><td>Signature Wardings (immunities)</td>
+        <td><strong>Deathless</strong> (Death Magic), <strong>Voidshield</strong> (Implosion),
+        <strong>Unbroken</strong> (Paralysis / petrification) — see the table above</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="loot-box">
+  <p><strong>Horn of the Fell Beast — a summonable companion.</strong> The
+  <a href="../creatures/badass_2.html">Fell Beast</a> that guards the Kallrist Crypt drops the
+  <strong>Horn of the Fell Beast</strong> when it falls (the killer and any party members present each
+  receive one). The horn is a plot item — it can't be sold or dropped — and it does two things:</p>
+  <ul>
+    <li><strong>Summons the Fell Beast as your companion.</strong> Activate the horn from your
+      inventory and a Fell Beast answers, fighting at your side as a henchman and following you
+      between areas. Only one is out at a time.</li>
+    <li><strong>Unlocks the Kallrist forge.</strong> Keep the horn in your pack to use Kalrûn's
+      anvil (see the Signature Wardings above).</li>
+  </ul>
+  <p>The horn may be sounded only <strong>once per real-world hour</strong>, and the timer
+  <strong>resets on each summon</strong> — letting the beast die does not let you call another early.
+  The cooldown is tracked per character. A slain guardian returns to the crypt on the usual boss
+  timer and appears on the <strong>Roll of the Fallen</strong> in the Well of Eru.</p>
+</div>
+
+<div class="warn-box">
+  <p><strong>⚠ Contraband gear:</strong> an item <em>modified</em> beyond the legal limits — more than
+  <strong>7 enchantments</strong> or <strong>900,000 gp</strong> assessed value (the maximum any
+  character could lawfully forge with the full boss-kill bonus) — is contraband.
+  Carrying one into the Well of Eru (or logging in with one) lands you in the Pit Prison, where the
+  <strong>Forge Warden</strong> strips enchantments from it (no refunds) and releases you only once
+  your gear is lawful. Unmodified relics that are naturally that powerful are not affected — only
+  gear forged past the limits. Gear you forged <em>lawfully</em> above 900,000 gp via your
+  <strong>Appraise</strong> is <strong>not</strong> contraband: the lawful ceiling is recorded on the
+  item itself, so it stays legal no matter who carries it. Because the legal ceiling is the same for
+  everyone, gear forged by a boss-slayer with a higher personal cap can be traded to any character
+  without risk.</p>
+</div>
+
+<p><strong>Available enchantments by tier:</strong></p>
+<table class="data change-table">
+  <thead><tr><th>Property</th><th>Low (Tagget's)</th><th>Mid (Rivendell)</th><th>High (Moria)</th></tr></thead>
+  <tbody>
+    <tr><td>AC Bonus</td><td>+1 to +4</td><td>+4 to +8</td><td>+8 to +12</td></tr>
+    <tr><td>Attack Bonus</td><td>+1 to +5</td><td>+1 to +10</td><td>+10 to +16</td></tr>
+    <tr><td>Enhancement Bonus</td><td>+1 to +5</td><td>+1 to +10</td><td>+9 to +14</td></tr>
+    <tr><td>Ability Bonus (all 6 stats)</td><td>+1 to +4</td><td>+4 to +8</td><td>+8 to +12</td></tr>
+    <tr><td>Mighty <sup title="Adds STR modifier to ranged weapon damage rolls">†</sup></td><td>+1 to +5</td><td>+1 to +10</td><td>+10 to +15</td></tr>
+    <tr><td>Damage Bonus — types</td><td>Slashing, Bludgeoning, Piercing</td><td>Slash, Bludg, Pierce, Fire, Cold</td><td>Slash, Bludg, Pierce, Fire, Cold, Acid, Lightning, Sonic</td></tr>
+    <tr><td>Damage Bonus — dice</td><td>1, 2, 3, 1d4, 1d6</td><td>1d8, 1d10, 1d12</td><td>2d6, 2d8, 2d10</td></tr>
+    <tr><td>Massive Criticals <sup title="Extra damage added on a critical hit">†</sup></td><td>1, 2, 3, 1d4, 1d6</td><td>1d8, 1d10, 1d12</td><td>2d6, 2d8, 2d10</td></tr>
+    <tr><td>Damage Resistance — amount</td><td>5, 10 per round</td><td>15, 20 per round</td><td>20, 25 per round</td></tr>
+    <tr><td>Damage Resistance — types</td><td>Slashing, Bludgeoning, Piercing</td><td>Slash, Bludg, Pierce, Fire, Cold</td><td>Slash, Bludg, Pierce, Fire, Cold, Acid, Lightning, Sonic</td></tr>
+    <tr><td>Damage Immunity — %</td><td>—</td><td>5%</td><td>10%</td></tr>
+    <tr><td>Damage Immunity — types</td><td>—</td><td>Slash, Bludg, Pierce, Fire, Cold</td><td>Slash, Bludg, Pierce, Fire, Cold, Acid, Lightning, Sonic</td></tr>
+    <tr><td>Damage Reduction</td><td>/+1 to /+5, soak 5–15</td><td>/+5 to /+10, soak 15–25</td><td>/+10 to /+15, soak 20–30</td></tr>
+    <tr><td>Spell Resistance</td><td>—</td><td>SR 10–22</td><td>SR 22–32</td></tr>
+    <tr><td>Improved Saving Throws</td><td>—</td><td>Fort / Reflex / Will</td><td>Fort / Reflex / Will / All</td></tr>
+    <tr><td>On-Hit Properties</td><td>7 effects; DC 14–20 — <a href="#forge-onhit">see list</a></td><td>12 effects; DC 14–26 — <a href="#forge-onhit">see list</a></td><td>12 effects; DC 14–26 — <a href="#forge-onhit">see list</a></td></tr>
+    <tr><td>Miscellaneous Immunity</td><td>—</td><td>—</td><td>Fear, Disease, Paralysis, Poison, Level Drain</td></tr>
+    <tr><td>Haste</td><td>yes</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Keen</td><td>yes</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Darkvision</td><td>—</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Light</td><td>—</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Vampiric Regeneration</td><td>yes</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Freedom of Movement</td><td>yes</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Weight Reduction</td><td>10–40%</td><td>10–60%</td><td>10–80%</td></tr>
+    <tr><td>Arcane Spell Failure</td><td>—</td><td>—</td><td>−10% to −30%</td></tr>
+    <tr><td>Skill Bonus</td><td>+1–+5</td><td>+5–+10</td><td>+15–+20</td></tr>
+    <tr><td>Bonus Feat</td><td>—</td><td>yes</td><td>yes</td></tr>
+    <tr><td>Unlimited Ammo</td><td>yes</td><td>yes</td><td>yes</td></tr>
+  </tbody>
+</table>
+
+<div class="tip-box">
+  <p><strong>Skill Bonus</strong> can be applied to <em>any</em> of your character's skills — combat,
+  perception, stealth, and the rest (Appraise, Heal, Lore, Persuade, Use Magic Device, the Craft
+  skills, and so on), at a +X within the tier band above. The only skill <strong>not</strong> offered
+  is <strong>Ride</strong> — it has no function in NWN (no mounted combat), so it is deliberately
+  excluded.</p>
+  <p><strong>Mighty</strong> adds your Strength modifier to ranged weapon damage rolls (essential for
+  STR archer builds); the number you pick caps how much of your STR modifier applies, so pick a value
+  at or above your expected modifier. <strong>Massive Criticals</strong> adds a fixed extra damage
+  roll on every critical hit, with each tier offering an exclusive dice band — go to the appropriate
+  forge for the size you want, since higher tiers do not repeat lower dice.</p>
+</div>
+
+<h4 id="forge-onhit">On-Hit Properties — available effects</h4>
+<p>On-hit properties trigger a magical effect each time you land a physical blow on an enemy.
+After picking the effect, you choose a saving throw DC and a probability/duration pair.
+All forges offer the same five probability/duration options: 75% / 1 round, 50% / 2 rounds,
+25% / 3 rounds, 10% / 4 rounds, 5% / 5 rounds.</p>
+<table class="data change-table">
+  <thead><tr><th>Effect</th><th>Low (Tagget's)</th><th>Mid (Rivendell)</th><th>High (Moria)</th><th>Save DC options</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Ability Drain</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14 only; Mid/High: 14–24</td><td>Low drains CON/INT/WIS/CHA; Mid/High drains any of the 6 stats</td></tr>
+    <tr><td>Blindness</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Confusion</td><td>—</td><td>yes</td><td>yes</td><td>14–26</td><td></td></tr>
+    <tr><td>Daze</td><td>—</td><td>yes</td><td>yes</td><td>14–26</td><td></td></tr>
+    <tr><td>Deafness</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Doom</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Fear</td><td>—</td><td>yes</td><td>yes</td><td>14–26</td><td></td></tr>
+    <tr><td>Hold</td><td>—</td><td>yes</td><td>yes</td><td>14–26</td><td></td></tr>
+    <tr><td>Silence</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Sleep</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Slow</td><td>yes</td><td>yes</td><td>yes</td><td>Low: 14–20; Mid/High: 14–26</td><td></td></tr>
+    <tr><td>Stun</td><td>—</td><td>yes</td><td>yes</td><td>14–26</td><td></td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="items">
+  <h2>Custom Gameplay Items</h2>
+  <p class="section-sub">Items that add mechanics the base game does not have.</p>
+</div>
+
+<h3 id="rod-fast-buffing">Rod of Fast Buffing</h3>
+<p>Sold at the <a href="../stores/wellshop.html">Well-Mart</a> at the Well of Eru, the
+<strong>Rod of Fast Buffing</strong> lets casters batch their pre-combat buffs into a single action:</p>
+<ul>
+  <li><strong>Store spells</strong> by casting buff spells <em>at the rod</em> — each one is remembered, in order.</li>
+  <li><strong>Activate the rod</strong> (out of combat) to re-cast every stored spell on yourself, one after another, in one go.</li>
+  <li>The rod <strong>cannot be used in combat</strong> — it is a setup tool, not an in-fight panic button.</li>
+</ul>
+<p>A big quality-of-life upgrade for buff-heavy casters who would otherwise click through a dozen
+spells before every fight. Based on the
+<a href="https://neverwintervault.org/project/nwn1/prefab/item/rod-fast-buffing" target="_blank" rel="noopener">Rod of Fast Buffing</a> prefab from the Neverwinter Vault.</p>
+
+<h3 id="rod-fast-lore">Rod of Fast Lore</h3>
+<p>Also sold at the <a href="../stores/wellshop.html">Well-Mart</a>, the
+<a href="../items/rodfastlore.html"><strong>Rod of Fast Lore</strong></a> identifies a whole
+inventory at once instead of one item at a time:</p>
+<ul>
+  <li><strong>Activate it on yourself</strong> (or on another player) to scan that character's
+  inventory and attempt to identify every unidentified item in one pass.</li>
+  <li>Each item rolls a <strong>Lore check</strong> — your Lore skill + a d20 against a difficulty
+  based on the item's value (gold value ÷ 100 + 1). Higher Lore identifies more, and more valuable
+  items resist longer.</li>
+  <li>Your combat log lists what was <strong>identified</strong> and what <strong>failed</strong>
+  (by item type), so you can re-try the failures after a Lore boost. When you scan another player,
+  both of you see the results.</li>
+</ul>
+<p>This is the same Lore rule the <a href="#party-loot">Party Loot Roll</a> uses to identify
+unidentified drops.</p>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="factions">
+  <h2>Good/Evil Faction — Choosing Your Side</h2>
+  <p class="section-sub">The module's in-game faction system is entirely separate from your character's D&amp;D alignment.</p>
+</div>
+
+<p>Two player-facing factions govern which NPCs are hostile to you as you travel Middle-earth:
+<strong>Good</strong> (Gondor, Rivendell, Lothlórien, Helm's Deep, Edoras, …) and
+<strong>Evil</strong> (Mordor, Isengard, Cirith Ungol, Carn Dûm, …).
+See the <a href="../factions.html">Factions page</a> for the full list and reputation matrix.</p>
+
+<div class="tip-box">
+  <p><strong>Alignment ≠ Faction.</strong> Your character's D&amp;D alignment (Good / Neutral / Evil on the character sheet) has <em>no effect</em> on NPC hostility. It is cosmetic. All characters — regardless of alignment — choose a side via the orbs. A Neutral-aligned character picks Good or Evil the same as anyone else.</p>
+  <p>To change your character-sheet alignment, visit the Alignment Adjustment NPC in Bree at any time.</p>
+</div>
+
+<h3 id="choosing-side">Choosing Your Side in the Well of Eru</h3>
+<p>Each time you are about to leave the Well of Eru through one of the teleporters, <strong>click one of the two orbs</strong> to set your faction for the session:</p>
+<table class="data change-table">
+  <thead><tr><th>Orb</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Shaft of Light</strong> <span class="muted">(blue/white)</span></td>
+      <td>Declares you <strong>Good</strong>. Good-faction NPCs treat you as an ally; Evil-faction NPCs become hostile.</td>
+    </tr>
+    <tr>
+      <td><strong>Shaft of Light — Red</strong></td>
+      <td>Declares you <strong>Evil</strong>. Evil-faction NPCs treat you as an ally; Good-faction NPCs become hostile.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After clicking the orb, use the <strong>Guardian of Light</strong> (Good) or <strong>Guardian of Darkness</strong> (Evil) to teleport to your destination. The teleporters each offer a list of faction-appropriate locations.</p>
+
+<div class="tip-box">
+  <p>The faction setting applies for the current session. Re-click the appropriate orb each time you return to the Well of Eru before heading back out into the world.</p>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="spells">
+  <h2>Spell Changes</h2>
+  <p class="section-sub">Player-cast spells and effects last twice as long, epic spells are dramatically stronger than stock NWN, a few utility spells are re-tuned, and one is disabled outright.</p>
+</div>
+
+<h3 id="epic-spells">Epic Spell Enhancements</h3>
+<p>The epic spells have been rebuilt to feel genuinely epic. Several summon and ward
+effects <strong>cannot be dispelled</strong>.</p>
+
+<table class="data change-table">
+  <thead><tr><th>Spell</th><th>This module</th></tr></thead>
+  <tbody>
+    <tr><td>Dragon Knight</td><td>Summons the <a href="../creatures/epicdragonknight.html">Epic Dragon Knight</a> — a level-60 Fighter Red Dragon (CR 123, 540 HP, Str/Dex/Con/Cha 40). 30-round duration. Cannot be dispelled.</td></tr>
+    <tr><td>Mummy Dust</td><td>Summons the <a href="../creatures/mummyreaper.html">Epic Mummy Reaper</a> — a dual-class level-60 undead warrior (CR 212, 520 HP). 30-hour duration. Cannot be dispelled.</td></tr>
+    <tr><td>Epic Ward</td><td>Damage Reduction 60/+20. Cannot be dispelled. <strong>Duration = 1 round per caster level</strong> (so ~40 rounds / 4 minutes at the level-40 caster cap). It also expires early once it has absorbed <strong>35 × caster level</strong> total damage (≈ 1,400 at caster level 40), whichever comes first.</td></tr>
+    <tr><td>Hellball</td><td>10d20 of <em>each</em> damage type (Acid, Electrical, Fire, Sonic) over a massive area. Reflex save for partial reduction; knocks down targets if total damage exceeds 200.</td></tr>
+    <tr><td>Greater Ruin</td><td><strong>500d20</strong> damage to a single target (roughly 500–10,000, averaging ~5,250). Fortitude save (DC&nbsp;= your epic spell save DC). On a <em>successful</em> save the damage is <strong>divided by 300</strong> — i.e. cut to a few dozen points, effectively negligible rather than merely halved.</td></tr>
+    <tr><td>Curse Song (Bard)</td><td>Fully custom debuff that scales with your Perform skill <em>and</em> Bard level across 23 tiers, in a colossal-radius (30&nbsp;ft) sphere. At the top tier: −15 attack, −10 damage, −7 all saves, −15 AC, −18 all skills, and 98 sonic damage. See the <a href="#cursesong-table">full Curse Song ladder</a> below.</td></tr>
+    <tr><td>Bard Song (Bard)</td><td>The companion buff to Curse Song, rebuilt to match: a 23-tier ladder scaling with your Perform skill <em>and</em> Bard level, buffing the bard and nearby allies in a colossal-radius (30&nbsp;ft) sphere. At the top tier: +6 attack, +6 damage, +4 all saves, +60 temporary HP, +6 AC, +12 all skills. Tuned conservatively (about half of Curse Song's magnitudes) so a party-wide buff stays fair. See the <a href="#bardsong-table">full Bard Song ladder</a> below.</td></tr>
+  </tbody>
+</table>
+
+<h3 id="cursesong-table">Curse Song Ladder (Bard)</h3>
+<p>Curse Song is a ladder of 23 tiers, not a single formula. You reach a tier only when you meet
+<em>both</em> its Perform-skill rank <em>and</em> its Bard-level requirement; the song then applies
+every penalty on that row to enemies in a 30&nbsp;ft (colossal-radius) sphere. Base duration is 15
+rounds — the <strong>Lingering Song</strong> feat adds +15 rounds, and
+<strong>Lasting Impression</strong> multiplies the duration ×15.</p>
+
+<table class="data change-table">
+  <thead><tr>
+    <th>Perform ≥</th><th>Bard lvl ≥</th><th>Attack</th><th>Damage</th><th>Will</th><th>Fort</th><th>Reflex</th><th>Sonic dmg</th><th>AC</th><th>Skills</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>80</td><td>30</td><td>−15</td><td>−10</td><td>−7</td><td>−7</td><td>−7</td><td>98</td><td>−15</td><td>−18</td></tr>
+    <tr><td>75</td><td>29</td><td>−13</td><td>−8</td><td>−5</td><td>−5</td><td>−5</td><td>56</td><td>−10</td><td>−17</td></tr>
+    <tr><td>60</td><td>28</td><td>−10</td><td>−6</td><td>−4</td><td>−4</td><td>−4</td><td>44</td><td>−8</td><td>−16</td></tr>
+    <tr><td>55</td><td>27</td><td>−8</td><td>−6</td><td>−4</td><td>−4</td><td>−4</td><td>42</td><td>−8</td><td>−15</td></tr>
+    <tr><td>50</td><td>26</td><td>−7</td><td>−6</td><td>−3</td><td>−2</td><td>−2</td><td>40</td><td>−6</td><td>−14</td></tr>
+    <tr><td>45</td><td>25</td><td>−7</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>38</td><td>−6</td><td>−13</td></tr>
+    <tr><td>40</td><td>24</td><td>−6</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>36</td><td>−5</td><td>−12</td></tr>
+    <tr><td>35</td><td>23</td><td>−6</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>34</td><td>−5</td><td>−11</td></tr>
+    <tr><td>30</td><td>22</td><td>−6</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>32</td><td>−5</td><td>−10</td></tr>
+    <tr><td>25</td><td>21</td><td>−6</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>30</td><td>−5</td><td>−9</td></tr>
+    <tr><td>20</td><td>20</td><td>−6</td><td>−5</td><td>−3</td><td>−2</td><td>−2</td><td>28</td><td>−5</td><td>−8</td></tr>
+    <tr><td>15</td><td>19</td><td>−5</td><td>−4</td><td>−3</td><td>−2</td><td>−2</td><td>26</td><td>−5</td><td>−7</td></tr>
+    <tr><td>12</td><td>18</td><td>−5</td><td>−4</td><td>−3</td><td>−2</td><td>−2</td><td>24</td><td>−5</td><td>−6</td></tr>
+    <tr><td>10</td><td>17</td><td>−5</td><td>−4</td><td>−3</td><td>−2</td><td>−2</td><td>22</td><td>−5</td><td>−5</td></tr>
+    <tr><td>9</td><td>16</td><td>−4</td><td>−4</td><td>−3</td><td>−2</td><td>−2</td><td>20</td><td>−5</td><td>−4</td></tr>
+    <tr><td>8</td><td>15</td><td>−4</td><td>−4</td><td>−2</td><td>−2</td><td>−2</td><td>16</td><td>−4</td><td>−3</td></tr>
+    <tr><td>7</td><td>14</td><td>−4</td><td>−4</td><td>−1</td><td>−1</td><td>−1</td><td>16</td><td>−3</td><td>−2</td></tr>
+    <tr><td>6</td><td>12</td><td>−4</td><td>−3</td><td>−1</td><td>−1</td><td>−1</td><td>8</td><td>−2</td><td>−2</td></tr>
+    <tr><td>5</td><td>8</td><td>−3</td><td>−3</td><td>−1</td><td>−1</td><td>−1</td><td>8</td><td>0</td><td>−1</td></tr>
+    <tr><td>4</td><td>6</td><td>−2</td><td>−3</td><td>−1</td><td>−1</td><td>−1</td><td>0</td><td>0</td><td>−1</td></tr>
+    <tr><td>2</td><td>3</td><td>−2</td><td>−3</td><td>−1</td><td>−1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>2</td><td>−1</td><td>−2</td><td>−1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td>−1</td><td>−1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<h3 id="bardsong-table">Bard Song Ladder (Bard)</h3>
+<p>Stock Bard Song stopped scaling at Bard&nbsp;20 and gave only modest bonuses. Here it is the
+mirror of <a href="#cursesong-table">Curse Song</a> — a ladder of 23 tiers reached only when you meet
+<em>both</em> its Perform rank <em>and</em> its Bard level, granting every bonus on that row to the
+bard and allies in a 30&nbsp;ft sphere. Duration rules are identical to Curse Song. Because buffing a
+whole party is stronger than debuffing enemies, the bonuses are tuned <strong>conservatively</strong>
+(roughly half of Curse Song's combat magnitudes) and the sonic-damage column becomes
+<strong>temporary hit points</strong> here.</p>
+
+<table class="data change-table">
+  <thead><tr>
+    <th>Perform ≥</th><th>Bard lvl ≥</th><th>Attack</th><th>Damage</th><th>Will</th><th>Fort</th><th>Reflex</th><th>Temp HP</th><th>AC</th><th>Skills</th>
+  </tr></thead>
+  <tbody>
+    <tr><td>80</td><td>30</td><td>+6</td><td>+6</td><td>+4</td><td>+4</td><td>+4</td><td>60</td><td>+6</td><td>+12</td></tr>
+    <tr><td>75</td><td>29</td><td>+6</td><td>+5</td><td>+4</td><td>+4</td><td>+4</td><td>52</td><td>+5</td><td>+11</td></tr>
+    <tr><td>60</td><td>28</td><td>+5</td><td>+5</td><td>+4</td><td>+4</td><td>+4</td><td>46</td><td>+5</td><td>+10</td></tr>
+    <tr><td>55</td><td>27</td><td>+5</td><td>+5</td><td>+4</td><td>+4</td><td>+4</td><td>44</td><td>+5</td><td>+10</td></tr>
+    <tr><td>50</td><td>26</td><td>+5</td><td>+5</td><td>+3</td><td>+3</td><td>+3</td><td>42</td><td>+4</td><td>+9</td></tr>
+    <tr><td>45</td><td>25</td><td>+5</td><td>+5</td><td>+3</td><td>+3</td><td>+3</td><td>40</td><td>+4</td><td>+9</td></tr>
+    <tr><td>40</td><td>24</td><td>+4</td><td>+4</td><td>+3</td><td>+2</td><td>+2</td><td>36</td><td>+4</td><td>+8</td></tr>
+    <tr><td>35</td><td>23</td><td>+4</td><td>+4</td><td>+3</td><td>+2</td><td>+2</td><td>34</td><td>+4</td><td>+8</td></tr>
+    <tr><td>30</td><td>22</td><td>+4</td><td>+4</td><td>+3</td><td>+2</td><td>+2</td><td>32</td><td>+3</td><td>+7</td></tr>
+    <tr><td>25</td><td>21</td><td>+4</td><td>+4</td><td>+3</td><td>+2</td><td>+2</td><td>30</td><td>+3</td><td>+7</td></tr>
+    <tr><td>20</td><td>20</td><td>+4</td><td>+4</td><td>+3</td><td>+2</td><td>+2</td><td>28</td><td>+3</td><td>+6</td></tr>
+    <tr><td>15</td><td>19</td><td>+4</td><td>+4</td><td>+2</td><td>+2</td><td>+2</td><td>26</td><td>+3</td><td>+6</td></tr>
+    <tr><td>12</td><td>18</td><td>+3</td><td>+4</td><td>+2</td><td>+2</td><td>+2</td><td>24</td><td>+3</td><td>+5</td></tr>
+    <tr><td>10</td><td>17</td><td>+3</td><td>+4</td><td>+2</td><td>+2</td><td>+2</td><td>22</td><td>+3</td><td>+5</td></tr>
+    <tr><td>9</td><td>16</td><td>+3</td><td>+3</td><td>+2</td><td>+2</td><td>+2</td><td>20</td><td>+2</td><td>+4</td></tr>
+    <tr><td>8</td><td>15</td><td>+3</td><td>+3</td><td>+2</td><td>+1</td><td>+1</td><td>16</td><td>+2</td><td>+3</td></tr>
+    <tr><td>7</td><td>14</td><td>+3</td><td>+3</td><td>+1</td><td>+1</td><td>+1</td><td>14</td><td>+2</td><td>+2</td></tr>
+    <tr><td>6</td><td>12</td><td>+2</td><td>+3</td><td>+1</td><td>+1</td><td>+1</td><td>10</td><td>+2</td><td>+2</td></tr>
+    <tr><td>5</td><td>8</td><td>+2</td><td>+3</td><td>+1</td><td>+1</td><td>+1</td><td>8</td><td>+1</td><td>+1</td></tr>
+    <tr><td>4</td><td>6</td><td>+2</td><td>+3</td><td>+1</td><td>+1</td><td>+1</td><td>4</td><td>+1</td><td>+1</td></tr>
+    <tr><td>2</td><td>3</td><td>+1</td><td>+2</td><td>+1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>+1</td></tr>
+    <tr><td>1</td><td>2</td><td>+1</td><td>+2</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+    <tr><td>1</td><td>1</td><td>+1</td><td>+1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<h3 id="shape-merge">Shapeshifting: Full Equipment Merge</h3>
+<p>Every player polymorph now merges <strong>all</strong> of your equipped items' magical
+properties into the new form — stock NWN merged only a per-form subset (druid Wild Shape:
+armor, helmet and shield only), and <em>never</em> put weapon properties on a form's natural
+attacks.</p>
+<ul>
+  <li><strong>Weapon → claws, bite and slam.</strong> Your equipped weapon's properties are
+  copied onto the form's natural attacks (and onto its right-hand weapon for humanoid forms).
+  If you shift while unarmed, your <strong>gloves'</strong> properties ride the natural attacks
+  instead.</li>
+  <li><strong>Everything else → hide.</strong> Armor, helmet, shield, both rings, amulet,
+  cloak, boots, belt and gloves merge onto the form's creature hide.</li>
+  <li><strong>Applies to:</strong> druid <em>Wild Shape</em> and <em>Elemental Shape</em>, all
+  Shifter shapes (<em>Greater Wildshape I–IV</em>, <em>Humanoid</em>, <em>Undead</em>,
+  <em>Dragon</em>, <em>Outsider</em>, <em>Construct</em>), and the arcane self-polymorphs
+  <em>Polymorph Self</em>, <em>Shapechange</em> and <em>Tenser's Transformation</em> (which
+  merged nothing at all in stock NWN).</li>
+</ul>
+<div class="tip-box">
+  <p><strong>No stacking games:</strong> when several merged items carry the same property
+  type (say, three AC bonuses), only the <strong>highest</strong> applies — the merge gives
+  you the best of each property across your gear, not the sum. Form base stats are
+  unchanged; your shifted damage is only ever as good as the weapon you bring.</p>
+</div>
+
+<h3 id="scaled-summons">Scaled Summons &amp; Animal Companions</h3>
+<p>Your <strong>summoned creatures and animal companion grow with you</strong>. The moment one
+appears it gains a single permanent, <strong>undispellable</strong> boost based on your
+investment as a summoner — so a high-level druid's or ranger's pet stays relevant on this
+high-magic server instead of falling behind. The bonus scales with your <strong>class level</strong>
+(druid, or the higher of druid/ranger for an animal companion), your <strong>Animal Empathy</strong>
+skill, and the <strong>Conjuration spell-focus feat line</strong> (Spell Focus → Greater → Epic
+Spell Focus). Summons from other classes (e.g. a wizard's) are unaffected.</p>
+
+<table class="data change-table">
+  <thead><tr><th>Stat</th><th>Scales with</th><th>Max at the top end</th></tr></thead>
+  <tbody>
+    <tr><td>Attack bonus</td><td>class level, Animal Empathy, Conjuration focus</td><td>+20</td></tr>
+    <tr><td>Armor Class (dodge)</td><td>class level, Animal Empathy, Conjuration focus</td><td>+12</td></tr>
+    <tr><td>All saving throws</td><td>class level, Animal Empathy, Conjuration focus</td><td>+20</td></tr>
+    <tr><td>All ability scores (drives HP via Con)</td><td>class level, Animal Empathy, Conjuration focus</td><td>+24</td></tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <p>Because the boost is applied fresh each time the creature spawns, it always reflects your
+  <em>current</em> level, skills and feats — re-summon after levelling up or gaining Epic Spell
+  Focus: Conjuration to see the pet get stronger.</p>
+</div>
+
+<h3 id="other-spells">Other Spell Changes</h3>
+<ul>
+  <li><strong>Summon Creature I–IX</strong> — fixed <em>duration</em> of 24 hours; the duration no
+  longer scales with caster level. (The summoned creature's <em>stats</em> still scale with you —
+  see <a href="#scaled-summons">Scaled Summons &amp; Animal Companions</a> above.)</li>
+</ul>
+
+<div class="warn-box">
+  <p><strong>Time Stop is disabled.</strong> It cannot be cast on this server — attempting to cast it
+  does nothing.</p>
+</div>
+
+<h3 id="soul-fatigue">Soul-fatigue on Heal</h3>
+<p><strong>Healing is a timed resource, not a button you hold.</strong> Being healed by
+<strong>Heal</strong> or <strong>Mass Heal</strong> — including from <strong>Heal potions</strong> and
+any item that casts it — leaves a stack of <em>soul-fatigue</em> on you. The order of events matters:</p>
+<ol>
+  <li><strong>The heal resolves in full first</strong> — you go to 100% HP as normal.</li>
+  <li><strong>You then take 10% of your maximum HP as damage for every stack you were already
+  carrying</strong>, applied <em>after</em> the top-off so the heal cannot erase it.</li>
+  <li><strong>One new stack is added.</strong></li>
+</ol>
+<ul>
+  <li>Each stack decays on its <strong>own independent 3-minute timer</strong>. You are told on screen
+  how many stacks you hold and when each one falls off.</li>
+  <li><strong>A heal at zero stacks is completely free</strong> — full benefit, one stack, no damage.
+  It is <em>chain</em>-healing that turns dangerous.</li>
+  <li>The damage is a <strong>scripted cost, not an attack</strong>: damage resistance, damage
+  reduction and immunities do <strong>not</strong> reduce it. <strong>It can kill you.</strong></li>
+  <li>Casting Heal on <strong>undead</strong> harms them rather than healing them, so it produces no
+  stack and no damage. DMs are unaffected.</li>
+</ul>
+<table class="data change-table">
+  <thead>
+    <tr><th>Stacks held when the heal lands</th><th>HP left immediately after the heal</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0</td><td>100% — free</td></tr>
+    <tr><td>1</td><td>90%</td></tr>
+    <tr><td>2</td><td>80%</td></tr>
+    <tr><td>5</td><td>50%</td></tr>
+    <tr><td>9</td><td>10%</td></tr>
+    <tr><td>10 or more</td><td><strong>Dead</strong> — the hit is 100% of your maximum HP</td></tr>
+  </tbody>
+</table>
+<div class="tip-box">
+  <p><strong>Don't plan on backing off to wait it out.</strong> Against the great bosses, walking away
+  from the fight triggers <a href="#boss-enrage">Boss Enrage on Retreat</a> — the boss heals and grows
+  stronger while your stacks tick down. The two mechanics shipped together and are meant to be
+  answered with pacing and mitigation, not with spam and retreat. Design background:
+  <a href="Draft/boss-updates.html#fatigue">Endgame Difficulty — Soul-fatigue on Heal</a>.</p>
+</div>
+
+<h3 id="spell-duration">Doubled Spell &amp; Effect Duration</h3>
+<p>Every temporary effect <strong>you or your companions</strong> create lasts
+<strong>twice as long</strong> as stock NWN — buffs you cast, potions and scrolls you
+drink, debuffs you inflict on enemies, and buffs from your henchmen, summons and
+familiars. Effects that enemies place on <em>you</em> are unchanged.</p>
+<div class="tip-box">
+  <p>This stacks with the <strong>Extend Spell</strong> metamagic. Extend already doubles a
+  spell's duration in its own right, so an Extended buff ends up <strong>four times</strong>
+  the base duration on this server.</p>
+</div>
+<div class="tip-box">
+  <p><strong>Exception — invisibility-type effects.</strong> <em>Improved Invisibility</em>,
+  <em>Invisibility</em>, <em>Invisibility Sphere</em>, concealment, <em>Sanctuary</em>,
+  <em>Ethereal Visage</em> and <em>Etherealness</em> keep their <strong>normal</strong>
+  duration. These are applied as linked effects, and their
+  "go visible but keep your concealment when you attack" behaviour depends on that engine
+  link — which the duration-doubling system cannot safely rebuild — so they are left
+  untouched. The exclusion is enforced both by spell id (so the whole spell is skipped
+  before any re-timing, covering potions/wands/scrolls too) and by effect type (so
+  invisibility applied directly by a script is caught as well).</p>
+</div>
+<div class="tip-box">
+  <p><strong>Exception — Divine Might &amp; Divine Shield.</strong> These Paladin feats also
+  build their buff as a linked effect (attack+damage, or AC+visual), so they carry the same
+  risk as the invisibility family above and are likewise left at their <strong>normal</strong>
+  duration rather than doubled.</p>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="progression">
+  <h2>Character Progression</h2>
+  <p class="section-sub">Predictable hit points and an extended level ceiling past the normal cap of 40.</p>
+</div>
+
+<h3 id="max-hp">Maximum Hit Points on Level-Up</h3>
+<p>Every character gains <strong>maximum hit points on every level-up</strong>, server-wide —
+no hit-die roll, no bad rolls. Your HP per level is always the top of your class hit die plus
+Constitution. (Set at module load via the administration <em>max hit points</em> play option.)</p>
+
+<h3 id="max-ability">Maximum Ability Score Bonus from Items</h3>
+<p>The stock NWN cap on ability score bonuses from items and effects is <strong>+12</strong>.
+This server raises it to <strong>+24</strong>, allowing high-end gear and buffs to reach
+higher stat totals without hitting an invisible wall.
+(Set via <code>ruleset.combat.max-ability-bonus</code> in <code>settings.tml</code>.)</p>
+
+<h3 id="multiclass-xp">No Multiclass XP Penalty</h3>
+<p>Stock NWN quietly taxes multiclass characters: if your highest and lowest class levels ever
+differ by more than one, XP you earn is reduced until you level the lagging class back up. This
+server <strong>disables that penalty entirely</strong> — every class combination earns full XP,
+no matter how unevenly your levels are split. With up to <strong>4 classes</strong> stackable per
+character, build experimentation is the point, so there is no XP cost for going wide instead of
+staying balanced.</p>
+
+<h3 id="legendary-levels">Legendary Levels: 41–60</h3>
+<p>Standard NWN stops at level 40. Once you reach 40 you may continue to <strong>level 60</strong>
+through the Legendary Leveling system — speak to the <strong>Legendary Leveler</strong> NPC in the
+Legendary Leveling area (reachable from the <a href="../areas/thewelloferu.html">Well of Eru</a>).
+It is built on the
+<a href="https://neverwintervault.org/project/nwn1/script/higher-ground-legendary-level-system-levels-41-60-v21-hgll" target="_blank" rel="noopener">Higher Ground Legendary Level System (HGLL)</a>.</p>
+
+<table class="data change-table">
+  <thead><tr><th>On each Legendary level you DO gain</th><th>On each Legendary level you do NOT gain</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul style="margin:0;padding-left:1.1em;">
+          <li>Skill points</li>
+          <li>Hit points (from your highest-class hit die)</li>
+          <li>Ability score increases (at standard intervals)</li>
+          <li>One selectable feat per level</li>
+        </ul>
+      </td>
+      <td>
+        <ul style="margin:0;padding-left:1.1em;">
+          <li>Caster level increases (spell power is frozen at 40)</li>
+          <li>New spell slots or spell levels</li>
+          <li>Class progression (no new class features, BAB, or saving-throw gains)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In short, Legendary levels make you <em>tougher and more versatile</em> through raw stats and
+feats, but do not increase spellcasting power. Stock HGLL charges a steep 1.25x compounding
+increase in XP per level; this server has <strong>reduced that to a 1.1x compounding rate</strong>,
+so the climb to 60 is noticeably gentler than the vanilla add-on. See the
+<a href="../manual/LevelingGuide.html">Leveling Guide</a> for where to earn XP.</p>
+
+<table class="data change-table">
+  <thead><tr><th>Level</th><th>XP Required</th></tr></thead>
+  <tbody>
+    <tr><td>41</td><td>828,800</td></tr>
+    <tr><td>44</td><td>1,006,600</td></tr>
+    <tr><td>48</td><td>1,338,700</td></tr>
+    <tr><td>52</td><td>1,825,100</td></tr>
+    <tr><td>56</td><td>2,537,700</td></tr>
+    <tr><td>60</td><td>3,581,000</td></tr>
+  </tbody>
+</table>
+
+<p>The full level-by-level table (41 through 60) is posted in-game on the <strong>Legendary
+Leveler</strong> placeable in the Legendary Leveling area, reachable from the
+<a href="../areas/thewelloferu.html">Well of Eru</a>.</p>
+
+<h3 id="monk-weapons">Monk Weapons</h3>
+<p>Three weapons have been reclassified for monks relative to stock NWN:</p>
+<ul>
+  <li><strong>Shuriken</strong> — counts as a monk weapon; also benefits from <em>Weapon Finesse</em>.</li>
+  <li><strong>Quarterstaff</strong> — counts as a monk weapon; also benefits from <em>Weapon Finesse</em>.</li>
+  <li><strong>Katana</strong> — counts as a monk weapon, but still requires <em>Exotic Weapon Proficiency</em>; does <strong>not</strong> benefit from Weapon Finesse.</li>
+</ul>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="death">
+  <h2>Death, Dying &amp; Respawn</h2>
+  <p class="section-sub">A bleed-out window when you drop, and a light respawn penalty with no XP loss.</p>
+</div>
+
+<h3 id="bleeding">Bleeding Out</h3>
+<p>When you fall to 0 HP or below you begin <strong>bleeding</strong> rather than dying instantly.
+You lose 1 HP every round (6 seconds) and <strong>die at −20 HP</strong> (twice the vanilla −10
+threshold), giving allies a longer window to reach you. Each bleeding round there is a
+<strong>10% chance to stabilize</strong>; once stabilized you begin slowly healing back instead of
+bleeding. (Expect the usual pained voice-lines while you are down.)</p>
+
+<h3 id="no-logout-death">You Cannot Log Out of Death</h3>
+<p><strong>Logging out and back in does not restore health or spells — and it does not escape
+death.</strong> If you disconnect while dead or bleeding, you are still dead or bleeding when you
+return; your state is saved across the logout, so there is no relog trick to recover.</p>
+
+<h3 id="respawn-penalty">Respawn Penalty</h3>
+<p>Pressing the respawn button returns you to your bind point with:</p>
+<ul>
+  <li><strong>5 HP</strong> (not the vanilla 1 HP), then a full effect clear.</li>
+  <li><strong>No XP loss</strong> — the XP penalty is disabled entirely.</li>
+  <li><strong>A 10% gold penalty</strong> — that gold is dropped at your place of death in a bag
+      that <em>anyone</em> can loot, so a quick recovery run can get it back.</li>
+</ul>
+
+<hr>
+
+<!-- ============================================================ -->
+<div class="section-header" id="stock">
+  <h2>Not Changed (Stock Standard)</h2>
+  <p class="section-sub">Things that are <em>commonly</em> house-ruled on other servers but are left exactly as the base ruleset defines them here. If you have played elsewhere, do not assume these are altered.</p>
+</div>
+
+<div class="stock-box">
+  <dl style="margin:0;">
+    <dt>True Seeing</dt>
+    <dd>Works exactly as written — penetrates all illusions and invisibility. No nerfs.</dd>
+
+    <dt>Stealth / Hide</dt>
+    <dd>Standard mechanics. No custom detection bonuses or penalties beyond what the ruleset provides.</dd>
+
+    <dt>Subraces</dt>
+    <dd>There is <strong>no subrace system</strong>. All characters use the standard NWN races with their default racial bonuses only.</dd>
+
+    <dt>Feats, skills, BAB &amp; saves</dt>
+    <dd>Standard progression up to level 40. (Legendary levels 41–60 add feats, skills, HP, and ability scores, but do not change how the base mechanics work — see <a href="#progression">Character Progression</a>.)</dd>
+
+    <dt>Critical hits &amp; Devastating Critical</dt>
+    <dd>Critical threat ranges, confirmation rolls, and the <strong>Devastating Critical</strong> feat all work exactly as stock NWN — no nerfs, caps, or house rules.</dd>
+  </dl>
+</div>
+
+  </div><!-- .mw-content -->
+  </div><!-- .mw-layout -->
+  </main>
+
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

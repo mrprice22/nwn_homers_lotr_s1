@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script onmoduleload</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>onmoduleload</code></h1><pre class="nss-source"><code>//On module load
+//Example of OnLoad Script
+
+
+//***************************************************************************
+// CONSTANTS
+
+
+
+//***************************************************************************
+
+
+//PCs Autosaving
+#include &quot;pc_export_inc&quot;
+#include &quot;color&quot;
+#include &quot;nwnx_admin&quot;
+#include &quot;nwnx_events&quot;
+#include &quot;x2_inc_switches&quot;
+#include &quot;ru_db&quot;
+#include &quot;brd_db&quot;
+#include &quot;admin_db&quot;
+#include &quot;boost_db&quot;
+#include &quot;quest_cd_inc&quot;
+#include &quot;faction_db&quot;
+#include &quot;worldstate_inc&quot;
+#include &quot;ammorep_db&quot;
+
+
+void main()
+{
+
+//****************************************************************************
+//PCs Autosaving function
+pc_export_onmoduleload();
+
+// Force max HP on every level-up, server-wide.
+NWNX_Administration_SetPlayOption(NWNX_ADMINISTRATION_OPTION_USE_MAX_HITPOINTS, TRUE);
+//----------------------------------------------------------------------------
+
+// Enable tag-based scripting for item events (e.g. Rod of Fast Buffing)
+SetModuleSwitch(MODULE_SWITCH_ENABLE_TAGBASED_SCRIPTS, TRUE);
+
+// Module override spellscript: run stop_spellcheat before every spell impact
+// script (counterspell anti-cheat + soul-fatigue on Heal/Mass Heal via
+// fat_inc.nss, roadmap: heal-soul-fatigue). This MUST be installed here — the
+// old on_module_load.nss that carried these lines was never wired to
+// Mod_OnModLoad (the hook is this script, onmoduleload), so the override
+// never ran. x2_inc_spellhook&#x27;s X2RunUserDefinedSpellScript() only fires when
+// the module local X2_S_UD_SPELLSCRIPT is set.
+SetModuleSwitch(MODULE_VAR_OVERRIDE_SPELLSCRIPT, TRUE);
+SetModuleOverrideSpellscript(&quot;stop_spellcheat&quot;);
+
+// Spawn Meaningwave NPCs at their designated waypoints
+ExecuteScript(&quot;mw_spawn&quot;, GetModule());
+
+// Gwathdor Labyrinth (area025): re-roll the maze wiring for this reboot. Sets a
+// &quot;MAZE_DEST&quot; local on every maze door/trigger; the doors/triggers teleport the
+// PC there via gwathlab_door / gwathlab_trig. A restart = a fresh maze layout.
+ExecuteScript(&quot;gwathlab_wire&quot;, GetModule());
+
+// Double the duration of every temporary effect a player creates (eff_dur_x2).
+NWNX_Events_SubscribeEvent(NWNX_ON_EFFECT_APPLIED_AFTER, &quot;eff_dur_x2&quot;);
+
+// Premium 2x gold/XP boost: multiply positive XP gains for players with an active
+// boost (merit redemptions 201-204). Engine combat XP is not script-granted, so
+// XP is intercepted centrally here rather than at kill sites. The event name has
+// no const in nwnx_events.nss, so it is passed as a literal string.
+NWNX_Events_SubscribeEvent(&quot;NWNX_ON_SET_EXPERIENCE_BEFORE&quot;, &quot;boost_xp_evt&quot;);
+
+// Party loot: announce current roll settings when a player joins a party or the
+// party leadership changes (pl_party_evt broadcasts to the whole party).
+NWNX_Events_SubscribeEvent(NWNX_ON_PARTY_ACCEPT_INVITATION_AFTER, &quot;pl_party_evt&quot;);
+NWNX_Events_SubscribeEvent(NWNX_ON_PARTY_TRANSFER_LEADERSHIP_AFTER, &quot;pl_party_evt&quot;);
+
+// Disarm catch: when an NPC disarms a PC, deposit the weapon into the PC&#x27;s pack
+// instead of dropping it on the ground (where it can despawn / be grabbed by the
+// NPC). BEFORE snapshots the wielded weapon; AFTER moves it. PvP disarms are left
+// vanilla. See disarm_catch.nss.
+NWNX_Events_SubscribeEvent(NWNX_ON_DISARM_BEFORE, &quot;disarm_catch&quot;);
+NWNX_Events_SubscribeEvent(NWNX_ON_DISARM_AFTER,  &quot;disarm_catch&quot;);
+
+// Color tokens for dialogue text (used in bank XP retirement warnings)
+// CUSTOM6100 = red, CUSTOM6101 = yellow, CUSTOM6102 = close
+SetCustomToken(6100, COLOR_RED);
+SetCustomToken(6101, COLOR_YELLOW);
+SetCustomToken(6102, COLOR_END);
+
+// Recent Updates sign (Well of Eru): ensure the roadmapdb table exists before
+// any read. It is populated externally by the roadmap editor&#x27;s Publish button.
+RU_InitDb();
+
+// Roll of the Fallen board (Well of Eru): reseed the boss registry and clear
+// stale death rows — a restart revives every boss, so the board starts empty.
+BRD_InitDb();
+
+// Admin whitelist (rest-menu Admin/Homeless options, cheat chest): ensure the
+// admins table exists before any read. Seeded externally by bin/seed-admindb.sh.
+Admin_InitDb();
+
+// Premium 2x gold/XP boost subscriptions (merit redemptions 201-204): ensure the
+// boostdb tables exist before any kill/quest reward reads them.
+Boost_InitDb();
+
+// Quest cooldowns (daily/weekly repeatable quests): ensure the quest_cd table
+// exists before any dialogue conditional reads it. See quest_cd_inc.nss.
+QCD_InitDb();
+
+// Faction allegiance (Good/Evil, persisted per-character): ensure the
+// faction_standing table exists before any adjuster write or login re-apply.
+// See faction_db.nss (roadmap: faction-scaffolding).
+Faction_InitDb();
+
+// World-state globals (server-wide contested control / timed buffs / weekly
+// claims): ensure the world_state + world_state_rule tables exist before any
+// read or before the heartbeat&#x27;s WS_Tick() applies a decay/weekly rule.
+// See worldstate_inc.nss (roadmap: lumber-ent-tugofwar).
+WS_InitDb();
+
+// Quiver of Endless Flight (ammo replicator, Legolas/Angmar drop): ensure the
+// replicators table exists before the first activation reads a use count. Uses
+// are keyed on the ITEM&#x27;s UUID so they follow the quiver when it changes hands.
+// See ammorep_db.nss (roadmap: Ammo-shortage).
+AmmoRep_InitDb();
+
+}   //end of main
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>

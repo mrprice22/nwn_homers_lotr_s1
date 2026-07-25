@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Script mw_quiz_data</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <link rel="stylesheet" href="../assets/theme.css">
+  <link rel="icon" href="../assets/favicon.png">
+  <script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../index.html"><img class="site-header-img" src="../assets/header.png" data-header-images="[&quot;../assets/header.png&quot;, &quot;../assets/header_02.png&quot;, &quot;../assets/header_03.png&quot;, &quot;../assets/header_04.png&quot;]" alt="Home"></a>
+    <nav>
+      <a href="../map/index.html">Map</a>
+      <a href="../areas/index.html">Areas</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Creatures &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../creatures/index.html">All Creatures</a>
+          <a href="../creatures/by-area/index.html">By Area</a>
+          <a href="../creatures/by-cr/index.html">By Challenge Rating</a>
+          <a href="../creatures/by-race/index.html">By Race</a>
+          <a href="../creatures/bosses.html">Bosses</a>
+          <a href="../creatures/pictures.html">Pictures</a>
+        </div>
+      </div>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-label">Items &#9660;</span>
+        <div class="nav-dropdown-menu">
+          <a href="../items/index.html">Accessible</a>
+          <a href="../items/inaccessible/index.html">Inaccessible</a>
+          <a href="../items/properties/index.html">By Property</a>
+          <a href="../items/search.html">Search</a>
+        </div>
+      </div>
+      <a href="../stores/index.html">Stores</a>
+      <a href="../conversations/index.html">Conversations</a>
+      <a href="../factions.html">Factions</a>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Quests &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/QuestGuide.html">Quest Guide</a>
+<a href="../quests/index.html">Journal Entries</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Activity &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Roadmap.html">Roadmap &amp; Player Ideas</a>
+<a href="../activity.html">Player Activity</a>
+<a href="../manual/ServerFirsts.html">Server Firsts</a></div></div>
+      <div class="nav-dropdown"><span class="nav-dropdown-label">Documents &#9660;</span><div class="nav-dropdown-menu"><a href="../manual/Customizations.html">Customizations</a>
+<a href="../manual/LevelingGuide.html">Leveling Guide</a>
+<a href="../manual/MeaningWave.html">MeaningWave: A Guide to the Guides</a>
+<div class="nav-submenu"><span class="nav-submenu-label">Draft</span><div class="nav-submenu-menu"><a href="../manual/Draft/CasterGear.html">Caster Signature Gear — Homer&#x27;s LOTR</a>
+<a href="../manual/Draft/Gem-Socketing.html">Slotted Items (Gem Socketing) — Design Notes</a>
+<a href="../manual/Draft/LegendaryFeats.html">Legendary Feats</a>
+<a href="../manual/Draft/Quest Ideas.html">Quest Ideas (Draft Concepts)</a>
+<a href="../manual/Draft/boss-updates.html">Endgame Difficulty — Tactical, Not Spongy</a></div></div></div></div>
+      
+    </nav>
+  </header>
+  <main>
+<h1>Script: <code>mw_quiz_data</code></h1><pre class="nss-source"><code>//::///////////////////////////////////////////////
+//:: mw_quiz_data -- MeaningWave guide quiz question banks.
+//::
+//:: GENERATED from mw_quiz_bank.yaml by bin/gen-mw-quiz.py -- DO NOT EDIT.
+//:: Edit the YAML and re-run the generator (tests/check_mw_quiz.py gates it).
+//::
+//:: Each question is one packed row consumed by mw_quiz_inc:
+//::     &quot;QUESTION~RIGHT~WRONG1~WRONG2~WRONG3&quot;
+//:: Field 0 is the prompt, field 1 the single correct answer, 2-4 distractors.
+//:://////////////////////////////////////////////
+
+const int MW_BANK_SIZE = 20;
+
+int MW_QCount(string sGuide) { return MW_BANK_SIZE; }
+
+// Jocko Willink -- extreme ownership, discipline, and the laws of combat leadership
+string MW_JocRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;Complete my maxim: \&quot;Discipline equals ___.\&quot;~Freedom.~Success.~Respect.~Strength.&quot;;
+        case 1 : return &quot;When the mission fails, whose fault is it?~Mine.~The team&#x27;s.~The plan&#x27;s.~Bad luck&#x27;s.&quot;;
+        case 2 : return &quot;When I get bad news, what single word do I say?~\&quot;Good.\&quot;~\&quot;Okay.\&quot;~\&quot;Understood.\&quot;~\&quot;Ready.\&quot;&quot;;
+        case 3 : return &quot;The alarm goes off before dawn. What do I do?~Get up. Now.~Stretch first.~Plan the day.~Start slow.&quot;;
+        case 4 : return &quot;I do not feel like doing the work. What then?~Do it anyway.~Push through later.~Start small.~Build the habit first.&quot;;
+        case 5 : return &quot;Who owns a team&#x27;s performance?~The leader.~The whole team.~Each individual.~The commander above.&quot;;
+        case 6 : return &quot;What does \&quot;Default: Aggressive\&quot; mean?~Attack the problem before it attacks you.~Take the fight to the enemy first.~Keep the pressure on constantly.~Meet force with greater force.&quot;;
+        case 7 : return &quot;The dichotomy of leadership means balancing traits. Which pairing is it?~Lead, but be ready to follow.~Lead hard from the front.~Trust your team completely.~Own every call yourself.&quot;;
+        case 8 : return &quot;What does \&quot;Cover and Move\&quot; demand?~Teams support each other toward the goal.~Advance under covering fire.~Hold position and defend.~Split up to move faster.&quot;;
+        case 9 : return &quot;How complex should a plan be?~Simple enough for anyone to execute.~Detailed enough for every case.~Flexible enough to change fast.~Clear enough for the leader.&quot;;
+        case 10: return &quot;Many problems hit at once. What do I do?~Prioritize, then execute.~Delegate across the team.~Solve the easiest first.~Attack the biggest head-on.&quot;;
+        case 11: return &quot;How do discipline and freedom relate?~Discipline creates freedom.~Freedom means doing as you please.~Talent matters more than habit.~Rest is what sets you free.&quot;;
+        case 12: return &quot;What does \&quot;Decentralized Command\&quot; mean?~Push decisions down to those closest to the fight.~Give clear orders from the top.~Share command among equals.~Let the team vote on calls.&quot;;
+        case 13: return &quot;In which branch did I serve?~The Navy, with the SEAL Teams.~The Army, with the Green Berets.~The Marines, with Force Recon.~The Air Force, with the Pararescuemen.&quot;;
+        case 14: return &quot;My man makes a mistake. What do I ask first?~How did I fail to lead him?~Did he understand the plan?~Was he trained enough?~What will fix it next time?&quot;;
+        case 15: return &quot;What place do excuses have?~None. Own the outcome.~A reason helps you learn.~Context explains the loss.~Some things are truly beyond us.&quot;;
+        case 16: return &quot;How should I treat a hard task?~As a chance to get better.~As a test to endure.~As a job to finish fast.~As a duty to bear.&quot;;
+        case 17: return &quot;Amid chaos, how do I see clearly?~Detach and assess the whole.~Trust your gut and move.~Focus on the nearest threat.~Fall back on the training.&quot;;
+        case 18: return &quot;Where does ownership point first?~Inward, at myself.~At the team&#x27;s effort.~At the plan&#x27;s flaws.~At the conditions we faced.&quot;;
+        case 19: return &quot;You feel overwhelmed. What saves you?~One priority at a time.~A short rest to reset.~Leaning on your team.~Trusting the training.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Jordan Peterson -- responsibility, hierarchy, meaning, and the order-chaos balance
+string MW_PetRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;How should you carry yourself in the world?~Stand up straight, shoulders back.~Stay humble and quiet.~Blend in with the crowd.~Guard your energy.&quot;;
+        case 1 : return &quot;What is responsibility, truly?~The path to meaning, freely chosen.~A duty owed to others.~The price of freedom.~A weight we must bear.&quot;;
+        case 2 : return &quot;Whom should you measure yourself against?~Who you were yesterday.~The best in your field.~Your closest peers.~The person you hope to be.&quot;;
+        case 3 : return &quot;What dragon must you face?~The chaos within yourself.~The obstacles in your path.~The people who wrong you.~The fear of failing.&quot;;
+        case 4 : return &quot;Before you criticise the world, what must you do?~Set your own house in order.~Understand it deeply first.~Earn the right to speak.~Offer a better answer.&quot;;
+        case 5 : return &quot;What must you do, even when it costs you?~Tell the truth.~Keep your word.~Do what is right.~Stand your ground.&quot;;
+        case 6 : return &quot;What is a hierarchy of competence?~An ancient order, not a mere invention.~A ladder anyone can climb.~A useful modern tool.~A fair way to reward skill.&quot;;
+        case 7 : return &quot;You should pursue what?~What is meaningful, not expedient.~What makes you happy.~What you are good at.~What the world needs.&quot;;
+        case 8 : return &quot;I point to which creature to show hierarchy runs deep in nature?~The lobster.~The wolf.~The ape.~The bee.&quot;;
+        case 9 : return &quot;What is the antidote to resentment?~Aim up and take responsibility.~Forgive and move on.~Name what is unfair.~Count your blessings.&quot;;
+        case 10: return &quot;How should you treat yourself?~As someone you must help.~As your harshest critic.~As your own best friend.~As a work in progress.&quot;;
+        case 11: return &quot;Where is meaning found?~On the border of order and chaos.~In a life of order.~In freedom from all rules.~In serving something greater.&quot;;
+        case 12: return &quot;When you listen to someone, what should you assume?~They might know something you don&#x27;t.~They mean well.~They see it their own way.~They want to be heard.&quot;;
+        case 13: return &quot;What befalls a person who abandons truth?~He descends into his own hell.~He loses others&#x27; trust.~He forgets who he is.~He weakens over time.&quot;;
+        case 14: return &quot;In what must you be precise?~Your speech.~Your aim.~Your habits.~Your promises.&quot;;
+        case 15: return &quot;Where does order begin?~With the small things you can fix now.~With a clear plan.~With honest self-reflection.~With the right values.&quot;;
+        case 16: return &quot;What is the tragedy of Being?~Suffering is woven in, yet can be borne.~Suffering falls only on the unlucky.~Enough progress will end it.~Meaning removes all pain.&quot;;
+        case 17: return &quot;What kind of friends should you make?~Those who want the best for you.~Those who are fun to be with.~Those who challenge you.~Those loyal no matter what.&quot;;
+        case 18: return &quot;What two forces must you balance?~Order and chaos.~Reason and emotion.~Freedom and duty.~Self and others.&quot;;
+        case 19: return &quot;Why measure yourself only against your past self?~To escape envy and false comparison.~To track real progress.~To stay humble.~To set fair goals.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Alan Watts -- ego, nonduality, flow, and the universe at play
+string MW_WatRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;Who is doing the experiencing?~No separate self apart from the experience.~The mind behind your eyes.~The soul within the body.~The &#x27;I&#x27; that watches it all.&quot;;
+        case 1 : return &quot;What is the great secret you were never told?~You are the whole universe, not a separate ego.~Your fate is already written.~Desire is the root of suffering.~The world is a passing dream.&quot;;
+        case 2 : return &quot;What is the universe, really?~A cosmic game of hide-and-seek.~A grand design with a purpose.~A vast, living organism.~A mystery beyond knowing.&quot;;
+        case 3 : return &quot;Why act at all, if the goal is incidental?~Because the doing is the play.~Because growth is the point.~Because the world needs you.~Because effort is its own reward.&quot;;
+        case 4 : return &quot;The self is more like which part of speech?~A verb, not a noun.~A noun, solid and real.~A story we tell.~A name we answer to.&quot;;
+        case 5 : return &quot;How do you truly let go?~By yielding, not gripping harder.~By understanding its cause.~By replacing it with something better.~By simply deciding to.&quot;;
+        case 6 : return &quot;Where is real security found?~In accepting that all things pass.~In building something lasting.~In faith and trust.~In knowing yourself well.&quot;;
+        case 7 : return &quot;Which two ways of seeing do I draw from most?~Zen and the Tao.~Stoicism and Zen.~Hinduism and Sufism.~Buddhism and Christianity.&quot;;
+        case 8 : return &quot;What is \&quot;wu wei\&quot;?~Effortless action, with the grain of things.~Patient, steady effort.~Action guided by reason.~Stillness and quiet.&quot;;
+        case 9 : return &quot;What is the ego, really?~A useful illusion, a social mask.~The core of who you are.~The voice of conscience.~The seat of the will.&quot;;
+        case 10: return &quot;Chase pleasure head-on, and what happens?~It slips through your fingers.~It leaves you wanting more.~It costs more than it gives.~It dulls over time.&quot;;
+        case 11: return &quot;Believing you are a lone ego in a bag of skin is what?~A hallucination of separateness.~Simple common sense.~The way we are built to feel.~A hard truth to accept.&quot;;
+        case 12: return &quot;What is \&quot;satori\&quot;?~A sudden flash of awakening.~A lifetime of practice.~A deep, calm peace.~A state of pure focus.&quot;;
+        case 13: return &quot;Life is like music. Why?~The point is the playing, not the end.~Every part has its rhythm.~It rises and falls in time.~It moves us beyond words.&quot;;
+        case 14: return &quot;What do yin and yang teach?~Opposites need each other.~Balance is the goal.~All things are in flux.~Light will outlast the dark.&quot;;
+        case 15: return &quot;What are you, at the deepest level?~The universe knowing itself.~A spark of the divine.~A mind made of matter.~A soul on a journey.&quot;;
+        case 16: return &quot;\&quot;You are the universe experiencing itself\&quot; points to what?~Nonduality: self and cosmos are one.~Pantheism: God is all things.~Idealism: all is mind.~Humanism: we make our own meaning.&quot;;
+        case 17: return &quot;What of the present moment?~It is the only place life happens.~It shapes the future.~It passes too quickly to hold.~It is best not to dwell in.&quot;;
+        case 18: return &quot;How does the sage meet nature?~Flowing with it, not forcing it.~Studying its every law.~Living simply within it.~Tending it with care.&quot;;
+        case 19: return &quot;What is the cosmos, in a word?~Playful and all connected.~Vast and mysterious.~Ordered and lawful.~Sacred and alive.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Joseph Campbell -- the monomyth: departure, initiation, and the return
+string MW_CamRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;What begins every hero&#x27;s journey?~The Call to Adventure.~A great loss.~A chance meeting.~A restless longing.&quot;;
+        case 1 : return &quot;What does the threshold guardian do?~Tests whether you are worthy to cross.~Warns of the dangers ahead.~Demands a price to pass.~Points the hero&#x27;s way.&quot;;
+        case 2 : return &quot;Why must the hero descend into the dark?~To die to the old self and be reborn.~To find a hidden strength.~To face his deepest fear.~To win the great prize.&quot;;
+        case 3 : return &quot;What single counsel do I give for a life?~Follow your bliss.~Know thyself.~Serve a cause.~Seek the truth.&quot;;
+        case 4 : return &quot;What do I call the one myth beneath all cultures?~The monomyth.~The archetype.~The great story.~The eternal return.&quot;;
+        case 5 : return &quot;The hero&#x27;s journey is ultimately a figure for what?~Inner transformation.~The path to power.~The search for home.~The triumph of good.&quot;;
+        case 6 : return &quot;To cross the first threshold means what?~Leaving the ordinary world behind.~Passing the first test.~Making the fateful choice.~Facing the unknown at last.&quot;;
+        case 7 : return &quot;The one who gives supernatural aid is usually what?~A mentor or wise guide.~A loyal companion.~A hidden god.~A former hero.&quot;;
+        case 8 : return &quot;What is the \&quot;Refusal of the Call\&quot;?~The hero&#x27;s first hesitation.~The villain&#x27;s challenge.~A test of resolve.~The turning point.&quot;;
+        case 9 : return &quot;The three phases of the hero&#x27;s journey are Departure, Initiation, and what?~Return.~Trial.~Reward.~Renewal.&quot;;
+        case 10: return &quot;What does the \&quot;belly of the whale\&quot; mark?~The passage into transformation.~The point of no return.~The darkest despair.~A time of hidden rest.&quot;;
+        case 11: return &quot;What do myths do for us?~Give life meaning and shape the soul.~Preserve a people&#x27;s past.~Teach right from wrong.~Explain the mysteries of nature.&quot;;
+        case 12: return &quot;What ordeal awaits at the darkest point?~The supreme trial.~The final reward.~The long road home.~The mentor&#x27;s parting.&quot;;
+        case 13: return &quot;\&quot;Meeting the goddess\&quot; and \&quot;atonement with the father\&quot; belong to which phase?~Initiation.~Departure.~Return.~The Call.&quot;;
+        case 14: return &quot;Where does the hero&#x27;s road begin?~In the ordinary, everyday world.~At a moment of crisis.~In a place of safety.~At the edge of the unknown.&quot;;
+        case 15: return &quot;What does \&quot;follow your bliss\&quot; truly mean?~Pursue your deepest calling, whatever it costs.~Do what brings you joy.~Trust where life leads you.~Find work you love.&quot;;
+        case 16: return &quot;Whom does the hero&#x27;s journey ultimately serve?~The community he returns to.~The hero&#x27;s own growth.~The generations to come.~The gods who sent him.&quot;;
+        case 17: return &quot;What is the \&quot;ultimate boon\&quot;?~The prize that can renew the world.~The wisdom hard-won.~The treasure long sought.~The hero&#x27;s true name.&quot;;
+        case 18: return &quot;What befalls the hero who refuses to return?~His gift is lost to the world.~He remains forever changed.~He must begin again.~He finds peace apart.&quot;;
+        case 19: return &quot;What does the hero carry home?~A boon for his people.~The scars of his trials.~A story worth telling.~Wisdom he cannot share.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Terence McKenna -- culture, novelty, the Other, and direct experience
+string MW_MckRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;What is culture, really?~Your operating system.~A shared way of life.~The story a people tells.~A set of inherited rules.&quot;;
+        case 1 : return &quot;Complete my phrase: \&quot;the felt presence of ___.\&quot;~immediate experience.~the living cosmos.~the eternal now.~another mind.&quot;;
+        case 2 : return &quot;What is the timewave?~A fractal of rising novelty.~A cycle of endless return.~A map of history&#x27;s turns.~A rhythm of the cosmos.&quot;;
+        case 3 : return &quot;How near is \&quot;the Other\&quot;?~Closer than your own breath.~Just beyond ordinary sight.~Deep within the mind.~At the edge of the cosmos.&quot;;
+        case 4 : return &quot;What is language, to me?~A living thing that longs to be shared.~A tool for shaping thought.~A bridge between minds.~A gift we are born to use.&quot;;
+        case 5 : return &quot;What sparked the leap in the human mind?~Psilocybin in the primate diet.~The mastery of fire.~The dawn of language.~The making of tools.&quot;;
+        case 6 : return &quot;What is the mushroom, to me?~A teacher, not a drug.~A door to other worlds.~A gift from the earth.~A medicine for the mind.&quot;;
+        case 7 : return &quot;What \&quot;return\&quot; did I call for?~A return to shamanic ways.~A return to nature.~A return to wonder.~A return to the body.&quot;;
+        case 8 : return &quot;What is \&quot;novelty\&quot;?~Rising complexity and connection.~The birth of new ideas.~The thrill of the unknown.~A break from routine.&quot;;
+        case 9 : return &quot;What waits at the end of time?~An attractor drawing all novelty on.~A great awakening.~A merging of all minds.~A door beyond time.&quot;;
+        case 10: return &quot;What is \&quot;boundary dissolution\&quot;?~Self and world melting into one.~The mind opening wide.~A release from all fear.~The fading of the ego.&quot;;
+        case 11: return &quot;What is the \&quot;syntactic prison\&quot;?~Being trapped inside habitual language.~The limits of the thinking mind.~The rules society imposes.~The cage of old beliefs.&quot;;
+        case 12: return &quot;What is the imagination, to me?~A real ground of being to explore.~The source of all creation.~A window to the soul.~The mind&#x27;s deepest power.&quot;;
+        case 13: return &quot;What does the psychedelic doorway open?~A path to meaning and mind.~A glimpse of the divine.~The doors of perception.~A journey within.&quot;;
+        case 14: return &quot;What should you trust above dogma?~Your own direct experience.~The wisdom of nature.~An open, questioning mind.~The evidence of your senses.&quot;;
+        case 15: return &quot;Who are the truest teachers?~The plants and the living world.~The old shamans and sages.~Your own inner voice.~The great mystics of history.&quot;;
+        case 16: return &quot;How should you treat any one guru?~Follow none of them blindly.~Learn what you can, then move on.~Question all they teach.~Trust only what you test.&quot;;
+        case 17: return &quot;What did I feel about the future?~A shift in consciousness is coming.~A great transformation awaits.~Wonders we cannot yet imagine.~A return to older wisdom.&quot;;
+        case 18: return &quot;What is a \&quot;heroic dose\&quot;?~A big dose, taken in silent dark.~A dose taken with a guide.~The largest one can bear.~A dose for deep questions.&quot;;
+        case 19: return &quot;\&quot;Culture is not your friend\&quot; warns you to do what?~Not let culture define you.~Question what you were taught.~Think for yourself.~See past its illusions.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Carl Jung -- the shadow, individuation, persona, and the archetypes
+string MW_JunRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;What is the shadow?~The disowned parts of yourself.~The dark side of the mind.~The self you hide from others.~The instincts we repress.&quot;;
+        case 1 : return &quot;How do you become whole?~By integrating the shadow.~By mastering your instincts.~By rising above the ego.~By healing old wounds.&quot;;
+        case 2 : return &quot;What is individuation?~Becoming all of who you are.~Standing apart from the crowd.~Finding your true purpose.~Making peace with the past.&quot;;
+        case 3 : return &quot;What fills the collective unconscious?~Shared archetypes of all humankind.~Memories from this life alone.~Instincts passed from your parents.~Urges left over from childhood.&quot;;
+        case 4 : return &quot;What is the persona?~The mask you wear for the world.~The role you play in life.~The face you show at work.~The self you present to others.&quot;;
+        case 5 : return &quot;What do I call the deep images shared by us all?~Archetypes.~Symbols.~Instincts.~Myths.&quot;;
+        case 6 : return &quot;What is the \&quot;anima\&quot;?~The inner feminine in a man.~The soul&#x27;s true voice.~A guide met in dreams.~The gentler side of the self.&quot;;
+        case 7 : return &quot;What do I call a meaningful coincidence?~Synchronicity.~Fate.~Providence.~Intuition.&quot;;
+        case 8 : return &quot;What does it mean to hold the tension of opposites?~Bear both sides until they unite.~Choose the wiser path.~Find the middle way.~Let time resolve it.&quot;;
+        case 9 : return &quot;What is the \&quot;Self\&quot;, with a capital S?~The whole psyche&#x27;s uniting centre.~The soul within us all.~The person we truly are.~The image of God within.&quot;;
+        case 10: return &quot;What becomes of a shadow left unowned?~It is cast onto others.~It grows in the dark.~It surfaces in dreams.~It rules from behind.&quot;;
+        case 11: return &quot;The persona is useful, but what is its danger?~Mistaking the mask for your true self.~Wearing it too often.~Losing touch with others.~Hiding your real gifts.&quot;;
+        case 12: return &quot;What do dreams do, in my view?~Speak and balance from the unconscious.~Reveal our hidden wishes.~Work through the day&#x27;s cares.~Warn us of what may come.&quot;;
+        case 13: return &quot;The \&quot;wise old man\&quot; and \&quot;great mother\&quot; are what?~Archetypes.~Symbols.~Spirits.~Instincts.&quot;;
+        case 14: return &quot;What is a \&quot;complex\&quot;?~A charged knot of feelings and ideas.~A deep-seated fear.~A pattern of behaviour.~A wound from the past.&quot;;
+        case 15: return &quot;What should the second half of life turn toward?~Meaning and the inner world.~Passing on what you have learned.~Making peace with the end.~Deepening your closest bonds.&quot;;
+        case 16: return &quot;What is the \&quot;animus\&quot;?~The inner masculine in a woman.~The strength within the self.~A figure seen in dreams.~The voice of reason inside.&quot;;
+        case 17: return &quot;How do I see religious symbols?~As voices of deep psychic truth.~As maps of the inner life.~As humanity&#x27;s oldest wisdom.~As bridges to the sacred.&quot;;
+        case 18: return &quot;How does facing your shadow feel at first?~Uneasy, even shameful.~Strange and unfamiliar.~Frightening yet freeing.~Humbling but honest.&quot;;
+        case 19: return &quot;What is the aim of the whole work?~Wholeness of the psyche.~Peace of mind.~Self-knowledge.~Freedom from the past.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Marcus Aurelius -- the dichotomy of control, virtue, and memento mori
+string MW_AurRow(int i)
+{
+    switch (i)
+    {
+        case 0 : return &quot;What is truly in your power?~Your judgements and reactions.~Your words and deeds.~Your effort and will.~Your duty to others.&quot;;
+        case 1 : return &quot;Complete the maxim: \&quot;The obstacle is ___.\&quot;~the way.~a teacher.~a test.~temporary.&quot;;
+        case 2 : return &quot;What does \&quot;memento mori\&quot; mean?~Remember that you will die.~Live each day fully.~Honour those now gone.~Time is always fleeting.&quot;;
+        case 3 : return &quot;By what is the soul dyed?~The colour of its thoughts.~The company it keeps.~The deeds it does.~The trials it endures.&quot;;
+        case 4 : return &quot;How should you begin each day?~Braced to meet difficult people, unshaken.~Grateful to be alive.~Set on your duties.~Calm and clear of mind.&quot;;
+        case 5 : return &quot;Into which two kinds do I sort all things?~What is up to us, and what is not.~The good and the harmful.~The lasting and the fleeting.~The body and the mind.&quot;;
+        case 6 : return &quot;What alone is truly good?~A virtuous character.~A tranquil mind.~A life well lived.~Wisdom hard-won.&quot;;
+        case 7 : return &quot;When wronged, how do you answer?~Return to reason, not revenge.~Forgive and let it go.~Set a firm boundary.~Consider their reasons.&quot;;
+        case 8 : return &quot;Complete the thought: \&quot;The best revenge is ___.\&quot;~to be unlike your enemy.~to rise above it.~to live well.~to feel no anger.&quot;;
+        case 9 : return &quot;What of things beyond your control?~Accept them with calm.~Prepare for them wisely.~Trust they serve a purpose.~Turn your mind elsewhere.&quot;;
+        case 10: return &quot;What should you recall about all things?~They pass and are soon forgotten.~They change without cease.~They serve the whole.~They are as nature wills.&quot;;
+        case 11: return &quot;What does \&quot;amor fati\&quot; mean?~Love of your own fate.~Trust in providence.~Peace with what is.~Courage before death.&quot;;
+        case 12: return &quot;What should you do instead of complaining?~The work in front of you.~Give quiet thanks.~Accept what is.~Look for the lesson.&quot;;
+        case 13: return &quot;What should reason, the ruling part, govern?~Your impulses and reactions.~Your daily choices.~Your desires and fears.~Your whole way of life.&quot;;
+        case 14: return &quot;How do I picture the cosmos?~One ordered, connected whole.~A living, breathing being.~A work of divine reason.~A dance of endless change.&quot;;
+        case 15: return &quot;How does the sage stand amid change?~Tranquil and steadfast.~Watchful and ready.~Humble and accepting.~Patient and wise.&quot;;
+        case 16: return &quot;For whose good should you act?~The good of the whole.~The good of your city.~Those in your care.~Future generations.&quot;;
+        case 17: return &quot;How should you regard death?~As natural, nothing to fear.~As a return to nature.~As the door to rest.~As the price of life.&quot;;
+        case 18: return &quot;What, in truth, can harm you?~Your own judgement of events.~A life without virtue.~The loss of reason.~Turning from duty.&quot;;
+        case 19: return &quot;Where should your attention rest?~On the task before you now.~On living by virtue.~On the good of others.~On what you can control.&quot;;
+    }
+    return &quot;&quot;;
+}
+
+// Dispatch: packed row for guide sGuide, question index i (0-based).
+string MW_QRow(string sGuide, int i)
+{
+    if (sGuide == &quot;jocko&quot;)     return MW_JocRow(i);
+    if (sGuide == &quot;peterson&quot;)  return MW_PetRow(i);
+    if (sGuide == &quot;watts&quot;)     return MW_WatRow(i);
+    if (sGuide == &quot;campbell&quot;)  return MW_CamRow(i);
+    if (sGuide == &quot;mckenna&quot;)   return MW_MckRow(i);
+    if (sGuide == &quot;jung&quot;)      return MW_JunRow(i);
+    if (sGuide == &quot;aurelius&quot;)  return MW_AurRow(i);
+    return &quot;&quot;;
+}
+</code></pre>
+  </main>
+  <footer>generated by <a href="https://github.com/mrprice22/nwn-manager">nwn-manager</a> &mdash; <span id="wiki-generated-at" data-meta-url="../assets/meta.json"></span></footer>
+</body>
+</html>
