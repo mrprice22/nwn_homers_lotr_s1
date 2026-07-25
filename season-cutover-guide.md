@@ -790,6 +790,7 @@ Copy this into the announcement/tracking issue for each cutover.
 - [ ] Module renamed (§4): `nasher.cfg` target, `NWN_MODULE`, `NWN_SERVERNAME` `(EARLY ACCESS)`, repack wrapper install path
 - [ ] `NWN_PLAYERPASSWORD="volatile"` + `NWNSYNC_PUBLIC_URL` in `server.env.local`
 - [ ] `season-brand.py --apply`; repack; deploy — **in the new season repo**
+- [ ] Landing page checked: the root `index.html` "Direct connect" string (**it appears twice**) and its wiki link show the *new* season's port and host — `season-brand.py` owns these now, so this is a spot-check that the gate ran, not a hand-edit
 - [ ] `season-brand.py --apply`; repack; deploy — **in `_s<N>` too**, so the live season advertises the test realm + password
 - [ ] Both shared symlinks (`meritdb`, `admindb`) created into the new home dir and verified with `ls -l`
 - [ ] House area-tags checked: every `admindb.houses.area_tag` exists in the new season (§5)
