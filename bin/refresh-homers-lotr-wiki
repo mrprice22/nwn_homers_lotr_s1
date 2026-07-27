@@ -52,6 +52,19 @@ DB_DIR="${NWN_HOME_DIR:-$HOME/.local/share/Neverwinter Nights}/database"
 BASE_URL="${SEASON_WIKI_URL:-https://homerslotr.com/}"
 LOG_DIR="${NWN_RUN_DIR:-$HOME/.local/state/nwnxee-homer}"
 
+# Combat-stat dials, from server.env so the wiki's derived stats match what the
+# running server actually enforces (nwn-wiki defaults to the stock 40 / +12):
+#   NWN_MAXLEVEL          — server level cap; nwn-wiki clamps a creature's total
+#                           class levels to it when summing BAB, so a 100+ HD
+#                           boss stops accruing BAB past the cap. Unset means the
+#                           container's own default of 40 (season 1); season 2
+#                           sets 60, which lets a multiclass boss's later classes
+#                           keep contributing where a 40 cap cut them off.
+#   NWN_MAX_ABILITY_BONUS — cap on the ability bonus a single item may grant
+#                           (settings.tml max-ability-bonus; this module runs 24).
+MAX_LEVEL="${NWN_MAXLEVEL:-40}"
+MAX_ABILITY_BONUS="${NWN_MAX_ABILITY_BONUS:-12}"
+
 nwn-manager wiki \
   --base-url "$BASE_URL" \
   --exclude-conv-option "[Admin Options]" \
@@ -59,6 +72,8 @@ nwn-manager wiki \
   --log-dir "$LOG_DIR" \
   --db-dir "$DB_DIR" \
   --2da-dir "$PROJECT/hak_2da" \
+  --max-character-level "$MAX_LEVEL" \
+  --max-ability-bonus "$MAX_ABILITY_BONUS" \
   --path-from thewelloferu
 status=$?
 
