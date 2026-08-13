@@ -6651,7 +6651,7 @@
         "Description": {
           "type": "cexolocstring",
           "value": {
-            "0": "SEASON 2 IS COMING\n\nSeason 2 opens officially on the evening of Wednesday, August 5th, 2026.\n\nSeason 1 is NOT being shut down on that date. This realm stays online and\nplayable for as long as people keep playing on it.\n\n-- What is new in Season 2 --\n\n  * TRUE LEVELS 41 THROUGH 60 - real character levels, not simulated.\n  * NEW LEGENDARY FEATS for level 41 and up.\n\n-- Season 2 early access is open NOW --\n\n  Same server address, port 5122\n  Password: volatile\n  Wiki:     season2.homerslotr.com\n\n-- Read this before you play the test realm --\n\nEVERYTHING you do in Season 2 early access is WIPED when it goes live on\nAugust 5th: characters, levels, gear, gold, banks, bestiary progress, boss\nkills, saved teleport slots. All of it. Test freely, but do not get attached.\n\nMerit you earn in early access DOES still count - it is account-wide.\nBut do NOT redeem merit for the 2x gold/XP boosts or for tournament gear\nuntil after go-live: you would pay the merit and lose the reward in the wipe.\nTeleport unlocks, graffiti, the wallet, Become a DM and player homes are all\nsafe to redeem whenever you like."
+            "0": "SEASON 2 IS NOW LIVE\n\nSeason 2 opened on the evening of Thursday, August 13th, 2026.\n\n  Same server address, port 5122\n  No password - just connect\n  Wiki:  homerslotr.com\n\n-- What is new in Season 2 --\n\n  * TRUE LEVELS 41 THROUGH 60 - real character levels, not simulated.\n  * NEW LEGENDARY FEATS for level 41 and up.\n\n-- About this realm (Season 1) --\n\nSeason 1 is NOT shut down. It stays online and playable for as long as\npeople keep playing on it.\n\nBut it is no longer updated or maintained. New content, fixes and\nrebalances all land on Season 2 from now on. When this realm has been\nquiet for a good while it will be retired for good, and you will get\nplenty of warning first.\n\nSeason 1's wiki is archived at  season1.homerslotr.com\n\n-- Your Merit is safe --\n\nMerit is account-wide and carries across every season, along with\nanything you have already redeemed with it: teleport unlocks, graffiti,\nthe wallet, Become a DM and player homes. You keep all of it on Season 2.\n\nCharacters, gear, gold, banks and bestiary progress do NOT carry over -\na fresh start is the point of a new season.\n\nSee you in Season 2."
           }
         },
         "DisarmDC": {
@@ -6701,7 +6701,7 @@
         "LocName": {
           "type": "cexolocstring",
           "value": {
-            "0": "Season 1 ending soon - examine me"
+            "0": "Season 2 is live - examine me"
           }
         },
         "OnClick": {
