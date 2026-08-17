@@ -11,6 +11,12 @@
       {
         "_order": 0,
         "kind": "file",
+        "stem": "HallOfFame",
+        "title": "Hall of Fame"
+      },
+      {
+        "_order": 1,
+        "kind": "file",
         "stem": "Roadmap",
         "title": "Roadmap & Player Ideas"
       }
