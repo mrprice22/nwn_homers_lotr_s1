@@ -351,7 +351,7 @@ def build_html(sections: list[tuple], npc: list[dict], asof: str, stats: dict) -
   <meta charset="utf-8">
   <title>Hall of Fame</title>
   <!-- @menu 'Activity' -->
-  <!-- @order 1 -->
+  <!-- @order 0 -->
   <!-- The wiki build regex-scans this raw file for the directives above to decide
        which nav dropdown the page lands in (Activity, beside Roadmap and the
        activity charts — not the default Documents menu). They MUST stay in this
