@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hall of Fame</title>
+  <!-- @menu 'Activity' -->
+  <!-- @order 1 -->
+  <!-- The wiki build regex-scans this raw file for the directives above to decide
+       which nav dropdown the page lands in (Activity, beside Roadmap and the
+       activity charts — not the default Documents menu). They MUST stay in this
+       script's template: bin/gen-halloffame.py rewrites HallOfFame.html wholesale,
+       so a directive hand-added to the output is wiped by the next regeneration.
+       tests/check_manual_menus.py is the build gate that catches it. -->
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+  <main>
+
+  <style>
+    /* Two-column layout, matching the other manual pages. */
+    .mw-layout { display: flex; gap: 2.5em; align-items: flex-start; }
+    .mw-toc-pane { flex: 0 0 220px; position: sticky; top: 1.5em;
+                   max-height: calc(100vh - 3em); overflow-y: auto; }
+    .mw-content { flex: 1; min-width: 0; }
+    @media (max-width: 700px) {
+      .mw-layout { flex-direction: column; }
+      .mw-toc-pane { position: static; max-height: none; flex: none; width: 100%; }
+    }
+    .toc { background: var(--card); border: 1px solid var(--border);
+           border-radius: 4px; padding: 1em 1.2em; }
+    .toc h2 { font-size: 1em; margin: 0 0 0.5em; border: none; padding: 0;
+              color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+    .toc ol { margin: 0; padding-left: 1.3em; }
+    .toc li { margin: 0.2em 0; }
+    .toc a { color: var(--link); }
+
+    .tier-header { background: rgba(107,58,28,0.08); border-left: 4px solid var(--accent);
+                   padding: 0.5em 1em; margin: 2em 0 0.8em; }
+    .tier-header h2 { margin: 0; border: none; padding: 0; }
+    .tier-header p { margin: 0.3em 0 0; color: var(--muted); font-size: 0.92em; }
+
+    .asof-banner { margin: 0.6em 0 1.4em; }
+    .asof-tag { display: inline-block; background: var(--card); border: 1px solid var(--border);
+                border-radius: 999px; padding: 0.25em 0.9em; font-size: 0.85em; color: var(--muted); }
+
+    /* Award cards */
+    .hof-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+                gap: 1em; margin: 1em 0 2em; }
+    .hof-card { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+                padding: 0.9em 1.1em; display: flex; flex-direction: column; }
+    .hof-card h3 { margin: 0 0 0.35em; font-size: 1.05em; border: none; padding: 0; }
+    .hof-blurb { color: var(--muted); font-size: 0.87em; margin: 0 0 0.7em; line-height: 1.45; }
+    .hof-winner { font-size: 1.25em; font-weight: 700; line-height: 1.3; }
+    .hof-value { color: var(--accent); font-weight: 700; }
+    .hof-detail { color: var(--muted); font-size: 0.85em; margin-top: 0.15em; }
+    .hof-tie { font-size: 0.8em; color: var(--muted); text-transform: uppercase;
+               letter-spacing: 0.06em; margin-bottom: 0.2em; }
+    .hof-runners { margin-top: 0.7em; border-top: 1px solid var(--border); padding-top: 0.5em;
+                   font-size: 0.82em; color: var(--muted); }
+    .hof-runners span { white-space: nowrap; }
+
+    /* NPC (monster) award tables */
+    .hof-table { width: 100%; border-collapse: collapse; margin: 0.6em 0 2em; font-size: 0.92em; }
+    .hof-table th, .hof-table td { text-align: left; padding: 0.35em 0.7em;
+                                   border-bottom: 1px solid var(--border); }
+    .hof-table th { color: var(--muted); font-weight: 600; font-size: 0.85em;
+                    text-transform: uppercase; letter-spacing: 0.04em; }
+    .hof-wrap { overflow-x: auto; }
+
+    .tip-box { background: rgba(60,120,90,0.10); border-left: 4px solid #3c785a;
+               padding: 0.7em 1em; margin: 1.2em 0; border-radius: 0 4px 4px 0; font-size: 0.92em; }
+  </style>
+
+  <div class="mw-layout">
+  <aside class="mw-toc-pane">
+    <nav class="toc" aria-label="Page contents">
+      <h2>Contents</h2>
+      <ol>
+        <li><a href="#about">About this page</a></li>
+        <li><a href="#conquest">Conquest</a></li>
+        <li><a href="#fortune">Fortune</a></li>
+        <li><a href="#devotion">Devotion</a></li>
+        <li><a href="#character">Character</a></li>
+        <li><a href="#bestiary-revenge">The Bestiary's Revenge</a></li>
+      </ol>
+    </nav>
+  </aside>
+  <div class="mw-content">
+
+<h1>Hall of Fame &mdash; Season 1</h1>
+
+<div class="asof-banner">
+  <span class="asof-tag">As of August 17, 2026</span>
+</div>
+
+<p id="about">Season 1 is closed. These are its records &mdash; drawn from the server's own
+memory: every kill it counted, every character left in the vault, every coin banked, every
+hour logged, and every idea that shipped. One winner per award; where players tied, all of
+them are named.</p>
+
+<div class="tip-box">
+  <strong>How to read this.</strong> Awards are counted per <em>player account</em>, not per
+  character &mdash; so "most gold" means every coin across a player's whole roster, carried
+  and banked alike. The server admin is excluded throughout. Merit is only paid on ideas
+  that actually shipped, which is why <a href="#award-backlog_hero">Backlog Hero</a> counts
+  the opposite thing: suggestions still waiting their turn.
+</div>
+
+<p class="hof-detail">82 players &middot; 188 characters &middot;
+43,897 recorded kills across 548 species &middot;
+1,565 hours played &middot; 93 awards given.</p>
+
+
+<div class="tier-header" id="conquest">
+  <h2>Conquest</h2>
+  <p>Kills, bosses and firsts &mdash; the season measured in fallen enemies.</p>
+</div>
+<div class="hof-grid">
+    <div class="hof-card" id="award-server_first">
+      <h3>Server-First Champion</h3>
+      <p class="hof-blurb">First to fell a creature nobody had ever killed on this server. The season's true pioneers.</p>
+      
+      <div class="hof-winner">Tukwut</div>
+      <div><span class="hof-value">88</span> server firsts</div>
+      
+      <div class="hof-runners">Also in the running: <span>y a z k i r 54</span> &middot; <span>Xil 11</span> &middot; <span>Dungeon_Crawler 11</span></div>
+    </div>
+    <div class="hof-card" id="award-boss_solo">
+      <h3>Top Boss Slayer</h3>
+      <p class="hof-blurb">Named bosses from the Roll of the Fallen, killed alone. No party, no help.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">161</span> solo boss kills</div>
+      <div class="hof-detail">Shelob</div>
+      <div class="hof-runners">Also in the running: <span>mehard 60</span> &middot; <span>Try_This 57</span> &middot; <span>Incinerous 53</span></div>
+    </div>
+    <div class="hof-card" id="award-boss_party">
+      <h3>Party Person</h3>
+      <p class="hof-blurb">Bosses brought down alongside others. Fellowship is its own kind of strength.</p>
+      
+      <div class="hof-winner">y a z k i r</div>
+      <div><span class="hof-value">20</span> boss kills in a party</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 18</span> &middot; <span>yazkir3.0 15</span> &middot; <span>szescian82 9</span></div>
+    </div>
+    <div class="hof-card" id="award-guardian_light">
+      <h3>Guardian of Light</h3>
+      <p class="hof-blurb">Most evil bosses put down. The free peoples sleep easier.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">79</span> evil bosses slain</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 26</span> &middot; <span>ray 24</span> &middot; <span>Tukwut 22</span></div>
+    </div>
+    <div class="hof-card" id="award-servant_dark">
+      <h3>Servant of Darkness</h3>
+      <p class="hof-blurb">Most <em>good</em> bosses slain. Somebody had to ask why.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">49</span> good bosses slain</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 27</span> &middot; <span>Xil 23</span> &middot; <span>mehard 23</span></div>
+    </div>
+    <div class="hof-card" id="award-bestiary">
+      <h3>Bestiary Completion</h3>
+      <p class="hof-blurb">The widest slice of the 700-creature bestiary recorded by any one player.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">44.9%</span> % of the bestiary</div>
+      <div class="hof-detail">314 species</div>
+      <div class="hof-runners">Also in the running: <span>ray 41.6%</span> &middot; <span>y a z k i r 35.1%</span> &middot; <span>mehard 32.7%</span></div>
+    </div>
+    <div class="hof-card" id="award-loremaster">
+      <h3>Loremaster</h3>
+      <p class="hof-blurb">Most <em>distinct</em> creatures killed &mdash; breadth of experience rather than raw volume.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">314</span> distinct species</div>
+      
+      <div class="hof-runners">Also in the running: <span>ray 291</span> &middot; <span>y a z k i r 246</span> &middot; <span>mehard 229</span></div>
+    </div>
+    <div class="hof-card" id="award-nemesis">
+      <h3>Nemesis</h3>
+      <p class="hof-blurb">The single creature a player killed more than any other. A grudge, measured.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">886</span> kills of one creature</div>
+      <div class="hof-detail">A Ridermark Guardian</div>
+      <div class="hof-runners">Also in the running: <span>mehard 696</span> &middot; <span>Incinerous 672</span> &middot; <span>y a z k i r 586</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_spider">
+      <h3>Spider Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as spider-kind (13 species).</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">1,100</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>y a z k i r 841</span> &middot; <span>Incinerous 699</span> &middot; <span>Alek Cain 524</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_orc">
+      <h3>Orc Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as orc-kind (33 species).</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">987</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>ram1500 620</span> &middot; <span>Try_This 263</span> &middot; <span>szescian82 227</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_goblin">
+      <h3>Goblin Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as goblin-kind (18 species).</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">297</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 274</span> &middot; <span>Balvudegamix 244</span> &middot; <span>The One and Only 237</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_bat">
+      <h3>Bat Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as bat-kind (3 species).</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">167</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Mortik 121</span> &middot; <span>Vert Patter 105</span> &middot; <span>1 72</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_wizard">
+      <h3>Wizard Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as wizard-kind (23 species).</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">174</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 88</span> &middot; <span>Try_This 80</span> &middot; <span>ray 77</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_hobbit">
+      <h3>Hobbit Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as hobbit-kind (1 species).</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">22</span> kills</div>
+      
+      
+    </div>
+    <div class="hof-card" id="award-slayer_troll">
+      <h3>Troll Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as troll-kind (7 species).</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">217</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 168</span> &middot; <span>ram1500 81</span> &middot; <span>Vert Patter 65</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_golem">
+      <h3>Golem Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as golem-kind (3 species).</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">1,001</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Vert Patter 324</span> &middot; <span>SMW 318</span> &middot; <span>ram1500 236</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_wolf">
+      <h3>Wolf Slayer</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as wolf-kind (6 species).</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">342</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Balvudegamix 125</span> &middot; <span>ram1500 114</span> &middot; <span>SMW 99</span></div>
+    </div>
+    <div class="hof-card" id="award-slayer_undead">
+      <h3>Bane of the Undead</h3>
+      <p class="hof-blurb">Most kills across every creature the bestiary counts as bane-kind (33 species).</p>
+      
+      <div class="hof-winner">Vert Patter</div>
+      <div><span class="hof-value">573</span> kills</div>
+      
+      <div class="hof-runners">Also in the running: <span>Balvudegamix 345</span> &middot; <span>szescian82 271</span> &middot; <span>ram1500 219</span></div>
+    </div>
+</div>
+
+<div class="tier-header" id="fortune">
+  <h2>Fortune</h2>
+  <p>Gold, experience and the hoards players built out of them.</p>
+</div>
+<div class="hof-grid">
+    <div class="hof-card" id="award-gold">
+      <h3>Gold Hoarder</h3>
+      <p class="hof-blurb">Every coin a player owns: carried, personally banked, and sitting in the family vault.</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">87,349,165</span> total gold</div>
+      
+      <div class="hof-runners">Also in the running: <span>ray 60,538,362</span> &middot; <span>Xil 56,108,767</span> &middot; <span>ram1500 41,982,037</span></div>
+    </div>
+    <div class="hof-card" id="award-xp">
+      <h3>Top XP Earner</h3>
+      <p class="hof-blurb">All experience earned across every character, plus whatever is banked in the family account.</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">29,196,247</span> total XP</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 25,926,480</span> &middot; <span>Xil 25,858,908</span> &middot; <span>ram1500 24,042,147</span></div>
+    </div>
+    <div class="hof-card" id="award-family_fortune">
+      <h3>Family Fortune</h3>
+      <p class="hof-blurb">The largest shared family vault &mdash; gold and experience pooled across a whole household of characters.</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">87,297,666</span> banked in the family vault</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 46,031,822</span> &middot; <span>Alek Cain 23,020,512</span> &middot; <span>Tukwut 9,758,898</span></div>
+    </div>
+    <div class="hof-card" id="award-broke">
+      <h3>Spent It All</h3>
+      <p class="hof-blurb">The most experience per surviving gold piece. Adventure is expensive.</p>
+      
+      <div class="hof-winner">Magyk</div>
+      <div><span class="hof-value">166,812</span> XP per gold piece</div>
+      <div class="hof-detail">17,515,275 XP on 105 gp</div>
+      <div class="hof-runners">Also in the running: <span>yazkir3.0 219</span> &middot; <span>Ichi 94</span> &middot; <span>forlin 52</span></div>
+    </div>
+    <div class="hof-card" id="award-packrat">
+      <h3>Pack Rat</h3>
+      <p class="hof-blurb">Most items hauled around across every character. Nothing is ever left behind.</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">370</span> items carried</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 327</span> &middot; <span>y a z k i r 282</span> &middot; <span>Incinerous 217</span></div>
+    </div>
+    <div class="hof-card" id="award-collect_gems">
+      <h3>Rock Collector</h3>
+      <p class="hof-blurb">Most of them stashed away across a whole roster of characters.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">17</span> carried</div>
+      
+      <div class="hof-runners">Also in the running: <span>Dungeon_Crawler 6</span> &middot; <span>ray 5</span> &middot; <span>mehard 4</span></div>
+    </div>
+    <div class="hof-card" id="award-house">
+      <h3>Lord of the Manor</h3>
+      <p class="hof-blurb">The largest player home on the server, measured by the floor area of the granted estate.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">16</span> tiles</div>
+      
+      
+    </div>
+</div>
+
+<div class="tier-header" id="devotion">
+  <h2>Devotion</h2>
+  <p>Hours, ideas and the long grind of showing up.</p>
+</div>
+<div class="hof-grid">
+    <div class="hof-card" id="award-playtime">
+      <h3>Most Time Played</h3>
+      <p class="hof-blurb">Hours logged in over the whole season, reconstructed from every server log we still hold.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">179.8 h</span> hours played</div>
+      <div class="hof-detail">26 days</div>
+      <div class="hof-runners">Also in the running: <span>Tukwut 178.5 h</span> &middot; <span>-Methonash- 106.9 h</span> &middot; <span>Xil 101.2 h</span></div>
+    </div>
+    <div class="hof-card" id="award-regular">
+      <h3>The Regular</h3>
+      <p class="hof-blurb">Most separate days spent in Middle-earth. Showing up beats marathoning.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">61</span> days played</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 51</span> &middot; <span>Xil 51</span> &middot; <span>Try_This 49</span></div>
+    </div>
+    <div class="hof-card" id="award-mixtape">
+      <h3>Mixtape Chaser</h3>
+      <p class="hof-blurb">Meaningwave philosophers won over &mdash; one quiz, one mixtape at a time, counted across every character on the account.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">54</span> quizzes passed</div>
+      <div class="hof-detail">best character 7/7, 3 finale(s)</div>
+      <div class="hof-runners">Also in the running: <span>Tukwut 31</span> &middot; <span>The One and Only 24</span> &middot; <span>Incinerous 20</span></div>
+    </div>
+    <div class="hof-card" id="award-merit_earned">
+      <h3>Most Merit Earned</h3>
+      <p class="hof-blurb">Merit is only paid on ideas that actually shipped &mdash; a defect is worth 1, an enhancement 2, an exploit 3.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">36</span> merit earned</div>
+      <div class="hof-detail">25 ideas shipped</div>
+      <div class="hof-runners">Also in the running: <span>Tukwut 29</span> &middot; <span>Alek Cain 24</span> &middot; <span>Dungeon_Crawler 15</span></div>
+    </div>
+    <div class="hof-card" id="award-reports_defects">
+      <h3>Chief Bug Hunter</h3>
+      <p class="hof-blurb">Most reported defects that were actually fixed and shipped.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">15</span> shipped</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 13</span> &middot; <span>y a z k i r 9</span> &middot; <span>Try_This 4</span></div>
+    </div>
+    <div class="hof-card" id="award-reports_exploits">
+      <h3>White Hat</h3>
+      <p class="hof-blurb">Most reported exploits that were closed. Finding them is one thing; reporting them is another.</p>
+      
+      <div class="hof-winner">ray</div>
+      <div><span class="hof-value">3</span> shipped</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 2</span> &middot; <span>Try_This 1</span> &middot; <span>-Methonash- 1</span></div>
+    </div>
+    <div class="hof-card" id="award-reports_enhancements">
+      <h3>Chief Architect</h3>
+      <p class="hof-blurb">Most suggested enhancements that made it into the module.</p>
+      
+      <div class="hof-winner">Alek Cain</div>
+      <div><span class="hof-value">11</span> shipped</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 9</span> &middot; <span>Dungeon_Crawler 6</span> &middot; <span>Tukwut 5</span></div>
+    </div>
+    <div class="hof-card" id="award-merit_spent">
+      <h3>Biggest Spender</h3>
+      <p class="hof-blurb">Merit cashed in at the merit shop before the season closed. Points are for spending.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">25</span> merit spent</div>
+      
+      
+    </div>
+    <div class="hof-card" id="award-backlog_hero">
+      <h3>Backlog Hero</h3>
+      <p class="hof-blurb">Ideas still queued rather than shipped. This award looks <em>forward</em>: these suggestions have not earned merit yet, because merit is only paid on what ships.</p>
+      
+      <div class="hof-winner">Tukwut</div>
+      <div><span class="hof-value">12</span> ideas awaiting implementation</div>
+      
+      <div class="hof-runners">Also in the running: <span>Alek Cain 8</span> &middot; <span>ray 3</span> &middot; <span>-Methonash- 3</span></div>
+    </div>
+</div>
+
+<div class="tier-header" id="character">
+  <h2>Character</h2>
+  <p>Who these players actually chose to be &mdash; classes, alignments, abilities and the odd obsession.</p>
+</div>
+<div class="hof-grid">
+    <div class="hof-card" id="award-veterans">
+      <h3>Keeper of Veterans</h3>
+      <p class="hof-blurb">Most characters taken all the way to the level cap. Anyone can start one.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">12</span> characters at the cap</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 8</span> &middot; <span>mehard 8</span> &middot; <span>Tukwut 7</span></div>
+    </div>
+    <div class="hof-card" id="award-altoholic">
+      <h3>Alt-oholic</h3>
+      <p class="hof-blurb">The largest stable of characters. Commitment issues, or thoroughness?</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">12</span> characters</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 9</span> &middot; <span>Xil 8</span> &middot; <span>Alek Cain 8</span></div>
+    </div>
+    <div class="hof-card" id="award-class_0">
+      <h3>Barbarian Master</h3>
+      <p class="hof-blurb">The most Barbarian levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Alek Cain</div>
+      <div><span class="hof-value">33</span> barbarian levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Balvudegamix 28</span> &middot; <span>y a z k i r 21</span> &middot; <span>Bentfinger 10</span></div>
+    </div>
+    <div class="hof-card" id="award-class_1">
+      <h3>Bard Master</h3>
+      <p class="hof-blurb">The most Bard levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">164</span> bard levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>szescian82 69</span> &middot; <span>Dungeon_Crawler 64</span> &middot; <span>yazkir3.0 38</span></div>
+    </div>
+    <div class="hof-card" id="award-class_2">
+      <h3>Cleric Master</h3>
+      <p class="hof-blurb">The most Cleric levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Tukwut</div>
+      <div><span class="hof-value">59</span> cleric levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Alek Cain 38</span> &middot; <span>Gomae 36</span> &middot; <span>MYSTIXVL 29</span></div>
+    </div>
+    <div class="hof-card" id="award-class_3">
+      <h3>Druid Master</h3>
+      <p class="hof-blurb">The most Druid levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">32</span> druid levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>McGondy 26</span> &middot; <span>ram1500 26</span> &middot; <span>Alek Cain 25</span></div>
+    </div>
+    <div class="hof-card" id="award-class_4">
+      <h3>Fighter Master</h3>
+      <p class="hof-blurb">The most Fighter levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Try_This</div>
+      <div><span class="hof-value">73</span> fighter levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 54</span> &middot; <span>mehard 50</span> &middot; <span>-Methonash- 45</span></div>
+    </div>
+    <div class="hof-card" id="award-class_5">
+      <h3>Monk Master</h3>
+      <p class="hof-blurb">The most Monk levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Xil</div>
+      <div><span class="hof-value">35</span> monk levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 32</span> &middot; <span>Vert Patter 24</span> &middot; <span>Ykhare 24</span></div>
+    </div>
+    <div class="hof-card" id="award-class_6">
+      <h3>Paladin Master</h3>
+      <p class="hof-blurb">The most Paladin levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Xil</div>
+      <div><span class="hof-value">68</span> paladin levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>szescian82 33</span> &middot; <span>Tukwut 28</span> &middot; <span>y a z k i r 27</span></div>
+    </div>
+    <div class="hof-card" id="award-class_7">
+      <h3>Ranger Master</h3>
+      <p class="hof-blurb">The most Ranger levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Eeon</div>
+      <div><span class="hof-value">14</span> ranger levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 10</span></div>
+    </div>
+    <div class="hof-card" id="award-class_8">
+      <h3>Rogue Master</h3>
+      <p class="hof-blurb">The most Rogue levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Magyk</div>
+      <div><span class="hof-value">15</span> rogue levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>McGondy 12</span> &middot; <span>Ichi 12</span> &middot; <span>narvi 12</span></div>
+    </div>
+    <div class="hof-card" id="award-class_9">
+      <h3>Sorcerer Master</h3>
+      <p class="hof-blurb">The most Sorcerer levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Xil</div>
+      <div><span class="hof-value">76</span> sorcerer levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 73</span> &middot; <span>hugOMG 63</span> &middot; <span>Incinerous 59</span></div>
+    </div>
+    <div class="hof-card" id="award-class_10">
+      <h3>Wizard Master</h3>
+      <p class="hof-blurb">The most Wizard levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">67</span> wizard levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 40</span> &middot; <span>Vert Patter 40</span> &middot; <span>ram1500 40</span></div>
+    </div>
+    <div class="hof-card" id="award-class_27">
+      <h3>Shadowdancer Master</h3>
+      <p class="hof-blurb">The most Shadowdancer levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Ichi</div>
+      <div><span class="hof-value">11</span> shadowdancer levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Magyk 10</span></div>
+    </div>
+    <div class="hof-card" id="award-class_29">
+      <h3>Arcane Archer Master</h3>
+      <p class="hof-blurb">The most Arcane Archer levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">ram1500</div>
+      <div><span class="hof-value">28</span> arcane archer levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 27</span> &middot; <span>Vert Patter 26</span> &middot; <span>Alek Cain 17</span></div>
+    </div>
+    <div class="hof-card" id="award-class_30">
+      <h3>Assassin Master</h3>
+      <p class="hof-blurb">The most Assassin levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Vert Patter</div>
+      <div><span class="hof-value">10</span> assassin levels</div>
+      
+      
+    </div>
+    <div class="hof-card" id="award-class_31">
+      <h3>Blackguard Master</h3>
+      <p class="hof-blurb">The most Blackguard levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">10</span> blackguard levels</div>
+      
+      
+    </div>
+    <div class="hof-card" id="award-class_32">
+      <h3>Champion of Torm Master</h3>
+      <p class="hof-blurb">The most Champion of Torm levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">35</span> champion of torm levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>ray 30</span> &middot; <span>Xil 22</span> &middot; <span>Colpoj 12</span></div>
+    </div>
+    <div class="hof-card" id="award-class_33">
+      <h3>Weapon Master Master</h3>
+      <p class="hof-blurb">The most Weapon Master levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">ram1500</div>
+      <div><span class="hof-value">67</span> weapon master levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 62</span> &middot; <span>Incinerous 60</span> &middot; <span>y a z k i r 50</span></div>
+    </div>
+    <div class="hof-card" id="award-class_34">
+      <h3>Pale Master Master</h3>
+      <p class="hof-blurb">The most Pale Master levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">20</span> pale master levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 17</span> &middot; <span>flyinghitcher 16</span> &middot; <span>The One and Only 16</span></div>
+    </div>
+    <div class="hof-card" id="award-class_35">
+      <h3>Shifter Master</h3>
+      <p class="hof-blurb">The most Shifter levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">ram1500</div>
+      <div><span class="hof-value">12</span> shifter levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Magyk 10</span></div>
+    </div>
+    <div class="hof-card" id="award-class_36">
+      <h3>Dwarven Defender Master</h3>
+      <p class="hof-blurb">The most Dwarven Defender levels amassed across a whole roster.</p>
+      
+      <div class="hof-winner">Balvudegamix</div>
+      <div><span class="hof-value">30</span> dwarven defender levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 26</span> &middot; <span>Anarchyst 25</span> &middot; <span>narvi 24</span></div>
+    </div>
+    <div class="hof-card" id="award-class_37">
+      <h3>Dragon Disciple Master</h3>
+      <p class="hof-blurb">The most Dragon Disciple levels amassed across a whole roster.</p>
+      <div class="hof-tie">Tied &mdash; 4 players</div>
+      <div class="hof-winner">Xil<br>Incinerous<br>Try_This<br>y a z k i r</div>
+      <div><span class="hof-value">40</span> dragon disciple levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 30</span> &middot; <span>Llikanthus 21</span> &middot; <span>Tukwut 20</span></div>
+    </div>
+    <div class="hof-card" id="award-arcane">
+      <h3>Master of the Arcane</h3>
+      <p class="hof-blurb">Most levels in the arcane casting classes, added together.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">237</span> arcane levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 120</span> &middot; <span>szescian82 106</span> &middot; <span>Xil 105</span></div>
+    </div>
+    <div class="hof-card" id="award-divine">
+      <h3>Most Devout</h3>
+      <p class="hof-blurb">Most levels in the divine casting classes, added together.</p>
+      
+      <div class="hof-winner">Tukwut</div>
+      <div><span class="hof-value">87</span> divine levels</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 70</span> &middot; <span>Alek Cain 64</span> &middot; <span>mehard 42</span></div>
+    </div>
+    <div class="hof-card" id="award-devcrit">
+      <h3>Most Devastating</h3>
+      <p class="hof-blurb">Most Devastating Critical feats held across a roster. One blow, one ending.</p>
+      
+      <div class="hof-winner">Incinerous</div>
+      <div><span class="hof-value">6</span> devastating critical feats</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 3</span> &middot; <span>-Methonash- 3</span> &middot; <span>mehard 3</span></div>
+    </div>
+    <div class="hof-card" id="award-jack">
+      <h3>Jack of All Trades</h3>
+      <p class="hof-blurb">The widest spread of base classes played across one account.</p>
+      <div class="hof-tie">Tied &mdash; 3 players</div>
+      <div class="hof-winner">Alek Cain<br>mehard<br>Incinerous</div>
+      <div><span class="hof-value">12</span> distinct classes</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 11</span> &middot; <span>-Methonash- 11</span> &middot; <span>Xil 11</span></div>
+    </div>
+    <div class="hof-card" id="award-purist">
+      <h3>The Purist</h3>
+      <p class="hof-blurb">Most single-class characters taken to level 40. No dabbling.</p>
+      <div class="hof-tie">Tied &mdash; 3 players</div>
+      <div class="hof-winner">Tukwut<br>ram1500<br>1</div>
+      <div><span class="hof-value">1</span> pure level-40 characters</div>
+      
+      
+    </div>
+    <div class="hof-card" id="award-align_good">
+      <h3>Most Good</h3>
+      <p class="hof-blurb">Summed across every character &mdash; conviction measured in aggregate.</p>
+      <div class="hof-tie">Tied &mdash; 2 players</div>
+      <div class="hof-winner">Incinerous<br>Anarchyst</div>
+      <div><span class="hof-value">105</span> alignment points</div>
+      
+      <div class="hof-runners">Also in the running: <span>ray 100</span> &middot; <span>Balvudegamix 90</span> &middot; <span>Vert Patter 70</span></div>
+    </div>
+    <div class="hof-card" id="award-align_evil">
+      <h3>Most Evil</h3>
+      <p class="hof-blurb">Summed across every character &mdash; conviction measured in aggregate.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">140</span> alignment points</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 107</span> &middot; <span>Vert Patter 105</span> &middot; <span>Anpylol 105</span></div>
+    </div>
+    <div class="hof-card" id="award-align_lawful">
+      <h3>Most Lawful</h3>
+      <p class="hof-blurb">Summed across every character &mdash; conviction measured in aggregate.</p>
+      
+      <div class="hof-winner">Alek Cain</div>
+      <div><span class="hof-value">210</span> alignment points</div>
+      
+      <div class="hof-runners">Also in the running: <span>Gomae 175</span> &middot; <span>Vert Patter 140</span> &middot; <span>szescian82 105</span></div>
+    </div>
+    <div class="hof-card" id="award-align_chaotic">
+      <h3>Most Chaotic</h3>
+      <p class="hof-blurb">Summed across every character &mdash; conviction measured in aggregate.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">280</span> alignment points</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 168</span> &middot; <span>hugOMG 140</span> &middot; <span>Tukwut 119</span></div>
+    </div>
+    <div class="hof-card" id="award-align_neutral">
+      <h3>Most Neutral</h3>
+      <p class="hof-blurb">The played roster sitting closest to dead centre on both axes, on average. Committed to nothing.</p>
+      
+      <div class="hof-winner">yazkir3.0</div>
+      <div><span class="hof-value">0</span> average distance from centre</div>
+      <div class="hof-detail">2 characters</div>
+      <div class="hof-runners">Also in the running: <span>y a z k i r 4</span> &middot; <span>mehard 13</span> &middot; <span>Try_This 14</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_strongest">
+      <h3>The Mightiest</h3>
+      <p class="hof-blurb">Highest total Str across every character on the account.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">333</span> total Str</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 218</span> &middot; <span>Xil 216</span> &middot; <span>szescian82 209</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_flexible">
+      <h3>Most Flexible</h3>
+      <p class="hof-blurb">Highest total Dex across every character on the account.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">125</span> total Dex</div>
+      
+      <div class="hof-runners">Also in the running: <span>Alek Cain 120</span> &middot; <span>mehard 115</span> &middot; <span>ram1500 92</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_toughest">
+      <h3>The Hardiest</h3>
+      <p class="hof-blurb">Highest total Con across every character on the account.</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">184</span> total Con</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 166</span> &middot; <span>Xil 143</span> &middot; <span>Alek Cain 107</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_smartest">
+      <h3>The Most Learned</h3>
+      <p class="hof-blurb">Highest total Int across every character on the account.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">163</span> total Int</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 119</span> &middot; <span>Tukwut 116</span> &middot; <span>Alek Cain 112</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_wisest">
+      <h3>The Wisest</h3>
+      <p class="hof-blurb">Highest total Wis across every character on the account.</p>
+      
+      <div class="hof-winner">Alek Cain</div>
+      <div><span class="hof-value">136</span> total Wis</div>
+      
+      <div class="hof-runners">Also in the running: <span>-Methonash- 112</span> &middot; <span>mehard 109</span> &middot; <span>Tukwut 106</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_charming">
+      <h3>The Most Beloved</h3>
+      <p class="hof-blurb">Highest total Cha across every character on the account.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">203</span> total Cha</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 114</span> &middot; <span>Tukwut 108</span> &middot; <span>Incinerous 103</span></div>
+    </div>
+    <div class="hof-card" id="award-ability_charming_low">
+      <h3>Ugliest</h3>
+      <p class="hof-blurb">Lowest average Cha across a roster of three or more. Somebody has to be.</p>
+      <div class="hof-tie">Tied &mdash; 4 players</div>
+      <div class="hof-winner">Vert Patter<br>Balvudegamix<br>Anarchyst<br>ram1500</div>
+      <div><span class="hof-value">8.0</span> average Cha</div>
+      <div class="hof-detail">5 characters</div>
+      <div class="hof-runners">Also in the running: <span>Gomae 9.3</span> &middot; <span>Try_This 9.4</span> &middot; <span>mehard 9.7</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_kleptomaniac">
+      <h3>Kleptomaniac</h3>
+      <p class="hof-blurb">Most ranks of Pick Pocket invested across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">192</span> pick pocket ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 124</span> &middot; <span>Tukwut 121</span> &middot; <span>Incinerous 104</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_disciplined">
+      <h3>The Disciplined</h3>
+      <p class="hof-blurb">Most ranks of Discipline invested across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">442</span> discipline ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>Xil 358</span> &middot; <span>mehard 297</span> &middot; <span>szescian82 266</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_medic">
+      <h3>Field Medic</h3>
+      <p class="hof-blurb">Most ranks of Heal invested across a whole roster.</p>
+      
+      <div class="hof-winner">hugOMG</div>
+      <div><span class="hof-value">91</span> heal ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>ray 61</span> &middot; <span>Dungeon_Crawler 33</span> &middot; <span>Magyk 21</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_listener">
+      <h3>Great Listener</h3>
+      <p class="hof-blurb">Most ranks of Listen invested across a whole roster.</p>
+      
+      <div class="hof-winner">Anarchyst</div>
+      <div><span class="hof-value">48</span> listen ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>McGondy 45</span> &middot; <span>Magyk 42</span> &middot; <span>flyinghitcher 20</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_loremaster_skill">
+      <h3>Keeper of Lore</h3>
+      <p class="hof-blurb">Most ranks of Lore invested across a whole roster.</p>
+      
+      <div class="hof-winner">ram1500</div>
+      <div><span class="hof-value">146</span> lore ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 137</span> &middot; <span>hugOMG 81</span> &middot; <span>szescian82 79</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_umd">
+      <h3>Meddler with Magic</h3>
+      <p class="hof-blurb">Most ranks of Use Magic Device invested across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">367</span> use magic device ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 281</span> &middot; <span>Tukwut 254</span> &middot; <span>y a z k i r 169</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_tumbler">
+      <h3>The Acrobat</h3>
+      <p class="hof-blurb">Most ranks of Tumble invested across a whole roster.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">495</span> tumble ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>mehard 272</span> &middot; <span>Tukwut 253</span> &middot; <span>Incinerous 247</span></div>
+    </div>
+    <div class="hof-card" id="award-skill_persuader">
+      <h3>Silver Tongue</h3>
+      <p class="hof-blurb">Most ranks of Persuade invested across a whole roster.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">43</span> persuade ranks</div>
+      
+      <div class="hof-runners">Also in the running: <span>Etearna 19</span> &middot; <span>hugOMG 16</span></div>
+    </div>
+    <div class="hof-card" id="award-titan">
+      <h3>Titan</h3>
+      <p class="hof-blurb">The single toughest character on the server, by raw hit points.</p>
+      
+      <div class="hof-winner">Xil</div>
+      <div><span class="hof-value">1,302</span> max hit points</div>
+      <div class="hof-detail">Xil Avenger</div>
+      <div class="hof-runners">Also in the running: <span>Tukwut 1,256</span> &middot; <span>Dungeon_Crawler 1,226</span> &middot; <span>Anarchyst 1,225</span></div>
+    </div>
+    <div class="hof-card" id="award-wellrounded">
+      <h3>The Well-Rounded</h3>
+      <p class="hof-blurb">The character with the highest six ability scores added together.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">114</span> total ability scores</div>
+      <div class="hof-detail">Methonash, -Unholy Song-</div>
+      <div class="hof-runners">Also in the running: <span>Dungeon_Crawler 109</span> &middot; <span>szescian82 107</span> &middot; <span>Tukwut 105</span></div>
+    </div>
+    <div class="hof-card" id="award-feats">
+      <h3>Feat Collector</h3>
+      <p class="hof-blurb">The single character carrying the most feats.</p>
+      
+      <div class="hof-winner">szescian82</div>
+      <div><span class="hof-value">81</span> feats</div>
+      <div class="hof-detail">PiC Bum Bum</div>
+      <div class="hof-runners">Also in the running: <span>Dungeon_Crawler 78</span> &middot; <span>-Methonash- 75</span> &middot; <span>Vert Patter 74</span></div>
+    </div>
+    <div class="hof-card" id="award-petfavourite">
+      <h3>Pixie Collector</h3>
+      <p class="hof-blurb">The server's favourite companion is the pixie; this player kept the most of them.</p>
+      
+      <div class="hof-winner">mehard</div>
+      <div><span class="hof-value">3</span> pixies</div>
+      
+      <div class="hof-runners">Also in the running: <span>Tukwut 2</span> &middot; <span>-Methonash- 2</span> &middot; <span>Xil 2</span></div>
+    </div>
+    <div class="hof-card" id="award-petkeeper">
+      <h3>Beast Keeper</h3>
+      <p class="hof-blurb">Most familiars and animal companions bound across a whole roster.</p>
+      <div class="hof-tie">Tied &mdash; 2 players</div>
+      <div class="hof-winner">Alek Cain<br>mehard</div>
+      <div><span class="hof-value">6</span> companions</div>
+      
+      <div class="hof-runners">Also in the running: <span>Incinerous 3</span> &middot; <span>Magyk 2</span> &middot; <span>Llikanthus 2</span></div>
+    </div>
+    <div class="hof-card" id="award-devout">
+      <h3>The Devout</h3>
+      <p class="hof-blurb">Most characters sworn to a single deity &mdash; the card names the god in question.</p>
+      
+      <div class="hof-winner">forlin</div>
+      <div><span class="hof-value">2</span> characters sharing one deity</div>
+      <div class="hof-detail">Eru</div>
+      
+    </div>
+    <div class="hof-card" id="award-bloodline">
+      <h3>Truest Bloodline</h3>
+      <p class="hof-blurb">Most characters of one and the same race. The card names the people.</p>
+      
+      <div class="hof-winner">-Methonash-</div>
+      <div><span class="hof-value">8</span> characters of one race</div>
+      <div class="hof-detail">Wemic</div>
+      <div class="hof-runners">Also in the running: <span>Xil 6</span> &middot; <span>szescian82 5</span> &middot; <span>mehard 5</span></div>
+    </div>
+</div>
+
+<div class="tier-header" id="bestiary-revenge">
+  <h2>The Bestiary's Revenge</h2>
+  <p>Not every trophy belongs to a player. These went to the monsters.</p>
+</div>
+  <h3 id="award-undefeated">The Undefeated</h3>
+  <p class="hof-blurb">Bosses on the Roll of the Fallen that no player killed all season. They are still down there.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead><tr><th>Creature</th><th>Challenge Rating</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>Fell Beast</td><td>CR 333</td><td>Kallrist Crypt</td></tr>
+        <tr><td>Mashano, Messenger To The Witch King</td><td>CR 236</td><td>House of Nazgul</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="award-mostfeared">Most Feared</h3>
+  <p class="hof-blurb">The boss that died the most times. Familiarity breeds slaughter.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead><tr><th>Creature</th><th>Deaths</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>The Mutant Terror</td><td>82 deaths</td><td>Balin&#x27;s Tomb</td></tr>
+        <tr><td>The Balrog of Moria</td><td>35 deaths</td><td>Moria: The Balrog of Moria</td></tr>
+        <tr><td>Rail the White Hand Blaster</td><td>25 deaths</td><td>Isengard (Innerrim)</td></tr>
+        <tr><td>Denethor, Steward of Gondor</td><td>23 deaths</td><td>Minas Tirith: Keep</td></tr>
+        <tr><td>Shelob</td><td>23 deaths</td><td>Shelob&#x27;s Lair</td></tr>
+        <tr><td>Anaralia, The widow maker</td><td>23 deaths</td><td>Mirkwood: Central East</td></tr>
+        <tr><td>Numanan Numerocks Second Hand</td><td>23 deaths</td><td>Carn Dum: City</td></tr>
+        <tr><td>Kainna the War Dancer</td><td>22 deaths</td><td>Isengard (Innerrim)</td></tr>
+        <tr><td>Garbag Gulon</td><td>20 deaths</td><td>Orc Armory</td></tr>
+        <tr><td>Gloin King Under the Mountain</td><td>20 deaths</td><td>Lonely Mountain: Main Hall</td></tr>
+      </tbody>
+    </table>
+  </div>
+<p class="hof-detail">Showing 10 of 76.</p>
+  <h3 id="award-punchingbag">The Punching Bag</h3>
+  <p class="hof-blurb">The most-killed creature in Middle-earth, boss or beast.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead><tr><th>Creature</th><th>Deaths</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>Giant Spider</td><td>4,004 deaths</td><td></td></tr>
+        <tr><td>A Ridermark Guardian</td><td>1,930 deaths</td><td></td></tr>
+        <tr><td>Mordor Orc Warrior Soldier</td><td>1,403 deaths</td><td></td></tr>
+        <tr><td>Worg</td><td>1,369 deaths</td><td></td></tr>
+        <tr><td>Golem</td><td>1,197 deaths</td><td></td></tr>
+        <tr><td>Stone Golem</td><td>1,069 deaths</td><td></td></tr>
+        <tr><td>Cave Bat</td><td>761 deaths</td><td></td></tr>
+        <tr><td>A Rohirrim Soldier</td><td>742 deaths</td><td></td></tr>
+        <tr><td>nw_rat001</td><td>655 deaths</td><td></td></tr>
+        <tr><td>Riddermark Guardian</td><td>591 deaths</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+<p class="hof-detail">Showing 10 of 548.</p>
+  <h3 id="award-raresttrophy">Rarest Trophies</h3>
+  <p class="hof-blurb">Creatures exactly one player ever killed. A private bestiary.</p>
+  <div class="hof-wrap">
+    <table class="hof-table">
+      <thead><tr><th>Creature</th><th>Sole Hunter</th><th>Where</th></tr></thead>
+      <tbody>
+        <tr><td>A Stone-Giant of the High Pass</td><td>Vert Patter</td><td></td></tr>
+        <tr><td>Ancient Ent of Fangorn Forest</td><td>Balvudegamix</td><td></td></tr>
+        <tr><td>Bill Ferny?</td><td>Etearna</td><td></td></tr>
+        <tr><td>Black Numenorean Archer</td><td>y a z k i r</td><td></td></tr>
+        <tr><td>Carl Jung</td><td>Anpylol</td><td></td></tr>
+        <tr><td>Crebain</td><td>Llikanthus</td><td></td></tr>
+        <tr><td>Dellinth the Advocet</td><td>Llikanthus</td><td></td></tr>
+        <tr><td>Dol Guldur Gate Keeper</td><td>ray</td><td></td></tr>
+        <tr><td>Earaldur Rashess</td><td>Llikanthus</td><td></td></tr>
+        <tr><td>Elrond</td><td>y a z k i r</td><td></td></tr>
+        <tr><td>Emyn Raider</td><td>Vert Patter</td><td></td></tr>
+        <tr><td>Eowyn the Shieldmaiden</td><td>szescian82</td><td></td></tr>
+        <tr><td>Gimli</td><td>Dungeon_Crawler</td><td></td></tr>
+        <tr><td>Guardian of Henneth</td><td>y a z k i r</td><td></td></tr>
+        <tr><td>Hoarmouth The Ringwraith</td><td>-Methonash-</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+<p class="hof-detail">Showing 15 of 65.</p>
+
+  </div>
+  </div>
+  </main>
+</body>
+</html>

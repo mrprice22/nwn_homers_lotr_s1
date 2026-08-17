@@ -24,3 +24,7 @@ unpacked/nwnmgr_bstamp.nss
 
 # autopilot mid-item marker — local machine-only state, never needs to travel with the repo
 /autopilot-wip.md
+
+# Hall of Fame parsed-character cache (bin/gen-halloffame.py). Derived entirely
+# from the server vault, machine-local, and regenerated whenever a .bic changes.
+/.hof-bic-cache.json
